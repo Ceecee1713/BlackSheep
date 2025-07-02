@@ -1,50 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShuffleEvent : MonoBehaviour//Singleton<ShuffleEvent>
+public  class ShuffleEvent : MonoBehaviour
 {
-    public List <ShuffleListener> SubjectListeners = new List<ShuffleListener>(); 
+    /*
+    private List <ShuffleListener> _subjectListeners = new();
 
-    public List <int> unavailableCardNumbers = new List<int>(); 
+    private List <int> UnavailableCardNumbers { get; set; } = new(); 
 
-    private int randomCardIndex;
-
-    public void Start()
+    private int _randomCardIndex;
+    
+    public void AddShuffleListener(ShuffleListener shuffleListener)
     {
-        Debug.Log(SubjectListeners.Count);
+        _subjectListeners.Add(shuffleListener);
     }
 
-    public void AddShuffleListener(ShuffleListener ShuffleListener)
+    public void RemoveShuffleListener(ShuffleListener shuffleListener)
     {
-        SubjectListeners.Add(ShuffleListener);
+        _subjectListeners.Remove(shuffleListener);
     }
 
-    public void RemoveShuffleListener(ShuffleListener ShuffleListener)
+    protected void ClearCardSelectionHistory()
     {
-        SubjectListeners.Remove(ShuffleListener);
+        UnavailableCardNumbers.Clear();
     }
 
-    public void ClearCardSelectionHistory()
+    protected void NotifyShuffleListener(CardType cardType) //Method selects a random index of "_subjectListeners" and pass a "CardType"
     {
-        unavailableCardNumbers.Clear();
-    }
+        _randomCardIndex = Random.Range(0, _subjectListeners.Count);
 
-    public void NotifyShuffleListener(CardType cardType) //Method selects a random index of "SubjectListeners" and pass a "CardType"
-    {
-        randomCardIndex = Random.Range(0, SubjectListeners.Count);
+        while(UnavailableCardNumbers.Contains(_randomCardIndex)) //Prevent already selected "_subjectListeners" indexes from being chosen again
+            _randomCardIndex = Random.Range(0, _subjectListeners.Count);
 
-        while(unavailableCardNumbers.Contains(randomCardIndex)) //Prevent already selected "SubjectListeners" indexes from being chosen again
-            randomCardIndex = Random.Range(0, SubjectListeners.Count);
-
-        unavailableCardNumbers.Add(randomCardIndex);
+        UnavailableCardNumbers.Add(_randomCardIndex);
         
-        SubjectListeners[randomCardIndex].OnShuffleNotified(cardType);
-
-        /*
-        //For each "ShuffleListener" inside the "SubjectListeners" List, call "OnShuffleNotified()" method in "ShuffleListener" interface
-        SubjectListeners.ForEach((ShuffleListener) => {
-            ShuffleListener.OnShuffleNotified();
-        });
-        */
+        _subjectListeners[_randomCardIndex].OnShuffleNotified(cardType);
     }
+    */
 }

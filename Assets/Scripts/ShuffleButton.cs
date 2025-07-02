@@ -7,14 +7,20 @@ public class ShuffleButton : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI buttonText;
 
-    private int numberOfShufflesPerRound = 0;
-    private int maxNumberOfShufflesPerRound = 3;
+    private int _numberOfShufflesPerRound = 0;
+    private int _maxNumberOfShufflesPerRound = 3;
+
+    void Start()
+    {
+        _numberOfShufflesPerRound = _maxNumberOfShufflesPerRound;
+    }
 
     public void OnShuffle()
     {
-        if(numberOfShufflesPerRound < maxNumberOfShufflesPerRound)
+        if(_numberOfShufflesPerRound < _maxNumberOfShufflesPerRound)
         {
-            numberOfShufflesPerRound++;
+            _numberOfShufflesPerRound--;
+            buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
 
             //Shuffle cards below
         }
