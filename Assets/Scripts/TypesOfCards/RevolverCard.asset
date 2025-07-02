@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd4971110209a847b08745512c79513, type: 3}
   m_Name: RevolverCard
   m_EditorClassIdentifier: 
-  typeOfCard: 0
-  CardSprite: {fileID: 0}
+  typeOfCard: 4
+  CardSprite: {fileID: 6624528087874976093, guid: 43667b63113f1794c83f8f59adb26939, type: 3}

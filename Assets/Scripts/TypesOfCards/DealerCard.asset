@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DealerCard
   m_EditorClassIdentifier: 
   typeOfCard: 2
-  CardIcon: {fileID: 4399295510402085014, guid: aaf68b676987697429fa1b98c05aa393, type: 3}
+  CardSprite: {fileID: 4399295510402085014, guid: aaf68b676987697429fa1b98c05aa393, type: 3}

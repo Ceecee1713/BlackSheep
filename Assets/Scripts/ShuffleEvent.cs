@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public /*abstract*/ class ShuffleEvent : Singleton<ShuffleEvent>
+public abstract class ShuffleEvent : MonoBehaviour//Singleton<ShuffleEvent>
 {
     public List <ShuffleListener> SubjectListeners = new List<ShuffleListener>(); 
 

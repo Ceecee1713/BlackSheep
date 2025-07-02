@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SheepCard
   m_EditorClassIdentifier: 
   typeOfCard: 0
-  CardIcon: {fileID: 3032710030955524322, guid: 2bf8682f6b1acae4cb8b3ed3ded0a3d0, type: 3}
+  CardSprite: {fileID: 3032710030955524322, guid: 2bf8682f6b1acae4cb8b3ed3ded0a3d0, type: 3}

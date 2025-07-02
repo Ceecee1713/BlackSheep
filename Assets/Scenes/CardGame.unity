@@ -279,7 +279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3055546142307311261, guid: c0c77fcb867dcc54f9b1c1443fc35b2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3055546142307311261, guid: c0c77fcb867dcc54f9b1c1443fc35b2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 446020423}
   - component: {fileID: 446020422}
   - component: {fileID: 446020421}
+  - component: {fileID: 446020424}
   m_Layer: 5
   m_Name: Shuffle Button
   m_TagString: Untagged
@@ -454,7 +455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 446020422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 446020424}
+        m_TargetAssemblyTypeName: Dealer, Assembly-CSharp
+        m_MethodName: StartShuffle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &446020422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +506,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446020419}
   m_CullTransparentMesh: 1
+--- !u!114 &446020424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446020419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309c4b0f734a0334b8ffa4e6f8621dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unavailableCardNumbers: 
+  AvailableCardTypes:
+  - {fileID: 11400000, guid: 941aab39ae55e734aa02d26a83632014, type: 2}
+  - {fileID: 11400000, guid: ef39baf6f159e244d9f84c9cddbc1e55, type: 2}
+  - {fileID: 11400000, guid: fb910dd49cf6e7841aeb647fe30470f8, type: 2}
+  - {fileID: 11400000, guid: b41cf6f6edbc2cf48a364a8b4d6d31b2, type: 2}
+  - {fileID: 11400000, guid: 7203fab20c898734288e2bdf30f4e3e3, type: 2}
+  UnavailableCardTypes: []
 --- !u!1 &522637078
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,8 +562,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 55.055283}
-  m_SizeDelta: {x: 0, y: 321.8479}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522637080
 MonoBehaviour:
@@ -545,12 +578,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 90
-    m_Right: 0
+    m_Left: 73
+    m_Right: 708
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: -367
+  m_Spacing: 302.09
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -615,7 +648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3055546142307311261, guid: c0c77fcb867dcc54f9b1c1443fc35b2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -710,7 +743,7 @@ GameObject:
   - component: {fileID: 758394041}
   - component: {fileID: 758394044}
   m_Layer: 5
-  m_Name: Card Slot
+  m_Name: Card Slot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -803,7 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfCard: {fileID: 0}
   cardIcon: {fileID: 394097817}
-  shuffleEvent: {fileID: 0}
+  shuffleEvent: {fileID: 446020424}
 --- !u!1 &761879197
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +1012,7 @@ GameObject:
   - component: {fileID: 1176113502}
   - component: {fileID: 1176113501}
   - component: {fileID: 1176113500}
+  - component: {fileID: 1176113503}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1060,6 +1094,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176113503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176113499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1249631416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,8 +1151,9 @@ GameObject:
   - component: {fileID: 1249631419}
   - component: {fileID: 1249631418}
   - component: {fileID: 1249631421}
+  - component: {fileID: 1249631423}
   m_Layer: 5
-  m_Name: Card Slot (1)
+  m_Name: Card Slot (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1167,7 +1246,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfCard: {fileID: 0}
   cardIcon: {fileID: 318393363}
-  shuffleEvent: {fileID: 0}
+  shuffleEvent: {fileID: 446020424}
+--- !u!65 &1249631423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249631416}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1301112836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1301112837}
   - component: {fileID: 1301112838}
+  - component: {fileID: 1301112839}
   m_Layer: 5
   m_Name: Movable Cards - Horz. Group
   m_TagString: Untagged
@@ -1198,15 +1299,15 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 758394040}
-  - {fileID: 1249631417}
   - {fileID: 1881447459}
   - {fileID: 1497616217}
+  - {fileID: 1249631417}
   m_Father: {fileID: 7297387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 331.3712}
+  m_SizeDelta: {x: 0, y: 356.4514}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1301112838
 MonoBehaviour:
@@ -1221,12 +1322,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 52
-    m_Right: 75
+    m_Left: 512
+    m_Right: 531
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: -1244
+  m_ChildAlignment: 7
+  m_Spacing: -280.49
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1234,6 +1335,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &1301112839
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301112836}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1344040509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3055546142307311261, guid: c0c77fcb867dcc54f9b1c1443fc35b2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1351,6 +1464,7 @@ GameObject:
   - component: {fileID: 1452482228}
   - component: {fileID: 1452482230}
   - component: {fileID: 1452482229}
+  - component: {fileID: 1452482232}
   m_Layer: 5
   m_Name: Card Slot
   m_TagString: Untagged
@@ -1415,6 +1529,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452482227}
   m_CullTransparentMesh: 1
+--- !u!114 &1452482232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452482227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea8361c7f85deb4386aaaf05136e9e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1497616216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,6 +1554,7 @@ GameObject:
   - component: {fileID: 1497616219}
   - component: {fileID: 1497616218}
   - component: {fileID: 1497616221}
+  - component: {fileID: 1497616223}
   m_Layer: 5
   m_Name: Card Slot (3)
   m_TagString: Untagged
@@ -1522,7 +1649,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfCard: {fileID: 0}
   cardIcon: {fileID: 1418117168}
-  shuffleEvent: {fileID: 0}
+  shuffleEvent: {fileID: 446020424}
+--- !u!65 &1497616223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497616216}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1693729200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1941,7 @@ GameObject:
   - component: {fileID: 1881447461}
   - component: {fileID: 1881447460}
   - component: {fileID: 1881447463}
+  - component: {fileID: 1881447465}
   m_Layer: 5
   m_Name: Card Slot (2)
   m_TagString: Untagged
@@ -1887,7 +2036,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfCard: {fileID: 0}
   cardIcon: {fileID: 598095801}
-  shuffleEvent: {fileID: 0}
+  shuffleEvent: {fileID: 446020424}
+--- !u!65 &1881447465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881447458}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1933805366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +2069,7 @@ GameObject:
   - component: {fileID: 1933805367}
   - component: {fileID: 1933805369}
   - component: {fileID: 1933805368}
+  - component: {fileID: 1933805370}
   m_Layer: 5
   m_Name: Card Slot (1)
   m_TagString: Untagged
@@ -1963,6 +2134,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933805366}
   m_CullTransparentMesh: 1
+--- !u!114 &1933805370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933805366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea8361c7f85deb4386aaaf05136e9e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042059854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +2203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shuffle (x a)
+  m_text: Shuffle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

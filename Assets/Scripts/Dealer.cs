@@ -15,10 +15,11 @@ public class Dealer : ShuffleEvent
 
     private bool excludeSheepCard, excludeNoValueCard, excludeDealerCard; //Exclude card bools for later rounds (limit cards to be given out)
 
-    //void Start()
-    //{
-        //GuarenteeCards();
-    //}
+    public void StartShuffle()
+    {
+        ClearCardSelectionHistory();
+        GuarenteeCards();
+    }
 
     private void GuarenteeCards() //Guarentee to pass a "Player" and "Gun" card
     {

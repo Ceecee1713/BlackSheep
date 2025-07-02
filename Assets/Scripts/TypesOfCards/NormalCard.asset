@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NormalCard
   m_EditorClassIdentifier: 
   typeOfCard: 3
-  CardIcon: {fileID: 3055546142307311261, guid: c0c77fcb867dcc54f9b1c1443fc35b2b, type: 3}
+  CardSprite: {fileID: 3055546142307311261, guid: c0c77fcb867dcc54f9b1c1443fc35b2b, type: 3}
