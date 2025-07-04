@@ -32,9 +32,10 @@ public class EventManager : Singleton<EventManager>
         OnNewRoundEvent += OnNewRoundEventCalled;
     }
 
+    //Methods below: //For each "eventListener" inside the "_eventListeners" List, call the "OnEventCalled(AllEventNames)" method 
+
     private void OnShuffleEventCalled()
     {
-        //For each "eventListener" inside the "_eventListeners" List, call the "OnEventCalled(AllEventNames)" method 
         _eventListeners.ForEach((eventListener) => {
             eventListener.OnEventCalled(AllEventNames.ShuffleEvent);
         });
@@ -42,7 +43,6 @@ public class EventManager : Singleton<EventManager>
 
     private void OnFinishedRoundEventCalled()
     {
-        //For each "eventListener" inside the "_eventListeners" List, call the "OnEventCalled(AllEventNames)" method 
         _eventListeners.ForEach((eventListener) => {
             eventListener.OnEventCalled(AllEventNames.FinishedRoundEvent);
         });
@@ -50,7 +50,6 @@ public class EventManager : Singleton<EventManager>
 
     private void OnNewRoundEventCalled()
     {
-        //For each "eventListener" inside the "_eventListeners" List, call the "OnEventCalled(AllEventNames)" method 
         _eventListeners.ForEach((eventListener) => {
             eventListener.OnEventCalled(AllEventNames.NewRoundEvent);
         });

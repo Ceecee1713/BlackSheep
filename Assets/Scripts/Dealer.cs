@@ -1,14 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Remember to clear "_unavailableCardNumbers" and "unavailableCardTypes" when dealer isn't active
+//Remember to clear "_unavailableCardNumbers" when dealer isn't active
 //"_allCards" is 'cleared' by "SingleCard" scripts as they remove themselves in their scripts
 
 public class Dealer : Singleton<Dealer>, EventListener
 {
-    [SerializeField] //Serialized Field for observation purposes ONLY, get rid of later
-    private List <CardType> unavailableCardTypes = new List <CardType>(); //Limit cards to be given out. Based on the "excludeCard" bools
-
     private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
     private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again IF number exists in this list
 
@@ -111,19 +108,22 @@ public class Dealer : Singleton<Dealer>, EventListener
 
     private void ShuffleCards() //Selecting a random card type from "_availableCardTypes"
     {
-        _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
-        _singleCardType = _availableCardTypes[_randomCardTypeNumber];
-
-        if(_excludeSheepCard == true)
+        for(int amountOfRemainingCards = 0; amountOfRemainingCards < 2; amountOfRemainingCards++)
         {
-            while(_singleCardType.typeOfCard == AllCardTypes.Sheep)
-            {
-                _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
-                _singleCardType = _availableCardTypes[_randomCardTypeNumber];
-            }  
-        }
+            _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+            _singleCardType = _availableCardTypes[_randomCardTypeNumber];
 
-        PassRandomCardType(_singleCardType);
+            if(_excludeSheepCard == true)
+            {
+                while(_singleCardType.typeOfCard == AllCardTypes.Sheep)
+                {
+                    _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+                    _singleCardType = _availableCardTypes[_randomCardTypeNumber];
+                }  
+            }
+
+            PassRandomCardType(_singleCardType);
+        }
     }
 
     private void PassRandomCardType(CardType cardType) //Selecting a random card to pass the card type from "ShuffleCards"

@@ -7,10 +7,10 @@ using UnityEngine.UI;
 [Serializable]
 public struct CardSlot
 {
+    public RectTransform SlotRect; //Needs reference from Inspector
+    public Image SlotImage; //Needs reference from Inspector
+    public CardType SlotType;
     public bool IsSlotOccupied;
-    public RectTransform SlotRect;
-    public Image SlotImage;
-    //public CardType slotType;
 }
 
 public class GamblingTable : Singleton<GamblingTable>
@@ -43,6 +43,8 @@ public class GamblingTable : Singleton<GamblingTable>
             CardHasBeenPlayed = false;
             RightCardSlot.IsSlotOccupied = false;
             LeftCardSlot.IsSlotOccupied = false;
+            RightCardSlot.SlotType = null;
+            LeftCardSlot.SlotType = null;
 
             RoundNumber++;
             EventManager.Instance.OnFinishedRoundEvent.Invoke();
@@ -50,8 +52,6 @@ public class GamblingTable : Singleton<GamblingTable>
 
         if(NumberOfPlayedCards > 0)
             CardHasBeenPlayed = true;
-
-        Debug.Log(RoundNumber);
     }
 
     /*
