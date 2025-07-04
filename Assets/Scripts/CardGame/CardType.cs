@@ -6,6 +6,7 @@ public class CardType : ScriptableObject
 {
     public AllCardTypes typeOfCard;
     public Sprite CardSprite;
+    //public Sprite CardSpriteLaidDown;
 }
 
 public enum AllCardTypes 

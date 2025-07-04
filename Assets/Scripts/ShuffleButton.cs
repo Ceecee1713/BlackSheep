@@ -2,27 +2,67 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShuffleButton : MonoBehaviour
+//Remember to remove self from  "EventManager.Instance" when game isn't active and such
+
+public class ShuffleButton : MonoBehaviour, EventListener
 {
     [SerializeField]
     private TextMeshProUGUI buttonText;
 
+    [SerializeField]
+    private GameObject button;
+
     private int _numberOfShufflesPerRound = 0;
     private int _maxNumberOfShufflesPerRound = 3;
 
-    void Start()
+    void Awake()
+    {
+        EventManager.Instance.AddEventListener(this);
+    }
+
+    void OnEnable()
     {
         _numberOfShufflesPerRound = _maxNumberOfShufflesPerRound;
+        ResetButton();
+    }
+
+    void OnDisable()
+    {
+        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
+    }
+
+    public void OnEventCalled(AllEventNames eventName)
+    {
+        if(eventName == AllEventNames.NewRoundEvent)
+        {
+            ResetButton();
+        }
+    }
+
+    private void ResetButton()
+    {
+        button.SetActive(true);
+        _numberOfShufflesPerRound = _maxNumberOfShufflesPerRound;
+        buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
     }
 
     public void OnShuffle()
     {
-        if(_numberOfShufflesPerRound < _maxNumberOfShufflesPerRound)
+        if(GamblingTable.Instance.CardHasBeenPlayed == false)
         {
-            _numberOfShufflesPerRound--;
-            buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
+           if(_numberOfShufflesPerRound > 0)
+            {
+                _numberOfShufflesPerRound--;
+                buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
 
-            //Shuffle cards below
+                EventManager.Instance.OnShuffleEvent.Invoke();
+            }
+
+            if(_numberOfShufflesPerRound == 0)
+            {
+                EventManager.Instance.RemoveEventListener(this);
+                button.SetActive(false);
+            } 
         }
     }
 }

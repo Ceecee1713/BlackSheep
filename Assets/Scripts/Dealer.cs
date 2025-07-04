@@ -1,24 +1,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dealer : MonoBehaviour
+//Remember to clear "_unavailableCardNumbers" and "unavailableCardTypes" when dealer isn't active
+//"_allCards" is 'cleared' by "SingleCard" scripts as they remove themselves in their scripts
+
+public class Dealer : Singleton<Dealer>, EventListener
 {
-    //Make these load on references within code
-    [SerializeField]
-    private CardType [] availableCardTypes; //All POSSIBLE cards to be given out (not guarenteed)
-
-    [SerializeField]
+    [SerializeField] //Serialized Field for observation purposes ONLY, get rid of later
     private List <CardType> unavailableCardTypes = new List <CardType>(); //Limit cards to be given out. Based on the "excludeCard" bools
-    
-    private List <ShuffleListener> _subjectListeners = new(); //These will be the cards the player will interact with 
-    private List <int> UnavailableCardNumbers { get; set; } = new(); //Prevent indexes of "_subjectListeners" from being picked again IF number exists in this list
 
-    private CardType _singleCardType; //Hold a reference from "availableCardTypes" array at a specific index
+    private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
+    private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again IF number exists in this list
+
+    private CardType [] _availableCardTypes = new CardType [5]; //All POSSIBLE cards to be given out 
+    private CardType _singleCardType; //Hold a reference from "_availableCardTypes" array at a specific index
     
-    private int _randomCardIndex; //Representing a random index from "availableCardTypes"
-    private int _randomCardNumber; //Representing a random index from "_subjectListeners"
+    private int _randomCardIndex; //Representing a random index from "_allCards"
+    private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
+    private int _indexOfAvailableCardTypes = 0; //Used just to add elements to the "_availableCardTypes" arrray
+    private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards;
 
     private bool _excludeSheepCard, _excludeNoValueCard, _excludeDealerCard; //Exclude card bools for later rounds (limit cards to be given out)
+    
+    private void Start()
+    {
+        foreach(CardType cardType in Resources.FindObjectsOfTypeAll(typeof(CardType)) as CardType[])
+        {
+            _availableCardTypes[_indexOfAvailableCardTypes] = cardType;
+            _indexOfAvailableCardTypes++;
+        }
+
+        EventManager.Instance.AddEventListener(this);
+    }
+
+    void OnEnable()
+    {
+        //EventManager.Instance.AddEventListener(this);
+    }
+
+    void OnDisable()
+    {
+        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
+    }
+
+    public void AddCard(ShuffleListener card)
+    {
+        _allCards.Add(card);
+    }
+
+    public void RemoveCard(ShuffleListener card)
+    {
+        _allCards.Remove(card);
+    }
+    
+    public void OnEventCalled(AllEventNames eventName) 
+    {
+        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
+        {
+            StartShufflingCards();
+        }
+    }
     
     public void StartShufflingCards()
     {
@@ -26,58 +67,29 @@ public class Dealer : MonoBehaviour
         GuarenteeCards();
     }
     
-    
-    
-    
-    
-    public void AddShuffleListener(ShuffleListener shuffleListener)
-    {
-        _subjectListeners.Add(shuffleListener);
-    }
-
-    public void RemoveShuffleListener(ShuffleListener shuffleListener)
-    {
-        _subjectListeners.Remove(shuffleListener);
-    }
-
-    private void NotifyShuffleListener(CardType cardType) //Method selects a random index of "_subjectListeners" and pass a "CardType"
-    {
-        _randomCardIndex = Random.Range(0, _subjectListeners.Count);
-
-        while(UnavailableCardNumbers.Contains(_randomCardIndex)) //Prevent already selected "_subjectListeners" indexes from being chosen again
-            _randomCardIndex = Random.Range(0, _subjectListeners.Count);
-
-        UnavailableCardNumbers.Add(_randomCardIndex); //Index of "_subjectListeners" cannot be picked again
-        
-        _subjectListeners[_randomCardIndex].OnShuffleNotified(cardType);
-    }
-    
-    
-    
-    
     private void ClearCardSelectionHistory()
     {
-        UnavailableCardNumbers.Clear();
+        _unavailableCardNumbers.Clear();
     }
 
     private void GuarenteeCards() //Guarentee to pass a "Player" and "Gun" card
     {
-        for(int i = 0; i < availableCardTypes.Length; i++)
+        for(int i = 0; i < _availableCardTypes.Length; i++)
         {
-            if(availableCardTypes[i].typeOfCard == AllCardTypes.Player) //Check for existing "Player" card 
+            if(_availableCardTypes[i].typeOfCard == AllCardTypes.Player) //Check for existing "Player" card 
             {
-                _singleCardType = availableCardTypes[i];
-                NotifyShuffleListener(_singleCardType); //Pass "Player" card
+                _singleCardType = _availableCardTypes[i];
+                PassRandomCardType(_singleCardType); //Pass "Player" card
                 break;
             }
         }
 
-        for(int i = 0; i < availableCardTypes.Length; i++) 
+        for(int i = 0; i < _availableCardTypes.Length; i++) 
         {
-            if(availableCardTypes[i].typeOfCard == AllCardTypes.Gun) //Check for existing "Gun" card 
+            if(_availableCardTypes[i].typeOfCard == AllCardTypes.Gun) //Check for existing "Gun" card 
            {
-                _singleCardType = availableCardTypes[i];
-                NotifyShuffleListener(_singleCardType); //Pass "Gun" card
+                _singleCardType = _availableCardTypes[i];
+                PassRandomCardType(_singleCardType); //Pass "Gun" card
                 break;
            }
         }
@@ -87,16 +99,27 @@ public class Dealer : MonoBehaviour
 
     private void ShuffleCards()
     {
-        _randomCardNumber = Random.Range(0, availableCardTypes.Length);
-        _singleCardType = availableCardTypes[_randomCardNumber];
+        _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+        _singleCardType = _availableCardTypes[_randomCardTypeNumber];
 
-        //while(unavailableCardTypes.Contains(singleCardType))  //To be used for exclusion of cards in later rounds
-            //randomCardNumber = Random.Range(0, availableCardTypes.Length);  //To be used for exclusion of cards in later rounds
+        //while(un_availableCardTypes.Contains(singleCardType))  //To be used for exclusion of cards in later rounds
+            //randomCardNumber = Random.Range(0, _availableCardTypes.Length);  //To be used for exclusion of cards in later rounds
 
-        //singleCardType = availableCardTypes[randomCardNumber];  //To be used for exclusion of cards in later rounds
-        //unavailableCardNumbers.Add(randomCardNumber);  //To be used for exclusion of cards in later rounds
+        //singleCardType = _availableCardTypes[randomCardNumber];  //To be used for exclusion of cards in later rounds
+        //_unavailableCardNumbers.Add(randomCardNumber);  //To be used for exclusion of cards in later rounds
 
+        PassRandomCardType(_singleCardType);
+    }
 
-        NotifyShuffleListener(_singleCardType);
+    private void PassRandomCardType(CardType cardType) 
+    {
+        _randomCardIndex = Random.Range(0, _allCards.Count); //Grab a random index of "_allCards"
+
+        while(_unavailableCardNumbers.Contains(_randomCardIndex)) //Prevent already selected "_allCards" indexes from being chosen again
+            _randomCardIndex = Random.Range(0, _allCards.Count);
+
+        _unavailableCardNumbers.Add(_randomCardIndex); //Index of "_allCards" cannot be picked again
+        
+        _allCards[_randomCardIndex].OnShuffleNotified(cardType);
     }
 }
