@@ -38,7 +38,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     public void OnEventCalled(AllEventNames eventName)
     {
-        if(eventName == AllEventNames.NewRoundEvent) //|| eventName == AllEventNames.FinishedRoundEvent) 
+        if(eventName == AllEventNames.FinishedRoundEvent)
         {
             transform.SetParent(cardLayoutGroup.transform);
             _cardHasBeenPlayed = false;

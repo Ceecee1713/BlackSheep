@@ -12,15 +12,16 @@ public class Dealer : Singleton<Dealer>, EventListener
     private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
     private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again IF number exists in this list
 
-    private CardType [] _availableCardTypes = new CardType [5]; //All POSSIBLE cards to be given out 
+    private CardType [] _availableCardTypes = new CardType[5]; //All POSSIBLE cards to be given out 
     private CardType _singleCardType; //Hold a reference from "_availableCardTypes" array at a specific index
     
     private int _randomCardIndex; //Representing a random index from "_allCards"
     private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
     private int _indexOfAvailableCardTypes = 0; //Used just to add elements to the "_availableCardTypes" arrray
-    private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards;
+    private int _roundNumberToRemoveSheepCard = 4; 
+    private int _roundNumberToRemoveDealerAndNormalCards = 5;
 
-    private bool _excludeSheepCard, _excludeNoValueCard, _excludeDealerCard; //Exclude card bools for later rounds (limit cards to be given out)
+    private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Exclude card bools for later rounds (limit cards to be given out)
     
     private void Start()
     {
@@ -55,10 +56,20 @@ public class Dealer : Singleton<Dealer>, EventListener
     
     public void OnEventCalled(AllEventNames eventName) 
     {
+        if(eventName == AllEventNames.FinishedRoundEvent)
+            RemoveCardTypes();
+
         if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
-        {
             StartShufflingCards();
-        }
+    }
+
+    private void RemoveCardTypes()
+    {
+        if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveSheepCard)
+            _excludeSheepCard = true;
+
+        if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveDealerAndNormalCards)
+            _onlyHavePlayerAndGunCards = true;
     }
     
     public void StartShufflingCards()
@@ -94,24 +105,28 @@ public class Dealer : Singleton<Dealer>, EventListener
            }
         }
 
-        ShuffleCards();
+        if(_onlyHavePlayerAndGunCards == false)
+            ShuffleCards();
     }
 
-    private void ShuffleCards()
+    private void ShuffleCards() //Selecting a random card type from "_availableCardTypes"
     {
         _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
         _singleCardType = _availableCardTypes[_randomCardTypeNumber];
 
-        //while(un_availableCardTypes.Contains(singleCardType))  //To be used for exclusion of cards in later rounds
-            //randomCardNumber = Random.Range(0, _availableCardTypes.Length);  //To be used for exclusion of cards in later rounds
-
-        //singleCardType = _availableCardTypes[randomCardNumber];  //To be used for exclusion of cards in later rounds
-        //_unavailableCardNumbers.Add(randomCardNumber);  //To be used for exclusion of cards in later rounds
+        if(_excludeSheepCard == true)
+        {
+            while(_singleCardType.typeOfCard == AllCardTypes.Sheep)
+            {
+                _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+                _singleCardType = _availableCardTypes[_randomCardTypeNumber];
+            }  
+        }
 
         PassRandomCardType(_singleCardType);
     }
 
-    private void PassRandomCardType(CardType cardType) 
+    private void PassRandomCardType(CardType cardType) //Selecting a random card to pass the card type from "ShuffleCards"
     {
         _randomCardIndex = Random.Range(0, _allCards.Count); //Grab a random index of "_allCards"
 

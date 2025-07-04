@@ -25,6 +25,7 @@ public class GamblingTable : Singleton<GamblingTable>
     public int NumberOfPlayedCards;
     private int maxNumberOfPlayedCards = 2; //Number representing max number of plays need to be met before moving to next round
 
+    [HideInInspector]
     public int RoundNumber;
     private int _maxAmountOfRounds = 6;
 
@@ -33,7 +34,7 @@ public class GamblingTable : Singleton<GamblingTable>
 
     void Update()
     {
-        RoundNumber = Mathf.Clamp(RoundNumber, 0, _maxAmountOfRounds);
+        RoundNumber = Mathf.Clamp(RoundNumber, 1, _maxAmountOfRounds);
 
         if(NumberOfPlayedCards >= maxNumberOfPlayedCards)
         {
@@ -49,6 +50,8 @@ public class GamblingTable : Singleton<GamblingTable>
 
         if(NumberOfPlayedCards > 0)
             CardHasBeenPlayed = true;
+
+        Debug.Log(RoundNumber);
     }
 
     /*
