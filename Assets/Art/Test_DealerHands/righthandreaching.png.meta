@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2929884f02adc13488e9b8d37ead61b5
+guid: d8e0c57d8806f8e45ba4ec49c6fc0e89
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 839920227928026912
-    second: passingcards_0
+      213: -6492836044983235011
+    second: righthandrea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: passingcards_0
+      name: righthandrea_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02fa0594ffef7ab00800000000000000
-      internalID: 839920227928026912
+      spriteID: d3e0ce18400d4e5a0800000000000000
+      internalID: -6492836044983235011
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      passingcards_0: 839920227928026912
+      righthandrea_0: -6492836044983235011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
