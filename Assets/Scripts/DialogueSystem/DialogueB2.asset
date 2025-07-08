@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: DialogueB2
+  m_EditorClassIdentifier: 
+  PromptOneButtonOption: 0
+  PromptTwoButtonOption: 1
+  NormalCharacterDialogues:
+  - CharacterTitle: 0
+    Message: Hi there
+  - CharacterTitle: 0
+    Message: I'm gonna ask you to press a button, so make sure to press one
+  - CharacterTitle: 0
+    Message: I won't ask again, so do it
+  OneButtonCharacterDialogues:
+  - CharacterTitle: 0
+    Message: You pressed the button on the left
+  - CharacterTitle: 0
+    Message: A lot of people pick left. Loser
+  TwoButtonCharacterDialogues:
+  - CharacterTitle: 0
+    Message: You pressed the button on the right
+  - CharacterTitle: 0
+    Message: Right means right, right?
