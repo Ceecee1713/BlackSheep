@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueData : ScriptableObject
 {
     public bool PromptOneButtonDisplay, PromptTwoButtonDisplay;
+    public string ButtonOneText, ButtonTwoText;
     public Character [] NormalDialogue;
     public Character [] ButtonOneDialogue;
     public Character [] ButtonTwoDialogue;
@@ -21,9 +22,8 @@ public struct Character
 public enum CharacterName 
 {
     Narrator,
-    Dealer,
     DEALER,
-    They,
+    Nameless,
     Patron, 
     Bartender,
     Personnel

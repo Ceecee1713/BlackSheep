@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptOneButtonDisplay: 1
   PromptTwoButtonDisplay: 0
+  ButtonOneText: Sure!
+  ButtonTwoText: 
   NormalDialogue:
   - CharacterTitle: 0
     Message: Hi there

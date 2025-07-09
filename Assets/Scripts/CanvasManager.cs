@@ -1,18 +1,25 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 //Remember to remove self from event manager as an event listener and a canvas listener
 
 public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
 {
     [SerializeField]
-    private List <GameObject> canvases = new();
+    private GameObject [] canvases;
 
     [SerializeField]
     private GameObject cardGameplayCanvas;
 
+    [SerializeField] 
+    private float durationOfFade = 1.0f;
+    
     public bool StartNewRound = false;
+
+    private GameObject _currentCanvas;
+    private CanvasGroup _currentActiveCanvasGroup, _newCanvasGroup;
 
     void Awake()
     {
@@ -24,7 +31,7 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     {
         if(StartNewRound == true) 
         {
-            //Refactor 
+            //Refactor later
             cardGameplayCanvas.SetActive(true);
             StartNewRound = false;
             EventManager.Instance.OnNewRoundEvent.Invoke();
@@ -35,42 +42,103 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     {
         if(eventName == AllEventNames.FinishedRoundEvent)
         {
-            //Refactor 
+            //Refactor later 
             cardGameplayCanvas.SetActive(false);
         }
     }
 
-    public void OnCanvasEventCalled(GameObject canvasToSetActive)
+    public void OnCanvasEventCalled(GameObject canvasToSetActive, bool isThisADialogueCanvas)
     {
-        if(canvasToSetActive != null)
+        if (canvasToSetActive == null)
+            return;
+        
+        if(isThisADialogueCanvas == true) //Fade dialogue canvases
         {
-            if(!canvases.Contains(canvasToSetActive))
-                return;
-
-            FadeSwitchDialogueCanvases(canvasToSetActive);
+            for(int i = 0; i < canvases.Length; i++)
+            {
+                if(canvases[i] == canvasToSetActive) //Checking if "canvasToSetActive" exists in the "canvases" array
+                {
+                    SwitchCanvases(canvasToSetActive, true);
+                    break;
+                }
+            }
+        }
+        
+        else //Fade normal canvases
+        {
+            for(int i = 0; i < canvases.Length; i++)
+            {
+                if(canvases[i] == canvasToSetActive) //Checking if "canvasToSetActive" exists in the "canvases" array
+                {
+                    SwitchCanvases(canvasToSetActive, false);
+                    break;
+                }
+            }
         }
     }
 
-    private void FadeSwitchDialogueCanvases(GameObject canvasToSetActive)
+    private void SwitchCanvases(GameObject canvasToSetActive, bool isThisADialogueCanvas)
     {
-        for(int i = 0; i < canvases.Count; i++)
+        if (isThisADialogueCanvas == true) //Fade dialogue canvases
         {
-            if(canvases[i].activeSelf == true) //Checking for only ONE ACTIVE CANVAS 
+            for (int i = 0; i < canvases.Length; i++)
             {
-                //Add fading animation for the canvas, THEN set it to inactive (when alpha reaches 0)
-                //For this animation, have a separate canvas (ONE CANVAS) that's just completely black that'll be switched on/off
-                //For the current canvas that's fading out and for the NEW canvas that'll be faded in
-                canvases[i].SetActive(false);
-                break;
+                if (canvases[i].activeSelf == true) //Checking the active canvas (only one canvas)
+                {
+                    _currentCanvas = canvases[i];
+                    _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
+                    break;
+                }
             }
-        }
-                    
-        canvasToSetActive.SetActive(true);
-        //Add fade animation to fade the screen in, THEN call the first message method
-        //For this animation, make sure the alpha is 0 upon activation, then fade in (increase its alpha)
-        //And add short delay when the alpha is 1 
 
+            _newCanvasGroup = canvasToSetActive.GetComponent<CanvasGroup>();
+            StartCoroutine(FadeDialogueCanvases(_newCanvasGroup, _currentActiveCanvasGroup, canvasToSetActive, _currentCanvas));
+        }
+
+        else //Fade normal canvases
+        {
+            for (int i = 0; i < canvases.Length; i++)
+            {
+                if (canvases[i].activeSelf == true) //Checking the active canvas (only one canvas)
+                {
+                    _currentCanvas = canvases[i];
+                    _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
+                    break;
+                }
+            }
+
+            _newCanvasGroup = canvasToSetActive.GetComponent<CanvasGroup>();
+            StartCoroutine(FadeCanvases(_newCanvasGroup, _currentActiveCanvasGroup, canvasToSetActive, _currentCanvas));
+        }
+    }
+    
+    IEnumerator FadeDialogueCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)
+    {
+        //Fade canvases
+        Tween firstTween = currentCanvasGroup.DOFade(0f, durationOfFade);
+        yield return firstTween.WaitForCompletion();
+        _currentCanvas.SetActive(false);
+        
+        canvasToSetActive.SetActive(true);
+        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, durationOfFade);
+        yield return secondTween.WaitForCompletion();
+        
+        //Prompt the first message of dialogue to be said
         DialogueBox dialogueBox = canvasToSetActive.GetComponent<DialogueBox>();
-        dialogueBox.TypeFirstMessage();
+        dialogueBox.DisplayDialogueBox();
+        StopAllCoroutines();
+    }
+    
+    IEnumerator FadeCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)
+    {
+        Tween firstTween = currentCanvasGroup.DOFade(0f, durationOfFade);
+        yield return firstTween.WaitForCompletion();
+        _currentCanvas.SetActive(false);
+        
+        canvasToSetActive.SetActive(true);
+        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, durationOfFade);
+        yield return secondTween.WaitForCompletion();
+        
+        StopAllCoroutines();
     }
 }

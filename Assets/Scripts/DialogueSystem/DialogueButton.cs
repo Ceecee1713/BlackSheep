@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public enum ButtonType 
 {
@@ -13,7 +14,7 @@ public class DialogueButton : MonoBehaviour
 
     [SerializeField]
     private ButtonType buttonType;
-
+    
     public void OnDialogueButtonClick()
     {
         dialogueBox.ChangeDialogueFromButtonEvent(buttonType);

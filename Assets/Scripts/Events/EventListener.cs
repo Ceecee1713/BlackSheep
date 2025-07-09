@@ -7,7 +7,7 @@ public interface EventListener
 
 public interface CanvasListener 
 {
-    public void OnCanvasEventCalled(GameObject canvasToSetActive);
+    public void OnCanvasEventCalled(GameObject canvasToSetActive, bool isThisADialogueCanvas);
 }
 
 public enum AllEventNames

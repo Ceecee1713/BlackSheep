@@ -14,22 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptOneButtonDisplay: 0
   PromptTwoButtonDisplay: 1
+  ButtonOneText: Left
+  ButtonTwoText: Right
   NormalDialogue:
-  - CharacterTitle: 2
-    Message: Well, look who it is
-  - CharacterTitle: 2
-    Message: It's the most spectacular person in the entire room
-  - CharacterTitle: 2
-    Message: Pick a choice. Now.
+  - CharacterTitle: 1
+    Message: I'm not glad to see you again
+  - CharacterTitle: 1
+    Message: Just pick a button
   ButtonOneDialogue:
-  - CharacterTitle: 0
-    Message: So you picked the button on the left
-  - CharacterTitle: 0
-    Message: Interesting
-  - CharacterTitle: 0
-    Message: You're not special for choosing this option
+  - CharacterTitle: 1
+    Message: Picking the button on the left...
+  - CharacterTitle: 1
+    Message: Tells me that your future is bleak
+  - CharacterTitle: 1
+    Message: I'd like to see you rot in Hell
   ButtonTwoDialogue:
-  - CharacterTitle: 0
-    Message: So you picked the button on the right
-  - CharacterTitle: 0
-    Message: Right means right, right?
+  - CharacterTitle: 1
+    Message: Picking the one of the right...
+  - CharacterTitle: 1
+    Message: A shame. You're a shame
+  - CharacterTitle: 1
+    Message: Disappointment, is all you are
