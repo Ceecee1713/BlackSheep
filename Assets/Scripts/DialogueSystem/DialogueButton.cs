@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ButtonDelegate 
+public enum ButtonType 
 {
     OptionOne,
     OptionTwo
@@ -8,11 +8,14 @@ public enum ButtonDelegate
 
 public class DialogueButton : MonoBehaviour
 {
-    public DialogueBox DialogueBox;
-    public ButtonDelegate ButtonDelegate;
+    [SerializeField]
+    private DialogueBox dialogueBox;
+
+    [SerializeField]
+    private ButtonType buttonType;
 
     public void OnDialogueButtonClick()
     {
-        DialogueBox.GrabButtonData(ButtonDelegate);
+        dialogueBox.ChangeDialogueFromButtonEvent(buttonType);
     }
 }

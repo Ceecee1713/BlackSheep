@@ -3,103 +3,200 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class DialogueBox : MonoBehaviour
+//Remember to remove self from event manager as an event listener
+
+public class DialogueBox : MonoBehaviour, EventListener
 {
-    public GameObject OneButton;
-    public GameObject TwoButtons;
+    [SerializeField]
+    private DialogueData dialogueData;
 
-    public DialogueData data;
-    public TextMeshProUGUI dialogueText;
+    [SerializeField]
+    private GameObject nextCanvasToSetActive; //UI Canvas to set active when all dialogue is said 
 
-    public int index = 0;
+    [Header ("Button Displays")]
+    [SerializeField]
+    private GameObject oneButtonDisplay;
+    [SerializeField]
+    private GameObject twoButtonsDisplay;
 
-    public float typingSpeed = 0.05f;
+    [Header ("Texts To Influence")]
+    [SerializeField]
+    private TextMeshProUGUI dialogueText;
+    [SerializeField]
+    private TextMeshProUGUI characterNameText;
 
-    private bool writeButtonOneDialogue, writeButtonTwoDialogue; //Influenced by the button clicks (should be passed by an event)
+    [SerializeField]
+    private float typingSpeed = 0.05f;
+
+    public bool aaa = false; //Temporary
+
+    private int index = -1; //Index to go through the dialogue message arrays from "dialogueData"
+
+    private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Influenced inside "ChangeDialogueFromButtonEvent" method (based on "DialogueButton" button clicks)
+    private bool _hasActivatedButtonOptions = false; //Stop looping from turning button options again after one instance
+    private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
+    private bool _callDialogueCanvasSwitch = false; //Prevent repetivie calls on Update based on an event call
+
+    void Awake()
+    {
+        EventManager.Instance.AddEventListener(this);
+
+        if(aaa == true) //Refactor
+            GetNormalDialogue();
+    }
+
+    void OnEnable() 
+    {
+        //EventManager.Instance.AddEventListener(this);
+    }
+
+    void OnDisable()
+    {
+        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
+    }
+
+    public void OnEventCalled(AllEventNames eventName)
+    {
+        /*
+        if(eventName == AllEventNames.)
+        {
+            
+        }
+        */
+    }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(_callDialogueCanvasSwitch == true)
+            return;
+
+        if (Input.GetMouseButtonDown(0)) //Refactor this input
         {
-            if(writeButtonOneDialogue == false && writeButtonTwoDialogue == false)
-                GetNormalMessage();
-
-            if(writeButtonOneDialogue == true && writeButtonTwoDialogue == false)
-                GetButtonOneMessage();
-
-            if(writeButtonTwoDialogue == true && writeButtonOneDialogue == false)
-                GetButtonTwoMessage();
+            CheckToSwitchDialogueCanvases();
+            CheckWhichDialogueToBeSaidNext();
         }
     }
 
-    private void GetNormalMessage()
+    private void CheckToSwitchDialogueCanvases()
     {
-        if(index+1 == data.NormalCharacterDialogues.Length || data.NormalCharacterDialogues == null) //If index is out of bounds or the dialogue array is null
+        if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && index+1 == dialogueData.NormalDialogue.Length && _finishedTypingMessage == true)
+        {
+            _callDialogueCanvasSwitch = true;
+            EventManager.Instance.OnNewDialogueCanvasEvent?.Invoke(nextCanvasToSetActive);
+            return;
+        }
+
+        if(_writeButtonOneDialogue == true && index+1 == dialogueData.ButtonOneDialogue.Length && _finishedTypingMessage == true)
+        {
+            _callDialogueCanvasSwitch = true;
+            EventManager.Instance.OnNewDialogueCanvasEvent?.Invoke(nextCanvasToSetActive);
+            return;
+        }
+
+        if(_writeButtonTwoDialogue == true && index == dialogueData.ButtonTwoDialogue.Length && _finishedTypingMessage == true) 
+        {
+            _callDialogueCanvasSwitch = true;
+            EventManager.Instance.OnNewDialogueCanvasEvent?.Invoke(nextCanvasToSetActive);
+            return;
+        }
+    }
+
+    private void CheckWhichDialogueToBeSaidNext()
+    {
+        if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
+        {
+            GetNormalDialogue();
+            return;
+        }
+                
+        if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
+        {
+            GetDialogueFromButtonOne();
+            return;
+        }
+
+        if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true)
+            GetDialogueFromButtonTwo();  
+    }
+
+    public void TypeFirstMessage() //Called by "CanvasManager"
+    {
+        GetNormalDialogue();
+    }
+
+    private void GetNormalDialogue()
+    {
+        if(index+1 == dialogueData.NormalDialogue.Length || dialogueData.NormalDialogue == null) //If index is out of bounds or the dialogue array is null
             return;
 
         index++;
         StopAllCoroutines();
-        StartCoroutine(TypeSingleSentence(data.NormalCharacterDialogues[index].Message));
+        StartCoroutine(TypeMessage(dialogueData.NormalDialogue[index].Message));
+        characterNameText.text = dialogueData.NormalDialogue[index].CharacterTitle.ToString();
     }
 
-    private void GetButtonOneMessage()
+    private void GetDialogueFromButtonOne()
     {
-        if(index+1 == data.OneButtonCharacterDialogues.Length || data.OneButtonCharacterDialogues == null) //If index is out of bounds or the dialogue array is null
+        if(index+1 == dialogueData.ButtonOneDialogue.Length || dialogueData.ButtonOneDialogue == null) //If index is out of bounds or the dialogue array is null
             return;
 
         index++;
         StopAllCoroutines();
-        StartCoroutine(TypeSingleSentence(data.OneButtonCharacterDialogues[index].Message));
+        StartCoroutine(TypeMessage(dialogueData.ButtonOneDialogue[index].Message));
+        characterNameText.text = dialogueData.ButtonOneDialogue[index].CharacterTitle.ToString();
     }
 
-    private void GetButtonTwoMessage()
+    private void GetDialogueFromButtonTwo()
     {
-        if(index+1 == data.TwoButtonCharacterDialogues.Length || data.TwoButtonCharacterDialogues == null) //If index is out of bounds or the dialogue array is null
+        if(index+1 == dialogueData.ButtonTwoDialogue.Length || dialogueData.ButtonTwoDialogue == null) //If index is out of bounds or the dialogue array is null
             return;
 
         index++;
         StopAllCoroutines();
-        StartCoroutine(TypeSingleSentence(data.TwoButtonCharacterDialogues[index].Message));
+        StartCoroutine(TypeMessage(dialogueData.ButtonTwoDialogue[index].Message));
+        characterNameText.text = dialogueData.ButtonTwoDialogue[index].CharacterTitle.ToString();
     }
 
-    public void GrabButtonData(ButtonDelegate buttonDelegate) //Called by button script, should be passed from an event
+    public void ChangeDialogueFromButtonEvent(ButtonType buttonType) //Called by "DialogueButton" scripts
     {
-        if(buttonDelegate == ButtonDelegate.OptionOne && OneButton.activeSelf == true)
+        if(buttonType == ButtonType.OptionOne && oneButtonDisplay.activeSelf == true) //If button one was chosen on a one button display
         {
-            if(data.PromptOneButtonOption != true && data.PromptTwoButtonOption != false)
+            if(dialogueData.PromptOneButtonDisplay != true && dialogueData.PromptTwoButtonDisplay != false) 
                 return;
 
             index = -1;
-            writeButtonOneDialogue = true;
-            OneButton.SetActive(false);
-            GetButtonOneMessage();
+            _writeButtonOneDialogue = true;
+            oneButtonDisplay.SetActive(false);
+            GetDialogueFromButtonOne();
         }
 
-        if(buttonDelegate == ButtonDelegate.OptionOne && TwoButtons.activeSelf == true)
+        if(buttonType == ButtonType.OptionOne && twoButtonsDisplay.activeSelf == true) //If button one was chosen on a two button display
         {
-            if(data.PromptTwoButtonOption != true && data.PromptOneButtonOption != false)
+            if(dialogueData.PromptTwoButtonDisplay != true && dialogueData.PromptOneButtonDisplay != false)
                 return;
 
             index = -1;
-            writeButtonOneDialogue = true;
-            TwoButtons.SetActive(false);
-            GetButtonOneMessage();
+            _writeButtonOneDialogue = true;
+            twoButtonsDisplay.SetActive(false);
+            GetDialogueFromButtonOne();
         }
 
-        if(buttonDelegate == ButtonDelegate.OptionTwo)
+        if(buttonType == ButtonType.OptionTwo) //If button two was chosen (No need for a two button display check)
         {
-            if(data.PromptTwoButtonOption != true && data.PromptOneButtonOption != false)
+            if(dialogueData.PromptTwoButtonDisplay != true && dialogueData.PromptOneButtonDisplay != false)
                 return;
 
             index = -1;
-            writeButtonTwoDialogue = true;
-            TwoButtons.SetActive(false);
-            GetButtonTwoMessage();
+            _writeButtonTwoDialogue = true;
+            twoButtonsDisplay.SetActive(false);
+            GetDialogueFromButtonTwo();
         }
     }
 
-    IEnumerator TypeSingleSentence(string message)
+    IEnumerator TypeMessage(string message)
     {
+        _finishedTypingMessage = false;
+
         dialogueText.text = ""; //Clearing the "dialogueText".text for the new monster dialouge to be said
         
         foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
@@ -110,20 +207,26 @@ public class DialogueBox : MonoBehaviour
 
         yield return null;
 
-        if(index == data.NormalCharacterDialogues.Length-1) //Show the button UI based on dialogue SO
+        if(index+1 == dialogueData.NormalDialogue.Length && _hasActivatedButtonOptions == false) //Show the button displays based on "dialogueData" 
         {
-            if(data.PromptOneButtonOption == true && data.PromptTwoButtonOption == false)
+            if(dialogueData.PromptOneButtonDisplay == true && dialogueData.PromptTwoButtonDisplay == false) //Show one button display
             {
-                OneButton.SetActive(true);
+                oneButtonDisplay.SetActive(true);
+                _finishedTypingMessage = true;
+                _hasActivatedButtonOptions = true;
                 StopAllCoroutines();
             }
 
-            if(data.PromptTwoButtonOption == true && data.PromptOneButtonOption == false)
+            if(dialogueData.PromptTwoButtonDisplay == true && dialogueData.PromptOneButtonDisplay == false) //Show two button display
             {
-                TwoButtons.SetActive(true);
+                twoButtonsDisplay.SetActive(true);
+                _finishedTypingMessage = true;
+                _hasActivatedButtonOptions = true;
                 StopAllCoroutines();
             }
         }
-    }
 
+        _finishedTypingMessage = true;
+        StopAllCoroutines();
+    }
 }

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: DialogueB2Dealer
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  NormalDialogue:
+  - CharacterTitle: 2
+    Message: Well, look who it is
+  - CharacterTitle: 2
+    Message: It's the most spectacular person in the entire room
+  - CharacterTitle: 2
+    Message: Pick a choice. Now.
+  ButtonOneDialogue:
+  - CharacterTitle: 0
+    Message: So you picked the button on the left
+  - CharacterTitle: 0
+    Message: Interesting
+  - CharacterTitle: 0
+    Message: You're not special for choosing this option
+  ButtonTwoDialogue:
+  - CharacterTitle: 0
+    Message: So you picked the button on the right
+  - CharacterTitle: 0
+    Message: Right means right, right?

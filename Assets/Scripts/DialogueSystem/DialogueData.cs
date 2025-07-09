@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DialogueData", menuName = "Dialogue/Create a New Dialogue Branch")]
 public class DialogueData : ScriptableObject
 {
-    public bool PromptOneButtonOption, PromptTwoButtonOption;
-    public Character [] NormalCharacterDialogues;
-    public Character [] OneButtonCharacterDialogues;
-    public Character [] TwoButtonCharacterDialogues;
+    public bool PromptOneButtonDisplay, PromptTwoButtonDisplay;
+    public Character [] NormalDialogue;
+    public Character [] ButtonOneDialogue;
+    public Character [] ButtonTwoDialogue;
 }
 
 [Serializable]
