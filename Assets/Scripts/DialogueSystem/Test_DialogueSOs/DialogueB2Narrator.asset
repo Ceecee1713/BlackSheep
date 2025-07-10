@@ -25,13 +25,13 @@ MonoBehaviour:
     Message: Pick a choice. Now.
   ButtonOneDialogue:
   - CharacterTitle: 0
-    Message: So you picked the button on the left
+    Message: So you picked the button on the top
   - CharacterTitle: 0
     Message: Interesting
   - CharacterTitle: 0
     Message: You're not special for choosing this option
   ButtonTwoDialogue:
   - CharacterTitle: 0
-    Message: So you picked the button on the right
+    Message: So you picked the button on the bottom
   - CharacterTitle: 0
-    Message: Right means right, right?
+    Message: Good to know

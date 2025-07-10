@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptOneButtonDisplay: 0
   PromptTwoButtonDisplay: 1
-  ButtonOneText: Left
-  ButtonTwoText: Right
+  ButtonOneText: Top
+  ButtonTwoText: Bottom
   NormalDialogue:
   - CharacterTitle: 1
     Message: I'm not glad to see you again
@@ -23,14 +23,14 @@ MonoBehaviour:
     Message: Just pick a button
   ButtonOneDialogue:
   - CharacterTitle: 1
-    Message: Picking the button on the left...
+    Message: Picking the button on the top...
   - CharacterTitle: 1
     Message: Tells me that your future is bleak
   - CharacterTitle: 1
     Message: I'd like to see you rot in Hell
   ButtonTwoDialogue:
   - CharacterTitle: 1
-    Message: Picking the one of the right...
+    Message: Picking the one of the bottom...
   - CharacterTitle: 1
     Message: A shame. You're a shame
   - CharacterTitle: 1

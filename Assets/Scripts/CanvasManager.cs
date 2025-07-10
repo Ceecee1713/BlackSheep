@@ -118,7 +118,6 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         Tween firstTween = currentCanvasGroup.DOFade(0f, durationOfFade);
         yield return firstTween.WaitForCompletion();
         _currentCanvas.SetActive(false);
-        
         canvasToSetActive.SetActive(true);
         Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, durationOfFade);
         yield return secondTween.WaitForCompletion();
@@ -127,6 +126,7 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         DialogueBox dialogueBox = canvasToSetActive.GetComponent<DialogueBox>();
         dialogueBox.DisplayDialogueBox();
         StopAllCoroutines();
+        
     }
     
     IEnumerator FadeCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)

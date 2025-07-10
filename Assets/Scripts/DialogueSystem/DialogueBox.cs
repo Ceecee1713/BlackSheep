@@ -68,12 +68,7 @@ public class DialogueBox : MonoBehaviour, EventListener
 
     public void OnEventCalled(AllEventNames eventName)
     {
-        /*
-        if(eventName == AllEventNames.)
-        {
-            
-        }
-        */
+        
     }
 
     void Update()
@@ -90,6 +85,7 @@ public class DialogueBox : MonoBehaviour, EventListener
     
     private void CheckToSwitchDialogueCanvases()
     {
+        //If all normal dialogue messages have been said when there's no button prompting from "ChangeDialogueFromButtonEvent()"
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
@@ -98,6 +94,7 @@ public class DialogueBox : MonoBehaviour, EventListener
             return;
         }
 
+        //If all button one dialogue messages have been said 
         if(_writeButtonOneDialogue == true && _index == dialogueData.ButtonOneDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
@@ -106,6 +103,7 @@ public class DialogueBox : MonoBehaviour, EventListener
             return;
         }
 
+        //If all button two dialogue messages have been said 
         if(_writeButtonTwoDialogue == true && _index == dialogueData.ButtonTwoDialogue.Length-1 && _finishedTypingMessage == true) 
         {
             _callDialogueCanvasSwitch = true;
@@ -119,19 +117,19 @@ public class DialogueBox : MonoBehaviour, EventListener
         if (_allowGoingThroughMessages != true)
             return;
         
-        if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
+        if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) //Go through normal dialogue
         {
             GetNormalDialogue();
             return;
         }
-                
-        if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
+                        
+        if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) //Go through button one dialogue
         {
             GetDialogueFromButtonOne();
             return;
         }
 
-        if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true)
+        if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true) //Go through button two dialogue
             GetDialogueFromButtonTwo();  
     }
     
@@ -140,11 +138,13 @@ public class DialogueBox : MonoBehaviour, EventListener
         StartCoroutine(PrepareFirstMessage());
     }
 
+    /*
     public void ChangeCanvas(GameObject canvasToSwicthTo)
     {
         _isThisADialogueCanvas = false;
         EventManager.Instance.OnNewCanvasEvent?.Invoke(canvasToSwicthTo, _isThisADialogueCanvas);
     }
+    */
 
     private void GetNormalDialogue()
     {
