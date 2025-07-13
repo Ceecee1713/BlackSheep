@@ -15,13 +15,15 @@ public class Dealer : Singleton<Dealer>, EventListener
     private int _randomCardIndex; //Representing a random index from "_allCards"
     private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
     private int _indexOfAvailableCardTypes = 0; //Used just to add elements to the "_availableCardTypes" arrray
-    private int _roundNumberToRemoveSheepCard = 4; 
-    private int _roundNumberToRemoveDealerAndNormalCards = 5;
+    private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards; 
 
     private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Exclude card bools for later rounds (limit cards to be given out)
     
     private void Start()
     {
+        _roundNumberToRemoveSheepCard = Resources.Load<GameConfiguration>("GameConfiguration").RoundNumberToRemoveSheepCard;
+        _roundNumberToRemoveDealerAndNormalCards = Resources.Load<GameConfiguration>("GameConfiguration").RoundNumberToRemoveDealerAndNormalCards;
+
         foreach(CardType cardType in Resources.FindObjectsOfTypeAll(typeof(CardType)) as CardType[])
         {
             _availableCardTypes[_indexOfAvailableCardTypes] = cardType;

@@ -6,7 +6,7 @@ using DG.Tweening;
 public class QuoteScreen : MonoBehaviour, EventListener
 {
     [SerializeField]
-    private DurationOfFadingScreens durationOfFadingScreens;
+    private GameConfiguration gameConfiguration;
 
     [SerializeField]
     private CanvasGroup [] quoteCanvasGroups;
@@ -14,13 +14,12 @@ public class QuoteScreen : MonoBehaviour, EventListener
     [SerializeField]
     private GameObject nextCanvasToSetActive; 
 
-    [SerializeField]
-    private float initialDelay = 1.0f;
-
     //[SerializeField]
     private CanvasGroup mainCanvasGroup;
 
     private int _index = -1;
+
+    private const float initialDelay = 1.0f;
 
     private bool _allowGoingThroughCanvases = false;
     private bool _isNextCanvasADialogueCanvas = true;
@@ -66,7 +65,7 @@ public class QuoteScreen : MonoBehaviour, EventListener
     
     IEnumerator ShowSingleQuote()
     {
-        Tween tween = quoteCanvasGroups[_index].DOFade(1f, durationOfFadingScreens.DurationOfScreenFade);
+        Tween tween = quoteCanvasGroups[_index].DOFade(1f, gameConfiguration.DurationOfScreenFade);
         yield return tween.WaitForCompletion();
         _allowGoingThroughCanvases = true;
         yield return null;

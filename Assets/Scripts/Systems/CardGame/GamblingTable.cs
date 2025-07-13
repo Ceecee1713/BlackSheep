@@ -18,25 +18,29 @@ public class GamblingTable : Singleton<GamblingTable>
     public CardSlot LeftCardSlot;
     public CardSlot RightCardSlot;
 
-    //[SerializeField]
-    //private Sprite defaultCardSlotSprite; 
-
     [HideInInspector]
     public int NumberOfPlayedCards;
-    private int maxNumberOfPlayedCards = 2; //Number representing max number of plays need to be met before moving to next round
 
     [HideInInspector]
     public int RoundNumber;
-    private int _maxAmountOfRounds = 6;
 
     [HideInInspector]
     public bool CardHasBeenPlayed = false;
+
+    private int _maxAmountOfRounds;
+    private int _maxNumberOfPlayedCards; //Number representing max number of plays need to be met before moving to next round
+
+    private void Start()
+    {
+        _maxAmountOfRounds = Resources.Load<GameConfiguration>("GameConfiguration").MaxAmountOfRounds;
+        _maxNumberOfPlayedCards = Resources.Load<GameConfiguration>("GameConfiguration").MaxNumberOfPlayedCards;
+    }
 
     void Update()
     {
         RoundNumber = Mathf.Clamp(RoundNumber, 1, _maxAmountOfRounds);
 
-        if(NumberOfPlayedCards >= maxNumberOfPlayedCards)
+        if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
         {
             //Resetting all values
             NumberOfPlayedCards = 0;
@@ -53,18 +57,5 @@ public class GamblingTable : Singleton<GamblingTable>
         if(NumberOfPlayedCards > 0)
             CardHasBeenPlayed = true;
     }
-
-    /*
-    public void ResetCardSlotSprites()
-    {
-        LeftCardSlot.SlotImage.sprite = defaultCardSlotSprite;
-        RightCardSlot.SlotImage.sprite = defaultCardSlotSprite;
-    }
-
-    public void SetCardSlotSprite(Image cardSlotImage, Sprite cardSprite)
-    {
-        cardSlotImage.sprite = cardSprite;
-    }
-    */
 }
 

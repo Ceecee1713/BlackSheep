@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DialogueData", menuName = "Dialogue/Create a New Dialogue Branch")]
+[CreateAssetMenu(fileName = "DialogueData", menuName = "Dialogue Scriptable Objects/Create a New Dialogue Branch")]
 public class DialogueData : ScriptableObject
 {
     public bool PromptOneButtonDisplay, PromptTwoButtonDisplay;

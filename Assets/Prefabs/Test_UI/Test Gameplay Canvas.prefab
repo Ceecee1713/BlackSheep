@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b7865140d050e4385735dbfb2a7355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfiguration: {fileID: 11400000, guid: 0ea8c2d159fcfe846ac76d7da02c6049, type: 2}
   buttonText: {fileID: 5328315965175052884}
   button: {fileID: 6036627148786569195}
 --- !u!1 &2488455539826095459

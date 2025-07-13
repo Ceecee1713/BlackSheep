@@ -8,21 +8,25 @@ using DG.Tweening;
 public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
 {
     [SerializeField]
+    private GameConfiguration gameConfiguration;
+    
+    [SerializeField]
     private GameObject [] canvases;
 
     [SerializeField]
     private GameObject cardGameplayCanvas;
-
-    [SerializeField] 
-    private float durationOfFade = 1.0f;
     
     public bool StartNewRound = false;
+
+    private float _durationOfFade;
 
     private GameObject _currentCanvas;
     private CanvasGroup _currentActiveCanvasGroup, _newCanvasGroup;
 
     void Awake()
     {
+        _durationOfFade = gameConfiguration.DurationOfScreenFade;
+        
         EventManager.Instance.AddEventListener(this);
         EventManager.Instance.AddCanvasListener(this);
     }
@@ -115,11 +119,11 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     IEnumerator FadeDialogueCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)
     {
         //Fade canvases
-        Tween firstTween = currentCanvasGroup.DOFade(0f, durationOfFade);
+        Tween firstTween = currentCanvasGroup.DOFade(0f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
         _currentCanvas.SetActive(false);
         canvasToSetActive.SetActive(true);
-        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, durationOfFade);
+        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, _durationOfFade);
         yield return secondTween.WaitForCompletion();
         
         //Prompt the first message of dialogue to be said
@@ -131,12 +135,12 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     
     IEnumerator FadeCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)
     {
-        Tween firstTween = currentCanvasGroup.DOFade(0f, durationOfFade);
+        Tween firstTween = currentCanvasGroup.DOFade(0f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
         _currentCanvas.SetActive(false);
         
         canvasToSetActive.SetActive(true);
-        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, durationOfFade);
+        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, _durationOfFade);
         yield return secondTween.WaitForCompletion();
         
         StopAllCoroutines();

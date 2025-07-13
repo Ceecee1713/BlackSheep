@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc555bbc71ed20f4e863b40d52bcd146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfiguration: {fileID: 11400000, guid: 0ea8c2d159fcfe846ac76d7da02c6049, type: 2}
+  canvases: []
   cardGameplayCanvas: {fileID: 0}
   StartNewRound: 0

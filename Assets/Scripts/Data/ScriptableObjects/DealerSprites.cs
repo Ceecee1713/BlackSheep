@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "DealerSprites", menuName = "Sprite SOs/Assign Sprites for Dealer")]
+[CreateAssetMenu(fileName = "DealerSprites", menuName = "Sprite Scriptable Objects/Assign Sprites for Dealer")]
 public class DealerSprites : ScriptableObject
 {
     [Header ("For Right Hand")]

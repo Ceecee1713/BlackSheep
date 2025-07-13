@@ -7,13 +7,17 @@ using TMPro;
 public class ShuffleButton : MonoBehaviour, EventListener
 {
     [SerializeField]
+    private GameConfiguration gameConfiguration;
+
+    [SerializeField]
     private TextMeshProUGUI buttonText;
 
     [SerializeField]
     private GameObject button;
 
     private int _numberOfShufflesPerRound = 0;
-    private int _maxNumberOfShufflesPerRound = 3;
+
+    private int _maxNumberOfShufflesPerRound;
 
     void Awake()
     {
@@ -22,7 +26,7 @@ public class ShuffleButton : MonoBehaviour, EventListener
 
     void OnEnable()
     {
-        _numberOfShufflesPerRound = _maxNumberOfShufflesPerRound;
+        _maxNumberOfShufflesPerRound = gameConfiguration.MaxNumberOfShufflesPerRound;
         ResetButton();
     }
 

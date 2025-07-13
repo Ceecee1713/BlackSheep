@@ -6,13 +6,13 @@ using DG.Tweening;
 public class SwitchSceneButton : MonoBehaviour
 {
     [SerializeField]
+    private GameConfiguration gameConfiguration;
+
+    [SerializeField]
     private CanvasGroup mainCanvasGroup;
 
     [SerializeField]
     private string sceneNameToLoadOnClick;
-
-    [SerializeField]
-    private DurationOfFadingScreens durationOfFadingScreens;
 
     private bool _hasBeenClicked = false;
 
@@ -27,7 +27,7 @@ public class SwitchSceneButton : MonoBehaviour
     IEnumerator StartGame()
     {
         _hasBeenClicked = true;
-        Tween tween = mainCanvasGroup.DOFade(0f, durationOfFadingScreens.DurationOfScreenFade);
+        Tween tween = mainCanvasGroup.DOFade(0f, gameConfiguration.DurationOfScreenFade);
         yield return tween.WaitForCompletion();
         SceneManager.LoadSceneAsync(sceneNameToLoadOnClick);
         yield return null;

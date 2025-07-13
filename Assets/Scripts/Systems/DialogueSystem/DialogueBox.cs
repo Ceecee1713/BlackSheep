@@ -33,7 +33,7 @@ public class DialogueBox : MonoBehaviour, EventListener
 
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
-    private float _typingSpeed = 0.015f;
+    private const float _typingSpeed = 0.015f;
     
     private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks in "ChangeDialogueFromButtonEvent()"
     //Tell which dialogue from which button has been chosen 

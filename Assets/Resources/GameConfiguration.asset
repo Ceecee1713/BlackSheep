@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee885b1ce568a89478303498d715d30f, type: 3}
-  m_Name: DurationOfFadingScreens
+  m_Script: {fileID: 11500000, guid: 9faecf0352f13f740be753db328e1d0f, type: 3}
+  m_Name: GameConfiguration
   m_EditorClassIdentifier: 
   DurationOfScreenFade: 1.5
+  RoundNumberToRemoveSheepCard: 4
+  RoundNumberToRemoveDealerAndNormalCards: 5
+  MaxNumberOfPlayedCards: 2
+  MaxAmountOfRounds: 6
+  MaxNumberOfShufflesPerRound: 3
