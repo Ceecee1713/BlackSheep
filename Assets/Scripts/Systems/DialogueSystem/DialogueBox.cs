@@ -7,11 +7,13 @@ using TMPro;
 
 public class DialogueBox : MonoBehaviour, EventListener
 {
-    [SerializeField]
-    private DialogueData dialogueData;
+    public DialogueData dialogueData;
     
+    [Header ("For Next Canvas To Be Displayed")]
     [SerializeField]
     private GameObject nextCanvasToSetActive; //UI Canvas to set active when all dialogue is said, unprompted by button clicks 
+    [SerializeField] 
+    private bool _isNextCanvasADialogueCanvas = false;
 
     [Header ("Button Displays")]
     [SerializeField]
@@ -33,8 +35,6 @@ public class DialogueBox : MonoBehaviour, EventListener
 
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
-    private const float _typingSpeed = 0.015f;
-    
     private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks in "ChangeDialogueFromButtonEvent()"
     //Tell which dialogue from which button has been chosen 
     
@@ -42,7 +42,8 @@ public class DialogueBox : MonoBehaviour, EventListener
     private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent going through messages entirely
     private bool _callDialogueCanvasSwitch = false; //Prevent repetivie calls on Update based on "CheckToSwitchDialogueCanvases()"
-    private bool _isThisADialogueCanvas = false;
+
+    private const float TYPING_SPEED = 0.015f;
         
     void Awake()
     {
@@ -89,8 +90,8 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            _isThisADialogueCanvas = true;
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isThisADialogueCanvas);
+            //_isNextCanvasADialogueCanvas = true;
+            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
             return;
         }
 
@@ -98,8 +99,8 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonOneDialogue == true && _index == dialogueData.ButtonOneDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            _isThisADialogueCanvas = true;
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isThisADialogueCanvas);
+            //_isNextCanvasADialogueCanvas = true;
+            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
             return;
         }
 
@@ -107,8 +108,8 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonTwoDialogue == true && _index == dialogueData.ButtonTwoDialogue.Length-1 && _finishedTypingMessage == true) 
         {
             _callDialogueCanvasSwitch = true;
-            _isThisADialogueCanvas = true;
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isThisADialogueCanvas);
+            //_isNextCanvasADialogueCanvas = true;
+            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
         }
     }
 
@@ -141,8 +142,8 @@ public class DialogueBox : MonoBehaviour, EventListener
     /*
     public void ChangeCanvas(GameObject canvasToSwicthTo)
     {
-        _isThisADialogueCanvas = false;
-        EventManager.Instance.OnNewCanvasEvent?.Invoke(canvasToSwicthTo, _isThisADialogueCanvas);
+        _isNextCanvasADialogueCanvas = false;
+        EventManager.Instance.OnNewCanvasEvent?.Invoke(canvasToSwicthTo, _isNextCanvasADialogueCanvas);
     }
     */
 
@@ -241,7 +242,7 @@ public class DialogueBox : MonoBehaviour, EventListener
         foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(_typingSpeed); //Time in between of each character being typed out
+            yield return new WaitForSeconds(TYPING_SPEED); //Time in between of each character being typed out
         } 
 
         yield return null;

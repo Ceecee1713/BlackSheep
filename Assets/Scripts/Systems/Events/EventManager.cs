@@ -4,7 +4,8 @@ using UnityEngine.Events;
 
 public class EventManager : Singleton<EventManager>
 {
-    public UnityAction OnShuffleEvent;
+    public UnityAction OnShuffleEvent; //Used for when the player clicks the Shuffle Button
+    public UnityAction OnShuffleEventComplete; //Used for when the player clicks the Shuffle Button AND after a shuffle finishes from starting a new round ("OnNewRoundEvent")
     public UnityAction OnFinishedRoundEvent;
     public UnityAction OnNewRoundEvent;
     public UnityAction <GameObject, bool> OnNewCanvasEvent;
@@ -41,6 +42,7 @@ public class EventManager : Singleton<EventManager>
     private void Start()
     {
         OnShuffleEvent += OnShuffleEventCalled;
+        OnShuffleEventComplete += OnShuffleEventCompleteCalled;
         OnFinishedRoundEvent += OnFinishedRoundEventCalled;
         OnNewRoundEvent += OnNewRoundEventCalled;
         OnNewCanvasEvent += OnNewCanvasEventCalled;
@@ -57,6 +59,13 @@ public class EventManager : Singleton<EventManager>
     {
         _eventListeners.ForEach((eventListener) => {
             eventListener.OnEventCalled(AllEventNames.ShuffleEvent);
+        });
+    }
+
+    private void OnShuffleEventCompleteCalled()
+    {
+        _eventListeners.ForEach((eventListener) => {
+            eventListener.OnEventCalled(AllEventNames.ShuffleEventComplete);
         });
     }
 

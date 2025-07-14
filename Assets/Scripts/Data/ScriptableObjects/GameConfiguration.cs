@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameConfiguration : ScriptableObject
 {
     public float DurationOfScreenFade; 
+    public float DurationToMoveCardsUpDown; //Duration for cards animating moving up and down when shuffling
 
     public int RoundNumberToRemoveSheepCard;
     public int RoundNumberToRemoveDealerAndNormalCards; 

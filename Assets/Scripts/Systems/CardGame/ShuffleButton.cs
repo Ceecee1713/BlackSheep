@@ -16,18 +16,18 @@ public class ShuffleButton : MonoBehaviour, EventListener
     private GameObject button;
 
     private int _numberOfShufflesPerRound = 0;
-
     private int _maxNumberOfShufflesPerRound;
 
     void Awake()
     {
         EventManager.Instance.AddEventListener(this);
+        _maxNumberOfShufflesPerRound = gameConfiguration.MaxNumberOfShufflesPerRound;
+        ResetButton();
     }
 
     void OnEnable()
     {
-        _maxNumberOfShufflesPerRound = gameConfiguration.MaxNumberOfShufflesPerRound;
-        ResetButton();
+        
     }
 
     void OnDisable()
@@ -37,15 +37,19 @@ public class ShuffleButton : MonoBehaviour, EventListener
 
     public void OnEventCalled(AllEventNames eventName)
     {
-        if(eventName == AllEventNames.NewRoundEvent)
+        if(eventName == AllEventNames.FinishedRoundEvent) //AllEventNames.NewRoundEvent
         {
             ResetButton();
+            button.SetActive(false);
         }
+
+        if(eventName == AllEventNames.ShuffleEventComplete)
+            button.SetActive(true);
     }
 
     private void ResetButton()
     {
-        button.SetActive(true);
+        //button.SetActive(true); //Temporary
         _numberOfShufflesPerRound = _maxNumberOfShufflesPerRound;
         buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
     }
@@ -59,12 +63,13 @@ public class ShuffleButton : MonoBehaviour, EventListener
                 _numberOfShufflesPerRound--;
                 buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
 
-                EventManager.Instance.OnShuffleEvent.Invoke();
+                EventManager.Instance.OnShuffleEvent.Invoke(); //Disable player input for moving cards, shuffle cards and play shuffling animation
+                button.SetActive(false);
             }
 
             if(_numberOfShufflesPerRound == 0)
             {
-                EventManager.Instance.RemoveEventListener(this);
+                //EventManager.Instance.RemoveEventListener(this);
                 button.SetActive(false);
             } 
         }

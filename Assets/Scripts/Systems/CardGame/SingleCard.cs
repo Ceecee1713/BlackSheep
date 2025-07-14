@@ -13,10 +13,10 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     private Transform _parentTransformAfterDrag;
     private RectTransform _leftCardSlotRect, _rightCardSlotRect; 
-
     private CardType _cardType;
 
     private bool _cardHasBeenPlayed = false;
+    private bool _allowInput = false;
 
     void Awake()
     {
@@ -39,29 +39,34 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     public void OnEventCalled(AllEventNames eventName)
     {
-        if(eventName == AllEventNames.FinishedRoundEvent)
+        if(eventName == AllEventNames.NewRoundEvent) //eventName == AllEventNames.FinishedRoundEvent
         {
             transform.SetParent(cardLayoutGroup.transform);
+            _allowInput = true;
             _cardHasBeenPlayed = false;
         }
+
+        if(eventName == AllEventNames.ShuffleEvent)
+            _allowInput = false;
+
+        if(eventName == AllEventNames.ShuffleEventComplete)
+            _allowInput = true;
     }
 
-    public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script
+    public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script. This method assigns the card's type and icon sprite
     {
         if(_cardHasBeenPlayed == true)
             return;
 
         _cardType = assignedCardType;
         cardIcon.sprite = _cardType.CardSprite;
-
-        //Slide cards up to a max height from bottom of the screen (make cards below the screen)
     }
 
     //OnBeginDrag, OnDrag and OnEndDrag are for interactions with the mouse for dragging the GameObject this script is attached to
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(_cardHasBeenPlayed == true)
+        if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
 
         _parentTransformAfterDrag = transform.parent; 
@@ -70,7 +75,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     public void OnDrag(PointerEventData eventData)
     {
-        if(_cardHasBeenPlayed == true)
+        if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
 
         transform.position = Input.mousePosition;
@@ -183,7 +188,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(_cardHasBeenPlayed == true)
+        if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
 
         if(_cardType.typeOfCard == AllCardTypes.NoValue)
@@ -196,34 +201,14 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
         //Move card to "_leftCardSlotRect" if there's an overlap and the left slot is empty
         if (CardsOverlap(cardTransform, _leftCardSlotRect) && GamblingTable.Instance.LeftCardSlot.IsSlotOccupied == false) 
-        {
             CheckRightCardSlot();
 
-            /*
-            //Before, doesn't care for card types
-            transform.SetParent(_leftCardSlotRect);
-            _cardHasBeenPlayed = true;
-
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
-            */
-        }
 
         //Move card to "_leftCardSlotRect" if there's an overlap and the right slot is empty    
         else if(CardsOverlap(cardTransform,_rightCardSlotRect) && GamblingTable.Instance.RightCardSlot.IsSlotOccupied == false)
-        {
             CheckLeftCardSlot();
-
-            /*
-            //Before, doesn't care for card types
-            transform.SetParent(_rightCardSlotRect);
-            _cardHasBeenPlayed = true;
-
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;
-            */
-        }
             
+
         else
             transform.SetParent(_parentTransformAfterDrag); //Return back to original position (its position in the "cardLayoutGroup" horizontal group)
     }

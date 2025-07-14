@@ -19,16 +19,16 @@ public class QuoteScreen : MonoBehaviour, EventListener
 
     private int _index = -1;
 
-    private const float initialDelay = 1.0f;
-
     private bool _allowGoingThroughCanvases = false;
     private bool _isNextCanvasADialogueCanvas = true;
     private bool _hasChangedCanvas = false;
 
+    private const float INITIAL_DELAY = 1.0f;
+
     void Awake()
     {
         mainCanvasGroup = this.gameObject.GetComponent<CanvasGroup>();
-        Invoke("IterateThroughQuotes", initialDelay);
+        Invoke("IterateThroughQuotes", INITIAL_DELAY);
     }
 
     void Update()

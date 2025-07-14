@@ -10,12 +10,12 @@ public class CardsAnim : MonoBehaviour
     [SerializeField]
     private float moveDistance = 100.0f;
 
-    //public bool PlayCardDownAnimation = false; //Temporary
-    //public bool PlayCardUpAnimation = false; //Temporary
+    public bool PlayCardDownAnimation = false; //Temporary
+    public bool PlayCardUpAnimation = false; //Temporary
 
     private float _duration = 1.0f;
 
-    /*
+    
     void Update()
     {
         if(PlayCardDownAnimation == true)
@@ -32,7 +32,7 @@ public class CardsAnim : MonoBehaviour
             PlayCardUpAnimation = false;
         }
     }
-    */
+    
 
     IEnumerator MoveCardsDown()
     {

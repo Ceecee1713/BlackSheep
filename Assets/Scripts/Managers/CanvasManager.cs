@@ -11,16 +11,17 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     private GameConfiguration gameConfiguration;
     
     [SerializeField]
-    private GameObject [] canvases;
+    private GameObject [] canvases; //Must contain ALL UI canvases
 
     [SerializeField]
-    private GameObject cardGameplayCanvas;
+    private GameObject cardGameplayCanvas, cardsLayout;
     
-    public bool StartNewRound = false;
+    //public bool StartNewRound = false; //Temporary
 
     private float _durationOfFade;
 
     private GameObject _currentCanvas;
+    private CanvasGroup _cardsLayoutCanvasGroup;
     private CanvasGroup _currentActiveCanvasGroup, _newCanvasGroup;
 
     void Awake()
@@ -29,120 +30,118 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         
         EventManager.Instance.AddEventListener(this);
         EventManager.Instance.AddCanvasListener(this);
+
+        _cardsLayoutCanvasGroup = cardsLayout.GetComponent<CanvasGroup>();
+        cardsLayout.SetActive(true);
+        cardGameplayCanvas.SetActive(true);
+        Invoke("TurnOffCardCanvas", 0.5f);
     }
 
+    /*
     void Update() 
     {
-        if(StartNewRound == true) 
+        if(StartNewRound == true) //Temporary
         {
-            //Refactor later
             cardGameplayCanvas.SetActive(true);
+            cardsLayout.SetActive(true);
             StartNewRound = false;
             EventManager.Instance.OnNewRoundEvent.Invoke();
         }
     }
+    */
+    
+    private void TurnOffCardCanvas()
+    {
+        cardsLayout.SetActive(false);
+        _cardsLayoutCanvasGroup.alpha = 0.0f;
+        cardGameplayCanvas.SetActive(false);
+    }
 
     public void OnEventCalled(AllEventNames eventName)
     {
-        if(eventName == AllEventNames.FinishedRoundEvent)
+        if(eventName == AllEventNames.ShuffleEventComplete)
         {
-            //Refactor later 
-            cardGameplayCanvas.SetActive(false);
+            _cardsLayoutCanvasGroup.alpha = 1.0f;
         }
+
+        /*
+        if(eventName == AllEventNames.FinishedRoundEvent) //Temporary
+        {
+            TurnOffCardCanvas();
+        }
+
+        if(eventName == AllEventNames.NewRoundEvent) //Temporary
+        {
+            cardGameplayCanvas.SetActive(true);
+        }
+        */
     }
 
-    public void OnCanvasEventCalled(GameObject canvasToSetActive, bool isThisADialogueCanvas)
+    public void OnCanvasEventCalled(GameObject canvasToSetActive, bool isNextCanvasADialogueCanvas)
     {
         if (canvasToSetActive == null)
             return;
-        
-        if(isThisADialogueCanvas == true) //Fade dialogue canvases
+
+        for(int i = 0; i < canvases.Length; i++)
         {
-            for(int i = 0; i < canvases.Length; i++)
+            if(canvases[i] == canvasToSetActive) //Checking if "canvasToSetActive" exists in the "canvases" array
             {
-                if(canvases[i] == canvasToSetActive) //Checking if "canvasToSetActive" exists in the "canvases" array
-                {
-                    SwitchCanvases(canvasToSetActive, true);
-                    break;
-                }
-            }
-        }
-        
-        else //Fade normal canvases
-        {
-            for(int i = 0; i < canvases.Length; i++)
-            {
-                if(canvases[i] == canvasToSetActive) //Checking if "canvasToSetActive" exists in the "canvases" array
-                {
-                    SwitchCanvases(canvasToSetActive, false);
-                    break;
-                }
+                SwitchCanvases(canvasToSetActive, isNextCanvasADialogueCanvas);
+                break;
             }
         }
     }
 
-    private void SwitchCanvases(GameObject canvasToSetActive, bool isThisADialogueCanvas)
+    private void SwitchCanvases(GameObject canvasToSetActive, bool isNextCanvasADialogueCanvas)
     {
-        if (isThisADialogueCanvas == true) //Fade dialogue canvases
+        for (int i = 0; i < canvases.Length; i++)
         {
-            for (int i = 0; i < canvases.Length; i++)
+            if (canvases[i].activeSelf == true) //Checking if a canvas is active (only one canvas)
             {
-                if (canvases[i].activeSelf == true) //Checking the active canvas (only one canvas)
-                {
-                    _currentCanvas = canvases[i];
-                    _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
-                    break;
-                }
+                _currentCanvas = canvases[i];
+                _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
+                break;
             }
-
-            _newCanvasGroup = canvasToSetActive.GetComponent<CanvasGroup>();
-            StartCoroutine(FadeDialogueCanvases(_newCanvasGroup, _currentActiveCanvasGroup, canvasToSetActive, _currentCanvas));
         }
 
-        else //Fade normal canvases
-        {
-            for (int i = 0; i < canvases.Length; i++)
-            {
-                if (canvases[i].activeSelf == true) //Checking the active canvas (only one canvas)
-                {
-                    _currentCanvas = canvases[i];
-                    _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
-                    break;
-                }
-            }
-
-            _newCanvasGroup = canvasToSetActive.GetComponent<CanvasGroup>();
-            StartCoroutine(FadeCanvases(_newCanvasGroup, _currentActiveCanvasGroup, canvasToSetActive, _currentCanvas));
-        }
+        _newCanvasGroup = canvasToSetActive.GetComponent<CanvasGroup>();
+        StartCoroutine(FadeCanvases(_newCanvasGroup, _currentActiveCanvasGroup, canvasToSetActive, _currentCanvas, isNextCanvasADialogueCanvas));
     }
-    
-    IEnumerator FadeDialogueCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)
+
+    IEnumerator FadeCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas, bool isNextCanvasADialogueCanvas)
     {
-        //Fade canvases
+        //Fade out of current active canvas
         Tween firstTween = currentCanvasGroup.DOFade(0f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
         _currentCanvas.SetActive(false);
+
+        //Fade into new canvas
         canvasToSetActive.SetActive(true);
         Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, _durationOfFade);
         yield return secondTween.WaitForCompletion();
-        
-        //Prompt the first message of dialogue to be said
-        DialogueBox dialogueBox = canvasToSetActive.GetComponent<DialogueBox>();
-        dialogueBox.DisplayDialogueBox();
-        StopAllCoroutines();
-        
-    }
-    
-    IEnumerator FadeCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas)
-    {
-        Tween firstTween = currentCanvasGroup.DOFade(0f, _durationOfFade);
-        yield return firstTween.WaitForCompletion();
-        _currentCanvas.SetActive(false);
-        
-        canvasToSetActive.SetActive(true);
-        Tween secondTween = canvasGroupToSwitchTo.DOFade(1.0f, _durationOfFade);
-        yield return secondTween.WaitForCompletion();
-        
-        StopAllCoroutines();
+
+        if(isNextCanvasADialogueCanvas == true)
+        {
+            //Prompt the first message of dialogue to be said
+            DialogueBox dialogueBox = canvasToSetActive.GetComponent<DialogueBox>();
+            dialogueBox.DisplayDialogueBox();
+            //yield return null;
+            StopAllCoroutines();
+        }
+
+        else
+        {
+            if(currentCanvas == cardGameplayCanvas)
+                cardsLayout.SetActive(false);
+
+            if(canvasToSetActive == cardGameplayCanvas)
+            {
+                cardsLayout.SetActive(true);
+                EventManager.Instance.OnNewRoundEvent.Invoke(); //Reset player cards' positions and status, shuffle cards and play shuffling animation
+            }
+
+            //yield return null;
+            StopAllCoroutines();
+        }  
     }
 }

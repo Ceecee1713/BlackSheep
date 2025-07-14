@@ -17,12 +17,15 @@ public class Dealer : Singleton<Dealer>, EventListener
     private int _indexOfAvailableCardTypes = 0; //Used just to add elements to the "_availableCardTypes" arrray
     private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards; 
 
+    private float _delay; 
+
     private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Exclude card bools for later rounds (limit cards to be given out)
     
     private void Start()
     {
         _roundNumberToRemoveSheepCard = Resources.Load<GameConfiguration>("GameConfiguration").RoundNumberToRemoveSheepCard;
         _roundNumberToRemoveDealerAndNormalCards = Resources.Load<GameConfiguration>("GameConfiguration").RoundNumberToRemoveDealerAndNormalCards;
+        _delay = Resources.Load<GameConfiguration>("GameConfiguration").DurationToMoveCardsUpDown;
 
         foreach(CardType cardType in Resources.FindObjectsOfTypeAll(typeof(CardType)) as CardType[])
         {
@@ -59,10 +62,10 @@ public class Dealer : Singleton<Dealer>, EventListener
             RemoveCardTypes();
 
         if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
-            StartShufflingCards();
+            Invoke("StartShufflingCards", _delay);
     }
 
-    private void RemoveCardTypes()
+    private void RemoveCardTypes() //Limit cards to be given out in later rounds
     {
         if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveSheepCard)
             _excludeSheepCard = true;
