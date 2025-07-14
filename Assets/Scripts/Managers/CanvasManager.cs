@@ -132,7 +132,10 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         else
         {
             if(currentCanvas == cardGameplayCanvas)
+            {
+                _cardsLayoutCanvasGroup.alpha = 0.0f;
                 cardsLayout.SetActive(false);
+            }
 
             if(canvasToSetActive == cardGameplayCanvas)
             {

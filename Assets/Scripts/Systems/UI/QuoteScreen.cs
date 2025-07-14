@@ -9,7 +9,7 @@ public class QuoteScreen : MonoBehaviour, EventListener
     private GameConfiguration gameConfiguration;
 
     [SerializeField]
-    private CanvasGroup [] quoteCanvasGroups;
+    private CanvasGroup [] quoteCanvasGroups; //These canvas groups will be canvas groups attached to texts
 
     [SerializeField]
     private GameObject nextCanvasToSetActive; 
@@ -20,8 +20,9 @@ public class QuoteScreen : MonoBehaviour, EventListener
     private int _index = -1;
 
     private bool _allowGoingThroughCanvases = false;
-    private bool _isNextCanvasADialogueCanvas = true;
     private bool _hasChangedCanvas = false;
+
+    private const bool IS_NEXT_CANVAS_A_DIALOGUE_CANVAS = true;
 
     private const float INITIAL_DELAY = 1.0f;
 
@@ -40,7 +41,7 @@ public class QuoteScreen : MonoBehaviour, EventListener
         {
             if(_index == quoteCanvasGroups.Length-1)
             {
-                EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
+                EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
                 _hasChangedCanvas = true;
                 return;
             }
