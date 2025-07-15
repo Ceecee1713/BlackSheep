@@ -11,7 +11,7 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     private GameConfiguration gameConfiguration;
     
     [SerializeField]
-    private GameObject [] canvases; //Must contain ALL UI canvases
+    private GameObject [] canvases; //Must contain ALL UI canvases (excluding pause menu, tutorial UI, plain black screen)
 
     [SerializeField]
     private GameObject cardGameplayCanvas, interactableLayout;
@@ -81,7 +81,35 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         */
     }
 
-    public void OnCanvasEventCalled(GameObject canvasToSetActive, bool isNextCanvasADialogueCanvas)
+    public void OnNoInputEventCalled(bool allowInput)
+    {
+
+    }
+
+    public void OnFadeCurrentCanvasAlpha(bool fadeCanvasIn)
+    {
+        for (int i = 0; i < canvases.Length; i++)
+        {
+            if (canvases[i].activeSelf == true) 
+            {
+                CanvasGroup canvasGroup = canvases[i].GetComponent<CanvasGroup>();
+
+                if(fadeCanvasIn == true)
+                {
+                    canvasGroup.alpha = 0.3f;
+                    break;
+                }
+
+                else
+                {
+                    canvasGroup.alpha = 1.0f;
+                    break;
+                }    
+            }
+        }
+    }
+
+    public void OnSwitchCanvasEventCalled(GameObject canvasToSetActive, bool isNextCanvasADialogueCanvas)
     {
         if (canvasToSetActive == null)
             return;

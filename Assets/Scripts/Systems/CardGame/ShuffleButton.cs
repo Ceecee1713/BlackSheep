@@ -18,6 +18,8 @@ public class ShuffleButton : MonoBehaviour, EventListener
     private int _numberOfShufflesPerRound = 0;
     private int _maxNumberOfShufflesPerRound;
 
+    private bool _allowInput = false;
+
     void Awake()
     {
         EventManager.Instance.AddEventListener(this);
@@ -46,11 +48,20 @@ public class ShuffleButton : MonoBehaviour, EventListener
         if(eventName == AllEventNames.FinishedRoundEvent) //AllEventNames.NewRoundEvent
         {
             ResetButton();
+            _allowInput = false;
             button.SetActive(false);
         }
 
         if(eventName == AllEventNames.ShuffleEventComplete)
+        {
+            _allowInput = true;
             button.SetActive(true);
+        }   
+    }
+
+    public void OnNoInputEventCalled(bool allowInput)
+    {
+        _allowInput = allowInput;
     }
 
     private void ResetButton()
@@ -61,6 +72,9 @@ public class ShuffleButton : MonoBehaviour, EventListener
 
     public void OnShuffle()
     {
+        if(_allowInput != true)
+            return;
+
         if(GamblingTable.Instance.CardHasBeenPlayed == false)
         {
            if(_numberOfShufflesPerRound > 0)

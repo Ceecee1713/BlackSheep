@@ -58,6 +58,11 @@ public class Dealer : Singleton<Dealer>, EventListener
             Invoke("StartShufflingCards", _delay);
     }
 
+    public void OnNoInputEventCalled(bool allowInput)
+    {
+
+    }
+
     private void RemoveCardTypes() //Limit cards to be given out in later rounds
     {
         if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveSheepCard)

@@ -38,6 +38,7 @@ public class DialogueBox : MonoBehaviour, EventListener
     private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks in "ChangeDialogueFromButtonEvent()"
     //Tell which dialogue from which button has been chosen 
     
+    private bool _allowInput = false;
     private bool _hasActivatedButtonOptions = false; 
     private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent going through messages entirely
@@ -75,12 +76,19 @@ public class DialogueBox : MonoBehaviour, EventListener
         
     }
 
+    public void OnNoInputEventCalled(bool allowInput)
+    {
+        Debug.Log("aaaaa");
+        Debug.Log(allowInput);
+        _allowInput = allowInput;
+    }
+
     void Update()
     {
         if(_callDialogueCanvasSwitch == true)
             return;
 
-        if (Input.GetMouseButtonDown(0)) //Refactor this input
+        if (Input.GetMouseButtonDown(0) && _allowInput == true) //Refactor this input
         {
             CheckToSwitchDialogueCanvases();
             CheckWhichDialogueToBeSaidNext();
@@ -220,6 +228,7 @@ public class DialogueBox : MonoBehaviour, EventListener
         _writeButtonOneDialogue = false;
         _writeButtonTwoDialogue = false;
         _allowGoingThroughMessages = true;
+        _allowInput = true;
         
         GetNormalDialogue();
         yield return null;

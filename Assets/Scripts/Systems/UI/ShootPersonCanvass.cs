@@ -5,9 +5,7 @@ using UnityEngine.UI;
 //This script is to be attached to UI canvases that also have a canvas group component on them
 //These will be the canvases for the "animation" of x person being shot when a card round is finished
 
-//Remember to remove self from  "EventManager.Instance" when game isn't active and such
-
-public class ShootPersonCanvass : MonoBehaviour, EventListener
+public class ShootPersonCanvass : MonoBehaviour
 {
     [SerializeField]
     private GameConfiguration gameConfiguration;
@@ -35,8 +33,6 @@ public class ShootPersonCanvass : MonoBehaviour, EventListener
 
     void Awake()
     {
-        EventManager.Instance.AddEventListener(this);
-
         _thisCanvasGroup = this.gameObject.GetComponent<CanvasGroup>();
         _gunImage = gun.GetComponent<Image>();
 
@@ -53,11 +49,6 @@ public class ShootPersonCanvass : MonoBehaviour, EventListener
     {
         flashImage.SetActive(false);
         _hasBeenCalledOnce = false;
-    }
-
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        
     }
 
     void Update()

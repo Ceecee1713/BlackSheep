@@ -30,18 +30,23 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     public void OnEventCalled(AllEventNames eventName)
     {
-        if(eventName == AllEventNames.NewRoundEvent) //eventName == AllEventNames.FinishedRoundEvent
+        if(eventName == AllEventNames.NewRoundEvent) 
         {
             transform.SetParent(cardLayoutGroup.transform);
             _allowInput = true;
             _cardHasBeenPlayed = false;
         }
 
-        if(eventName == AllEventNames.ShuffleEvent)
+        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.FinishedRoundEvent)
             _allowInput = false;
 
         if(eventName == AllEventNames.ShuffleEventComplete)
             _allowInput = true;
+    }
+
+    public void OnNoInputEventCalled(bool allowInput)
+    {
+        _allowInput = allowInput;
     }
 
     public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script
