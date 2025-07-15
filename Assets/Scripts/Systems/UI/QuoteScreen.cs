@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class QuoteScreen : MonoBehaviour, EventListener
+//Remember to remove self from "EventManager.Instance" when game isn't active and such
+
+public class QuoteScreen : MonoBehaviour
 {
     [SerializeField]
     private GameConfiguration gameConfiguration;
@@ -48,11 +50,6 @@ public class QuoteScreen : MonoBehaviour, EventListener
 
             IterateThroughQuotes();
         }
-    }
-
-    public void OnEventCalled(AllEventNames eventName)
-    {
-
     }
 
     private void IterateThroughQuotes()

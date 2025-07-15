@@ -14,14 +14,14 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     private GameObject [] canvases; //Must contain ALL UI canvases
 
     [SerializeField]
-    private GameObject cardGameplayCanvas, cardsLayout;
+    private GameObject cardGameplayCanvas, interactableLayout;
     
     //public bool StartNewRound = false; //Temporary
 
     private float _durationOfFade;
 
     private GameObject _currentCanvas;
-    private CanvasGroup _cardsLayoutCanvasGroup;
+    private CanvasGroup _interactableLayoutCanvasGroup;
     private CanvasGroup _currentActiveCanvasGroup, _newCanvasGroup;
 
     void Awake()
@@ -31,19 +31,22 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         EventManager.Instance.AddEventListener(this);
         EventManager.Instance.AddCanvasListener(this);
 
-        _cardsLayoutCanvasGroup = cardsLayout.GetComponent<CanvasGroup>();
-        cardsLayout.SetActive(true);
+        _interactableLayoutCanvasGroup = interactableLayout.GetComponent<CanvasGroup>();
+        
+        interactableLayout.SetActive(true);
+        _interactableLayoutCanvasGroup.alpha = 1.0f;
         cardGameplayCanvas.SetActive(true);
+
         Invoke("TurnOffCardCanvas", 0.5f);
     }
 
-    /*
+    /* //Temporary
     void Update() 
     {
-        if(StartNewRound == true) //Temporary
+        if(StartNewRound == true) 
         {
             cardGameplayCanvas.SetActive(true);
-            cardsLayout.SetActive(true);
+            interactableLayout.SetActive(true);
             StartNewRound = false;
             EventManager.Instance.OnNewRoundEvent.Invoke();
         }
@@ -52,8 +55,8 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     
     private void TurnOffCardCanvas()
     {
-        cardsLayout.SetActive(false);
-        _cardsLayoutCanvasGroup.alpha = 0.0f;
+        interactableLayout.SetActive(false);
+        _interactableLayoutCanvasGroup.alpha = 0.0f;
         cardGameplayCanvas.SetActive(false);
     }
 
@@ -61,16 +64,17 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
     {
         if(eventName == AllEventNames.ShuffleEventComplete)
         {
-            _cardsLayoutCanvasGroup.alpha = 1.0f;
+            _interactableLayoutCanvasGroup.alpha = 1.0f;
+            interactableLayout.SetActive(true);
         }
 
-        /*
-        if(eventName == AllEventNames.FinishedRoundEvent) //Temporary
+        /* //Temporary
+        if(eventName == AllEventNames.FinishedRoundEvent) 
         {
             TurnOffCardCanvas();
         }
 
-        if(eventName == AllEventNames.NewRoundEvent) //Temporary
+        if(eventName == AllEventNames.NewRoundEvent) 
         {
             cardGameplayCanvas.SetActive(true);
         }
@@ -133,13 +137,13 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         {
             if(currentCanvas == cardGameplayCanvas)
             {
-                _cardsLayoutCanvasGroup.alpha = 0.0f;
-                cardsLayout.SetActive(false);
+                _interactableLayoutCanvasGroup.alpha = 0.0f;
+                interactableLayout.SetActive(false);
             }
 
             if(canvasToSetActive == cardGameplayCanvas)
             {
-                cardsLayout.SetActive(true);
+                interactableLayout.SetActive(true);
                 EventManager.Instance.OnNewRoundEvent.Invoke(); //Reset player cards' positions and status, shuffle cards and play shuffling animation
             }
 

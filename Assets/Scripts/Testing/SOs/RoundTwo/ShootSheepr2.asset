@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: ShootSheepr2
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Yes
+  ButtonTwoText: No
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: So you chose to shoot a sheep on round two
+  - CharacterTitle: 1
+    Message: Amuse my curiosity. What colour do you like more?
+  ButtonOneDialogue:
+  - CharacterTitle: 1
+    Message: Yes?
+  - CharacterTitle: 1
+    Message: Well, that explains a lot.
+  - CharacterTitle: 1
+    Message: Let's continue with the game
+  ButtonTwoDialogue:
+  - CharacterTitle: 1
+    Message: No?
+  - CharacterTitle: 1
+    Message: I call that a fat lie
+  - CharacterTitle: 1
+    Message: Let's continue with the game

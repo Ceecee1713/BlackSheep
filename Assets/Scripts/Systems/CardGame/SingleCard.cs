@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 //Remember to remove self from "EventManager.Instance" when game isn't active and such
+//Remember to remove self from "Dealer.Instance" when game isn't active and such
 
 public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -21,20 +22,10 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
     void Awake()
     {
         EventManager.Instance.AddEventListener(this);
+        Dealer.Instance.AddCard(this);
 
         _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
         _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
-    }
-
-    void OnEnable()
-    {
-        Dealer.Instance.AddCard(this);
-    }
-
-    void OnDisable()
-    {
-        Dealer.Instance.RemoveCard(this); 
-        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
     }
 
     public void OnEventCalled(AllEventNames eventName)
@@ -53,7 +44,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             _allowInput = true;
     }
 
-    public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script. This method assigns the card's type and icon sprite
+    public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script
     {
         if(_cardHasBeenPlayed == true)
             return;
@@ -88,6 +79,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             transform.SetParent(_leftCardSlotRect);
             _cardHasBeenPlayed = true;
 
+            //Assign left card slot
             GamblingTable.Instance.NumberOfPlayedCards++;
             GamblingTable.Instance.LeftCardSlot.SlotType = _cardType;
             GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
@@ -109,6 +101,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             transform.SetParent(_leftCardSlotRect);
             _cardHasBeenPlayed = true;
 
+            //Assign left card slot
             GamblingTable.Instance.NumberOfPlayedCards++;
             GamblingTable.Instance.LeftCardSlot.SlotType = _cardType;
             GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
@@ -128,6 +121,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             transform.SetParent(_leftCardSlotRect);
             _cardHasBeenPlayed = true;
 
+            //Assign left card slot
             GamblingTable.Instance.NumberOfPlayedCards++;
             GamblingTable.Instance.LeftCardSlot.SlotType = _cardType;
             GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
@@ -141,6 +135,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             transform.SetParent(_rightCardSlotRect);
             _cardHasBeenPlayed = true;
 
+            //Assign right card slot
             GamblingTable.Instance.NumberOfPlayedCards++;
             GamblingTable.Instance.RightCardSlot.SlotType = _cardType;
             GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;
@@ -161,6 +156,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             transform.SetParent(_rightCardSlotRect);
             _cardHasBeenPlayed = true;
 
+            //Assign right card slot
             GamblingTable.Instance.NumberOfPlayedCards++;
             GamblingTable.Instance.RightCardSlot.SlotType = _cardType;
             GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;
@@ -180,6 +176,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             transform.SetParent(_rightCardSlotRect);
             _cardHasBeenPlayed = true;
 
+            //Assign right card slot
             GamblingTable.Instance.NumberOfPlayedCards++;
             GamblingTable.Instance.RightCardSlot.SlotType = _cardType;
             GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;

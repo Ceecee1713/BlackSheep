@@ -54,46 +54,53 @@ public class GamblingTable : Singleton<GamblingTable>
     {
         RoundNumber = Mathf.Clamp(RoundNumber, 1, _maxAmountOfRounds);
 
-        if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
-        {
-            //Resetting all values
-            NumberOfPlayedCards = 0;
-            CardHasBeenPlayed = false;
-            RightCardSlot.IsSlotOccupied = false;
-            LeftCardSlot.IsSlotOccupied = false;
-            RightCardSlot.SlotType = null;
-            LeftCardSlot.SlotType = null;
-
-            RoundNumber++;
-            EventManager.Instance.OnFinishedRoundEvent.Invoke(); //Reset Shuffle Button and remove card types that can be given out on shuffling
-            CheckForWhichCanvasToSwitchedTo();
-        }
-
         if(NumberOfPlayedCards > 0)
             CardHasBeenPlayed = true;
+
+        if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
+        {
+            EventManager.Instance.OnFinishedRoundEvent.Invoke(); //Reset Shuffle Button and remove card types that can be given out on shuffling
+            CheckForWhichCanvasToSwitchedTo();
+
+            if(RoundNumber > _maxAmountOfRounds)
+                RoundNumber++;
+        }
     }
 
     private void CheckForWhichCanvasToSwitchedTo()
     {
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep)
         {
-            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootSheepDialogue; //Setting dialogue for dealer to say
+            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootSheepDialogue; //Setting sheep dialogue for dealer to say
             EventManager.Instance.OnNewCanvasEvent?.Invoke(shootingSheepCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            ResetValues();
             return;
         }
 
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player)
         {
-            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootPlayerDialogue; //Setting dialogue for dealer to say
+            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootPlayerDialogue; //Setting player dialogue for dealer to say
             EventManager.Instance.OnNewCanvasEvent?.Invoke(shootingPlayerCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            ResetValues();
             return;
         }
 
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
-            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootDealerDialogue; //Setting dialogue for dealer to say
+            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootDealerDialogue; //Setting dealer dialogue for dealer to say
             EventManager.Instance.OnNewCanvasEvent?.Invoke(shootingDealerCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            ResetValues();
         }
+    }
+
+    private void ResetValues()
+    {
+        NumberOfPlayedCards = 0;
+        CardHasBeenPlayed = false;
+        RightCardSlot.IsSlotOccupied = false;
+        LeftCardSlot.IsSlotOccupied = false;
+        RightCardSlot.SlotType = null;
+        LeftCardSlot.SlotType = null;
     }
 }
 

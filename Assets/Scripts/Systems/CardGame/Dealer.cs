@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Remember to clear "_unavailableCardNumbers" when dealer isn't active
+//Remember to clear "_unavailableCardNumbers", "_allCards" and  "_unavailableCardNumbers" when dealer isn't active. 
+//Remember to remove self from  "EventManager.Instance" when game isn't active and such
+
 //"_allCards" is 'cleared' by "SingleCard" scripts as they remove themselves in their scripts
 
 public class Dealer : Singleton<Dealer>, EventListener
@@ -36,15 +38,6 @@ public class Dealer : Singleton<Dealer>, EventListener
         EventManager.Instance.AddEventListener(this);
     }
 
-    void OnEnable()
-    {
-        //EventManager.Instance.AddEventListener(this);
-    }
-
-    void OnDisable()
-    {
-        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
-    }
 
     public void AddCard(ShuffleListener card)
     {

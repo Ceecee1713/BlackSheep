@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: Hi
+  - CharacterTitle: 1
+    Message: This is how you play
+  - CharacterTitle: 1
+    Message: For each round, you'll start off with four cards, and you will remain
+      with four cards
+  - CharacterTitle: 1
+    Message: 'Each card that is given has a specific role to them. There are five
+      card types: Spades, Sheep, Dealer, Player being you, and a Gun'
+  - CharacterTitle: 1
+    Message: The goal of each round is to shoot someone. That someone is in your
+      control. The sheep is a random person in the casino, the dealer being me and
+      the player being you
+  - CharacterTitle: 1
+    Message: You get to choose who to shoot. There'll be two slots on the table that
+      you have to place those cards into.
+  - CharacterTitle: 1
+    Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
+      Player. The other card slot has to be a gun card
+  - CharacterTitle: 1
+    Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
+      Player. The other card slot has to be a gun card
+  - CharacterTitle: 1
+    Message: The Spades hold no value and can't be played
+  - CharacterTitle: 1
+    Message: If you don't like your hand, you can ask for a reshuffle for a maximum
+      of three times per round
+  - CharacterTitle: 1
+    Message: You cannot ask for a reshuffle once a card is placed down
+  - CharacterTitle: 1
+    Message: The round is over once two cards have been played down that signifies
+      a person can be shot
+  - CharacterTitle: 1
+    Message: 'Are you prepared? '
+  - CharacterTitle: 1
+    Message: Let's play
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

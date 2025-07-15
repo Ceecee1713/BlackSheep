@@ -19,7 +19,8 @@ public class AnimationManager : MonoBehaviour, EventListener
     [SerializeField] 
     private Transform spawn_ShuffledCardDeckTransform; 
     [SerializeField]
-    private float maxHeightFromEndCardSlidePosition = 600.0f;
+    private float maxHeightFromEndCardSlidePosition = 600.0f; //To increase "_endCardSlideYPosition" by this value 
+    //(Distance for how far the dealer's right hand will slide cards up after grabbing the player's cards)
 
     [Header ("Player's Hand")]
     [SerializeField]
@@ -41,7 +42,7 @@ public class AnimationManager : MonoBehaviour, EventListener
     [SerializeField]
     private Transform endShuffledCardDeckSlide;
     [SerializeField]
-    private float maxHeightFromShufflingHandPosition = 200.0f;
+    private float maxHeightFromShufflingHandPosition = 200.0f; //To increase "shufflingHand" y value by this value
 
     [Header ("Dealer's Left Hand")] 
     [SerializeField]
@@ -71,7 +72,7 @@ public class AnimationManager : MonoBehaviour, EventListener
     private Vector3 _leftHandRestPosition, _rightHandRestPosition, _playerHandRestPosition;
 
     private float _startingShufflingHandYPosition;
-    private float _newShufflingHandYPosition;
+    private float _newShufflingHandYPosition; //Value for how much Y offset from "shufflingHand" for when the right hand is shuffling
     private float _endCardSlideYPosition, _receivedCardYPosition;
     private float _offScreenPlayerHandYPosition; //For player's hand
     private float _durationToMoveCards; //For the animation of player's interactable cards to move up or down
@@ -167,9 +168,9 @@ public class AnimationManager : MonoBehaviour, EventListener
         yield return new WaitForSeconds(delayBetweenClips);
 
 
-        //Dealer will slide the given cards up
+        //Dealer will slide the given player cards up
         playerCardDeck.transform.position = new Vector3(playerHand.transform.position.x, _receivedCardYPosition, playerHand.transform.position.z); 
-        secondRightHand.transform.position = new Vector3(playerHand.transform.position.x, _receivedCardYPosition, playerHand.transform.position.z); 
+        secondRightHand.transform.position = new Vector3(playerHand.transform.position.x, _receivedCardYPosition + (maxHeightFromEndCardSlidePosition/2), playerHand.transform.position.z); 
         yield return new WaitForSeconds(delayBetweenClips);
 
 

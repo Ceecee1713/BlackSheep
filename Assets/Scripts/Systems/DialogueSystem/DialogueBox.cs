@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-//Remember to remove self from event manager as an event listener
+//Remember to remove self from "EventManager.Instance" when game isn't active and such
 
 public class DialogueBox : MonoBehaviour, EventListener
 {
@@ -31,7 +31,7 @@ public class DialogueBox : MonoBehaviour, EventListener
     [SerializeField] 
     private TextMeshProUGUI dialogueButtonTwoText;
 
-    public bool TypeFirstMessageOnAwake = false; //Temporary
+    public bool TypeFirstMessageOnAwake = false; //Temporary, get rid of when game is fully made
 
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
@@ -49,7 +49,7 @@ public class DialogueBox : MonoBehaviour, EventListener
     {
         EventManager.Instance.AddEventListener(this);
 
-        if (TypeFirstMessageOnAwake == true) //Temporary statement
+        if (TypeFirstMessageOnAwake == true) //Temporary statement, get rid of when game is fully made
         {
             CanvasGroup canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
             canvasGroup.alpha = 1.0f;
@@ -64,7 +64,10 @@ public class DialogueBox : MonoBehaviour, EventListener
 
     void OnDisable()
     {
-        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
+        dialogueText.text = "";
+        characterNameText.text = "";
+        dialogueButtonOneText.text = "";
+        dialogueButtonTwoText.text = "";
     }
 
     public void OnEventCalled(AllEventNames eventName)
@@ -90,7 +93,6 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            //_isNextCanvasADialogueCanvas = true;
             EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
             return;
         }
@@ -99,7 +101,6 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonOneDialogue == true && _index == dialogueData.ButtonOneDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            //_isNextCanvasADialogueCanvas = true;
             EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
             return;
         }
@@ -108,7 +109,6 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonTwoDialogue == true && _index == dialogueData.ButtonTwoDialogue.Length-1 && _finishedTypingMessage == true) 
         {
             _callDialogueCanvasSwitch = true;
-            //_isNextCanvasADialogueCanvas = true;
             EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
         }
     }
@@ -118,19 +118,19 @@ public class DialogueBox : MonoBehaviour, EventListener
         if (_allowGoingThroughMessages != true)
             return;
         
-        if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) //Go through normal dialogue
+        if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) 
         {
             GetNormalDialogue();
             return;
         }
                         
-        if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) //Go through button one dialogue
+        if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
         {
             GetDialogueFromButtonOne();
             return;
         }
 
-        if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true) //Go through button two dialogue
+        if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true)
             GetDialogueFromButtonTwo();  
     }
     
@@ -138,14 +138,6 @@ public class DialogueBox : MonoBehaviour, EventListener
     {
         StartCoroutine(PrepareFirstMessage());
     }
-
-    /*
-    public void ChangeCanvas(GameObject canvasToSwicthTo)
-    {
-        _isNextCanvasADialogueCanvas = false;
-        EventManager.Instance.OnNewCanvasEvent?.Invoke(canvasToSwicthTo, _isNextCanvasADialogueCanvas);
-    }
-    */
 
     private void GetNormalDialogue()
     {

@@ -32,7 +32,13 @@ public class ShuffleButton : MonoBehaviour, EventListener
 
     void OnDisable()
     {
-        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
+        
+    }
+
+    void Update()
+    {
+        if(_numberOfShufflesPerRound == 0)
+            button.SetActive(false);
     }
 
     public void OnEventCalled(AllEventNames eventName)
@@ -49,7 +55,6 @@ public class ShuffleButton : MonoBehaviour, EventListener
 
     private void ResetButton()
     {
-        //button.SetActive(true); //Temporary
         _numberOfShufflesPerRound = _maxNumberOfShufflesPerRound;
         buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
     }
@@ -66,12 +71,6 @@ public class ShuffleButton : MonoBehaviour, EventListener
                 EventManager.Instance.OnShuffleEvent.Invoke(); //Disable player input for moving cards, shuffle cards and play shuffling animation
                 button.SetActive(false);
             }
-
-            if(_numberOfShufflesPerRound == 0)
-            {
-                //EventManager.Instance.RemoveEventListener(this);
-                button.SetActive(false);
-            } 
         }
     }
 }
