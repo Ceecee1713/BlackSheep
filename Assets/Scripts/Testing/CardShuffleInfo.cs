@@ -16,3 +16,26 @@ public class PlayerFootStep : IEvent
     public Vector3 PlayerLocation { get; set; }
     public float Speed { get; set; }
 }
+
+
+//Below is what I'm using for my game
+
+public class StopPlayerInput : IEvent
+{
+    public bool AllowPlayerInput;
+
+    public StopPlayerInput(bool allowPlayerInput)
+    {
+        AllowPlayerInput = allowPlayerInput;
+    }
+}
+
+public class FadeCurrentCanvas : IEvent
+{
+    public bool FadeCanvas;
+
+    public FadeCurrentCanvas(bool fadeCanvas)
+    {
+        FadeCanvas = fadeCanvas;
+    }
+}

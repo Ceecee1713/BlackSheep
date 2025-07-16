@@ -14,6 +14,12 @@ public class CardUIPopUpButton : MonoBehaviour, EventListener
     void Awake()
     {
         EventManager.Instance.AddEventListener(this);
+        EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
+    }
+
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    {
+        _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
     public void OnEventCalled(AllEventNames eventName)
@@ -23,11 +29,6 @@ public class CardUIPopUpButton : MonoBehaviour, EventListener
 
         if(eventName == AllEventNames.FinishedRoundEvent)
             _allowInput = false;
-    }
-    
-    public void OnNoInputEventCalled(bool allowInput)
-    {
-        _allowInput = allowInput;
     }
 
     public void OnShowUIPopUpClick()

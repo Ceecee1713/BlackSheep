@@ -132,11 +132,6 @@ public class AnimationManager : MonoBehaviour, EventListener
             StartCoroutine(DealerShufflingCards(true));
     }
 
-    public void OnNoInputEventCalled(bool allowInput)
-    {
-
-    }
-
     IEnumerator MoveCardsDown() 
     {
         Sequence sequence = DOTween.Sequence();

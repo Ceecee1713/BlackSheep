@@ -9,12 +9,8 @@ public class EventManager : Singleton<EventManager>
     public UnityAction OnFinishedRoundEvent;
     public UnityAction OnNewRoundEvent;
 
-    public UnityAction <bool> OnNoInputEvent;
-
     public UnityAction <GameObject, bool> OnNewCanvasEvent;
-    public UnityAction <bool> OnFadeCurrentCanvasEvent;
     
-
     private List <EventListener> _eventListeners = new(); 
     private CanvasListener _canvasListener;
 
@@ -50,10 +46,7 @@ public class EventManager : Singleton<EventManager>
         OnFinishedRoundEvent += OnFinishedRoundEventCalled;
         OnNewRoundEvent += OnNewRoundEventCalled;
 
-        OnNoInputEvent += OnNoInputEventCalled;
-
         OnNewCanvasEvent += OnNewCanvasEventCalled;
-        OnFadeCurrentCanvasEvent += OnFadeCurrentCanvasEventCalled;
     }
 
     private void OnNewCanvasEventCalled(GameObject canvas, bool isThisADialogueCanvas)
@@ -61,22 +54,9 @@ public class EventManager : Singleton<EventManager>
         _canvasListener.OnSwitchCanvasEventCalled(canvas, isThisADialogueCanvas);
     }
 
-    private void OnFadeCurrentCanvasEventCalled(bool fadeCanvasIn)
-    {
-        _canvasListener.OnFadeCurrentCanvasAlpha(fadeCanvasIn);
-    }
 
     //Methods below: //For each "eventListener" inside the "_eventListeners" List, call the "OnEventCalled(AllEventNames)" method 
-
-    private void OnNoInputEventCalled(bool allowInput)
-    {
-        _eventListeners.ForEach((eventListener) => {
-            eventListener.OnNoInputEventCalled(allowInput);
-        });
-    }
-
     
-
     private void OnShuffleEventCalled()
     {
         _eventListeners.ForEach((eventListener) => {

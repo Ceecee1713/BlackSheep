@@ -24,6 +24,9 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
         EventManager.Instance.AddEventListener(this);
         Dealer.Instance.AddCard(this);
 
+        EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
+
+
         _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
         _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
     }
@@ -44,9 +47,9 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             _allowInput = true;
     }
 
-    public void OnNoInputEventCalled(bool allowInput)
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
     {
-        _allowInput = allowInput;
+        _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
     public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script

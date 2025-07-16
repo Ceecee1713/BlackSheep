@@ -3,13 +3,11 @@ using UnityEngine;
 public interface EventListener 
 {
     public void OnEventCalled(AllEventNames eventName);
-    public void OnNoInputEventCalled(bool allowInput);
 }
 
 public interface CanvasListener 
 {
     public void OnSwitchCanvasEventCalled(GameObject canvasToSetActive, bool isThisADialogueCanvas);
-    public void OnFadeCurrentCanvasAlpha(bool fadeCanvasIn);
 }
 
 public enum AllEventNames

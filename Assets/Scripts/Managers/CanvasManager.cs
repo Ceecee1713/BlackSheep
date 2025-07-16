@@ -38,6 +38,9 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         cardGameplayCanvas.SetActive(true);
 
         Invoke("TurnOffCardCanvas", 0.5f);
+
+
+        EventBus.Instance.Subscribe<FadeCurrentCanvas>(OnChangeCurrentCanvasAlpha);
     }
 
     /* //Temporary
@@ -81,12 +84,7 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         */
     }
 
-    public void OnNoInputEventCalled(bool allowInput)
-    {
-
-    }
-
-    public void OnFadeCurrentCanvasAlpha(bool fadeCanvasIn)
+    private void OnChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas)
     {
         for (int i = 0; i < canvases.Length; i++)
         {
@@ -94,7 +92,7 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
             {
                 CanvasGroup canvasGroup = canvases[i].GetComponent<CanvasGroup>();
 
-                if(fadeCanvasIn == true)
+                if(fadeCurrentCanvas.FadeCanvas == true)
                 {
                     canvasGroup.alpha = 0.3f;
                     break;

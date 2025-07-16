@@ -56,6 +56,8 @@ public class DialogueBox : MonoBehaviour, EventListener
             canvasGroup.alpha = 1.0f;
             DisplayDialogueBox();
         }
+
+        EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
     }
 
     void OnEnable() 
@@ -71,16 +73,14 @@ public class DialogueBox : MonoBehaviour, EventListener
         dialogueButtonTwoText.text = "";
     }
 
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    {
+        _allowInput = stopPlayerInput.AllowPlayerInput;
+    }
+
     public void OnEventCalled(AllEventNames eventName)
     {
         
-    }
-
-    public void OnNoInputEventCalled(bool allowInput)
-    {
-        Debug.Log("aaaaa");
-        Debug.Log(allowInput);
-        _allowInput = allowInput;
     }
 
     void Update()
