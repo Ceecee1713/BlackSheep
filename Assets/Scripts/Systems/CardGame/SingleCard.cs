@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-//Remember to remove self from "EventManager.Instance" when game isn't active and such
-//Remember to remove self from "Dealer.Instance" when game isn't active and such
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to remove self from "Dealer.Instance" when this game object is destroyed or when a new scene is being loaded
 
-public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] 
     private Image cardIcon;
@@ -21,16 +21,16 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
 
     void Awake()
     {
-        EventManager.Instance.AddEventListener(this);
         Dealer.Instance.AddCard(this);
+
+        _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
+        _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
 
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);
         EventBus.Instance.Subscribe<FinishedRound>(FinishedRoundEvent);
-
-
-        _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
-        _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
+        EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
+        EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
     private void AllowInput(CompletedShufflingCards completedShufflingCards)
@@ -38,7 +38,10 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
         _allowInput = true;
     }
 
-
+    private void ShuffleEvent(ShuffleCards shuffleCards)
+    {
+        DoNotAllowInput();
+    }
 
     private void FinishedRoundEvent(FinishedRound finishedRound)
     {
@@ -50,19 +53,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
         _allowInput = false;
     }
 
-
-
-    public void OnEventCalled(AllEventNames eventName)
+    private void OnNewCardRound(StartNewRound startNewRound)
     {
-        if(eventName == AllEventNames.NewRoundEvent) 
-        {
-            transform.SetParent(cardLayoutGroup.transform);
-            _allowInput = true;
-            _cardHasBeenPlayed = false;
-        }
-
-        if(eventName == AllEventNames.ShuffleEvent) //|| eventName == AllEventNames.FinishedRoundEvent)
-            _allowInput = false;
+        transform.SetParent(cardLayoutGroup.transform);
+        _allowInput = true;
+        _cardHasBeenPlayed = false;
     }
 
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
@@ -245,3 +240,18 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
         return cardRect.Overlaps(cardSlotRect);
     }
 }
+
+    /* //Temporary
+    public void OnEventCalled(AllEventNames eventName)
+    {
+        if(eventName == AllEventNames.NewRoundEvent) 
+        {
+            transform.SetParent(cardLayoutGroup.transform);
+            _allowInput = true;
+            _cardHasBeenPlayed = false;
+        }
+        
+        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.FinishedRoundEvent)
+            _allowInput = false;
+    }
+    */

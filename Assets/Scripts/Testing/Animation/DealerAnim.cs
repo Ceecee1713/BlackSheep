@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class DealerShuffleAnim : MonoBehaviour
+public class DealerAnim : MonoBehaviour
 {
     [SerializeField]
     private DealerSprites dealerSprites;

@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class AnimationManager : MonoBehaviour, EventListener
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+
+public class AnimationManager : MonoBehaviour
 {
     [Header ("Scriptable Objects")] 
     [SerializeField]
@@ -79,11 +81,6 @@ public class AnimationManager : MonoBehaviour, EventListener
 
     private const int maxNumberOfShufflingLoops = 4;
 
-    void Awake()
-    {
-        EventManager.Instance.AddEventListener(this);
-    }
-
     void Start()
     {
         _durationToMoveCards = gameConfiguration.DurationToMoveCardsUpDown;
@@ -111,18 +108,23 @@ public class AnimationManager : MonoBehaviour, EventListener
         _endCardSlideYPosition = endShuffledCardDeckSlide.position.y;
         _offScreenPlayerHandYPosition = _playerHandRestPosition.y;
         _receivedCardYPosition = _endCardSlideYPosition + maxHeightFromEndCardSlidePosition;
+
+
+        EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
+        EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
-    void OnEnable() 
+    private void ShuffleEvent(ShuffleCards shuffleCards)
     {
-        
+        StartCoroutine(MoveCardsDown());
     }
 
-    void OnDisable()
+    private void OnNewCardRound(StartNewRound startNewRound)
     {
-        //EventManager.Instance.RemoveEventListener(this); //Change to be used when a new scene is being loaded / outside of playmode
+        StartCoroutine(DealerShufflingCards(true));
     }
 
+    /* //Temporary
     public void OnEventCalled(AllEventNames eventName)
     {
         if(eventName == AllEventNames.ShuffleEvent)
@@ -131,6 +133,7 @@ public class AnimationManager : MonoBehaviour, EventListener
         if(eventName == AllEventNames.NewRoundEvent)
             StartCoroutine(DealerShufflingCards(true));
     }
+    */
 
     IEnumerator MoveCardsDown() 
     {
@@ -243,8 +246,7 @@ public class AnimationManager : MonoBehaviour, EventListener
 
         if(isThisANewRound == true)
         {
-            //EventManager.Instance.OnShuffleEventComplete.Invoke(); //Show player cards' visibility, allow card player input and make shuffle button visible again
-            EventBus.Instance.Publish(new CompletedShufflingCards());
+            EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
             StopAllCoroutines();
         }
 
@@ -260,8 +262,7 @@ public class AnimationManager : MonoBehaviour, EventListener
             }
             
             yield return sequence.WaitForCompletion();
-            //EventManager.Instance.OnShuffleEventComplete.Invoke(); //Make shuffle button visible again and allow card player input
-            EventBus.Instance.Publish(new CompletedShufflingCards());
+            EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
             StopAllCoroutines();
         }
     }

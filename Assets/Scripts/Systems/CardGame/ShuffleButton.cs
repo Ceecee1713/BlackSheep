@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//Remember to remove self from  "EventManager.Instance" when game isn't active and such
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
 
 public class ShuffleButton : MonoBehaviour
 {
@@ -71,8 +71,7 @@ public class ShuffleButton : MonoBehaviour
             {
                 _numberOfShufflesPerRound--;
                 buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
-
-                EventManager.Instance.OnShuffleEvent.Invoke(); //Disable player input for moving cards, shuffle cards and play shuffling animation
+                EventBus.Instance.Publish(new ShuffleCards()); //Disable input for moving the player's cards, shuffle cards and play shuffling animation
                 button.SetActive(false);
             }
         }

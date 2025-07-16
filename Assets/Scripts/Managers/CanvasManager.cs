@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+
 public class CanvasManager : MonoBehaviour 
 {
     [SerializeField]
@@ -37,24 +39,10 @@ public class CanvasManager : MonoBehaviour
 
         Invoke("TurnOffCardCanvas", 0.5f);
 
-
         EventBus.Instance.Subscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayout);
     }
-
-    /* //Temporary
-    void Update() 
-    {
-        if(StartNewRound == true) 
-        {
-            cardGameplayCanvas.SetActive(true);
-            interactableLayout.SetActive(true);
-            StartNewRound = false;
-            EventManager.Instance.OnNewRoundEvent.Invoke();
-        }
-    }
-    */
     
     private void TurnOffCardCanvas()
     {
@@ -68,23 +56,6 @@ public class CanvasManager : MonoBehaviour
         _interactableLayoutCanvasGroup.alpha = 1.0f;
         interactableLayout.SetActive(true);
     }
-
-    /* //Temporary
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        /* 
-        if(eventName == AllEventNames.FinishedRoundEvent) 
-        {
-            TurnOffCardCanvas();
-        }
-
-        if(eventName == AllEventNames.NewRoundEvent) 
-        {
-            cardGameplayCanvas.SetActive(true);
-        }
-        
-    }
-    */
 
     private void ChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas)
     {
@@ -172,7 +143,7 @@ public class CanvasManager : MonoBehaviour
             if(canvasToSetActive == cardGameplayCanvas)
             {
                 interactableLayout.SetActive(true);
-                EventManager.Instance.OnNewRoundEvent.Invoke(); //Reset player cards' positions and status, shuffle cards and play shuffling animation
+                EventBus.Instance.Publish(new StartNewRound()); //Reset player's cards' positions and status, shuffle the player's cards and play shuffling animation
             }
 
             //yield return null;
@@ -180,3 +151,27 @@ public class CanvasManager : MonoBehaviour
         }  
     }
 }
+
+    /* //Temporary
+    void Update() 
+    {
+        if(StartNewRound == true) 
+        {
+            cardGameplayCanvas.SetActive(true);
+            interactableLayout.SetActive(true);
+            StartNewRound = false;
+            EventManager.Instance.OnNewRoundEvent.Invoke();
+        }
+    }
+    
+    //Temporary
+    public void OnEventCalled(AllEventNames eventName)
+    {
+        /* 
+        if(eventName == AllEventNames.FinishedRoundEvent) 
+            TurnOffCardCanvas();
+
+        if(eventName == AllEventNames.NewRoundEvent) 
+            cardGameplayCanvas.SetActive(true);
+    }
+    */

@@ -4,6 +4,8 @@ using UnityEngine;
 //This script are for buttons that'll show a small pop up on top of the card gameplay UI
 //Such as a small pause menu and a tutorial pop up
 
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+
 public class CardUIPopUpButton : MonoBehaviour
 {
     [SerializeField] 

@@ -2,11 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Remember to clear "_unavailableCardNumbers", "_allCards" and  "_unavailableCardNumbers" when dealer isn't active. 
-//Remember to remove self from  "EventManager.Instance" when game isn't active and such
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
 
-//"_allCards" is 'cleared' by "SingleCard" scripts as they remove themselves in their scripts
-
-public class Dealer : Singleton<Dealer>, EventListener
+public class Dealer : Singleton<Dealer>
 {
     private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
     private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again IF number exists in this list
@@ -35,9 +33,9 @@ public class Dealer : Singleton<Dealer>, EventListener
             _indexOfAvailableCardTypes++;
         }
 
-        EventManager.Instance.AddEventListener(this);
-        
         EventBus.Instance.Subscribe<FinishedRound>(CheckToRemoveCardTypes);
+        EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
+        EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
 
@@ -55,14 +53,18 @@ public class Dealer : Singleton<Dealer>, EventListener
     {
         RemoveCardTypes();
     }
-    
-    public void OnEventCalled(AllEventNames eventName) 
+
+    private void ShuffleEvent(ShuffleCards shuffleCards)
     {
-        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
-            Invoke("StartShufflingCards", _delay);
+        Invoke("StartShufflingCards", _delay);
     }
 
-    private void RemoveCardTypes() //Limit cards to be given out in later rounds
+    private void OnNewCardRound(StartNewRound startNewRound)
+    {
+        Invoke("StartShufflingCards", _delay);
+    }
+
+    private void RemoveCardTypes() //Limit card types to be given out to the player in later rounds
     {
         if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveSheepCard)
             _excludeSheepCard = true;
@@ -140,3 +142,11 @@ public class Dealer : Singleton<Dealer>, EventListener
         _allCards[_randomCardIndex].OnShuffleNotified(cardType);
     }
 }
+
+    /* //Temporary
+    public void OnEventCalled(AllEventNames eventName) 
+    {
+        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
+            Invoke("StartShufflingCards", _delay);
+    }
+    */
