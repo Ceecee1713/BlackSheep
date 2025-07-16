@@ -82,10 +82,10 @@ public class ShootPersonCanvass : MonoBehaviour
         _thisCanvasGroup.alpha = 0.99f;
 
         if(GamblingTable.Instance.RoundNumber != gameConfiguration.MaxAmountOfRounds)
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(dealerDialogueCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
 
         else
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(badEndDialogueCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : badEndDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
 
         StopAllCoroutines();
     }

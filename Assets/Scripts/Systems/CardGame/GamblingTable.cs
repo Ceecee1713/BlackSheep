@@ -72,7 +72,7 @@ public class GamblingTable : Singleton<GamblingTable>
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep)
         {
             dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootSheepDialogue; //Setting sheep dialogue for dealer to say
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(shootingSheepCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingSheepCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             ResetValues();
             return;
         }
@@ -80,7 +80,7 @@ public class GamblingTable : Singleton<GamblingTable>
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player)
         {
             dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootPlayerDialogue; //Setting player dialogue for dealer to say
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(shootingPlayerCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingPlayerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             ResetValues();
             return;
         }
@@ -88,7 +88,7 @@ public class GamblingTable : Singleton<GamblingTable>
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
             dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootDealerDialogue; //Setting dealer dialogue for dealer to say
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(shootingDealerCanvas, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingDealerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             ResetValues();
         }
     }

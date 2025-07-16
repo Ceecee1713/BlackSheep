@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-//Remember to remove self from "EventManager.Instance" when game isn't active and such
-
 public class QuoteScreen : MonoBehaviour
 {
     [SerializeField]
@@ -43,7 +41,7 @@ public class QuoteScreen : MonoBehaviour
         {
             if(_index == quoteCanvasGroups.Length-1)
             {
-                EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, IS_NEXT_CANVAS_A_DIALOGUE_CANVAS);
+                EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
                 _hasChangedCanvas = true;
                 return;
             }

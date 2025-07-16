@@ -16,6 +16,6 @@ public class SwitchToDialogueUIButton : MonoBehaviour
 
     public void OnSwitchUIClick()
     {
-        EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, isNextCanvasADialogueCanvas);
+        EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : isNextCanvasADialogueCanvas));
     }
 }

@@ -3,9 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-//Remember to remove self from "EventManager.Instance" when game isn't active and such
-
-public class DialogueBox : MonoBehaviour, EventListener
+public class DialogueBox : MonoBehaviour
 {
     public DialogueData dialogueData;
     
@@ -48,8 +46,6 @@ public class DialogueBox : MonoBehaviour, EventListener
         
     void Awake()
     {
-        EventManager.Instance.AddEventListener(this);
-
         if (TypeFirstMessageOnAwake == true) //Temporary statement, get rid of when game is fully made
         {
             CanvasGroup canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
@@ -73,16 +69,6 @@ public class DialogueBox : MonoBehaviour, EventListener
         dialogueButtonTwoText.text = "";
     }
 
-    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
-    {
-        _allowInput = stopPlayerInput.AllowPlayerInput;
-    }
-
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        
-    }
-
     void Update()
     {
         if(_callDialogueCanvasSwitch == true)
@@ -94,6 +80,11 @@ public class DialogueBox : MonoBehaviour, EventListener
             CheckWhichDialogueToBeSaidNext();
         }
     }
+
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    {
+        _allowInput = stopPlayerInput.AllowPlayerInput;
+    }
     
     private void CheckToSwitchDialogueCanvases()
     {
@@ -101,7 +92,7 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
             return;
         }
 
@@ -109,7 +100,7 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonOneDialogue == true && _index == dialogueData.ButtonOneDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
             return;
         }
 
@@ -117,7 +108,7 @@ public class DialogueBox : MonoBehaviour, EventListener
         if(_writeButtonTwoDialogue == true && _index == dialogueData.ButtonTwoDialogue.Length-1 && _finishedTypingMessage == true) 
         {
             _callDialogueCanvasSwitch = true;
-            EventManager.Instance.OnNewCanvasEvent?.Invoke(nextCanvasToSetActive, _isNextCanvasADialogueCanvas);
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
         }
     }
 

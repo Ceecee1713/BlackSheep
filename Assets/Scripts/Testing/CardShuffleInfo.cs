@@ -39,3 +39,15 @@ public class FadeCurrentCanvas : IEvent
         FadeCanvas = fadeCanvas;
     }
 }
+
+public class ChangeToNewCanvas : IEvent
+{
+    public bool IsNewCanvasADialogueCanvas;
+    public GameObject NewCanvas;
+
+    public ChangeToNewCanvas(GameObject newCanvas, bool isNewCanvasADialogueCanvas)
+    {
+        NewCanvas = newCanvas;
+        IsNewCanvasADialogueCanvas = isNewCanvasADialogueCanvas;
+    }
+}

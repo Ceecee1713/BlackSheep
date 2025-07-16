@@ -3,18 +3,22 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//Remember to remove self from event manager as an event listener and a canvas listener
+//Remember to remove self from event manager as an event listener 
 
-public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
+public class CanvasManager : MonoBehaviour, EventListener 
 {
     [SerializeField]
     private GameConfiguration gameConfiguration;
     
+    [Header ("Main Canvases")]
     [SerializeField]
     private GameObject [] canvases; //Must contain ALL UI canvases (excluding pause menu, tutorial UI, plain black screen)
 
+    [Header ("For Card Gameplay Canvas")]
     [SerializeField]
-    private GameObject cardGameplayCanvas, interactableLayout;
+    private GameObject cardGameplayCanvas;
+    [SerializeField]
+    private GameObject interactableLayout;
     
     //public bool StartNewRound = false; //Temporary
 
@@ -29,7 +33,6 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         _durationOfFade = gameConfiguration.DurationOfScreenFade;
         
         EventManager.Instance.AddEventListener(this);
-        EventManager.Instance.AddCanvasListener(this);
 
         _interactableLayoutCanvasGroup = interactableLayout.GetComponent<CanvasGroup>();
         
@@ -40,7 +43,8 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         Invoke("TurnOffCardCanvas", 0.5f);
 
 
-        EventBus.Instance.Subscribe<FadeCurrentCanvas>(OnChangeCurrentCanvasAlpha);
+        EventBus.Instance.Subscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
+        EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
     }
 
     /* //Temporary
@@ -84,7 +88,7 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         */
     }
 
-    private void OnChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas)
+    private void ChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas)
     {
         for (int i = 0; i < canvases.Length; i++)
         {
@@ -107,16 +111,16 @@ public class CanvasManager : MonoBehaviour, EventListener, CanvasListener
         }
     }
 
-    public void OnSwitchCanvasEventCalled(GameObject canvasToSetActive, bool isNextCanvasADialogueCanvas)
+    private void SwitchCanvas(ChangeToNewCanvas changeToNewCanvas) 
     {
-        if (canvasToSetActive == null)
+        if (changeToNewCanvas.NewCanvas == null)
             return;
 
         for(int i = 0; i < canvases.Length; i++)
         {
-            if(canvases[i] == canvasToSetActive) //Checking if "canvasToSetActive" exists in the "canvases" array
+            if(canvases[i] == changeToNewCanvas.NewCanvas) //Checking if "changeToNewCanvas.NewCanvas" exists in the "canvases" array
             {
-                SwitchCanvases(canvasToSetActive, isNextCanvasADialogueCanvas);
+                SwitchCanvases(changeToNewCanvas.NewCanvas, changeToNewCanvas.IsNewCanvasADialogueCanvas);
                 break;
             }
         }
