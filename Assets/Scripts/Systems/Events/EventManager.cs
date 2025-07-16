@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class EventManager : Singleton<EventManager>
 {
     public UnityAction OnShuffleEvent; //Used for when the player clicks the Shuffle Button
-    public UnityAction OnFinishedRoundEvent;
     public UnityAction OnNewRoundEvent;
     
     private List <EventListener> _eventListeners = new(); 
@@ -28,7 +27,6 @@ public class EventManager : Singleton<EventManager>
     private void Start()
     {
         OnShuffleEvent += OnShuffleEventCalled;
-        OnFinishedRoundEvent += OnFinishedRoundEventCalled;
         OnNewRoundEvent += OnNewRoundEventCalled;
     }
 
@@ -38,13 +36,6 @@ public class EventManager : Singleton<EventManager>
     {
         _eventListeners.ForEach((eventListener) => {
             eventListener.OnEventCalled(AllEventNames.ShuffleEvent);
-        });
-    }
-
-    private void OnFinishedRoundEventCalled()
-    {
-        _eventListeners.ForEach((eventListener) => {
-            eventListener.OnEventCalled(AllEventNames.FinishedRoundEvent);
         });
     }
 
