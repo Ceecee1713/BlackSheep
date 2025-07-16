@@ -18,12 +18,11 @@ MonoBehaviour:
   ButtonTwoText: 
   NormalDialogue:
   - CharacterTitle: 1
-    Message: Hi
+    Message: Hi there. Not nice to meet you
   - CharacterTitle: 1
     Message: This is how you play
   - CharacterTitle: 1
-    Message: For each round, you'll start off with four cards, and you will remain
-      with four cards
+    Message: Each round, you'll start with four cards.
   - CharacterTitle: 1
     Message: 'Each card that is given has a specific role to them. There are five
       card types: Spades, Sheep, Dealer, Player being you, and a Gun'

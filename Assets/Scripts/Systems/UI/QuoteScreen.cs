@@ -37,7 +37,7 @@ public class QuoteScreen : MonoBehaviour
         if(_hasChangedCanvas == true)
             return;
 
-        if (Input.GetMouseButtonDown(0) && _allowGoingThroughCanvases == true) //Refactor this input
+        if (Input.GetMouseButtonDown(0) && _allowGoingThroughCanvases == true) 
         {
             if(_index == quoteCanvasGroups.Length-1)
             {

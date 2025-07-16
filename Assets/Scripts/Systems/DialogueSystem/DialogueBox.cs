@@ -67,12 +67,7 @@ public class DialogueBox : MonoBehaviour
 
     void OnDisable()
     {
-        dialogueText.text = "";
-        characterNameText.text = "";
-        dialogueButtonOneText.text = "";
-        dialogueButtonTwoText.text = "";
-        oneButtonDisplay.SetActive(false);
-        twoButtonsDisplay.SetActive(false);
+        ResetValues();
     }
 
     void Update()
@@ -80,11 +75,22 @@ public class DialogueBox : MonoBehaviour
         if(_callDialogueCanvasSwitch == true)
             return;
 
-        if (Input.GetMouseButtonDown(0) && _allowInput == true) //Refactor this input
+        if (Input.GetMouseButtonDown(0) && _allowInput == true)
         {
             CheckToSwitchDialogueCanvases();
             CheckWhichDialogueToBeSaidNext();
         }
+    }
+
+    private void ResetValues()
+    {
+        dialogueText.text = "";
+        characterNameText.text = "";
+        dialogueButtonOneText.text = "";
+        dialogueButtonTwoText.text = "";
+
+        oneButtonDisplay.SetActive(false);
+        twoButtonsDisplay.SetActive(false);
     }
 
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
@@ -229,6 +235,7 @@ public class DialogueBox : MonoBehaviour
         _writeButtonTwoDialogue = false;
         _allowGoingThroughMessages = true;
         _allowInput = true;
+        
         
         GetNormalDialogue();
         yield return null;

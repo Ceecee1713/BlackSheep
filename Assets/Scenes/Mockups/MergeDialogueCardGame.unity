@@ -1135,8 +1135,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0001, y: -49.3148}
-  m_SizeDelta: {x: 1205.5405, y: 586.4487}
+  m_AnchoredPosition: {x: 3.9722, y: -37.1502}
+  m_SizeDelta: {x: 1246.2294, y: 610.778}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404503181
 MonoBehaviour:
@@ -1158,7 +1158,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Each round, you'll start with four cards.\n\nThere are five card types
+    you can get: Sheep, Dealer, Player, Gun, Spades\n\nSheep, Dealer and Player cards,
+    are considered \"Person Cards\" \n\nTo progress into the next round, you have
+    to place one Person Card, and one gun card down in the card slots on the table.\n\nThe
+    goal is to shoot a person at the end of each round, and the Person Card placed
+    down will be that person you shoot at the end of the round.\n\nSpades cards hold
+    no value and can't be placed down.\n\nIf you don't like your hand, you can reshuffle
+    for a max of three times per round. You can't ask for a reshuffle when a card
+    is played.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1185,8 +1193,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2599,8 +2607,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940842514}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.048187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2609,7 +2617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -941.7659, y: -560.1195}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &940842520
