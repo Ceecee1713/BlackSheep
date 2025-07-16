@@ -36,6 +36,8 @@ public class Dealer : Singleton<Dealer>, EventListener
         }
 
         EventManager.Instance.AddEventListener(this);
+        
+        EventBus.Instance.Subscribe<FinishedRound>(CheckToRemoveCardTypes);
     }
 
 
@@ -48,12 +50,14 @@ public class Dealer : Singleton<Dealer>, EventListener
     {
         _allCards.Remove(card);
     }
+
+    private void CheckToRemoveCardTypes(FinishedRound finishedRound)
+    {
+        RemoveCardTypes();
+    }
     
     public void OnEventCalled(AllEventNames eventName) 
     {
-        if(eventName == AllEventNames.FinishedRoundEvent)
-            RemoveCardTypes();
-
         if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
             Invoke("StartShufflingCards", _delay);
     }

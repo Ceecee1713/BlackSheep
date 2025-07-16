@@ -25,11 +25,32 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
         Dealer.Instance.AddCard(this);
 
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);
+        EventBus.Instance.Subscribe<FinishedRound>(FinishedRoundEvent);
 
 
         _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
         _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
     }
+
+    private void AllowInput(CompletedShufflingCards completedShufflingCards)
+    {
+        _allowInput = true;
+    }
+
+
+
+    private void FinishedRoundEvent(FinishedRound finishedRound)
+    {
+        DoNotAllowInput();
+    }
+
+    private void DoNotAllowInput()
+    {
+        _allowInput = false;
+    }
+
+
 
     public void OnEventCalled(AllEventNames eventName)
     {
@@ -40,11 +61,8 @@ public class SingleCard : MonoBehaviour, ShuffleListener, EventListener, IBeginD
             _cardHasBeenPlayed = false;
         }
 
-        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.FinishedRoundEvent)
+        if(eventName == AllEventNames.ShuffleEvent) //|| eventName == AllEventNames.FinishedRoundEvent)
             _allowInput = false;
-
-        if(eventName == AllEventNames.ShuffleEventComplete)
-            _allowInput = true;
     }
 
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)

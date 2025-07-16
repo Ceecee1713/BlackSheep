@@ -59,7 +59,10 @@ public class GamblingTable : Singleton<GamblingTable>
 
         if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
         {
-            EventManager.Instance.OnFinishedRoundEvent.Invoke(); //Reset Shuffle Button and remove card types that can be given out on shuffling
+            //EventManager.Instance.OnFinishedRoundEvent.Invoke(); //Reset Shuffle Button and remove card types that can be given out on shuffling
+            EventBus.Instance.Publish(new FinishedRound());
+
+            
             CheckForWhichCanvasToSwitchedTo();
 
             if(RoundNumber > _maxAmountOfRounds)

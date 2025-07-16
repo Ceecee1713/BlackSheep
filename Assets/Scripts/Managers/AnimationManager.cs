@@ -243,7 +243,8 @@ public class AnimationManager : MonoBehaviour, EventListener
 
         if(isThisANewRound == true)
         {
-            EventManager.Instance.OnShuffleEventComplete.Invoke(); //Show player cards' visibility, allow card player input and make shuffle button visible again
+            //EventManager.Instance.OnShuffleEventComplete.Invoke(); //Show player cards' visibility, allow card player input and make shuffle button visible again
+            EventBus.Instance.Publish(new CompletedShufflingCards());
             StopAllCoroutines();
         }
 
@@ -259,8 +260,8 @@ public class AnimationManager : MonoBehaviour, EventListener
             }
             
             yield return sequence.WaitForCompletion();
-
-            EventManager.Instance.OnShuffleEventComplete.Invoke(); //Make shuffle button visible again and allow card player input
+            //EventManager.Instance.OnShuffleEventComplete.Invoke(); //Make shuffle button visible again and allow card player input
+            EventBus.Instance.Publish(new CompletedShufflingCards());
             StopAllCoroutines();
         }
     }

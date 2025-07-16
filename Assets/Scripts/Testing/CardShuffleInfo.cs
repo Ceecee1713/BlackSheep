@@ -51,3 +51,19 @@ public class ChangeToNewCanvas : IEvent
         IsNewCanvasADialogueCanvas = isNewCanvasADialogueCanvas;
     }
 }
+
+public class ShuffleCards : IEvent
+{
+}
+
+public class CompletedShufflingCards : IEvent
+{
+}
+
+public class FinishedRound : IEvent
+{
+}
+
+public class StartNewRound : IEvent
+{
+}

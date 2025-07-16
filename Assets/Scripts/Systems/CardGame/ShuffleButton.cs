@@ -4,7 +4,7 @@ using TMPro;
 
 //Remember to remove self from  "EventManager.Instance" when game isn't active and such
 
-public class ShuffleButton : MonoBehaviour, EventListener
+public class ShuffleButton : MonoBehaviour
 {
     [SerializeField]
     private GameConfiguration gameConfiguration;
@@ -22,21 +22,12 @@ public class ShuffleButton : MonoBehaviour, EventListener
 
     void Awake()
     {
-        EventManager.Instance.AddEventListener(this);
         _maxNumberOfShufflesPerRound = gameConfiguration.MaxNumberOfShufflesPerRound;
         ResetButton();
 
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
-    }
-
-    void OnEnable()
-    {
-        
-    }
-
-    void OnDisable()
-    {
-        
+        EventBus.Instance.Subscribe<CompletedShufflingCards>(SetButtonActive);
+        EventBus.Instance.Subscribe<FinishedRound>(DoNotAllowInput);
     }
 
     void Update()
@@ -45,25 +36,22 @@ public class ShuffleButton : MonoBehaviour, EventListener
             button.SetActive(false);
     }
 
+    private void DoNotAllowInput(FinishedRound finishedRound)
+    {
+        ResetButton();
+        _allowInput = false;
+        button.SetActive(false);
+    }
+
+    private void SetButtonActive(CompletedShufflingCards completedShufflingCards)
+    {
+       _allowInput = true;
+        button.SetActive(true);
+    }
+
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
-    }
-
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        if(eventName == AllEventNames.FinishedRoundEvent) //AllEventNames.NewRoundEvent
-        {
-            ResetButton();
-            _allowInput = false;
-            button.SetActive(false);
-        }
-
-        if(eventName == AllEventNames.ShuffleEventComplete)
-        {
-            _allowInput = true;
-            button.SetActive(true);
-        }   
     }
 
     private void ResetButton()

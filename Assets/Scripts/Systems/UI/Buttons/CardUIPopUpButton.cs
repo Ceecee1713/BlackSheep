@@ -4,7 +4,7 @@ using UnityEngine;
 //This script are for buttons that'll show a small pop up on top of the card gameplay UI
 //Such as a small pause menu and a tutorial pop up
 
-public class CardUIPopUpButton : MonoBehaviour, EventListener
+public class CardUIPopUpButton : MonoBehaviour
 {
     [SerializeField] 
     private GameObject uiPopUpToSetActive;
@@ -13,8 +13,9 @@ public class CardUIPopUpButton : MonoBehaviour, EventListener
 
     void Awake()
     {
-        EventManager.Instance.AddEventListener(this);
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);
+        EventBus.Instance.Subscribe<FinishedRound>(DoNotAllowInput);
     }
 
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
@@ -22,13 +23,14 @@ public class CardUIPopUpButton : MonoBehaviour, EventListener
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
-    public void OnEventCalled(AllEventNames eventName)
+    private void AllowInput(CompletedShufflingCards completedShufflingCards)
     {
-        if(eventName == AllEventNames.ShuffleEventComplete)
-            _allowInput = true;
+        _allowInput = true;
+    }
 
-        if(eventName == AllEventNames.FinishedRoundEvent)
-            _allowInput = false;
+    private void DoNotAllowInput(FinishedRound finishedRound)
+    {
+        _allowInput = false;
     }
 
     public void OnShowUIPopUpClick()

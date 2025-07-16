@@ -3,9 +3,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//Remember to remove self from event manager as an event listener 
-
-public class CanvasManager : MonoBehaviour, EventListener 
+public class CanvasManager : MonoBehaviour 
 {
     [SerializeField]
     private GameConfiguration gameConfiguration;
@@ -31,9 +29,6 @@ public class CanvasManager : MonoBehaviour, EventListener
     void Awake()
     {
         _durationOfFade = gameConfiguration.DurationOfScreenFade;
-        
-        EventManager.Instance.AddEventListener(this);
-
         _interactableLayoutCanvasGroup = interactableLayout.GetComponent<CanvasGroup>();
         
         interactableLayout.SetActive(true);
@@ -45,6 +40,7 @@ public class CanvasManager : MonoBehaviour, EventListener
 
         EventBus.Instance.Subscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
+        EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayout);
     }
 
     /* //Temporary
@@ -67,15 +63,16 @@ public class CanvasManager : MonoBehaviour, EventListener
         cardGameplayCanvas.SetActive(false);
     }
 
+    private void ShowCardLayout(CompletedShufflingCards completedShufflingCards)
+    {
+        _interactableLayoutCanvasGroup.alpha = 1.0f;
+        interactableLayout.SetActive(true);
+    }
+
+    /* //Temporary
     public void OnEventCalled(AllEventNames eventName)
     {
-        if(eventName == AllEventNames.ShuffleEventComplete)
-        {
-            _interactableLayoutCanvasGroup.alpha = 1.0f;
-            interactableLayout.SetActive(true);
-        }
-
-        /* //Temporary
+        /* 
         if(eventName == AllEventNames.FinishedRoundEvent) 
         {
             TurnOffCardCanvas();
@@ -85,8 +82,9 @@ public class CanvasManager : MonoBehaviour, EventListener
         {
             cardGameplayCanvas.SetActive(true);
         }
-        */
+        
     }
+    */
 
     private void ChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas)
     {
