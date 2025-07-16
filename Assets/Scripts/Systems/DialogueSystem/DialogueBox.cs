@@ -3,6 +3,8 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
+//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+
 public class DialogueBox : MonoBehaviour
 {
     public DialogueData dialogueData;
@@ -12,6 +14,8 @@ public class DialogueBox : MonoBehaviour
     private GameObject nextCanvasToSetActive; //UI Canvas to set active when all dialogue is said, unprompted by button clicks 
     [SerializeField] 
     private bool _isNextCanvasADialogueCanvas = false;
+    [SerializeField] 
+    private bool _ignoreCanvasChanging = false; //For the dialogue box on the UI that'll determine the player's ending (with free button choices)
 
     [Header ("Button Displays")]
     [SerializeField]
@@ -67,6 +71,8 @@ public class DialogueBox : MonoBehaviour
         characterNameText.text = "";
         dialogueButtonOneText.text = "";
         dialogueButtonTwoText.text = "";
+        oneButtonDisplay.SetActive(false);
+        twoButtonsDisplay.SetActive(false);
     }
 
     void Update()
@@ -88,6 +94,9 @@ public class DialogueBox : MonoBehaviour
     
     private void CheckToSwitchDialogueCanvases()
     {
+        if(_ignoreCanvasChanging == true)
+            return;
+
         //If all normal dialogue messages have been said when there's no button prompting from "ChangeDialogueFromButtonEvent()"
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {

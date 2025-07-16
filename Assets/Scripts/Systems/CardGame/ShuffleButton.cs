@@ -45,7 +45,10 @@ public class ShuffleButton : MonoBehaviour
 
     private void SetButtonActive(CompletedShufflingCards completedShufflingCards)
     {
-       _allowInput = true;
+        if(GamblingTable.Instance.RoundNumber == gameConfiguration.MaxAmountOfRounds)
+            return;
+
+        _allowInput = true;
         button.SetActive(true);
     }
 

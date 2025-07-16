@@ -11,14 +11,14 @@ public class ShootPersonCanvass : MonoBehaviour
     private GameConfiguration gameConfiguration;
 
     [SerializeField]
-    private GameObject dealerDialogueCanvas, badEndDialogueCanvas; 
+    private GameObject dealerDialogueCanvas, dealerDialogueCanvasRoundFive, badEndDialogueCanvas; 
     [SerializeField]
     private GameObject gun; 
     [SerializeField]
     private GameObject flashImage; 
 
     [SerializeField]
-    private float delayBeforeFadingFromWhite = 0.5f;
+    private float delayBeforeFadingFromFlashImage = 0.5f;
     [SerializeField]
     private float fadingSpeed = 1.25f;
 
@@ -77,9 +77,15 @@ public class ShootPersonCanvass : MonoBehaviour
 
         flashImage.SetActive(true);
 
-        yield return new WaitForSeconds(delayBeforeFadingFromWhite);
+        yield return new WaitForSeconds(delayBeforeFadingFromFlashImage);
 
-        _thisCanvasGroup.alpha = 0.99f;
+        _thisCanvasGroup.alpha = 0.0f;
+
+        if(GamblingTable.Instance.RoundNumber == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
+        {
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
+            StopAllCoroutines();
+        }
 
         if(GamblingTable.Instance.RoundNumber != gameConfiguration.MaxAmountOfRounds)
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));

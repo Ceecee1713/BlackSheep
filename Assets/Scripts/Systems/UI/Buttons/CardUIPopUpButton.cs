@@ -18,6 +18,22 @@ public class CardUIPopUpButton : MonoBehaviour
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);
         EventBus.Instance.Subscribe<FinishedRound>(DoNotAllowInput);
+        EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
+    }
+
+    void OnEnable()
+    {
+        _allowInput = true;
+    }
+
+    void OnDisable()
+    {
+        _allowInput = false;
+    }
+
+    private void OnNewCardRound(StartNewRound startNewRound)
+    {
+        _allowInput = false;
     }
 
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
