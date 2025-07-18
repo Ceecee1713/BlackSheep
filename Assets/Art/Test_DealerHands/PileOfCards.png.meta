@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PileOfCards_0: 5935064838989865032
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DealerRestingLeftHand_0: 7653531086394486406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
