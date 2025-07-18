@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 //Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
 //Remember to remove self from "Dealer.Instance" when this game object is destroyed or when a new scene is being loaded
@@ -8,21 +9,26 @@ using UnityEngine.EventSystems;
 public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] 
-    private Image cardIcon;
+    private Ease ease;
     [SerializeField] 
-    private HorizontalLayoutGroup cardLayoutGroup;
+    private Image cardIcon;
 
-    private Transform _parentTransformAfterDrag;
+    private Transform _parentTransform, _cardParent;
     private RectTransform _leftCardSlotRect, _rightCardSlotRect; 
     private CardType _cardType;
 
+    private Tween tween;
+
     private bool _cardHasBeenPlayed = false;
     private bool _allowInput = false;
+
+    private const float TWEEN_DURATION = 0.6f;
 
     void Awake()
     {
         Dealer.Instance.AddCard(this);
 
+        _cardParent = transform.parent;
         _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
         _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
 
@@ -55,7 +61,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
     private void OnNewCardRound(StartNewRound startNewRound)
     {
-        transform.SetParent(cardLayoutGroup.transform);
+        transform.SetParent(_cardParent);
+
+        tween?.Kill(); 
+        tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease); //Move the card to the position of its parent at 0,0,0 
+
         _allowInput = true;
         _cardHasBeenPlayed = false;
     }
@@ -81,7 +91,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
 
-        _parentTransformAfterDrag = transform.parent; 
+        _parentTransform = transform.parent; 
         transform.SetParent(transform.root);
     }
 
@@ -111,10 +121,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         if(GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player 
         || GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
-            //If this card is a sheep, player, or dealer card, return back to original position (its position in the "cardLayoutGroup" horizontal group)
+            //If this card is a sheep, player, or dealer card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Sheep || _cardType.typeOfCard == AllCardTypes.Player || _cardType.typeOfCard == AllCardTypes.Dealer)
             {
-                transform.SetParent(_parentTransformAfterDrag); 
+                transform.SetParent(_parentTransform); 
+                tween?.Kill();
+                tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease);
                 return; 
             }
 
@@ -131,10 +143,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
         if(GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Gun) //Check if the right slot has a gun card
         {
-            //If this card is a gun card, return back to original position (its position in the "cardLayoutGroup" horizontal group)
+            //If this card is a gun card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Gun)
             {
-                transform.SetParent(_parentTransformAfterDrag);
+                transform.SetParent(_parentTransform);
+                tween?.Kill();
+                tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease);
                 return; 
             }
 
@@ -167,10 +181,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         if(GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player 
         || GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
-            //If this card is a sheep, player, or dealer card, return back to original position (its position in the "cardLayoutGroup" horizontal group)
+            //If this card is a sheep, player, or dealer card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Sheep || _cardType.typeOfCard == AllCardTypes.Player || _cardType.typeOfCard == AllCardTypes.Dealer)
             {
-                transform.SetParent(_parentTransformAfterDrag);
+                transform.SetParent(_parentTransform);
+                tween?.Kill();
+                tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease);
                 return;
             }
 
@@ -186,10 +202,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
         if(GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Gun) //Check if the left slot has a gun card
         {
-            //If this card is a gun card, return back to original position (its position in the "cardLayoutGroup" horizontal group)
-            if(_cardType.typeOfCard == AllCardTypes.Gun)
+            //If this card is a gun card, return back to original position of its parent at 0,0,0 
+            if(_cardType.typeOfCard == AllCardTypes.Gun) 
             {
-                transform.SetParent(_parentTransformAfterDrag); 
+                transform.SetParent(_parentTransform); 
+                tween?.Kill();
+                tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease);
                 return;
             }
 
@@ -209,9 +227,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
 
-        if(_cardType.typeOfCard == AllCardTypes.NoValue)
+        if(_cardType.typeOfCard == AllCardTypes.NoValue) //Move card back to its parent at 0,0,0
         {
-            transform.SetParent(_parentTransformAfterDrag); //Return back to original position (its position in the "cardLayoutGroup" horizontal group)
+            transform.SetParent(_parentTransform); 
+            tween?.Kill();
+            tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease);
             return;
         }
 
@@ -227,8 +247,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
             CheckLeftCardSlot();
             
 
-        else
-            transform.SetParent(_parentTransformAfterDrag); //Return back to original position (its position in the "cardLayoutGroup" horizontal group)
+        else //Move card back to its parent at 0,0,0
+        {
+            transform.SetParent(_parentTransform); 
+            tween?.Kill();
+            tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease);
+        }
     }
 
     private bool CardsOverlap(RectTransform card, RectTransform cardSlot) //Checking if "cardRect" overlaps with "cardSlotRect"
