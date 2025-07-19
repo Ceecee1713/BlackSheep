@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c0c77fcb867dcc54f9b1c1443fc35b2b
+guid: 8431781c2121c03489e8423dd0ac7ada
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3055546142307311261
-    second: ace-of-spades_0
+      213: 6952940419962745055
+    second: bbbb_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ace-of-spades_0
+      name: bbbb_0
       rect:
         serializedVersion: 2
-        x: 22
+        x: 0
         y: 0
-        width: 468
-        height: 512
+        width: 1249
+        height: 1603
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9eda07070b776a20800000000000000
-      internalID: 3055546142307311261
+      spriteID: fd0b554497ecd7060800000000000000
+      internalID: 6952940419962745055
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ace-of-spades_0: 3055546142307311261
+      bbbb_0: 6952940419962745055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
