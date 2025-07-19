@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RevolverCard
   m_EditorClassIdentifier: 
   typeOfCard: 4
-  CardSprite: {fileID: 6624528087874976093, guid: 43667b63113f1794c83f8f59adb26939, type: 3}
+  CardSprite: {fileID: 21300000, guid: 8431781c2121c03489e8423dd0ac7ada, type: 3}

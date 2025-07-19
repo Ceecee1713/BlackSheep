@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerCard
   m_EditorClassIdentifier: 
   typeOfCard: 1
-  CardSprite: {fileID: 21300000, guid: e947c72a51786c94fbc31c977f640f84, type: 3}
+  CardSprite: {fileID: 21300000, guid: d478e91f3b4132e4e91b6c0adabd7345, type: 3}
