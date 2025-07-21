@@ -15,22 +15,19 @@ public class SwitchSceneButton : MonoBehaviour
     private string sceneNameToLoadOnClick;
 
     private bool _hasBeenClicked = false;
+    private const float DELAY = 0.5f;
 
     public void OnSwitchSceneClick()
     {
         if(_hasBeenClicked == true)
             return;
 
-        StartCoroutine(StartGame());
+        Invoke("ChangeScene", DELAY);
+        _hasBeenClicked = true;
     }
 
-    IEnumerator StartGame()
+    private void ChangeScene()
     {
-        _hasBeenClicked = true;
-        Tween tween = mainCanvasGroup.DOFade(0f, gameConfiguration.DurationOfScreenFade);
-        yield return tween.WaitForCompletion();
         SceneManager.LoadSceneAsync(sceneNameToLoadOnClick);
-        yield return null;
-        //StopAllCoroutines();
     }
 }

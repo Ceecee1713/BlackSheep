@@ -23,21 +23,22 @@ public class CanvasManager : MonoBehaviour
     //public bool StartNewRound = false; //Temporary
 
     private float _durationOfFade;
+    private const float DELAY = 0.3f;
 
     private GameObject _currentCanvas;
     private CanvasGroup _interactableLayoutCanvasGroup;
     private CanvasGroup _currentActiveCanvasGroup, _newCanvasGroup;
 
-    void Awake()
+    void Start()
     {
         _durationOfFade = gameConfiguration.DurationOfScreenFade;
         _interactableLayoutCanvasGroup = interactableLayout.GetComponent<CanvasGroup>();
         
+        //Turning the card gameplay canvas active to add the player cards as listeners to when it's time to shuffle
         interactableLayout.SetActive(true);
         _interactableLayoutCanvasGroup.alpha = 1.0f;
         cardGameplayCanvas.SetActive(true);
-
-        Invoke("TurnOffCardCanvas", 0.5f);
+        Invoke("TurnOffCardCanvas", DELAY);
 
         EventBus.Instance.Subscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
@@ -61,11 +62,11 @@ public class CanvasManager : MonoBehaviour
     {
         for (int i = 0; i < canvases.Length; i++)
         {
-            if (canvases[i].activeSelf == true) 
+            if (canvases[i].activeSelf == true)  //Checking if a canvas is active (only one canvas)
             {
                 CanvasGroup canvasGroup = canvases[i].GetComponent<CanvasGroup>();
 
-                if(fadeCurrentCanvas.FadeCanvas == true)
+                if(fadeCurrentCanvas.FadeCanvas == true) //For pause and tutorial menus to make the current canvas alpha fade in a bit
                 {
                     canvasGroup.alpha = 0.3f;
                     break;

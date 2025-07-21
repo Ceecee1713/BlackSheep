@@ -24,7 +24,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
     private const float TWEEN_DURATION = 0.6f;
 
-    void Awake()
+    void Start()
     {
         Dealer.Instance.AddCard(this);
 
