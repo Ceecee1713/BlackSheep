@@ -18,40 +18,43 @@ MonoBehaviour:
   ButtonTwoText: 
   NormalDialogue:
   - CharacterTitle: 1
-    Message: Hi there. Not nice to meet you
+    Message: Hi there. Not nice to meet you.
   - CharacterTitle: 1
-    Message: This is how you play
+    Message: This is how you play.
   - CharacterTitle: 1
     Message: Each round, you'll start with four cards.
   - CharacterTitle: 1
     Message: 'Each card that is given has a specific role to them. There are five
-      card types: Spades, Sheep, Dealer, Player being you, and a Gun'
+      card types: Spades, Sheep, Dealer, Player being you, and a Gun.'
   - CharacterTitle: 1
-    Message: The goal of each round is to shoot someone. That someone is in your
-      control. The sheep is a random person in the casino, the dealer being me and
-      the player being you
+    Message: The goal for each round is to shoot one person. I'll explain the card
+      types now.
   - CharacterTitle: 1
-    Message: You get to choose who to shoot. There'll be two slots on the table that
-      you have to place those cards into.
+    Message: 'The sheep card, indicated by a full sheep body, represents a random
+      person in the casino, The dealer card, indicated by a ram head, represents
+      me. The player card, indicated with a sheep head. represents you. '
+  - CharacterTitle: 1
+    Message: The Spades card type hold no value and can't be played. The gun card
+      type is self-explanatory, representing a gun.
+  - CharacterTitle: 1
+    Message: ' There''ll be two slots on the table that you have to place those cards
+      into.'
   - CharacterTitle: 1
     Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
       Player. The other card slot has to be a gun card
   - CharacterTitle: 1
     Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
       Player. The other card slot has to be a gun card
-  - CharacterTitle: 1
-    Message: The Spades hold no value and can't be played
   - CharacterTitle: 1
     Message: If you don't like your hand, you can ask for a reshuffle for a maximum
-      of three times per round
-  - CharacterTitle: 1
-    Message: You cannot ask for a reshuffle once a card is placed down
+      of three times per round. Although, you cannot ask for a reshuffle once a card
+      is placed down.
   - CharacterTitle: 1
     Message: The round is over once two cards have been played down that signifies
       a person can be shot
   - CharacterTitle: 1
     Message: 'Are you prepared? '
   - CharacterTitle: 1
-    Message: Let's play
+    Message: Let's play.
   ButtonOneDialogue: []
   ButtonTwoDialogue: []
