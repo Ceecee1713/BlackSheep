@@ -62,7 +62,7 @@ public class GamblingTable : Singleton<GamblingTable>
             EventBus.Instance.Publish(new FinishedRound()); //Reset the Shuffle Button's status and remove card types that can be given out to the player
             CheckForWhichCanvasToSwitchedTo();
 
-            if(RoundNumber > _maxAmountOfRounds)
+            if(RoundNumber < _maxAmountOfRounds)
                 RoundNumber++;
         }
     }

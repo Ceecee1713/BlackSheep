@@ -48,6 +48,7 @@ public class ShootPersonCanvass : MonoBehaviour
     void OnDisable()
     {
         flashImage.SetActive(false);
+        _gunImage.color = transparentColour;
         _hasBeenCalledOnce = false;
     }
 
