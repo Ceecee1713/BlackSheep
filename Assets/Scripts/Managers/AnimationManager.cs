@@ -161,7 +161,7 @@ public class AnimationManager : MonoBehaviour
 
         //Dealer will grab cards given by the player
         playerHand.transform.position = _playerHandRestPosition;
-        secondRightHand.transform.position = shuffledCardDeck.transform.position;
+        secondRightHand.transform.position = new Vector3(shuffledCardDeck.transform.position.x, (shuffledCardDeck.transform.position.y + 200f), shuffledCardDeck.transform.position.z); //shuffledCardDeck.transform.position;
         _secondRightHandImage.sprite = dealerSprites.RightHandReachingOver;
         playerCardDeck.transform.position = shuffledCardDeck.transform.position;
         rightHand.SetActive(false);

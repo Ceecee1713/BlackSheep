@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf35d886dd542444b212eccb7d4bb7f, type: 3}
   m_Name: DealerSprites
   m_EditorClassIdentifier: 
-  RightHandReachingOver: {fileID: 21300000, guid: d8e0c57d8806f8e45ba4ec49c6fc0e89, type: 3}
-  RightHandGrabbingCards: {fileID: 21300000, guid: 42e842d45b6308547911c4f91fa9ddbc, type: 3}
-  RightHandShuffling: {fileID: 21300000, guid: 0cd57001601a1194db3889851cfec89a, type: 3}
-  RightHandHoldingCards: {fileID: 1880373274143764579, guid: b1ad5fa41b95bfb4b9df99ec2f2e51ed, type: 3}
-  RightHandPassingCards: {fileID: 2454930526348271388, guid: eb55b0c8f5d8a5c49bb22328bd1c15f7, type: 3}
-  LeftHandShuffling: {fileID: 21300000, guid: 953d82963e24c0d4aaab2919a7dd73de, type: 3}
-  LeftHandHoldingCards: {fileID: -8194048687635809977, guid: b969db56dcaf5f14eaaaa470c4310292, type: 3}
+  RightHandReachingOver: {fileID: 21300000, guid: 3063fa5a0bfb5654881d517ba0027c5b, type: 3}
+  RightHandGrabbingCards: {fileID: 21300000, guid: f3ab3dfadf9ceb949af4799460d10428, type: 3}
+  RightHandShuffling: {fileID: 21300000, guid: 64cd4fe634cdba246832c67d9ade6694, type: 3}
+  RightHandHoldingCards: {fileID: 21300000, guid: 163b040602ce55d498ec9079c886ce12, type: 3}
+  RightHandPassingCards: {fileID: 21300000, guid: 263d4aaf77f0a6047a3cc3423186f2ab, type: 3}
+  LeftHandShuffling: {fileID: 21300000, guid: a2ac534253a4d76468b8827a221c5842, type: 3}
+  LeftHandHoldingCards: {fileID: 21300000, guid: 621f1eaa3b2d6a645b6b25312233ba3f, type: 3}
