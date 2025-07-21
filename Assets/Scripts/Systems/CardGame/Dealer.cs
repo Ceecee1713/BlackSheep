@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Remember to clear "_unavailableCardNumbers", "_allCards" and  "_unavailableCardNumbers" when dealer isn't active. 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from the events in Start when this game object is destroyed or when a new scene is being loaded
 
 public class Dealer : Singleton<Dealer>
 {
@@ -14,7 +14,6 @@ public class Dealer : Singleton<Dealer>
     
     private int _randomCardIndex; //Representing a random index from "_allCards"
     private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
-    private int _indexOfAvailableCardTypes = 0; //Used just to add elements to the "_availableCardTypes" arrray
     private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards; 
 
     private float _delay; 
@@ -23,15 +22,16 @@ public class Dealer : Singleton<Dealer>
     
     private void Start()
     {
-        _roundNumberToRemoveSheepCard = Resources.Load<GameConfiguration>("GameConfiguration").RoundNumberToRemoveSheepCard;
-        _roundNumberToRemoveDealerAndNormalCards = Resources.Load<GameConfiguration>("GameConfiguration").RoundNumberToRemoveDealerAndNormalCards;
-        _delay = Resources.Load<GameConfiguration>("GameConfiguration").DurationToMoveCardsUpDown;
+        var config = Resources.Load<GameConfiguration>("GameConfiguration");// store in a local variable to avoid multiple calls
 
-        foreach(CardType cardType in Resources.FindObjectsOfTypeAll(typeof(CardType)) as CardType[])
-        {
-            _availableCardTypes[_indexOfAvailableCardTypes] = cardType;
-            _indexOfAvailableCardTypes++;
-        }
+        _roundNumberToRemoveSheepCard = config.RoundNumberToRemoveSheepCard;
+        _roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
+        _delay = config.DurationToMoveCardsUpDown;
+
+        var cardTypes = Resources.FindObjectsOfTypeAll<CardType>();
+
+        for(int i = 0; i < _availableCardTypes.Length; i++)
+            _availableCardTypes[i] = cardTypes[i];
 
         EventBus.Instance.Subscribe<FinishedRound>(CheckToRemoveCardTypes);
         EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
