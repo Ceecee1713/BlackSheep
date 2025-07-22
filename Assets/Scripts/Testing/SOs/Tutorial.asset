@@ -43,9 +43,6 @@ MonoBehaviour:
     Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
       Player. The other card slot has to be a gun card
   - CharacterTitle: 1
-    Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
-      Player. The other card slot has to be a gun card
-  - CharacterTitle: 1
     Message: If you don't like your hand, you can ask for a reshuffle for a maximum
       of three times per round. Although, you cannot ask for a reshuffle once a card
       is placed down.
