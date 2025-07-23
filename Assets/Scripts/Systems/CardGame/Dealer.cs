@@ -28,7 +28,7 @@ public class Dealer : Singleton<Dealer>
         _roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
         _delay = config.DurationToMoveCardsUpDown;
 
-        var cardTypes = Resources.FindObjectsOfTypeAll<CardType>();
+        var cardTypes = Resources.LoadAll<CardType>("CardType");
 
         for(int i = 0; i < _availableCardTypes.Length; i++)
             _availableCardTypes[i] = cardTypes[i];

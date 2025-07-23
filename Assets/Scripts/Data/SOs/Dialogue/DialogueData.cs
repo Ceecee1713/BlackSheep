@@ -16,7 +16,7 @@ public class DialogueData : ScriptableObject
 public struct Character
 {
     public CharacterName CharacterTitle;
-    public string Message;
+    [TextArea(2,5)]public string Message;
 }
 
 public enum CharacterName 
