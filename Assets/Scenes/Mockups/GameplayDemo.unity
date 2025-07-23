@@ -2215,10 +2215,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2464462888461825796, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464462888461825796, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464462888461825796, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464462888461825796, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6587453192528118721, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_Name
       value: Dealer Talking Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 

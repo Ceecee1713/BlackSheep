@@ -121,7 +121,7 @@ public class AnimationManager : MonoBehaviour
 
     private void OnNewCardRound(StartNewRound startNewRound)
     {
-        StartCoroutine(DealerShufflingCards(true));
+        StartCoroutine(MoveCardsDown());
     }
 
     /* //Temporary
@@ -146,11 +146,11 @@ public class AnimationManager : MonoBehaviour
         }
         
         yield return sequence.WaitForCompletion();
-        yield return DealerShufflingCards(false);
+        yield return DealerShufflingCards();
     }
 
 
-    IEnumerator DealerShufflingCards(bool isThisANewRound)
+    IEnumerator DealerShufflingCards()
     {
         //Player returns cards
         playerHand.transform.position = new Vector3(playerHand.transform.position.x, _endCardSlideYPosition - playerHandOffset, playerHand.transform.position.z); 
@@ -242,28 +242,20 @@ public class AnimationManager : MonoBehaviour
         shuffledCardDeck.SetActive(false);
         shuffledCardDeck.transform.position = spawn_ShuffledCardDeckTransform.position;
         yield return new WaitForSeconds(delayBetweenClips);
-
-
-        if(isThisANewRound == true)
-        {
-            EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
-            StopAllCoroutines();
-        }
-
-        else
-        {
-            //Move cards up
-            Sequence sequence = DOTween.Sequence();
-
-            for(int i = 0; i < playingCardTransforms.Length; i++)
-            {
-                Tween tween = playingCardTransforms[i].DOAnchorPosY(playingCardTransforms[i].anchoredPosition.y + moveDistance, _durationToMoveCards, false);
-                sequence.Join(tween);
-            }
+        
+        
+        EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
             
-            yield return sequence.WaitForCompletion();
-            EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
-            StopAllCoroutines();
+        //Move cards up
+        Sequence sequence = DOTween.Sequence();
+
+        for(int i = 0; i < playingCardTransforms.Length; i++)
+        {
+            Tween tween = playingCardTransforms[i].DOAnchorPosY(playingCardTransforms[i].anchoredPosition.y + moveDistance, _durationToMoveCards, false);
+            sequence.Join(tween);
         }
+            
+        yield return sequence.WaitForCompletion();
+        StopAllCoroutines();
     }
 }
