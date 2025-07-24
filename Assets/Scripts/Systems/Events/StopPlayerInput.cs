@@ -49,3 +49,7 @@ public class FinishedRound : IEvent    //Reset the Shuffle Button's status and r
 public class StartNewRound : IEvent    //Reset player's cards' positions and status, shuffle the player's cards and play shuffling animation
 {
 }
+
+public class NextMessage : IEvent
+{
+}

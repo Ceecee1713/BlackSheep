@@ -41,6 +41,7 @@ public class DialogueBox : MonoBehaviour
     //Tell which dialogue from which button has been chosen 
     
     private bool _allowInput = false;
+    private bool _moveToNextMessage = false;
     private bool _hasActivatedButtonOptions = false; 
     private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent going through messages entirely
@@ -58,6 +59,7 @@ public class DialogueBox : MonoBehaviour
         }
 
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Subscribe<NextMessage>(OnNextMessageEvent);
     }
 
     void OnEnable() 
@@ -75,8 +77,9 @@ public class DialogueBox : MonoBehaviour
         if(_callDialogueCanvasSwitch == true)
             return;
 
-        if (Input.GetMouseButtonDown(0) && _allowInput == true)
+        if (_moveToNextMessage == true && _allowInput == true)
         {
+            _moveToNextMessage = false;
             CheckToSwitchDialogueCanvases();
             CheckWhichDialogueToBeSaidNext();
         }
@@ -86,8 +89,14 @@ public class DialogueBox : MonoBehaviour
     private void OnDestroy()
     {
         EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Unsubscribe<NextMessage>(OnNextMessageEvent);
     }
     */
+
+    private void OnNextMessageEvent(NextMessage nextMessage)
+    {
+        _moveToNextMessage = true;
+    }
 
     private void ResetValues()
     {

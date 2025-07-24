@@ -1,0 +1,45 @@
+{
+    "name": "CardGameInputs",
+    "maps": [
+        {
+            "name": "CardGame",
+            "id": "e66cb9c6-6bba-40ea-9550-4aca5a98c3ab",
+            "actions": [
+                {
+                    "name": "NextMessage",
+                    "type": "Button",
+                    "id": "b7288ad3-65ff-46df-996e-1586c7371634",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "66e838c0-fd65-4c4a-856f-60a2f4c3e687",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextMessage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5522c518-9913-41f6-9415-ebc43984e03f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextMessage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
