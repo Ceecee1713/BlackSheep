@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Remember to clear "_unavailableCardNumbers", "_allCards" and  "_unavailableCardNumbers" when dealer isn't active. 
-//Remember to unsubscribe from the events in Start when this game object is destroyed or when a new scene is being loaded
+//Remember to clear "_unavailableCardNumbers" and "_allCards" when dealer isn't active. 
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class Dealer : Singleton<Dealer>
 {
@@ -48,6 +48,18 @@ public class Dealer : Singleton<Dealer>
     {
         _allCards.Remove(card);
     }
+
+    /*
+    public override void OnDestroy()
+    {
+        EventBus.Instance.Unsubscribe<FinishedRound>(CheckToRemoveCardTypes);
+        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
+        EventBus.Instance.Unsubscribe<ShuffleCards>(ShuffleEvent);
+
+        _unavailableCardNumbers.Clear();
+        _allCards.Clear();
+    }
+    */
 
     private void CheckToRemoveCardTypes(FinishedRound finishedRound)
     {

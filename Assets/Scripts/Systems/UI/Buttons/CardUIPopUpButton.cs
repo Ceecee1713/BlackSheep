@@ -4,7 +4,7 @@ using UnityEngine;
 //This script are for buttons that'll show a small pop up on top of the card gameplay UI
 //Such as a small pause menu and a tutorial pop up
 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class CardUIPopUpButton : MonoBehaviour
 {
@@ -30,6 +30,16 @@ public class CardUIPopUpButton : MonoBehaviour
     {
         _allowInput = false;
     }
+
+    /*
+    private void OnDestroy()
+    {
+        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(AllowInput);
+        EventBus.Instance.Unsubscribe<FinishedRound>(DoNotAllowInput);
+        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
+    }
+    */
 
     private void OnNewCardRound(StartNewRound startNewRound)
     {

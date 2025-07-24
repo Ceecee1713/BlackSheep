@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public struct CardSlot
 {
     public RectTransform SlotRect; //Needs reference from Inspector
-    public Image SlotImage; //Needs reference from Inspector
     public CardType SlotType;
     public bool IsSlotOccupied;
 }

@@ -3,8 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
-//Remember to remove self from "Dealer.Instance" when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -38,6 +37,19 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
         EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
+
+    /*
+    private void OnDestroy()
+    {
+        Dealer.Instance.RemoveCard(this);
+
+        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(AllowInput);
+        EventBus.Instance.Unsubscribe<FinishedRound>(FinishedRoundEvent);
+        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
+        EventBus.Instance.Unsubscribe<ShuffleCards>(ShuffleEvent);
+    }
+    */
 
     private void AllowInput(CompletedShufflingCards completedShufflingCards)
     {

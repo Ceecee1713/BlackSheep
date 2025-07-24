@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class CanvasManager : MonoBehaviour 
 {
@@ -44,6 +44,15 @@ public class CanvasManager : MonoBehaviour
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayout);
     }
+
+    /*
+    private void OnDestroy()
+    {
+        EventBus.Instance.Unsubscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
+        EventBus.Instance.Unsubscribe<ChangeToNewCanvas>(SwitchCanvas);
+        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(ShowCardLayout);
+    }
+    */
     
     private void TurnOffCardCanvas()
     {
@@ -144,7 +153,7 @@ public class CanvasManager : MonoBehaviour
             if(canvasToSetActive == cardGameplayCanvas)
             {
                 interactableLayout.SetActive(true);
-                EventBus.Instance.Publish(new StartNewRound()); //Reset player's cards' positions and status, shuffle the player's cards and play shuffling animation
+                EventBus.Instance.Publish(new StartNewRound()); //Reset player's cards' status, shuffle the player's cards and play shuffling animation
             }
 
             //yield return null;

@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class DialogueBox : MonoBehaviour
 {
@@ -81,6 +81,13 @@ public class DialogueBox : MonoBehaviour
             CheckWhichDialogueToBeSaidNext();
         }
     }
+
+    /*
+    private void OnDestroy()
+    {
+        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
+    }
+    */
 
     private void ResetValues()
     {
@@ -223,6 +230,12 @@ public class DialogueBox : MonoBehaviour
             twoButtonsDisplay.SetActive(false);
             GetDialogueFromButtonTwo();
         }
+    }
+
+    public void ReceiveMessage(string message)
+    {
+        StopAllCoroutines();
+        StartCoroutine(TypeMessage(message));
     }
 
     IEnumerator PrepareFirstMessage()

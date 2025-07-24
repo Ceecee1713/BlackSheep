@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class AnimationManager : MonoBehaviour
 {
@@ -41,6 +41,14 @@ public class AnimationManager : MonoBehaviour
     {
         StartCoroutine(MoveCardsDown(true));
     }
+
+    /*
+    private void OnDestroy()
+    {
+        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
+        EventBus.Instance.Unsubscribe<ShuffleCards>(ShuffleEvent);
+    }
+    */
 
     /* //Temporary
     public void OnEventCalled(AllEventNames eventName)

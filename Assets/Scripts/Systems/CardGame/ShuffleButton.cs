@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//Remember to unsubscribe from the events in Awake when this game object is destroyed or when a new scene is being loaded
+//Remember to unsubscribe from events in Start when a new scene is loaded and such
 
 public class ShuffleButton : MonoBehaviour
 {
@@ -32,9 +32,18 @@ public class ShuffleButton : MonoBehaviour
 
     void Update()
     {
-        if(_numberOfShufflesPerRound == 0)
+        if(_numberOfShufflesPerRound == 0 || GamblingTable.Instance.CardHasBeenPlayed == true)
             button.SetActive(false);
     }
+
+    /*
+    private void OnDestroy()
+    {
+        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
+        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(SetButtonActive);
+        EventBus.Instance.Unsubscribe<FinishedRound>(DoNotAllowInput);
+    }
+    */
 
     private void DoNotAllowInput(FinishedRound finishedRound)
     {
