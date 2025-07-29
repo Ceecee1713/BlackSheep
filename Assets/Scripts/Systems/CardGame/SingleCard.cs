@@ -71,12 +71,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         _allowInput = false;
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound)
+    private void OnNewCardRound(StartNewRound startNewRound) //Bug here
     {
         transform.SetParent(_cardParent);
-
         tween?.Kill(); 
-        tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false).SetEase(ease); //Move the card to the position of its parent at 0,0,0 
+        tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false); //Move the card to the position of its parent at 0,0,0 
 
         _allowInput = true;
         _cardHasBeenPlayed = false;
@@ -103,6 +102,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
 
+        AudioManager.Instance.PlayCardSound();
         _parentTransform = transform.parent; 
         transform.SetParent(transform.root);
     }

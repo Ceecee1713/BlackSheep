@@ -16,6 +16,7 @@ public class SwitchToDialogueUIButton : MonoBehaviour
 
     public void OnSwitchUIClick()
     {
+        AudioManager.Instance.PlayButtonSound();
         EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : isNextCanvasADialogueCanvas));
     }
 }

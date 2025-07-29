@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 1345657161853698575}
   - component: {fileID: 1083577590979482876}
   m_Layer: 5
-  m_Name: Black Border - Image
+  m_Name: Black Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,7 +972,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3328232103918466198, guid: 42e765c8b0879aa4f96cee14db797ed6, type: 3}
       propertyPath: m_Name
-      value: All Audio
+      value: All SFXs
       objectReference: {fileID: 0}
     - target: {fileID: 3886109626595662158, guid: 42e765c8b0879aa4f96cee14db797ed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1014,11 +1014,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5653666806189257332, guid: 42e765c8b0879aa4f96cee14db797ed6, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e765c8b0879aa4f96cee14db797ed6, type: 3}
+--- !u!82 &3448856696753075865 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5760687086753259468, guid: 42e765c8b0879aa4f96cee14db797ed6, type: 3}
+  m_PrefabInstance: {fileID: 3448856696753075864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &3448856696753075866 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3409485613728788026, guid: 42e765c8b0879aa4f96cee14db797ed6, type: 3}
+  m_PrefabInstance: {fileID: 3448856696753075864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3910869500508188443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1445,6 +1459,14 @@ PrefabInstance:
       propertyPath: revolverSFX
       value: 
       objectReference: {fileID: 870012668}
+    - target: {fileID: 1830845689637820202, guid: 8cdbb92842e064948a58c69cad6297d4, type: 3}
+      propertyPath: cardSlideSFX
+      value: 
+      objectReference: {fileID: 3448856696753075865}
+    - target: {fileID: 1830845689637820202, guid: 8cdbb92842e064948a58c69cad6297d4, type: 3}
+      propertyPath: cardShuffleSFX
+      value: 
+      objectReference: {fileID: 3448856696753075866}
     - target: {fileID: 4385225687182743053, guid: 8cdbb92842e064948a58c69cad6297d4, type: 3}
       propertyPath: m_Name
       value: AudioManager

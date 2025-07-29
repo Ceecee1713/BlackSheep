@@ -3,13 +3,10 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//This script is to be attached only to the start menu UI screen
+//This script is to be attached to the UI that'll be the first active UI upon startng up the game
 
-public class LoadStartUI : MonoBehaviour
+public class LoadUI : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource bgm;
-
     private CanvasGroup _canvasGroup;
     private float _durationOfFade = 1.5f;
     private const float DELAY = 0.25f;
@@ -23,7 +20,6 @@ public class LoadStartUI : MonoBehaviour
     IEnumerator ShowCanvas()
     {
         yield return new WaitForSeconds(DELAY);
-        bgm.Play();
         Tween firstTween = _canvasGroup.DOFade(1f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
         StopAllCoroutines();

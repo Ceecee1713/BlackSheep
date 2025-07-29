@@ -4,8 +4,14 @@ public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
     private AudioSource buttonSFX;
+
+    [Header ("For Card Game")]
     [SerializeField]
     private AudioSource cardPopSFX;
+    [SerializeField]
+    private AudioSource cardSlideSFX;
+    [SerializeField]
+    private AudioSource cardShuffleSFX;
     [SerializeField]
     private AudioSource revolverSFX;
     [SerializeField]
@@ -27,13 +33,23 @@ public class AudioManager : Singleton<AudioManager>
         cardPopSFX.Play();
     }
 
+    public void PlayCardShuffleSound()
+    {
+        cardShuffleSFX.Play();
+    }
+
+    public void PlayCardSlideSound()
+    {
+        cardSlideSFX.Play();
+    }
+
     public void PlayGunshotSound()
     {
-        revolverSFX.Play();
+        gunshotSFX.Play();
     }
 
     public void PlayRevolverSound()
     {
-        gunshotSFX.Play();
+        revolverSFX.Play();
     }
 }

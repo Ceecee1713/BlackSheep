@@ -53,3 +53,7 @@ public class StartNewRound : IEvent    //Reset player's cards' positions and sta
 public class NextMessage : IEvent
 {
 }
+
+public class IncreaseMusicVolume : IEvent
+{
+}

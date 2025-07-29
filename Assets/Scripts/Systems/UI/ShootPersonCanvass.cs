@@ -66,6 +66,8 @@ public class ShootPersonCanvass : MonoBehaviour
         float elapsedTime = 0f;
         float elapsedPercentage = 0f;
 
+        AudioManager.Instance.PlayRevolverSound();
+
         while(elapsedPercentage < 1.0f)
         {
             elapsedPercentage = elapsedTime / fadingSpeed;
@@ -76,6 +78,7 @@ public class ShootPersonCanvass : MonoBehaviour
 
         yield return new WaitForSeconds(DELAY);
 
+        AudioManager.Instance.PlayGunshotSound();
         flashImage.SetActive(true);
 
         yield return new WaitForSeconds(delayBeforeFadingFromFlashImage);
@@ -85,13 +88,17 @@ public class ShootPersonCanvass : MonoBehaviour
         if(GamblingTable.Instance.RoundNumber == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
         {
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
+            EventBus.Instance.Publish(new IncreaseMusicVolume());
             StopAllCoroutines();
         }
 
         if(GamblingTable.Instance.RoundNumber != gameConfiguration.MaxAmountOfRounds)
+        {
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
-
-        else
+            EventBus.Instance.Publish(new IncreaseMusicVolume());
+        }
+            
+        else //Reached the last round of the game
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : badEndDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
 
         StopAllCoroutines();

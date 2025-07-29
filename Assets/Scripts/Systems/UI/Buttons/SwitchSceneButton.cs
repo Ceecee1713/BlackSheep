@@ -22,8 +22,9 @@ public class SwitchSceneButton : MonoBehaviour
         if(_hasBeenClicked == true)
             return;
 
-        Invoke("ChangeScene", DELAY);
         _hasBeenClicked = true;
+        AudioManager.Instance.PlayButtonSound();
+        Invoke("ChangeScene", DELAY);
     }
 
     private void ChangeScene()

@@ -66,6 +66,7 @@ public class CardUIPopUpButton : MonoBehaviour
         if(_allowInput == false)
             return;
 
+        AudioManager.Instance.PlayButtonSound();
         uiPopUpToSetActive.SetActive(true);
     }
 }
