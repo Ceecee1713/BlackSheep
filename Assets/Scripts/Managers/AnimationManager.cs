@@ -21,6 +21,7 @@ public class AnimationManager : MonoBehaviour
 
     private float _durationToMoveCards; //For the animation of player's interactable cards to move up or down
     
+    private const float DELAY = 1.0f;
     private const float SHORTDELAY = 3.5f;
     private const float LONGDELAY = 4.0f;
 
@@ -63,6 +64,8 @@ public class AnimationManager : MonoBehaviour
 
     IEnumerator MoveCardsDown(bool isNotANewRound) 
     {
+        yield return new WaitForSeconds(DELAY);
+
         Sequence sequence = DOTween.Sequence();
         
         for(int i = 0; i < playingCardTransforms.Length; i++)

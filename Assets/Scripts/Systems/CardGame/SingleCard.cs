@@ -21,7 +21,10 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
     private bool _cardHasBeenPlayed = false;
     private bool _allowInput = false;
 
-    private const float TWEEN_DURATION = 0.6f;
+    private const float TWEEN_DURATION = 0.5f;
+
+    private Vector2 _originalAnchorPosition;
+    private RectTransform _rectTransform;
 
     void Start()
     {
@@ -71,10 +74,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         _allowInput = false;
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound) //Bug here
+    private void OnNewCardRound(StartNewRound startNewRound) 
     {
-        transform.SetParent(_cardParent);
-        tween?.Kill(); 
+        _parentTransform = _cardParent;
+        transform.SetParent(_parentTransform); 
+        tween?.Kill();
         tween = transform.DOLocalMove(Vector3.zero, TWEEN_DURATION, false); //Move the card to the position of its parent at 0,0,0 
 
         _allowInput = true;
