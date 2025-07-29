@@ -23,8 +23,10 @@ public enum CharacterName
 {
     Narrator,
     DEALER,
+    Dealer,
     Nameless,
-    Patron, 
+    SheepOne,
+    SheepTwo, 
     Bartender,
     Personnel
 }
