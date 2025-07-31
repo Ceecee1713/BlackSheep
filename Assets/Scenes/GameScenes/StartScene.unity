@@ -1518,9 +1518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7e431010abb1e418290f4fdca21513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConfiguration: {fileID: 11400000, guid: 0ea8c2d159fcfe846ac76d7da02c6049, type: 2}
-  mainCanvasGroup: {fileID: 1809527034158336214}
-  sceneNameToLoadOnClick: 
+  sceneNameToLoadOnClick: Game
 --- !u!222 &8242402118661014727
 CanvasRenderer:
   m_ObjectHideFlags: 0
