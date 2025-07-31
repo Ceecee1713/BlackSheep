@@ -33,7 +33,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] 
     private TextMeshProUGUI dialogueButtonTwoText;
 
-    public bool TypeFirstMessageOnAwake = false; //Temporary, get rid of when game is fully made
+    //public bool TypeFirstMessageOnAwake = false; //Temporary, get rid of when game is fully made
 
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
@@ -51,12 +51,14 @@ public class DialogueBox : MonoBehaviour
         
     void Awake()
     {
+        /*
         if (TypeFirstMessageOnAwake == true) //Temporary statement, get rid of when game is fully made
         {
             CanvasGroup canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
             canvasGroup.alpha = 1.0f;
             DisplayDialogueBox();
         }
+        */
 
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<NextMessage>(OnNextMessageEvent);

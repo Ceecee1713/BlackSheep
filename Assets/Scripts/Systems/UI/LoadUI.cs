@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class LoadUI : MonoBehaviour
 {
+    [SerializeField]
+    private DialogueBox dialogueBox;
+
     private CanvasGroup _canvasGroup;
     private float _durationOfFade = 1.5f;
     private const float DELAY = 0.25f;
@@ -22,6 +25,7 @@ public class LoadUI : MonoBehaviour
         yield return new WaitForSeconds(DELAY);
         Tween firstTween = _canvasGroup.DOFade(1f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
+        dialogueBox.DisplayDialogueBox();
         StopAllCoroutines();
     }
 }

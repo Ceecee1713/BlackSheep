@@ -34,6 +34,10 @@ public class ChangeToNewCanvas : IEvent
     }
 }
 
+public class DisableUIPopUps : IEvent
+{
+}
+
 public class ShuffleCards : IEvent     //Disable input for moving the player's cards, shuffle cards and play shuffling animation
 {
 }

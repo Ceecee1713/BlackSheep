@@ -14,8 +14,14 @@ public class SwitchToDialogueUIButton : MonoBehaviour
     [SerializeField]
     private bool isNextCanvasADialogueCanvas = false;
 
+    private bool _dontRepeat = false;
+
     public void OnSwitchUIClick()
     {
+        if(_dontRepeat == true)
+            return;
+
+        _dontRepeat = true;
         AudioManager.Instance.PlayButtonSound();
         EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : isNextCanvasADialogueCanvas));
     }
