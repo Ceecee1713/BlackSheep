@@ -1835,6 +1835,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4454085069542657087, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 232b91abb9f97914bb5da8915a1538e1, type: 3}
+    - target: {fileID: 4454085069542657087, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454085069542657087, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454085069542657087, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4925928641853966527, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_Name
       value: Leave Casino Button
@@ -1857,7 +1873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6568759854400099424, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6587453192528118721, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_Name
@@ -1875,6 +1891,10 @@ PrefabInstance:
       propertyPath: nextCanvasToSetActive
       value: 
       objectReference: {fileID: 802338732}
+    - target: {fileID: 7643581962011435598, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7647027886770976064, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: uiPopUpToSetActive
       value: 
@@ -1929,23 +1949,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8707258472533474747, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707258472533474747, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707258472533474747, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707258472533474747, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -922.5995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707258472533474747, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -588.3472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707258472533474747, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1979,7 +1999,10 @@ PrefabInstance:
     - {fileID: 463387590180473650, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
     - {fileID: 6676273730929833060, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 893764438887309159, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 851910781}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4925928641853966527, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       insertIndex: -1
@@ -2180,6 +2203,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836645523}
+  m_CullTransparentMesh: 1
+--- !u!1 &851910780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851910781}
+  - component: {fileID: 851910783}
+  - component: {fileID: 851910782}
+  m_Layer: 5
+  m_Name: Player Eyes - Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &851910781
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851910780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1166424502}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -38, y: 145}
+  m_SizeDelta: {x: 186.5121, y: 83.9048}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &851910782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851910780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 56617f2a1b1d52f43aa69e9f77537f4f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &851910783
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851910780}
   m_CullTransparentMesh: 1
 --- !u!1 &862087010
 GameObject:
@@ -2978,6 +3076,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!224 &1166424502 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 893764438887309159, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+  m_PrefabInstance: {fileID: 802338727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1167578059
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,7 +5624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1633375174364812974, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2464462888461825796, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5555,6 +5658,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6568759854400099424, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6587453192528118721, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: m_Name
       value: Dealer Talking Canvas Round1-4
@@ -5573,6 +5680,10 @@ PrefabInstance:
       objectReference: {fileID: 1005330227481765333}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: TypeFirstMessageOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643581962011435598, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647027886770976064, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
