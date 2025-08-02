@@ -16,7 +16,7 @@ public class Dealer : Singleton<Dealer>
     private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
     private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards; 
 
-    private float _delay; 
+    private const float DELAY = 1.5f; 
 
     private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Exclude card bools for later rounds (limit cards to be given out)
     
@@ -26,7 +26,6 @@ public class Dealer : Singleton<Dealer>
 
         _roundNumberToRemoveSheepCard = config.RoundNumberToRemoveSheepCard;
         _roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
-        _delay = config.DurationToMoveCardsUpDown;
 
         var cardTypes = Resources.LoadAll<CardType>("CardType");
 
@@ -68,12 +67,12 @@ public class Dealer : Singleton<Dealer>
 
     private void ShuffleEvent(ShuffleCards shuffleCards)
     {
-        Invoke("StartShufflingCards", _delay);
+        Invoke("StartShufflingCards", DELAY);
     }
 
     private void OnNewCardRound(StartNewRound startNewRound)
     {
-        Invoke("StartShufflingCards", _delay);
+        Invoke("StartShufflingCards", DELAY);
     }
 
     private void RemoveCardTypes() //Limit card types to be given out to the player in later rounds
@@ -159,6 +158,6 @@ public class Dealer : Singleton<Dealer>
     public void OnEventCalled(AllEventNames eventName) 
     {
         if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
-            Invoke("StartShufflingCards", _delay);
+            Invoke("StartShufflingCards", DELAY);
     }
     */

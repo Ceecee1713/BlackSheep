@@ -2054,6 +2054,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6587453192528118721, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
   m_PrefabInstance: {fileID: 802338727}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &802338738 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1633375174364812974, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+  m_PrefabInstance: {fileID: 802338727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &833676856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2070,8 @@ GameObject:
   - component: {fileID: 833676857}
   - component: {fileID: 833676859}
   - component: {fileID: 833676858}
+  - component: {fileID: 833676861}
+  - component: {fileID: 833676860}
   m_Layer: 5
   m_Name: Dealer Eyes - Image
   m_TagString: Untagged
@@ -2129,6 +2136,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833676856}
   m_CullTransparentMesh: 1
+--- !u!114 &833676860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833676856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 833676861}
+  currentCanvasGroup: {fileID: 2109594922}
+  delayBetweenBlinkAnimation: 0
+--- !u!95 &833676861
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833676856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &836645523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2184,8 @@ GameObject:
   - component: {fileID: 836645524}
   - component: {fileID: 836645526}
   - component: {fileID: 836645525}
+  - component: {fileID: 836645528}
+  - component: {fileID: 836645527}
   m_Layer: 5
   m_Name: Dealer Eyes - Image
   m_TagString: Untagged
@@ -2204,6 +2250,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836645523}
   m_CullTransparentMesh: 1
+--- !u!114 &836645527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836645523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 836645528}
+  currentCanvasGroup: {fileID: 7388227439546508609}
+  delayBetweenBlinkAnimation: 0
+--- !u!95 &836645528
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836645523}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &851910780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2298,8 @@ GameObject:
   - component: {fileID: 851910781}
   - component: {fileID: 851910783}
   - component: {fileID: 851910782}
+  - component: {fileID: 851910785}
+  - component: {fileID: 851910784}
   m_Layer: 5
   m_Name: Player Eyes - Image
   m_TagString: Untagged
@@ -2279,6 +2364,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851910780}
   m_CullTransparentMesh: 1
+--- !u!114 &851910784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851910780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 851910785}
+  currentCanvasGroup: {fileID: 802338738}
+  delayBetweenBlinkAnimation: 0
+--- !u!95 &851910785
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851910780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &862087010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,6 +2719,11 @@ RectTransform:
 --- !u!224 &887850857 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 893764438887309159, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+  m_PrefabInstance: {fileID: 887850854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &887850859 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1633375174364812974, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
   m_PrefabInstance: {fileID: 887850854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &890402593
@@ -3218,6 +3345,8 @@ GameObject:
   - component: {fileID: 1187692772}
   - component: {fileID: 1187692774}
   - component: {fileID: 1187692773}
+  - component: {fileID: 1187692776}
+  - component: {fileID: 1187692775}
   m_Layer: 5
   m_Name: 'Sheep  Two''s  Eyes '
   m_TagString: Untagged
@@ -3282,6 +3411,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187692771}
   m_CullTransparentMesh: 1
+--- !u!114 &1187692775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187692771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1187692776}
+  currentCanvasGroup: {fileID: 887850859}
+  delayBetweenBlinkAnimation: 0
+--- !u!95 &1187692776
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187692771}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1247843151
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,6 +4863,8 @@ GameObject:
   - component: {fileID: 1909181046}
   - component: {fileID: 1909181048}
   - component: {fileID: 1909181047}
+  - component: {fileID: 1909181050}
+  - component: {fileID: 1909181049}
   m_Layer: 5
   m_Name: Sheep One's Eyes
   m_TagString: Untagged
@@ -4761,6 +4929,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909181045}
   m_CullTransparentMesh: 1
+--- !u!114 &1909181049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909181045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1187692776}
+  currentCanvasGroup: {fileID: 887850859}
+  delayBetweenBlinkAnimation: 0
+--- !u!95 &1909181050
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909181045}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1994249321
 GameObject:
   m_ObjectHideFlags: 0
@@ -5581,6 +5786,11 @@ RectTransform:
 --- !u!224 &2109594918 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 113680549643040993, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+  m_PrefabInstance: {fileID: 2109594916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2109594922 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1633375174364812974, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
   m_PrefabInstance: {fileID: 2109594916}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2116986504
@@ -6628,6 +6838,11 @@ PrefabInstance:
 --- !u!1 &7388227439546508608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6587453192528118721, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+  m_PrefabInstance: {fileID: 1650189628749249018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &7388227439546508609 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1633375174364812974, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
   m_PrefabInstance: {fileID: 1650189628749249018}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8905620722644949478

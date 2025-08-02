@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PracticingAnimations/PracticeDealer.unity
     guid: 8241d74519c21f04c9ca14c7c671c1e1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mockups/GameplayDemo.unity
     guid: f9fef1cc9cbdeff449c348f6ac298338
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/StartScene.unity
+    guid: 549674aa7da0cb047bd92e8a59069b7b
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Game.unity
+    guid: c7e45f969ce11c34f981da0c2abd12dc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

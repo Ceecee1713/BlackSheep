@@ -64,7 +64,8 @@ public class AnimationManager : MonoBehaviour
 
     IEnumerator MoveCardsDown(bool isNotANewRound) 
     {
-        yield return new WaitForSeconds(DELAY);
+        if(isNotANewRound == true)
+            yield return new WaitForSeconds(DELAY);
 
         Sequence sequence = DOTween.Sequence();
         
