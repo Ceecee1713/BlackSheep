@@ -66,6 +66,7 @@ public class ShootPersonCanvass : MonoBehaviour
         float elapsedTime = 0f;
         float elapsedPercentage = 0f;
 
+        gun.SetActive(true);
         AudioManager.Instance.PlayRevolverSound();
 
         while(elapsedPercentage < 1.0f)
@@ -84,6 +85,7 @@ public class ShootPersonCanvass : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeFadingFromFlashImage);
 
         _thisCanvasGroup.alpha = 0.0f;
+        gun.SetActive(false);
 
         if(GamblingTable.Instance.RoundNumber == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
         {
