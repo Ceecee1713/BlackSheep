@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 228672042}
   - component: {fileID: 228672041}
   - component: {fileID: 228672040}
+  - component: {fileID: 228672045}
   m_Layer: 5
   m_Name: End Screen Canvas
   m_TagString: Untagged
@@ -402,6 +403,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &228672045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228672039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bd6e93b84ba7747974bb8cd89d87c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 2078768405}
+  titleMessage: The House Always Wins...
+  typingSpeed: 0.25
+  currentCanvasGroup: {fileID: 228672040}
+  currentCanvasOptions: {fileID: 1247843153}
 --- !u!224 &260766913 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4022969724822615114, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
@@ -2999,6 +3017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1247843152}
+  - component: {fileID: 1247843153}
   m_Layer: 5
   m_Name: Two Button Display
   m_TagString: Untagged
@@ -3027,6 +3046,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 98}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1247843153
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247843151}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1261408436
 PrefabInstance:
   m_ObjectHideFlags: 0
