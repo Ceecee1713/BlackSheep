@@ -16,6 +16,67 @@ MonoBehaviour:
   PromptTwoButtonDisplay: 0
   ButtonOneText: 
   ButtonTwoText: 
-  NormalDialogue: []
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: 'Just a curious question: Is your headache gone now?'
+  - CharacterTitle: 3
+    Message: No. It hurts worse.
+  - CharacterTitle: 1
+    Message: That's a shame.
+  - CharacterTitle: 3
+    Message: Uh huh.
+  - CharacterTitle: 1
+    Message: Well, not like shooting your head is the best medicine for a headache.
+      I said that long before as an exaggeration to grab your attention.
+  - CharacterTitle: 1
+    Message: I know you understand that putting a bullet in your head wouldn't actually
+      cure the physical pain, but you still did.
+  - CharacterTitle: 1
+    Message: And I know you realize that doing so would put you through more pain.
+  - CharacterTitle: 1
+    Message: The sensation of being shot is still very real before you're brought
+      back to life, erasing all physical pain.
+  - CharacterTitle: 1
+    Message: You know, I saw you at the bar earlier, and you reached the threshold
+      of six drinks per person.
+  - CharacterTitle: 1
+    Message: With drinking that much and shooting yourself, you're someone who enjoys
+      pain.
+  - CharacterTitle: 1
+    Message: Addicted, sure, but it's not that simple.
+  - CharacterTitle: 1
+    Message: Pain is comforting because it's normalized for you.
+  - CharacterTitle: 1
+    Message: It feels right to punish yourself because of situations that made you
+      feel like you deserve the pain.
+  - CharacterTitle: 3
+    Message: Are you sure we don't know each other? Because I don't like these repeated
+      words.
+  - CharacterTitle: 1
+    Message: Currently, we don't know each other, but maybe in the past we did.
+  - CharacterTitle: 3
+    Message: Right...
+  - CharacterTitle: 3
+    Message: "I don't like this introspection, just so you know\u2026"
+  - CharacterTitle: 3
+    Message: I won't comment on what you said before, but others can't possibly understand
+      that addiction for pain or outright refuse to understand.
+  - CharacterTitle: 1
+    Message: People judge. They judge based on the limited information they have
+      of a person, the things that person has done, their interactions with others.
+  - CharacterTitle: 3
+    Message: People always judge. Some keep it to themselves, but it's still the
+      same. People assume too. People are all the same.
+  - CharacterTitle: 1
+    Message: You belong to suffering.
+  - CharacterTitle: 3
+    Message: I belong to the system of suffering. I'm just a cog in a machine, even
+      in this casino, to keep your revenue flowing...
+  - CharacterTitle: 0
+    Message: They pull more wool from their arm as the stinging sensation worsens.
+  - CharacterTitle: 0
+    Message: The creature takes the wool and moves it beneath the table.
+  - CharacterTitle: 0
+    Message: I'll start a new round.
   ButtonOneDialogue: []
   ButtonTwoDialogue: []

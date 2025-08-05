@@ -16,6 +16,69 @@ MonoBehaviour:
   PromptTwoButtonDisplay: 0
   ButtonOneText: 
   ButtonTwoText: 
-  NormalDialogue: []
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: "Shooting yourself midway into the game\u2026"
+  - CharacterTitle: 3
+    Message: Are you going to make another one of your comments?
+  - CharacterTitle: 1
+    Message: Yes, but you're still choosing to listen.
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 1
+    Message: One thing I enjoy about hosting this game is that I get to see truly
+      different people than in other typical jobs.
+  - CharacterTitle: 1
+    Message: I see traces of their remaining humanity, despite them looking, well,
+      not human, through their words and my deductions.
+  - CharacterTitle: 3
+    Message: Have you made connections with those people?
+  - CharacterTitle: 1
+    Message: From the second they sign the contract, I already know who they are,
+      but when the game is over, they won't remember me. I will.
+  - CharacterTitle: 1
+    Message: Some have left an impression on me, but everyone's story belongs to
+      them, not me.
+  - CharacterTitle: 1
+    Message: Because I'm with you, I know everything about you until this game ends.
+      However, the same types of characters only come to play my game.
+  - CharacterTitle: 1
+    Message: Broken people are my demographic. If everyone is hurting, why does your
+      pain matter compared to theirs?
+  - CharacterTitle: 1
+    Message: You're not unique because you feel pain.
+  - CharacterTitle: 1
+    Message: Everything is dull, mundane, the same. People don't change. People don't
+      need to be explicit to make you question your worth. People are sly, slowly
+      picking away at your character.
+  - CharacterTitle: 1
+    Message: Choices are meaningless because something or someone else will want
+      to make the choices for you or heavily influence them.
+  - CharacterTitle: 1
+    Message: Individuality is a myth once you belong to a system of pain.
+  - CharacterTitle: 1
+    Message: How can you be you if others don't allow you to be? Why try then? You
+      keep trying. Things keep crumbling, then you give up because you'll never be
+      allowed to be you.
+  - CharacterTitle: 1
+    Message: Family, friends, work, all have an idea of who you are to them. But
+      those ideas are all different. They all shove their expectations under the
+      label of 'care', then even caring eventually becomes a lie.
+  - CharacterTitle: 1
+    Message: So what does that make you?
+  - CharacterTitle: 1
+    Message: You belong to them, not to yourself.
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 0
+    Message: They grasp their arm. The arm is horribly torn up. Parts of their flesh
+      are exposed and red from the brute force of wool being ripped off.
+  - CharacterTitle: 0
+    Message: They tear a larger chunk of wool than they intended higher up their
+      arm and hand the clump over.
+  - CharacterTitle: 1
+    Message: I'll shuffle a new round now.
+  - CharacterTitle: 3
+    Message: 'I just want this over with so I can stop listening to you. '
   ButtonOneDialogue: []
   ButtonTwoDialogue: []

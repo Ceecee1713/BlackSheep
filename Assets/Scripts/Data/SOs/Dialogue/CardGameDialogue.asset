@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: CardGameDialogue
   m_EditorClassIdentifier: 
   RoundDialogue:
-  - ShootSheepDialogue: {fileID: 0}
+  - ShootSheepDialogue: {fileID: 11400000, guid: fd6f27519504ab9438be8d2b7eedf2f7, type: 2}
+    ShootDealerDialogue: {fileID: 11400000, guid: f8922d97f3a2f6e4c8912b3fd19a41b7, type: 2}
+    ShootPlayerDialogue: {fileID: 11400000, guid: 7268c2f85b0b642428c6580640e9ad51, type: 2}
+  - ShootSheepDialogue: {fileID: 11400000, guid: 93c7f248723bbd4458427ad165b23237, type: 2}
     ShootDealerDialogue: {fileID: 0}
-    ShootPlayerDialogue: {fileID: 0}
-  - ShootSheepDialogue: {fileID: 0}
+    ShootPlayerDialogue: {fileID: 11400000, guid: ae0deb66641743c41a69e6ed51cdf74f, type: 2}
+  - ShootSheepDialogue: {fileID: 11400000, guid: 41552ceeeda1e4a45876e29fc5e24b24, type: 2}
     ShootDealerDialogue: {fileID: 0}
-    ShootPlayerDialogue: {fileID: 0}
-  - ShootSheepDialogue: {fileID: 0}
-    ShootDealerDialogue: {fileID: 0}
-    ShootPlayerDialogue: {fileID: 0}
+    ShootPlayerDialogue: {fileID: 11400000, guid: 9207aafbedd869e4eadf03c78c5905bc, type: 2}
   - ShootSheepDialogue: {fileID: 0}
     ShootDealerDialogue: {fileID: 0}
     ShootPlayerDialogue: {fileID: 0}

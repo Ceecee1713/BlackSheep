@@ -16,6 +16,38 @@ MonoBehaviour:
   PromptTwoButtonDisplay: 0
   ButtonOneText: 
   ButtonTwoText: 
-  NormalDialogue: []
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: "Bold of you to shoot yourself in the first round.\r"
+  - CharacterTitle: 1
+    Message: Not many people decide to spend the first bullet on themselves.
+  - CharacterTitle: 1
+    Message: I believe most people don't because of fear of death. I never specified
+      if you'd come back to life, nor is it written down.
+  - CharacterTitle: 1
+    Message: Maybe you don't fear death. Do you?
+  - CharacterTitle: 1
+    Message: It's fine if you don't want to tell. We don't normally want to reveal
+      our fears outright.
+  - CharacterTitle: 1
+    Message: It's common for others to exploit your fears or mock them.
+  - CharacterTitle: 3
+    Message: Whatever you say.
+  - CharacterTitle: 0
+    Message: They grasp their arm once more before pulling out a chunk of black fur.
+  - CharacterTitle: 0
+    Message: They can't hold back the tears welling in the corners of their eyes
+      from the physical pain.
+  - CharacterTitle: 1
+    Message: This is enough.
+  - CharacterTitle: 0
+    Message: "The creature raises their eyes from the chunk of fur on the table to
+      observe their pained expression.\r"
+  - CharacterTitle: 1
+    Message: You don't have to hide physical pain.
+  - CharacterTitle: 3
+    Message: Just shuffle.
+  - CharacterTitle: 1
+    Message: "Very well\u2026"
   ButtonOneDialogue: []
   ButtonTwoDialogue: []

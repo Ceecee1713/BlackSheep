@@ -13,9 +13,82 @@ MonoBehaviour:
   m_Name: SheepOne
   m_EditorClassIdentifier: 
   PromptOneButtonDisplay: 0
-  PromptTwoButtonDisplay: 0
-  ButtonOneText: 
-  ButtonTwoText: 
-  NormalDialogue: []
-  ButtonOneDialogue: []
-  ButtonTwoDialogue: []
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Yes
+  ButtonTwoText: No Answer
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: Oh? You chose to shoot a random person?
+  - CharacterTitle: 1
+    Message: That's interesting.
+  - CharacterTitle: 1
+    Message: I noticed you were speaking to other people at a table earlier, but
+      you decided not to join them.
+  - CharacterTitle: 1
+    Message: You don't have to tell me the reason why you chose not to play with
+      them.
+  - CharacterTitle: 1
+    Message: But I am curious. Do you like the fact that this game is only for one
+      player?
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: Yeah, I do like playing by myself.
+  - CharacterTitle: 1
+    Message: Can I ask why?
+  - CharacterTitle: 3
+    Message: Having more players adds more uncontrollable variables. I don't want
+      that risk.
+  - CharacterTitle: 1
+    Message: A gambler who doesn't want to take all the risks- that's quite contradictory.
+  - CharacterTitle: 3
+    Message: 'Yeah, whatever. '
+  - CharacterTitle: 0
+    Message: They grasp their arm once more before pulling out a chunk of black fur.
+  - CharacterTitle: 0
+    Message: They can't hold back the tears welling up in the corners of their eyes
+      from the physical pain.
+  - CharacterTitle: 1
+    Message: This is enough.
+  - CharacterTitle: 0
+    Message: The creature raises their eyes from the chunk of fur on the table to
+      observe their pained expression.
+  - CharacterTitle: 1
+    Message: I know it hurts. This isn't Poker, where you have to pretend.
+  - CharacterTitle: 3
+    Message: Just shuffle.
+  - CharacterTitle: 1
+    Message: Very well.
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: You should have your answer based on what you saw at that table earlier.
+  - CharacterTitle: 3
+    Message: I don't feel like answering that.
+  - CharacterTitle: 1
+    Message: I'd like to hear your thoughts first instead of forming assumptions.
+  - CharacterTitle: 1
+    Message: "I'm going to talk to you as we keep playing. Making conversation can
+      be cathartic\u2026"
+  - CharacterTitle: 3
+    Message: Just because I'm playing your game doesn't mean I have to talk to you.
+  - CharacterTitle: 3
+    Message: It's not written in the contract that I have to talk to you, is it?
+  - CharacterTitle: 1
+    Message: ...No.
+  - CharacterTitle: 3
+    Message: Exactly.
+  - CharacterTitle: 0
+    Message: They grasp their arm once more before pulling out a chunk of black fur.
+  - CharacterTitle: 0
+    Message: They can't hold back the tears welling up in the corners of their eyes
+      from the physical pain.
+  - CharacterTitle: 1
+    Message: This is enough.
+  - CharacterTitle: 0
+    Message: The creature raises their eyes from the chunk of fur on the table to
+      observe their pained expression.
+  - CharacterTitle: 1
+    Message: I know it hurts. This isn't Poker, where you have to pretend.
+  - CharacterTitle: 3
+    Message: Just shuffle.
+  - CharacterTitle: 1
+    Message: Very well.

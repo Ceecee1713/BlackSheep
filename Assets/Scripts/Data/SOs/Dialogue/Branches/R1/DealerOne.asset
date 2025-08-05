@@ -13,9 +13,120 @@ MonoBehaviour:
   m_Name: DealerOne
   m_EditorClassIdentifier: 
   PromptOneButtonDisplay: 0
-  PromptTwoButtonDisplay: 0
-  ButtonOneText: 
-  ButtonTwoText: 
-  NormalDialogue: []
-  ButtonOneDialogue: []
-  ButtonTwoDialogue: []
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: No Regrets
+  ButtonTwoText: No Answer
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: Decided to spend the first bullet on me? I'm honoured.
+  - CharacterTitle: 3
+    Message: Yeah, whatever. I have a question.
+  - CharacterTitle: 3
+    Message: Why don't you have arms? You just have hands.
+  - CharacterTitle: 1
+    Message: "Oh\u2026"
+  - CharacterTitle: 1
+    Message: To put it bluntly, I have missing limbs. It's a slow but painless progression.
+      I'm aware I have human hands too.
+  - CharacterTitle: 1
+    Message: I'm one of the few "people" here who still possess characteristics of
+      their humanity. I haven't, let's say, fully transformed
+  - CharacterTitle: 1
+    Message: You seem to have no trouble playing cards with your hooves, so let's
+      move on.
+  - CharacterTitle: 1
+    Message: It's as if you already have disdain for me, seeing that you decided
+      to shoot me first. Are you already wanting to back out of the contract?
+  - CharacterTitle: 3
+    Message: No. Why do you even ask?
+  - CharacterTitle: 3
+    Message: Why should it matter to you? I already took the contract.
+  - CharacterTitle: 1
+    Message: While I've stated before that for some people, death is the only thing
+      they believe can bring them peace, people can still fear death.
+  - CharacterTitle: 1
+    Message: I've seen fear in many pairs of eyes as the rounds continue. The way
+      those people's eyes stare into mine, they secretly plead for a way to back
+      out of the game.
+  - CharacterTitle: 1
+    Message: Or maybe you don't fear like them.
+  - CharacterTitle: 1
+    Message: Although gamblers can spend hundreds, even thousands, the option to
+      leave the game, the casino, is always there.
+  - CharacterTitle: 1
+    Message: Gamblers eventually leave casinos in an act of self-preservation, even
+      if they return a day later or so.
+  - CharacterTitle: 1
+    Message: When witnessing other people's behaviors, especially for someone in
+      my position, people can still regret the choices they've made.
+  - CharacterTitle: 1
+    Message: After all, not everyone knows what they get themselves into until the
+      things they 're about to lose are right in front of them.
+  - CharacterTitle: 1
+    Message: Truthfully, do you regret the contract?
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: Well, no one physically forced me to fill out the contract and come
+      here in the first place. I made my choice willingly. Waste of a question.
+  - CharacterTitle: 1
+    Message: You say that, yet there's something else "aiding" your decision-making.
+      Bad thoughts?
+  - CharacterTitle: 3
+    Message: Like an uncontrollable compulsion? Are you alluding to addictions? Wow,
+      thanks for that great observation.
+  - CharacterTitle: 1
+    Message: It's more than that, addiction or thrill, as to why you're here.
+  - CharacterTitle: 3
+    Message: And what might that be?
+  - CharacterTitle: 1
+    Message: Ask yourself that.
+  - CharacterTitle: 3
+    Message: Yeah right.
+  - CharacterTitle: 0
+    Message: They grasp their arm once more before pulling out a chunk of black fur.
+  - CharacterTitle: 0
+    Message: They can't hold back the tears welling up in the corners of their eyes
+      from the physical pain.
+  - CharacterTitle: 1
+    Message: This is enough.
+  - CharacterTitle: 0
+    Message: The creature raises their eyes from the chunk of fur on the table to
+      observe their pained expression.
+  - CharacterTitle: 1
+    Message: I know it hurts. This isn't Poker where you have to pretend.
+  - CharacterTitle: 3
+    Message: Just shuffle.
+  - CharacterTitle: 1
+    Message: Very well.
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: I'm not entertaining your pointless questions.
+  - CharacterTitle: 1
+    Message: You could at least have a conversation with me. It's just us two.
+  - CharacterTitle: 3
+    Message: I'm not obligated to say anything to you.
+  - CharacterTitle: 3
+    Message: I'll walk away right now if you want to investigate me like I'm some
+      criminal at fault.
+  - CharacterTitle: 1
+    Message: "You could, but you wouldn't. I know you wouldn't. Not because of the
+      contract saying you can't leave, but because you need this \"fun\" only I can
+      give you.\r"
+  - CharacterTitle: 3
+    Message: "Whatever you say. I'm trapped regardless.\r"
+  - CharacterTitle: 0
+    Message: They grasp their arm once more before pulling out a chunk of black fur.
+  - CharacterTitle: 0
+    Message: They grit their teeth from the searing pain. It's not easy to rip a
+      part of your body off.
+  - CharacterTitle: 1
+    Message: This is enough.
+  - CharacterTitle: 0
+    Message: The creature raises their eyes from the chunk of fur on the table to
+      observe their pained expression.
+  - CharacterTitle: 1
+    Message: You know, you don't have to hide the fact that you're in physical pain.
+  - CharacterTitle: 3
+    Message: Just shuffle me a new deck and get on with it.
+  - CharacterTitle: 1
+    Message: Very well.

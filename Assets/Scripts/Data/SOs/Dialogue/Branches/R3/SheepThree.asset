@@ -13,9 +13,82 @@ MonoBehaviour:
   m_Name: SheepThree
   m_EditorClassIdentifier: 
   PromptOneButtonDisplay: 0
-  PromptTwoButtonDisplay: 0
-  ButtonOneText: 
-  ButtonTwoText: 
-  NormalDialogue: []
-  ButtonOneDialogue: []
-  ButtonTwoDialogue: []
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Somewhat
+  ButtonTwoText: No
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: I bet that gun feels pretty liberating right now.
+  - CharacterTitle: 1
+    Message: This game being one-player, I'm sure it's more relieving now. You don't
+      have to worry about others shooting back at you.
+  - CharacterTitle: 1
+    Message: Better yet, someone isn't controlling the game for you, where someone
+      is winning and you're losing.
+  - CharacterTitle: 1
+    Message: Even though this is still a casino first and foremost, do you feel in
+      control right now?
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: Not completely.
+  - CharacterTitle: 3
+    Message: I get to shoot anyone without consequence. That's nice.
+  - CharacterTitle: 3
+    Message: I can treat this casino as my personal rage room and relieve some 'inner
+      turmoil.'
+  - CharacterTitle: 3
+    Message: Wow, me caring for myself? Crazy. Maybe next round I should shoot myself.
+  - CharacterTitle: 3
+    Message: "Anyways, even though we're not allowed to share identities, you never
+      know what someone might do with your personal information\u2026"
+  - CharacterTitle: 3
+    Message: I don't feel completely in control because this is a casino. I'm not
+      hosting this game; it's you.
+  - CharacterTitle: 3
+    Message: The people I get to shoot are under your control with your shuffling.
+      That binds me to you, doesn't it?
+  - CharacterTitle: 1
+    Message: Yes.
+  - CharacterTitle: 3
+    Message: "Great\u2026"
+  - CharacterTitle: 0
+    Message: They grasp their arm. Their arm is horribly torn up. Parts of their
+      flesh are exposed and red from the brute force of wool being ripped off.
+  - CharacterTitle: 0
+    Message: They tear a larger chunk of wool than they intended, higher up their
+      arm, and hand the clump over.
+  - CharacterTitle: 0
+    Message: The creature takes it wordlessly.
+  - CharacterTitle: 1
+    Message: ...I'll shuffle a new round now.
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: Even in this game, we're never allowed full control over anything because
+      of lies.
+  - CharacterTitle: 3
+    Message: People's lies shape you.
+  - CharacterTitle: 3
+    Message: In the end, everything is inherently unjust. There will always be someone
+      who lies, someone who controls.
+  - CharacterTitle: 3
+    Message: Then you become disposable.
+  - CharacterTitle: 3
+    Message: I can say I enjoy this game because I have more freedom of choice, but
+      it's not a complete choice.
+  - CharacterTitle: 3
+    Message: And it can be taken away at any time. Choice ends up being an illusion.
+      It always does.
+  - CharacterTitle: 3
+    Message: Whatever, I don't even know why I'm answering your stupid questions.
+  - CharacterTitle: 3
+    Message: I don't matter to you anyway.
+  - CharacterTitle: 0
+    Message: They grasp their arm. Their arm is horribly torn up. Parts of their
+      flesh are exposed and red from the brute force of wool being ripped off.
+  - CharacterTitle: 0
+    Message: They tear a larger chunk of wool than they intended, higher up their
+      arm, and hand the clump over.
+  - CharacterTitle: 0
+    Message: The creature takes it wordlessly.
+  - CharacterTitle: 1
+    Message: ...I'll shuffle a new round now.
