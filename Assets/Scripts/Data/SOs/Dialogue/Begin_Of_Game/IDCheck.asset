@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: IDCheck
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 1
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: Give Your ID
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 0
+    Message: They turn to their right to see a gentleman. Too bad you can't see the
+      person. The counter is just a little too tall for them...
+  - CharacterTitle: 7
+    Message: Can I see your ID?
+  ButtonOneDialogue:
+  - CharacterTitle: 7
+    Message: ...
+  - CharacterTitle: 7
+    Message: ...
+  - CharacterTitle: 7
+    Message: "Hey, you don't look a day past\u2026"
+  - CharacterTitle: 7
+    Message: Well, a day past some age.
+  - CharacterTitle: 7
+    Message: It's hard to tell someone's age when you transform into a sheep.
+  - CharacterTitle: 7
+    Message: "All your unique human facial features disappear\u2026"
+  - CharacterTitle: 7
+    Message: Hah, you make my job just a little harder.
+  - CharacterTitle: 7
+    Message: It says here you got this license issued 20XX. Here, you still look
+      relatively human.
+  - CharacterTitle: 7
+    Message: "Let me see\u2026"
+  - CharacterTitle: 0
+    Message: The man holds the ID card in the air as he squints and compares the
+      two drastically different faces to the best of his abilities.
+  - CharacterTitle: 7
+    Message: ...
+  - CharacterTitle: 7
+    Message: "If you're wondering, there are others like you in there\u2026"
+  - CharacterTitle: 7
+    Message: You'll blend right in.
+  - CharacterTitle: 7
+    Message: Anyway, I'll trust that you're the same person on this ID. Here you
+      go.
+  - CharacterTitle: 0
+    Message: They received their ID back from the gentleman.
+  ButtonTwoDialogue: []

@@ -28,6 +28,3 @@ MonoBehaviour:
   - ShootSheepDialogue: {fileID: 0}
     ShootDealerDialogue: {fileID: 0}
     ShootPlayerDialogue: {fileID: 0}
-  - ShootSheepDialogue: {fileID: 0}
-    ShootDealerDialogue: {fileID: 0}
-    ShootPlayerDialogue: {fileID: 0}

@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: Drinking
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Stop Drinking
+  ButtonTwoText: Get Another
+  NormalDialogue:
+  - CharacterTitle: 6
+    Message: Here you are.
+  - CharacterTitle: 0
+    Message: The well-adjusted lady sets the glass down and leaves to attend to another
+      patron further down the bar counter.
+  - CharacterTitle: 0
+    Message: They're unfazed by the method of payment mentioned just moments ago.
+  - CharacterTitle: 0
+    Message: They take the diamond-patterned glass with brownish-gold liquid off
+      the counter and bring it toward their lips.
+  - CharacterTitle: 0
+    Message: No sensations greet them on their tongue... nor do any of the flavors
+      stir their emotions.
+  - CharacterTitle: 0
+    Message: The only sensation felt is a trail of fire.
+  - CharacterTitle: 0
+    Message: It starts on the tip of their tongue, the aroma and flavor clinging
+      to the sides of their cheeks.
+  - CharacterTitle: 0
+    Message: "Swallowing the liquid down feels like a match lighting a trail of gasoline
+      down their throat\u2026"
+  - CharacterTitle: 0
+    Message: It lingers. It burns.
+  - CharacterTitle: 0
+    Message: It hurts.
+  - CharacterTitle: 0
+    Message: Fire sits in their throat and stomach. The burn feels both deceiving
+      and comforting.
+  - CharacterTitle: 0
+    Message: Just enough to remind them that they're alive.
+  - CharacterTitle: 0
+    Message: Soon enough, the glass is empty, and they're ready to order a second
+      one.
+  - CharacterTitle: 0
+    Message: As they down their second glass, the fire inside grows achingly bigger.
+  - CharacterTitle: 0
+    Message: The glass is hardly half-full. If they keep ordering more, they could
+      get the equivalent of half a bottle of whiskey in them.
+  - CharacterTitle: 0
+    Message: They didn't know that for sure though. They didn't pay attention to
+      ratios, only the discomfort inside them and a secondary voice in their head.
+  - CharacterTitle: 0
+    Message: They order another one. Down it again.
+  - CharacterTitle: 0
+    Message: Flames engulf their chest cavity.
+  - CharacterTitle: 0
+    Message: Staring at the glass, the diamond pattern distorts their skewed reflection.
+  - CharacterTitle: 0
+    Message: Their emotionless expression and their mouth - a straight line they
+      feel on their face - are twisted in the reflection.
+  - CharacterTitle: 0
+    Message: Maybe another one will do nicely, they thought to themselves.
+  - CharacterTitle: 0
+    Message: It's all a routine anyway.
+  - CharacterTitle: 0
+    Message: While it can't replace casino games, alcohol can be a stand-in. It stays
+      constant, always there, and always guaranteeing a result instead of nothing.
+  - CharacterTitle: 0
+    Message: Ghostly hands wrap around theirs as both grasp the sides of the glass.
+  - CharacterTitle: 0
+    Message: "A voice urges them to order more drinks, calling out in depravity and
+      wishing for comfort. It clings to the artificial burning inside, mistaking
+      it for a warm fireplace\u2026"
+  ButtonOneDialogue: []
+  ButtonTwoDialogue:
+  - CharacterTitle: 0
+    Message: The compulsive voice drowns out their own thoughts as they hear themselves
+      ordering another glass from the bartender.
+  - CharacterTitle: 0
+    Message: For the next couple of drinks, it feels as though another consciousness
+      has gained control.
+  - CharacterTitle: 0
+    Message: Its unreachable desire for comfort in the liquor's warmth causes them
+      to grip the glass more firmly.
+  - CharacterTitle: 0
+    Message: As the bartender walks back over to them, they're about to order another
+      one again but stop.
+  - CharacterTitle: 6
+    Message: We have a limit on drinks; max of six, and you've reached six. Pay up.
+  - CharacterTitle: 3
+    Message: Right.
+  - CharacterTitle: 0
+    Message: They grip one of their fluffy arms. Soft, full black fur.
+  - CharacterTitle: 0
+    Message: They grip tighter before slowly tugging. Experimental tugs.
+  - CharacterTitle: 6
+    Message: I can get you shears.
+  - CharacterTitle: 3
+    Message: Stereotypical.
+  - CharacterTitle: 0
+    Message: Without delay, they ruthlessly pull at their wool. The tearing sounds
+      match the searing pain that comes right after.
+  - CharacterTitle: 3
+    Message: Here, is this enough?
+  - CharacterTitle: 6
+    Message: I need a little more than that.
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 0
+    Message: They rip off more of themselves and plop it onto the counter. One of
+      their arms is now uneven.
+  - CharacterTitle: 0
+    Message: Despite maintaining a straight face, tears well up in the corners of
+      their eyes, and their vision glistens.
+  - CharacterTitle: 6
+    Message: That's enough. Enjoy your night.
+  - CharacterTitle: 0
+    Message: The stone-faced, cold lady slides the empty glass away from them and
+      walks off with it, swiftly and without eye contact.
+  - CharacterTitle: 0
+    Message: A despondent, hurt expression paints their face as they examine their
+      torn arm before erasing the recent memory and going off to explore the casino
+      more.
+  - CharacterTitle: 0
+    Message: With a fake smile.

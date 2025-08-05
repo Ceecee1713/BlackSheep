@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: SignContract
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 1
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: Sign Contract
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: Glad to see you didn't turn down my offer.
+  - CharacterTitle: 1
+    Message: You look a little disturbed seeing my face up close.
+  - CharacterTitle: 3
+    Message: Well, you don't exactly have a gentle-looking face.
+  - CharacterTitle: 1
+    Message: I've been told the same thing by others.
+  - CharacterTitle: 1
+    Message: How is your headache?
+  - CharacterTitle: 3
+    Message: Painful. Dreadful.
+  - CharacterTitle: 3
+    Message: Are you going to tell me to play a game where I can put a bullet through
+      my head to relieve the pain?
+  - CharacterTitle: 1
+    Message: You're quite astute. Yes.
+  - CharacterTitle: 3
+    Message: How theatrical.
+  - CharacterTitle: 1
+    Message: A little, I won't deny.
+  - CharacterTitle: 1
+    Message: This game I host is not what you might know, like Russian Roulette,
+      for example.
+  - CharacterTitle: 1
+    Message: It involves a revolver, but it has a custom twist, such as the gun being
+      fully loaded. No empty chambers.
+  - CharacterTitle: 3
+    Message: Aren't casinos banned from hosting these sorts of games because they
+      HAVE guns? It endangers everyone.
+  - CharacterTitle: 1
+    Message: You're in the middle of nowhere. This casino is in the middle of nowhere.
+      Normal rules don't apply.
+  - CharacterTitle: 1
+    Message: I didn't think you'd be one to value your life or the lives of others.
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 0
+    Message: They received bits of intel about a casino stranded in a desert that
+      provides a uniquely dangerous game.
+  - CharacterTitle: 0
+    Message: Is this the supposed game that's meant to provide ultimate satisfaction
+      to broken gamblers, they think to themselves.
+  - CharacterTitle: 3
+    Message: ...It just sounds unbelievable, having a game that glamorizes death.
+  - CharacterTitle: 1
+    Message: Well, to some people who've played before you, they think death is the
+      only thing that can appease them.
+  - CharacterTitle: 1
+    Message: For example, you can shoot yourself six times if your headache is that
+      bad.
+  - CharacterTitle: 1
+    Message: Or, you can take those bullets out on some unsuspecting person.
+  - CharacterTitle: 3
+    Message: Right, but won't there be some sort of consequence at the very least?
+  - CharacterTitle: 1
+    Message: The game I host requires a contract, and this establishment covers any
+      "damages" that may occur during the playtime.
+  - CharacterTitle: 1
+    Message: A six-barrel, fully loaded revolver with the player having complete
+      control over who they wish to shoot.
+  - CharacterTitle: 1
+    Message: To make the deal even sweeter, you're the only player, so you don't
+      have to worry about others turning against you.
+  - CharacterTitle: 1
+    Message: However, the people you can shoot fall within the realm of randomness.
+      It'll be based on shuffled cards who the player can shoot.
+  - CharacterTitle: 3
+    Message: Does that include you in the list of possible people I can shoot?
+  - CharacterTitle: 1
+    Message: Yes. That question sounds a little spiteful, though.
+  - CharacterTitle: 3
+    Message: I'm just curious.
+  - CharacterTitle: 3
+    Message: And what do you do since this is a one-person game?
+  - CharacterTitle: 1
+    Message: I just shuffle your cards. Whoever you shoot, I hold no judgment, nor
+      will I talk you out of your decision-making.
+  - CharacterTitle: 1
+    Message: Are you interested?
+  - CharacterTitle: 1
+    Message: If so, sign this contract.
+  - CharacterTitle: 1
+    Message: Once you sign this contract, you can't back out at all until the game
+      is over.
+  ButtonOneDialogue:
+  - CharacterTitle: 1
+    Message: Did you even read it?
+  - CharacterTitle: 3
+    Message: I didn't get the chance to.
+  - CharacterTitle: 1
+    Message: "Well, not like most people really read contracts nowadays\u2026"
+  - CharacterTitle: 0
+    Message: The creature takes back the contract and slides it underneath the table.
+  - CharacterTitle: 3
+    Message: Aren't you going to ask me for my name?
+  - CharacterTitle: 1
+    Message: It's preferred to have your identity unknown in this encounter. The
+      same goes for me.
+  - CharacterTitle: 3
+    Message: "I understand\u2026"
+  - CharacterTitle: 1
+    Message: As with other casino games, a form of payment must be made.
+  - CharacterTitle: 3
+    Message: Will that be my wool?
+  - CharacterTitle: 1
+    Message: Oh, it seems like you're already aware. Good.
+  - CharacterTitle: 3
+    Message: Do I pay right now or when?
+  - CharacterTitle: 1
+    Message: Allow me to explain the game first.
+  - CharacterTitle: 1
+    Message: There are six rounds in this game. Six rounds, six bullets in the revolver.
+  - CharacterTitle: 1
+    Message: At the beginning of each round, I'll shuffle this deck of cards and
+      you'll receive four cards.
+  - CharacterTitle: 1
+    Message: The goal of each round is to shoot one person.
+  - CharacterTitle: 1
+    Message: 'Within this card deck, there are five card types you could get: Spades,
+      Sheep, Dealer, You, and Revolver.'
+  - CharacterTitle: 1
+    Message: The Sheep card is represented by a full sheep body and represents a
+      random person at the casino you can shoot.
+  - CharacterTitle: 1
+    Message: The Dealer card is represented by a ram's head, representing me as a
+      person you can shoot.
+  - CharacterTitle: 1
+    Message: The You card is represented by a sheep's head, representing yourself
+      as someone you can shoot.
+  - CharacterTitle: 1
+    Message: The Sheep, Dealer, and You card types are the three possible people
+      you can shoot within a round.
+  - CharacterTitle: 1
+    Message: Based on your hand of four cards, you can choose whom to shoot.
+  - CharacterTitle: 1
+    Message: The Spades card holds no value; thus, it can't be played or advance
+      the game forward.
+  - CharacterTitle: 1
+    Message: The Revolver card type is self-explanatory, representing the gun you
+      shoot with.
+  - CharacterTitle: 1
+    Message: There'll be two card slots on the table where you'll have to place your
+      cards.
+  - CharacterTitle: 1
+    Message: The order doesn't matter, but one of the slots has to be either a Sheep,
+      Dealer, or You card type. The other card slot has to be the Revolver card.
+  - CharacterTitle: 1
+    Message: You can only shoot one person per round. Whichever card is placed down,
+      Sheep, Dealer, or You, is the person you shoot at the end of that round.
+  - CharacterTitle: 1
+    Message: If you don't like my shuffle at the beginning of the round, you can
+      request another shuffle. You can ask for a reshuffle a maximum of three times
+      each round.
+  - CharacterTitle: 1
+    Message: However , you can't ask for a reshuffle once a card has been played.
+  - CharacterTitle: 1
+    Message: 'The round is over once it''s indicated by the two cards on the table
+      that a person can be shot: Sheep, Dealer, or You.'
+  - CharacterTitle: 3
+    Message: And then it repeats each round like that?
+  - CharacterTitle: 1
+    Message: Yes.
+  - CharacterTitle: 3
+    Message: 'And I can choose whoever to shoot: me, you, or some random person,
+      right?'
+  - CharacterTitle: 1
+    Message: Yes, based on the cards I give you after shuffling the deck.
+  - CharacterTitle: 3
+    Message: I don't get anything after all six rounds are completed, do I?
+  - CharacterTitle: 1
+    Message: No. This isn't a game about material reward. The contract said so, if
+      you paid attention to read it.
+  - CharacterTitle: 1
+    Message: At the beginning of each round, you also make a payment.
+  - CharacterTitle: 1
+    Message: "So, if you would be so kind\u2026"
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 0
+    Message: They grip onto the arm they previously ripped off from and tear chunks
+      of their wool off, plopping the handful on the table.
+  - CharacterTitle: 1
+    Message: That looks like enough.
+  - CharacterTitle: 0
+    Message: The creature takes the clump of wool and also stashes it underneath
+      the table.
+  - CharacterTitle: 1
+    Message: If you've forgotten my explanation, I can re-explain the game via a
+      question mark, and there'll be markings on the table as well to help you out.
+  - CharacterTitle: 1
+    Message: Let's play now.
+  ButtonTwoDialogue: []

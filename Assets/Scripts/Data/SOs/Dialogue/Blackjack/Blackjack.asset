@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: Blackjack
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: The Players
+  ButtonTwoText: The Dealer
+  NormalDialogue:
+  - CharacterTitle: 0
+    Message: They turn their head and notice that the sheep they were just observing
+      are now staring at them.
+  - CharacterTitle: 0
+    Message: Their stares are uncomfortable, and their faces look unwelcoming.
+  - CharacterTitle: 0
+    Message: They hold their gazes for a moment before looking on either side of
+      them to see if the sheep are looking at something else.
+  - CharacterTitle: 0
+    Message: Yet, their feet keep moving them forward, closer and closer to the table.
+  - CharacterTitle: 0
+    Message: 'After checking behind them a couple of times, one of the sheep announces
+      to them:'
+  - CharacterTitle: 4
+    Message: We're looking at you!
+  - CharacterTitle: 0
+    Message: They give an awkward smile to appear friendly to them.
+  - CharacterTitle: 0
+    Message: They take a few more steps until they're in front of the table.
+  - CharacterTitle: 4
+    Message: We just finished a game here-
+  - CharacterTitle: 2
+    Message: Pardon me, you can't linger here if you aren't going to play.
+  - CharacterTitle: 5
+    Message: Just give us a second.
+  - CharacterTitle: 4
+    Message: Wanna join? Playing a strategic game can get you in your element.
+  - CharacterTitle: 5
+    Message: You look a little nervous.
+  - CharacterTitle: 0
+    Message: The other two sheep at the table silently stare at them while the dealer
+      at the table taps their fingers on the table, almost impatiently.
+  - CharacterTitle: 4
+    Message: Is this your first time coming this far out into the desert?
+  - CharacterTitle: 3
+    Message: Yeah, it is.
+  - CharacterTitle: 4
+    Message: All the more reason to play with us. The slot machines are the same
+      everywhere in casinos, but the people change.
+  - CharacterTitle: 0
+    Message: Their lips tighten upon hearing that.
+  - CharacterTitle: 5
+    Message: We're all just friendly strangers here.
+  - CharacterTitle: 0
+    Message: For this person to say strangers you meet at casinos are friendly is
+      a complete overstatement, they think to themselves.
+  - CharacterTitle: 0
+    Message: The dealer at the table stares at them coldly with their fingers still
+      tapping the table. Their tapping is getting more aggressive.
+  - CharacterTitle: 0
+    Message: 'There''s a reason they don''t play table games with other players:'
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: I don't play with others.
+  - CharacterTitle: 4
+    Message: Oh. Too much pressure, right?
+  - CharacterTitle: 3
+    Message: I don't play with others that I can't trust.
+  - CharacterTitle: 4
+    Message: "What\u2026"
+  - CharacterTitle: 0
+    Message: They didn't mean to say that out loud...
+  - CharacterTitle: 0
+    Message: The other sheep clears their throat in a bold tone.
+  - CharacterTitle: 5
+    Message: Well, we don't trust you completely either. We don't know you, but we
+      can still be a little nice.
+  - CharacterTitle: 5
+    Message: You play to win anyway, right? So you have to be selfish. What do you
+      mean by 'not trusting us'?
+  - CharacterTitle: 5
+    Message: Already wanting to accuse us of being cheaters?
+  - CharacterTitle: 0
+    Message: The dealer at the table stops tapping and pulls their hands away from
+      the table. They glare at them, scrutinizing them, waiting for what will be
+      said next.
+  - CharacterTitle: 3
+    Message: How can I know if you'll play fairly?
+  - CharacterTitle: 5
+    Message: That's a crazy assumption if you think anyone here is going to cheat.
+      You should know they don't allow that here.
+  - CharacterTitle: 3
+    Message: It's not allowed, but that doesn't completely stop anyone from cheating.
+      We're in the desert anyways, far away from law.
+  - CharacterTitle: 3
+    Message: Do you know each other?
+  - CharacterTitle: 5
+    Message: What, no. We just met an hour ago.
+  - CharacterTitle: 4
+    Message: Do you think we're going to plot against you or something?
+  - CharacterTitle: 0
+    Message: People can target someone for whatever reason aside from selfish gain,
+      and people can always lie, they think to themselves.
+  - CharacterTitle: 2
+    Message: If you're going to accuse people off of baseless claims or just wanting
+      to pick a fight, please leave.
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 0
+    Message: They continue backing away from the table and walk off.
+  - CharacterTitle: 0
+    Message: A couple of pairs of eyes stare them down until they're far away enough.
+  - CharacterTitle: 0
+    Message: An inner voice tries to soothe them, telling them that it's better off
+      being alone because no one can hurt them.
+  - CharacterTitle: 0
+    Message: It's not exactly a nice voice, but they keep moving forward, believing
+      in those words...
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: Are the dealers here even hosting fair games?
+  - CharacterTitle: 0
+    Message: The dealer blinks in surprise at the abrupt address, their expression
+      quickly shifting to displeasure. The other sheep go quiet.
+  - CharacterTitle: 2
+    Message: This is your first time here, right?
+  - CharacterTitle: 2
+    Message: I understand your slight suspicions, especially because we are stranded,
+      but we do still follow general casino rules.
+  - CharacterTitle: 3
+    Message: Why not take full advantage then? A casino in the middle of nowhere.
+      No one will know if crimes take place here.
+  - CharacterTitle: 3
+    Message: Aren't casinos about profit anyway and not about the people who come
+      in and out?
+  - CharacterTitle: 2
+    Message: Well, people wouldn't exactly want to play games if they knew we were
+      lying to them, would they?
+  - CharacterTitle: 3
+    Message: Exactly, they don't know, nor would you tell them if you were lying
+      about fairness.
+  - CharacterTitle: 0
+    Message: The dealer's hand, once tapping the table impatiently, folds into a
+      tight fist.
+  - CharacterTitle: 2
+    Message: 'I''m going to ask once: please leave.'
+  - CharacterTitle: 3
+    Message: ...
+  - CharacterTitle: 0
+    Message: They back away from the table and walk off.
+  - CharacterTitle: 0
+    Message: A couple of pairs of eyes stare them down until they're far enough away.
+  - CharacterTitle: 0
+    Message: An inner voice tries to soothe them, saying that it's better to be alone
+      because no one can hurt them.
+  - CharacterTitle: 0
+    Message: It's not exactly a nice voice, but they keep moving forward, believing
+      those words...

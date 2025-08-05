@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: MeetDealer
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 0
+    Message: After having several drinks and looking at other games, they walk down
+      the casino hall.
+  - CharacterTitle: 0
+    Message: Warped noises blend together in the large casino hall, overwhelming
+      to the ears.
+  - CharacterTitle: 0
+    Message: The overstimulation aches their pulsating head, and their condition
+      worsens with how much they've drunk.
+  - CharacterTitle: 0
+    Message: As they continue walking, they pass by a table with a lonesome creature
+      idly shuffling cards.
+  - CharacterTitle: 0
+    Message: "It seems like just any other normal playing cards table until a voice
+      calls out to them\u2026"
+  - CharacterTitle: 0
+    Message: A creature notices, "You have a headache?"
+  - CharacterTitle: 0
+    Message: They turn their head and lock eyes with the creature, but they give
+      no reply. They keep holding the side of their head.
+  - CharacterTitle: 0
+    Message: The creature gestures its hand to one of the table 's seats, "Have a
+      seat. I have a good remedy for headaches."
+  - CharacterTitle: 3
+    Message: "I don't really want to play a game right now\u2026"
+  - CharacterTitle: 0
+    Message: It grins at them, "Casinos are all about games."
+  - CharacterTitle: 0
+    Message: Their grimaced face tightens slightly at those words.
+  - CharacterTitle: 0
+    Message: '"I host a game, one that puts lives in danger. Maybe a little ''bang''
+      can help with your headache," it finishes and stands in a refined manner.'
+  - CharacterTitle: 0
+    Message: In irony of its twisted words, it continues shuffling the card deck
+      from before while maintaining a relaxed expression.
+  - CharacterTitle: 0
+    Message: They almost want to roll their eyes upon hearing that. What the creature
+      said sounds like an exaggeration, they think.
+  - CharacterTitle: 0
+    Message: But they don't move from their spot.
+  - CharacterTitle: 0
+    Message: With slight curiosity, they walk over and plop down into the oddly plush
+      cushion seat.
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

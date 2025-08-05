@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: ArriveAtBar
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 0
+    Message: They've chosen to go to the bar.
+  - CharacterTitle: 0
+    Message: Only luxury casinos have bars that justify a visit for their craft mixes.
+  - CharacterTitle: 0
+    Message: Although, our friend here doesn't care for extravagance or worthwhile
+      experiences.
+  - CharacterTitle: 3
+    Message: "Excuse me\u2026"
+  - CharacterTitle: 6
+    Message: Hi there, how are you?
+  - CharacterTitle: 3
+    Message: Can I have a whiskey, please? I'll take it neat.
+  - CharacterTitle: 6
+    Message: Sure thing, but what are you particularly looking for?
+  - CharacterTitle: 3
+    Message: Doesn't matter what brand. Your strongest one.
+  - CharacterTitle: 6
+    Message: Alright, give me a few minutes.
+  - CharacterTitle: 6
+    Message: To let you know in advance, we don't pay in cash or card. With your
+      kind, we use a different type of currency.
+  - CharacterTitle: 3
+    Message: What is it?
+  - CharacterTitle: 6
+    Message: Wool. Your wool.
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: EnterCasino
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 0
+    Message: Tonight will be a different type of experience for them.
+  - CharacterTitle: 0
+    Message: In striving to seek a new "adventure," they arrive at a new casino.
+      In a new town. In the middle of nowhere.
+  - CharacterTitle: 0
+    Message: Those gaudy sights grew boring as a depressing routine set in. Those
+      lavish colors and familiar faces slowly began to remind them; it became uncomfortable.
+  - CharacterTitle: 0
+    Message: Suffocating, even.
+  - CharacterTitle: 0
+    Message: All those same casino games grew dull, so higher risks needed to be
+      taken in order to have that same thrill as before.
+  - CharacterTitle: 0
+    Message: But they never found it, not at your typical casinos.
+  - CharacterTitle: 0
+    Message: "Those familiar sounds that scream in their ears\u2026"
+  - CharacterTitle: 0
+    Message: The chimes of slot machines, the sound of poker chips, and the distorted
+      chatter of everyone echoed off the walls.
+  - CharacterTitle: 0
+    Message: It all looks the same, but there was a whisper of a game that's more
+      gratifying than all.
+  - CharacterTitle: 0
+    Message: Their eyes glaze over the saddening sight.
+  - CharacterTitle: 0
+    Message: Casinos tend to have their own charms, but the environment reveals itself
+      to be a gaudy deception the longer you stay.
+  - CharacterTitle: 0
+    Message: "They know the truth. There are few colors deserving of a depressing
+      place, colors that accurately depict the setting\u2026"
+  - CharacterTitle: 0
+    Message: "They're about to advance deeper and away from the entrance doors until
+      they're stopped\u2026"
+  - CharacterTitle: 7
+    Message: ' Hey, stop right there!'
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

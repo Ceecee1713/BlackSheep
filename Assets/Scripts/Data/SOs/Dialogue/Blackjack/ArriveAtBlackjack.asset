@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: ArriveAtBlackjack
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 0
+    Message: They chose to wander around the casino hall a little, observing the
+      several card tables.
+  - CharacterTitle: 0
+    Message: Most are occupied. If not, there's a dealer standing idly at the table,
+      staring off into space with an unfocused gaze.
+  - CharacterTitle: 0
+    Message: It's invasive to stare at other people playing, so they keep walking.
+  - CharacterTitle: 0
+    Message: A few tables ahead, a few sheep laugh at a cleared table while the others
+      drink from their cups.
+  - CharacterTitle: 0
+    Message: They continue walking.
+  - CharacterTitle: 0
+    Message: They look over to see a Roulette table spinning on their right.
+  - CharacterTitle: 0
+    Message: "But they feel a couple of pairs of eyes on the back of their head\u2026"
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

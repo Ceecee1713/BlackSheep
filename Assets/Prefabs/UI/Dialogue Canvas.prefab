@@ -246,8 +246,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -485,8 +485,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -697,8 +697,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   nextCanvasToSetActive: {fileID: 0}
   _isNextCanvasADialogueCanvas: 0
   _ignoreCanvasChanging: 0
-  oneButtonDisplay: {fileID: 2816398229436974686}
+  oneButtonDisplay: {fileID: 7643581962011435598}
   twoButtonsDisplay: {fileID: 6568759854400099424}
   dialogueText: {fileID: 7464719336386930060}
   characterNameText: {fileID: 2206103264258603445}
