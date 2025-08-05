@@ -76,7 +76,7 @@ MonoBehaviour:
     Message: They pull more wool from their arm as the stinging sensation worsens.
   - CharacterTitle: 0
     Message: The creature takes the wool and moves it beneath the table.
-  - CharacterTitle: 0
+  - CharacterTitle: 1
     Message: I'll start a new round.
   ButtonOneDialogue: []
   ButtonTwoDialogue: []
