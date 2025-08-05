@@ -1467,6 +1467,10 @@ PrefabInstance:
       propertyPath: cardShuffleSFX
       value: 
       objectReference: {fileID: 3448856696753075866}
+    - target: {fileID: 1830845689637820202, guid: 8cdbb92842e064948a58c69cad6297d4, type: 3}
+      propertyPath: persistAcrossScenes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4385225687182743053, guid: 8cdbb92842e064948a58c69cad6297d4, type: 3}
       propertyPath: m_Name
       value: AudioManager

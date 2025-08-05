@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Remember to clear "_unavailableCardNumbers" and "_allCards" when dealer isn't active. 
-//Remember to unsubscribe from events in Start when a new scene is loaded and such
-
 public class Dealer : Singleton<Dealer>
 {
     private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
@@ -11,14 +8,16 @@ public class Dealer : Singleton<Dealer>
 
     private CardType [] _availableCardTypes = new CardType[5]; //All POSSIBLE cards to be given out 
     private CardType _singleCardType; //Hold a reference from "_availableCardTypes" array at a specific index
+
+    private CardGameRoundNumber _cardGameRoundNumber;
     
     private int _randomCardIndex; //Representing a random index from "_allCards"
     private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
     private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards; 
 
-    private const float DELAY = 1.5f; 
-
     private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Exclude card bools for later rounds (limit cards to be given out)
+
+    private const float DELAY = 1.5f; 
     
     private void Start()
     {
@@ -27,6 +26,7 @@ public class Dealer : Singleton<Dealer>
         _roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
         
         var cardTypes = Resources.LoadAll<CardType>("CardType");
+        _cardGameRoundNumber = Resources.Load<CardGameRoundNumber>("RoundNumber");
 
         for(int i = 0; i < _availableCardTypes.Length; i++)
             _availableCardTypes[i] = cardTypes[i];
@@ -36,6 +36,16 @@ public class Dealer : Singleton<Dealer>
         EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
+    void OnEnable()
+    {
+
+    }
+
+    void OnDisable()
+    {
+        _unavailableCardNumbers.Clear();
+        _allCards.Clear();
+    }
 
     public void AddCard(ShuffleListener card)
     {
@@ -46,18 +56,6 @@ public class Dealer : Singleton<Dealer>
     {
         _allCards.Remove(card);
     }
-
-    /*
-    public override void OnDestroy()
-    {
-        EventBus.Instance.Unsubscribe<FinishedRound>(CheckToRemoveCardTypes);
-        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
-        EventBus.Instance.Unsubscribe<ShuffleCards>(ShuffleEvent);
-
-        _unavailableCardNumbers.Clear();
-        _allCards.Clear();
-    }
-    */
 
     private void CheckToRemoveCardTypes(FinishedRound finishedRound)
     {
@@ -76,10 +74,10 @@ public class Dealer : Singleton<Dealer>
 
     private void RemoveCardTypes() //Limit card types to be given out to the player in later rounds
     {
-        if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveSheepCard)
+        if(_cardGameRoundNumber.CurrentRoundNumber == _roundNumberToRemoveSheepCard)
             _excludeSheepCard = true;
 
-        if(GamblingTable.Instance.RoundNumber == _roundNumberToRemoveDealerAndNormalCards)
+        if(_cardGameRoundNumber.CurrentRoundNumber == _roundNumberToRemoveDealerAndNormalCards)
             _onlyHavePlayerAndGunCards = true;
     }
     

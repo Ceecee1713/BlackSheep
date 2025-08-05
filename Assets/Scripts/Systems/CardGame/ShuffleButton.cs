@@ -2,16 +2,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//Remember to unsubscribe from events in Start when a new scene is loaded and such
-
 public class ShuffleButton : MonoBehaviour
 {
+    [Header ("Scriptable Objects")]
+    [SerializeField]
+    private CardGameRoundNumber cardGameRoundNumber;
     [SerializeField]
     private GameConfiguration gameConfiguration;
 
+    [Header ("For Shuffle Button")]
     [SerializeField]
     private TextMeshProUGUI buttonText;
-
     [SerializeField]
     private GameObject button;
 
@@ -19,6 +20,7 @@ public class ShuffleButton : MonoBehaviour
     private int _maxNumberOfShufflesPerRound;
 
     private bool _allowInput = false;
+    private bool _hasACardBeenPlayed = false;
 
     void Awake()
     {
@@ -28,22 +30,20 @@ public class ShuffleButton : MonoBehaviour
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(SetButtonActive);
         EventBus.Instance.Subscribe<FinishedRound>(DoNotAllowInput);
+        EventBus.Instance.Subscribe<CardHasBeenPlayed>(HasCardBeenPlayed);
     }
+
+    private void HasCardBeenPlayed(CardHasBeenPlayed cardHasBeenPlayed) 
+    {
+        cardHasBeenPlayed.CardPlayed = _hasACardBeenPlayed;
+    }
+
 
     void Update()
     {
-        if(_numberOfShufflesPerRound == 0 || GamblingTable.Instance.CardHasBeenPlayed == true)
+        if(_numberOfShufflesPerRound == 0 || _hasACardBeenPlayed == true)
             button.SetActive(false);
     }
-
-    /*
-    private void OnDestroy()
-    {
-        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
-        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(SetButtonActive);
-        EventBus.Instance.Unsubscribe<FinishedRound>(DoNotAllowInput);
-    }
-    */
 
     private void DoNotAllowInput(FinishedRound finishedRound)
     {
@@ -54,7 +54,7 @@ public class ShuffleButton : MonoBehaviour
 
     private void SetButtonActive(CompletedShufflingCards completedShufflingCards)
     {
-        if(GamblingTable.Instance.RoundNumber == gameConfiguration.MaxAmountOfRounds)
+        if(cardGameRoundNumber.CurrentRoundNumber == gameConfiguration.MaxAmountOfRounds)
             return;
 
         _allowInput = true;
@@ -77,7 +77,7 @@ public class ShuffleButton : MonoBehaviour
         if(_allowInput != true)
             return;
 
-        if(GamblingTable.Instance.CardHasBeenPlayed == false)
+        if(_hasACardBeenPlayed == false)
         {
            if(_numberOfShufflesPerRound > 0)
             {

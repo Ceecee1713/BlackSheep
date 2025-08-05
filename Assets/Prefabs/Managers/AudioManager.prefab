@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1f44801e72457439413a2794c09efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PersistAcrossScenes: 1
   buttonSFX: {fileID: 0}
   cardPopSFX: {fileID: 0}
+  cardSlideSFX: {fileID: 0}
+  cardShuffleSFX: {fileID: 0}
   revolverSFX: {fileID: 0}
   gunshotSFX: {fileID: 0}

@@ -1,6 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
 
+//This script is for the background music that's to be looped after "startingMusic" is done playing
+
 public class BGM : MonoBehaviour
 {
     [SerializeField]
@@ -12,9 +14,9 @@ public class BGM : MonoBehaviour
 
     private Tween _tween;
 
-    private const float DURATION = 1.0f;
-
     private bool _activatedMusicLoop = false;
+
+    private const float DURATION = 1.0f;
 
     void Start()
     {
@@ -22,15 +24,6 @@ public class BGM : MonoBehaviour
         EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
         EventBus.Instance.Subscribe<IncreaseMusicVolume>(IncreaseMusicVolume);
     }
-
-    /*
-    private void OnDestroy()
-    {
-        EventBus.Instance.Unsubscribe<FinishedRound>(FinishedRoundEvent);
-        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
-        EventBus.Instance.Unsubscribe<IncreaseMusicVolume>(IncreaseMusicVolume);
-    }
-    */
 
     void Update()
     {

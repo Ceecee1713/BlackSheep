@@ -12,7 +12,7 @@ public struct CardSlot
     public bool IsSlotOccupied;
 }
 
-public class GamblingTable : Singleton<GamblingTable>
+public class GamblingTable : MonoBehaviour
 {
     [SerializeField]
     private CardGameDialogue cardGameDialogue; 
@@ -31,11 +31,13 @@ public class GamblingTable : Singleton<GamblingTable>
     public CardSlot RightCardSlot;
 
     [HideInInspector]
-    public int NumberOfPlayedCards;
+    public int NumberOfPlayedCards = 0;
     [HideInInspector]
     public int RoundNumber;
-    [HideInInspector]
-    public bool CardHasBeenPlayed = false;
+    //[HideInInspector]
+    //public bool CardHasBeenPlayed = false;
+
+    private CardGameRoundNumber _cardGameRoundNumber;
 
     private int _maxAmountOfRounds;
     private int roundNumberToRemoveDealerAndNormalCards;
@@ -51,7 +53,10 @@ public class GamblingTable : Singleton<GamblingTable>
         _maxNumberOfPlayedCards = config.MaxNumberOfPlayedCards;
         roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
 
+        _cardGameRoundNumber = Resources.Load<CardGameRoundNumber>("RoundNumber");
+
         RoundNumber = 1;
+        _cardGameRoundNumber.CurrentRoundNumber = RoundNumber;
     }
 
     void Update()
@@ -59,7 +64,8 @@ public class GamblingTable : Singleton<GamblingTable>
         RoundNumber = Mathf.Clamp(RoundNumber, 1, _maxAmountOfRounds);
 
         if(NumberOfPlayedCards > 0)
-            CardHasBeenPlayed = true;
+            //CardHasBeenPlayed = true;
+            EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true));
 
         if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
         {
@@ -69,7 +75,7 @@ public class GamblingTable : Singleton<GamblingTable>
             if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
                 RoundNumber++;
 
-            Debug.Log("A round has finished and the round number is: " + RoundNumber);
+            _cardGameRoundNumber.CurrentRoundNumber = RoundNumber;
         }
     }
 
@@ -108,7 +114,8 @@ public class GamblingTable : Singleton<GamblingTable>
     private void ResetValues()
     {
         NumberOfPlayedCards = 0;
-        CardHasBeenPlayed = false;
+        //CardHasBeenPlayed = false;
+        EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false));
         RightCardSlot.IsSlotOccupied = false;
         LeftCardSlot.IsSlotOccupied = false;
         RightCardSlot.SlotType = null;

@@ -7,9 +7,13 @@ using UnityEngine.UI;
 
 public class ShootPersonCanvass : MonoBehaviour
 {
+    [Header ("Scriptable Objects")]
+    [SerializeField]
+    private CardGameRoundNumber cardGameRoundNumber;
     [SerializeField]
     private GameConfiguration gameConfiguration;
 
+    [Header ("Game Objects")]
     [SerializeField]
     private GameObject dealerDialogueCanvas, dealerDialogueCanvasRoundFive, badEndDialogueCanvas; 
     [SerializeField]
@@ -17,6 +21,7 @@ public class ShootPersonCanvass : MonoBehaviour
     [SerializeField]
     private GameObject flashImage; 
 
+    [Header ("Values")]
     [SerializeField]
     private float delayBeforeFadingFromFlashImage = 0.5f;
     [SerializeField]
@@ -87,7 +92,7 @@ public class ShootPersonCanvass : MonoBehaviour
         _thisCanvasGroup.alpha = 0.0f;
         gun.SetActive(false);
 
-        if(GamblingTable.Instance.RoundNumber == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
+        if(cardGameRoundNumber.CurrentRoundNumber == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
         {
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             EventBus.Instance.Publish(new IncreaseMusicVolume());
@@ -95,7 +100,7 @@ public class ShootPersonCanvass : MonoBehaviour
             yield break;
         }
 
-        if(GamblingTable.Instance.RoundNumber != gameConfiguration.MaxAmountOfRounds)
+        if(cardGameRoundNumber.CurrentRoundNumber != gameConfiguration.MaxAmountOfRounds)
         {
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             EventBus.Instance.Publish(new IncreaseMusicVolume());

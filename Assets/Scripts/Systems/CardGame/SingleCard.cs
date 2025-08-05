@@ -3,10 +3,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-//Remember to unsubscribe from events in Start when a new scene is loaded and such
-
 public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] 
+    private GamblingTable gamblingTable;
+
     [SerializeField] 
     private Ease ease;
     [SerializeField] 
@@ -31,8 +32,8 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         Dealer.Instance.AddCard(this);
 
         _cardParent = transform.parent;
-        _leftCardSlotRect = GamblingTable.Instance.LeftCardSlot.SlotRect;
-        _rightCardSlotRect = GamblingTable.Instance.RightCardSlot.SlotRect;
+        _leftCardSlotRect = gamblingTable.LeftCardSlot.SlotRect;
+        _rightCardSlotRect = gamblingTable.RightCardSlot.SlotRect;
 
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);
@@ -40,19 +41,6 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
         EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
-
-    /*
-    private void OnDestroy()
-    {
-        Dealer.Instance.RemoveCard(this);
-
-        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
-        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(AllowInput);
-        EventBus.Instance.Unsubscribe<FinishedRound>(FinishedRoundEvent);
-        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
-        EventBus.Instance.Unsubscribe<ShuffleCards>(ShuffleEvent);
-    }
-    */
 
     private void AllowInput(CompletedShufflingCards completedShufflingCards)
     {
@@ -121,21 +109,21 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
     private void CheckRightCardSlot() //Check the right card slot to change the values of the left card slot
     {
-        if(GamblingTable.Instance.RightCardSlot.SlotType == null) //If the right card slot is empty, let this card move into the left card slot
+        if(gamblingTable.RightCardSlot.SlotType == null) //If the right card slot is empty, let this card move into the left card slot
         {
             transform.SetParent(_leftCardSlotRect);
             _cardHasBeenPlayed = true;
 
             //Assign left card slot
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.LeftCardSlot.SlotType = _cardType;
-            GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
+            gamblingTable.NumberOfPlayedCards++;
+            gamblingTable.LeftCardSlot.SlotType = _cardType;
+            gamblingTable.LeftCardSlot.IsSlotOccupied = true;
             return; 
         }
 
         //Check if the right slot has a sheep, player, or dealer card
-        if(GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player 
-        || GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
+        if(gamblingTable.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || gamblingTable.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player 
+        || gamblingTable.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
             //If this card is a sheep, player, or dealer card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Sheep || _cardType.typeOfCard == AllCardTypes.Player || _cardType.typeOfCard == AllCardTypes.Dealer)
@@ -151,13 +139,13 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
             _cardHasBeenPlayed = true;
 
             //Assign left card slot
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.LeftCardSlot.SlotType = _cardType;
-            GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
+            gamblingTable.NumberOfPlayedCards++;
+            gamblingTable.LeftCardSlot.SlotType = _cardType;
+            gamblingTable.LeftCardSlot.IsSlotOccupied = true;
             return; 
         }
 
-        if(GamblingTable.Instance.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Gun) //Check if the right slot has a gun card
+        if(gamblingTable.RightCardSlot.SlotType.typeOfCard == AllCardTypes.Gun) //Check if the right slot has a gun card
         {
             //If this card is a gun card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Gun)
@@ -173,29 +161,29 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
             _cardHasBeenPlayed = true;
 
             //Assign left card slot
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.LeftCardSlot.SlotType = _cardType;
-            GamblingTable.Instance.LeftCardSlot.IsSlotOccupied = true;
+            gamblingTable.NumberOfPlayedCards++;
+            gamblingTable.LeftCardSlot.SlotType = _cardType;
+            gamblingTable.LeftCardSlot.IsSlotOccupied = true;
         }
     }
 
     private void CheckLeftCardSlot() //Check left card slot to change the values of the right card slot
     {
-        if(GamblingTable.Instance.LeftCardSlot.SlotType == null) //If the left card slot is empty, let this card move into the right card slot
+        if(gamblingTable.LeftCardSlot.SlotType == null) //If the left card slot is empty, let this card move into the right card slot
         {
             transform.SetParent(_rightCardSlotRect);
             _cardHasBeenPlayed = true;
 
             //Assign right card slot
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.RightCardSlot.SlotType = _cardType;
-            GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;
+            gamblingTable.NumberOfPlayedCards++;
+            gamblingTable.RightCardSlot.SlotType = _cardType;
+            gamblingTable.RightCardSlot.IsSlotOccupied = true;
             return;
         }
 
         //Check if the left slot is either empty, has a sheep, player, or dealer card
-        if(GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player 
-        || GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
+        if(gamblingTable.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || gamblingTable.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player 
+        || gamblingTable.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
             //If this card is a sheep, player, or dealer card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Sheep || _cardType.typeOfCard == AllCardTypes.Player || _cardType.typeOfCard == AllCardTypes.Dealer)
@@ -210,13 +198,13 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
             _cardHasBeenPlayed = true;
 
             //Assign right card slot
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.RightCardSlot.SlotType = _cardType;
-            GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;
+            gamblingTable.NumberOfPlayedCards++;
+            gamblingTable.RightCardSlot.SlotType = _cardType;
+            gamblingTable.RightCardSlot.IsSlotOccupied = true;
             return; 
         }
 
-        if(GamblingTable.Instance.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Gun) //Check if the left slot has a gun card
+        if(gamblingTable.LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Gun) //Check if the left slot has a gun card
         {
             //If this card is a gun card, return back to original position of its parent at 0,0,0 
             if(_cardType.typeOfCard == AllCardTypes.Gun) 
@@ -232,9 +220,9 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
             _cardHasBeenPlayed = true;
 
             //Assign right card slot
-            GamblingTable.Instance.NumberOfPlayedCards++;
-            GamblingTable.Instance.RightCardSlot.SlotType = _cardType;
-            GamblingTable.Instance.RightCardSlot.IsSlotOccupied = true;
+            gamblingTable.NumberOfPlayedCards++;
+            gamblingTable.RightCardSlot.SlotType = _cardType;
+            gamblingTable.RightCardSlot.IsSlotOccupied = true;
         }
     }
 
@@ -254,12 +242,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         var cardTransform = transform.GetComponent<RectTransform>();
 
         //Move card to "_leftCardSlotRect" if there's an overlap and the left slot is empty
-        if (CardsOverlap(cardTransform, _leftCardSlotRect) && GamblingTable.Instance.LeftCardSlot.IsSlotOccupied == false) 
+        if (CardsOverlap(cardTransform, _leftCardSlotRect) && gamblingTable.LeftCardSlot.IsSlotOccupied == false) 
             CheckRightCardSlot();
 
 
         //Move card to "_leftCardSlotRect" if there's an overlap and the right slot is empty    
-        else if(CardsOverlap(cardTransform,_rightCardSlotRect) && GamblingTable.Instance.RightCardSlot.IsSlotOccupied == false)
+        else if(CardsOverlap(cardTransform,_rightCardSlotRect) && gamblingTable.RightCardSlot.IsSlotOccupied == false)
             CheckLeftCardSlot();
             
 

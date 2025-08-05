@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-//Remember to unsubscribe from events in Start when a new scene is loaded and such
+//This script only plays the animation for the card game 
+//(The dealer shuffling the cards and the player cards sliding up/down)
 
 public class AnimationManager : MonoBehaviour
 {
@@ -43,28 +44,9 @@ public class AnimationManager : MonoBehaviour
         StartCoroutine(MoveCardsDown(true));
     }
 
-    /*
-    private void OnDestroy()
+    IEnumerator MoveCardsDown(bool isThisANewRound) 
     {
-        EventBus.Instance.Unsubscribe<StartNewRound>(OnNewCardRound);
-        EventBus.Instance.Unsubscribe<ShuffleCards>(ShuffleEvent);
-    }
-    */
-
-    /* //Temporary
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        if(eventName == AllEventNames.ShuffleEvent)
-            StartCoroutine(MoveCardsDown());
-
-        if(eventName == AllEventNames.NewRoundEvent)
-            StartCoroutine(MoveCardsUp(true));
-    }
-    */
-
-    IEnumerator MoveCardsDown(bool isNotANewRound) 
-    {
-        if(isNotANewRound == true)
+        if(isThisANewRound == true)
             yield return new WaitForSeconds(DELAY);
 
         Sequence sequence = DOTween.Sequence();
@@ -77,7 +59,7 @@ public class AnimationManager : MonoBehaviour
         
         yield return sequence.WaitForCompletion();
 
-        if (isNotANewRound == true)
+        if (isThisANewRound == true)
         {
             dealerAnimator.SetTrigger("PlayFullDealerShuffle");
             yield return new WaitForSeconds(SHORTDELAY);
@@ -110,3 +92,14 @@ public class AnimationManager : MonoBehaviour
         StopAllCoroutines();
     }
 }
+
+    /* //Temporary
+    public void OnEventCalled(AllEventNames eventName)
+    {
+        if(eventName == AllEventNames.ShuffleEvent)
+            StartCoroutine(MoveCardsDown());
+
+        if(eventName == AllEventNames.NewRoundEvent)
+            StartCoroutine(MoveCardsUp(true));
+    }
+    */

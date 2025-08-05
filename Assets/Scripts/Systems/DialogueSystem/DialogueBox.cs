@@ -3,8 +3,6 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-//Remember to unsubscribe from events in Start when a new scene is loaded and such
-
 public class DialogueBox : MonoBehaviour
 {
     public DialogueData dialogueData;
@@ -33,8 +31,6 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] 
     private TextMeshProUGUI dialogueButtonTwoText;
 
-    //public bool TypeFirstMessageOnAwake = false; //Temporary, get rid of when game is fully made
-
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
     private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks in "ChangeDialogueFromButtonEvent()"
@@ -51,15 +47,6 @@ public class DialogueBox : MonoBehaviour
         
     void Awake()
     {
-        /*
-        if (TypeFirstMessageOnAwake == true) //Temporary statement, get rid of when game is fully made
-        {
-            CanvasGroup canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
-            canvasGroup.alpha = 1.0f;
-            DisplayDialogueBox();
-        }
-        */
-
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<NextMessage>(OnNextMessageEvent);
     }
@@ -86,14 +73,6 @@ public class DialogueBox : MonoBehaviour
             CheckWhichDialogueToBeSaidNext();
         }
     }
-
-    /*
-    private void OnDestroy()
-    {
-        EventBus.Instance.Unsubscribe<StopPlayerInput>(IsInputAllowed);
-        EventBus.Instance.Unsubscribe<NextMessage>(OnNextMessageEvent);
-    }
-    */
 
     private void OnNextMessageEvent(NextMessage nextMessage)
     {

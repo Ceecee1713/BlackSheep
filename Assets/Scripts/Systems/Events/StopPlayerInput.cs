@@ -54,6 +54,16 @@ public class StartNewRound : IEvent    //Reset player's cards' positions and sta
 {
 }
 
+public class CardHasBeenPlayed : IEvent   //Allows or prevents for the shuffle button to be used within a round
+{
+    public bool CardPlayed;
+
+    public CardHasBeenPlayed(bool cardPlayed)
+    {
+        CardPlayed = cardPlayed;
+    }
+}
+
 public class NextMessage : IEvent
 {
 }

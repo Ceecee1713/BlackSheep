@@ -3,8 +3,6 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//Remember to unsubscribe from events in Start when a new scene is loaded and such
-
 public class CanvasManager : MonoBehaviour 
 {
     [SerializeField]
@@ -19,15 +17,14 @@ public class CanvasManager : MonoBehaviour
     private GameObject cardGameplayCanvas;
     [SerializeField]
     private GameObject interactableLayout;
-    
-    //public bool StartNewRound = false; //Temporary
-
-    private float _durationOfFade;
-    private const float DELAY = 0.3f;
 
     private GameObject _currentCanvas;
     private CanvasGroup _interactableLayoutCanvasGroup;
     private CanvasGroup _currentActiveCanvasGroup, _newCanvasGroup;
+
+    private float _durationOfFade;
+
+    private const float DELAY = 0.3f;
 
     void Start()
     {
@@ -44,15 +41,6 @@ public class CanvasManager : MonoBehaviour
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayout);
     }
-
-    /*
-    private void OnDestroy()
-    {
-        EventBus.Instance.Unsubscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
-        EventBus.Instance.Unsubscribe<ChangeToNewCanvas>(SwitchCanvas);
-        EventBus.Instance.Unsubscribe<CompletedShufflingCards>(ShowCardLayout);
-    }
-    */
     
     private void TurnOffCardCanvas()
     {
@@ -67,7 +55,7 @@ public class CanvasManager : MonoBehaviour
         interactableLayout.SetActive(true);
     }
 
-    private void ChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas)
+    private void ChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas) //When pause or tutorial menus are up, fade the current canvas' alpha
     {
         for (int i = 0; i < canvases.Length; i++)
         {
@@ -75,7 +63,7 @@ public class CanvasManager : MonoBehaviour
             {
                 CanvasGroup canvasGroup = canvases[i].GetComponent<CanvasGroup>();
 
-                if(fadeCurrentCanvas.FadeCanvas == true) //For pause and tutorial menus to make the current canvas alpha fade in a bit
+                if(fadeCurrentCanvas.FadeCanvas == true) //Fade current canvas' alpha
                 {
                     canvasGroup.alpha = 0.3f;
                     break;
@@ -83,7 +71,7 @@ public class CanvasManager : MonoBehaviour
 
                 else
                 {
-                    canvasGroup.alpha = 1.0f;
+                    canvasGroup.alpha = 1.0f; //Restore current canvas' alpha
                     break;
                 }    
             }
@@ -138,7 +126,6 @@ public class CanvasManager : MonoBehaviour
             //Prompt the first message of dialogue to be said
             DialogueBox dialogueBox = canvasToSetActive.GetComponent<DialogueBox>();
             dialogueBox.DisplayDialogueBox();
-            //yield return null;
             StopAllCoroutines();
         }
 
@@ -154,10 +141,8 @@ public class CanvasManager : MonoBehaviour
             {
                 interactableLayout.SetActive(true);
                 EventBus.Instance.Publish(new StartNewRound()); //Reset player's cards' status, shuffle the player's cards and play shuffling animation
-                Debug.Log("A new round has started and the round number is: " + GamblingTable.Instance.RoundNumber);
             }
 
-            //yield return null;
             StopAllCoroutines();
         }  
     }

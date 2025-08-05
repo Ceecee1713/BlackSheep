@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c8030dbecbdde47b6b2326f111d357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardGameRoundNumber: {fileID: 11400000, guid: 63a7a1a7e80c387418106bd237619eb1, type: 2}
   gameConfiguration: {fileID: 11400000, guid: 0ea8c2d159fcfe846ac76d7da02c6049, type: 2}
   dealerDialogueCanvas: {fileID: 0}
   dealerDialogueCanvasRoundFive: {fileID: 0}
