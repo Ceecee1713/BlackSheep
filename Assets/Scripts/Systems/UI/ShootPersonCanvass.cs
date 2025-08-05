@@ -92,12 +92,15 @@ public class ShootPersonCanvass : MonoBehaviour
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             EventBus.Instance.Publish(new IncreaseMusicVolume());
             StopAllCoroutines();
+            yield break;
         }
 
         if(GamblingTable.Instance.RoundNumber != gameConfiguration.MaxAmountOfRounds)
         {
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             EventBus.Instance.Publish(new IncreaseMusicVolume());
+            StopAllCoroutines();
+            yield break;
         }
             
         else //Reached the last round of the game

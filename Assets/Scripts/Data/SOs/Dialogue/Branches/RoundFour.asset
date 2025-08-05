@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: RoundFour
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Yes
+  ButtonTwoText: I Don't Know
+  NormalDialogue:
+  - CharacterTitle: 3
+    Message: There are cards missing.
+  - CharacterTitle: 1
+    Message: Is there? I didn't catch that.
+  - CharacterTitle: 3
+    Message: I know there are cards missing. I know.
+  - CharacterTitle: 3
+    Message: You're the one shuffling. How can something like this just slip by?
+  - CharacterTitle: 3
+    Message: Last time I checked , cards don't disappear like this unless you're
+      a magician.
+  - CharacterTitle: 1
+    Message: Regrettably, I am not that.
+  - CharacterTitle: 3
+    Message: Then how are they missing?
+  - CharacterTitle: 3
+    Message: Don't lie to me.
+  - CharacterTitle: 1
+    Message: ...
+  - CharacterTitle: 1
+    Message: Do you think I'm cheating?
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: Yes, because everyone cheats.
+  - CharacterTitle: 3
+    Message: You all lie.
+  - CharacterTitle: 1
+    Message: You lie to yourself too.
+  - CharacterTitle: 3
+    Message: "Yeah, okay. Say whatever\u2026"
+  - CharacterTitle: 0
+    Message: They move their hand up their arm and rip off a rather large chunk of
+      wool.
+  - CharacterTitle: 0
+    Message: It comes off quite effortlessly, or maybe it seems that way because
+      the physical pain has become so unbearable that it's numb.
+  - CharacterTitle: 0
+    Message: They place the clump right in front of the creature's hand like a disturbing
+      offering.
+  - CharacterTitle: 1
+    Message: ...
+  - CharacterTitle: 0
+    Message: "It takes the wool, places it underneath the table, and prepares the
+      cards silently\u2026"
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: I don't know.
+  - CharacterTitle: 1
+    Message: You do know.
+  - CharacterTitle: 1
+    Message: 'Let''s use a term you''re familiar with: luck.'
+  - CharacterTitle: 1
+    Message: Maybe it's just bad luck that you're getting these cards.
+  - CharacterTitle: 1
+    Message: Or is it because your eyes deceive you? Are the cards changing because
+      your vision is being warped by your deep-rooted insecurities?
+  - CharacterTitle: 1
+    Message: 'I could be cheating, but whether I''m actually cheating or not wouldn''t
+      change how you see me already: untrustworthy.'
+  - CharacterTitle: 1
+    Message: Dealers, pit bosses, and others all have the responsibility to look
+      out for cheaters to ensure fair play, but does that really stop anyone?
+  - CharacterTitle: 1
+    Message: I don't need to explain why people cheat, do I?
+  - CharacterTitle: 3
+    Message: No, I get it.
+  - CharacterTitle: 0
+    Message: Their eyes lower as a frown pulls the corners of their lips down.
+  - CharacterTitle: 0
+    Message: They move their hand up their arm and rip off a rather large chunk of
+      wool.
+  - CharacterTitle: 0
+    Message: It comes off quite effortlessly, or maybe it seems that way because
+      the physical pain has become so unbearable that it's numb.
+  - CharacterTitle: 0
+    Message: They place the clump right in front of the creature's hand like a disturbing
+      offering.
+  - CharacterTitle: 1
+    Message: ...
+  - CharacterTitle: 0
+    Message: It takes the wool, places it underneath the table, and prepares the
+      cards silently...

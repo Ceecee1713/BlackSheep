@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: DealerTwo
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Not Fair
+  ButtonTwoText: Doesn't Matter
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: What a nice surprise. A bullet from you.
+  - CharacterTitle: 1
+    Message: How are you liking the game? Does it feel nice holding that gun?
+  - CharacterTitle: 3
+    Message: It's unnatural. Again, casinos don't really advertise games that blatantly
+      tell their patrons, "you can kill whoever you want!"
+  - CharacterTitle: 1
+    Message: ' I''ll try to take that as a compliment.'
+  - CharacterTitle: 3
+    Message: Are we actually unable to die in this game? When I say we, I mean you
+      and I.
+  - CharacterTitle: 1
+    Message: We're both not dead yet because we're bound together till the game is
+      over.
+  - CharacterTitle: 3
+    Message: Did your little contract say that too?
+  - CharacterTitle: 1
+    Message: Yes.
+  - CharacterTitle: 3
+    Message: Whatever. That kind of shoves the entire "life is precious" statement
+      out the door.
+  - CharacterTitle: 1
+    Message: If that's how you see it.
+  - CharacterTitle: 3
+    Message: How is this game fair then if we both can't die till the very end?
+  - CharacterTitle: 1
+    Message: 'Let me ask you this then: Do you think this game is fair?'
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: I get no grand amount of money at the end if I kill you, so it's objectively
+      not fair compared to other casino games.
+  - CharacterTitle: 3
+    Message: The point of casino games is to have a shot at winning big, but I don't
+      really win anything here.
+  - CharacterTitle: 3
+    Message: I just shoot people for the fun of it all.
+  - CharacterTitle: 1
+    Message: Then why take up this game in the first place?
+  - CharacterTitle: 3
+    Message: Well, I don't obsess over money. I'm here for other reasons. One of
+      them was pure curiousity.
+  - CharacterTitle: 3
+    Message: Besides, casinos are already unfair the moment you walk in. In general,
+      everything is already unfair in life.
+  - CharacterTitle: 1
+    Message: Doesn't that make you want fairness more if you see life like that?
+  - CharacterTitle: 3
+    Message: A want, a wish, a dream. It's a fool's dream to expect kindness or "good
+      things" because they're all fleeting anyway.
+  - CharacterTitle: 1
+    Message: While that's true, everybody deserves fairness.
+  - CharacterTitle: 3
+    Message: Who cares what we want, what I want?
+  - CharacterTitle: 3
+    Message: "Even your contract says I don't win anything, so look who's talking
+      big\u2026"
+  - CharacterTitle: 0
+    Message: They pull more wool off their arm with the stinging sensation worsening.
+  - CharacterTitle: 0
+    Message: The creature takes the wool and moves it underneath the table.
+  - CharacterTitle: 1
+    Message: I'll start a new round.
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: My answer doesn't matter to you.
+  - CharacterTitle: 1
+    Message: Am I not allowed to ask questions?
+  - CharacterTitle: 3
+    Message: Am I not allowed to not answer them?
+  - CharacterTitle: 1
+    Message: I only asked if this game was fair or not. Forbid me for wanting to
+      have a conversation with you.
+  - CharacterTitle: 3
+    Message: I'm not trying to get some introspection from a stranger with my answer.
+  - CharacterTitle: 1
+    Message: Am I a stranger though? This can't be the first time you've been asked
+      this question, if something is fair and for you to possibly answer with "yes"
+      or "no."
+  - CharacterTitle: 3
+    Message: Look, my answers don't matter. My thoughts don't matter. I don't matter
+      as a person at this table. You even said you don't want to know me.
+  - CharacterTitle: 3
+    Message: So no, I'm not answering. We're just playing a game after all, not having
+      some deep talk.
+  - CharacterTitle: 0
+    Message: They pull more wool off their arm with the stinging sensation worsening.
+  - CharacterTitle: 0
+    Message: The creature takes the wool and moves it underneath the table.
+  - CharacterTitle: 1
+    Message: Very well...

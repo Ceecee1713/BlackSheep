@@ -5,6 +5,9 @@ public class FewMessageButton : MonoBehaviour
     [SerializeField]
     private DialogueBox dialogueBox;
 
+    [SerializeField]
+    private GameObject button;
+
     [TextArea(2,5)] public string [] Messages;
 
     private int _counter = -1;
@@ -15,7 +18,7 @@ public class FewMessageButton : MonoBehaviour
 
         if(_counter >= Messages.Length)
         {
-            this.gameObject.SetActive(false);
+            button.SetActive(false);
             return;
         }
 

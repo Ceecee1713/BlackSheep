@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: LeaveCasino
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: So you went up and left. Not even a word was uttered from your mouth.
+  - CharacterTitle: 1
+    Message: Whatever emotions or thoughts you may have right now, I won't know.
+      Not now, at least.
+  - CharacterTitle: 1
+    Message: I'm only as valuable as you make me out to be. You'll only let me listen
+      to your anguish when you stop suppressing me.
+  - CharacterTitle: 1
+    Message: Despite your pained state, you just barely hold onto yourself.
+  - CharacterTitle: 1
+    Message: What are you thinking right now? Perhaps hate. Hate for me and the people
+      around you.
+  - CharacterTitle: 1
+    Message: Who knows, maybe you'll return here another day, venture to another
+      casino, or neither.
+  - CharacterTitle: 1
+    Message: Will this be the last time I see you, or will we repeat this encounter?
+  - CharacterTitle: 1
+    Message: Will your choices be the same in the next cycle?
+  - CharacterTitle: 1
+    Message: Will you exhaust yourself of choice where even "hope" can't save you?
+  - CharacterTitle: 1
+    Message: I hope you know that regardless of how you change or lack thereof, the
+      world doesn't change with you.
+  - CharacterTitle: 1
+    Message: "The same goes for casinos\u2026"
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

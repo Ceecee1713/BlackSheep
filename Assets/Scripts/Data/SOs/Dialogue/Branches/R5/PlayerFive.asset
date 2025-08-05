@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: PlayerFive
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Leave
+  ButtonTwoText: Finish The Game
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: I don't see fear in your eyes like other patrons I've met. I see something
+      much more twisted.
+  - CharacterTitle: 1
+    Message: I'm not a stranger to you. What has been said thus far are pieces of
+      your psychology. I'm just... making it more theatrical with silly storytelling
+      that just happens to involve a gun and cards.
+  - CharacterTitle: 1
+    Message: You live in lies. Some formed by others, some created by you. It's easier
+      to live in falsehoods.
+  - CharacterTitle: 1
+    Message: Everything is a lie. That's how you perceive it.
+  - CharacterTitle: 1
+    Message: Be complacent. Don't fight back. Don't prove yourself. Hold your tongue.
+      It will all amount to nothing.
+  - CharacterTitle: 1
+    Message: Expect nothing because nothing gives nothing back. Give yourself away
+      in a world that loves to dispose.
+  - CharacterTitle: 1
+    Message: Everyone is a cheater. A cheater with ulterior motives. They all lie.
+  - CharacterTitle: 1
+    Message: Why try to challenge this belief that everything is a lie after all
+      you've endured ? Your experiences are the only "truth" here.
+  - CharacterTitle: 1
+    Message: Free will is a lie. Everyone wants control. Some even disguise it as
+      care. Your choices are considered pointless or completely illogical to them.
+  - CharacterTitle: 1
+    Message: Allow yourself to be fed lies. Allow others to choose what you become
+      and what you do. Why try in a world that will never value you or trust your
+      judgment?
+  - CharacterTitle: 1
+    Message: You can think I'm a cheater. Think whatever you want, but maybe I can
+      break some rules for you. After all, this game doesn't abide by normal standards.
+  - CharacterTitle: 1
+    Message: I'll offer you the choice to leave this table. Leave this casino entirely.
+      Why would I do this? To give you a choice after all I've said. They're not
+      my thoughts.
+  - CharacterTitle: 1
+    Message: Or, you can stay and finish the game. Fire that last bullet, but you
+      already know whose head it will pierce through.
+  - CharacterTitle: 1
+    Message: The choice is yours. I hold no judgment, nor will I talk you out of
+      your decision.
+  - CharacterTitle: 1
+    Message: Please choose.
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

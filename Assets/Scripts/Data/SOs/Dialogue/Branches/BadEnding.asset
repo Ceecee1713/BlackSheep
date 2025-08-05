@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: BadEnding
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 0
+  ButtonOneText: 
+  ButtonTwoText: 
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: Does your death, caused by your hands, satisfy you?
+  - CharacterTitle: 1
+    Message: If you ever shot yourself, you witnessed death before coming back to
+      life.
+  - CharacterTitle: 1
+    Message: Why, after witnessing it at least once, did you want to fully exit this
+      world?
+  - CharacterTitle: 1
+    Message: Did it feel nice being dead for those few seconds, like everything just
+      cut out as if you were in a movie?
+  - CharacterTitle: 1
+    Message: Did death really appease you?
+  - CharacterTitle: 1
+    Message: I've seen so many other black sheep like you who chose to kill themselves
+      in front of me. It sucks that the dead can't answer my questions.
+  - CharacterTitle: 1
+    Message: "You all walked down the same self-destructive path\u2026"
+  - CharacterTitle: 1
+    Message: Maybe after seeing death up close, it could have allowed you to understand
+      yourself a little better.
+  - CharacterTitle: 1
+    Message: Will this be the last time I see you, or will we repeat this encounter?
+  - CharacterTitle: 1
+    Message: Will your choices be the same in the next cycle? Do your choices really
+      matter if we're going to go through this same torment?
+  - CharacterTitle: 1
+    Message: Will you make new choices?
+  - CharacterTitle: 1
+    Message: "You paid the price in the form of bodily harm. You\u2019ve always paid
+      a price."
+  - CharacterTitle: 1
+    Message: "You lost everything, and I won everything. Such is the nature of casinos\u2026"
+  ButtonOneDialogue: []
+  ButtonTwoDialogue: []

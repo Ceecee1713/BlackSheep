@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: DealerThree
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Comfort
+  ButtonTwoText: No Answer
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: Your choices are intriguing me more and more with whom you wish to shoot.
+  - CharacterTitle: 3
+    Message: "Sure. I'm really interesting\u2026"
+  - CharacterTitle: 1
+    Message: You're someone fueled by resentment.
+  - CharacterTitle: 3
+    Message: Stop your introspection.
+  - CharacterTitle: 1
+    Message: We're bound together until the end of this game, so I naturally like
+      to discern my players.
+  - CharacterTitle: 3
+    Message: Well, can you stop that?
+  - CharacterTitle: 1
+    Message: I could, but I can't.
+  - CharacterTitle: 1
+    Message: Truthfully, why did you agree to play my game, aside from curiosity?
+  ButtonOneDialogue:
+  - CharacterTitle: 3
+    Message: "Well, since you want a conversation so badly\u2026"
+  - CharacterTitle: 3
+    Message: Aside from pure curiosity, it brings me comfort to hear I can make extreme,
+      selfish choices with no consequence.
+  - CharacterTitle: 3
+    Message: I also get no judgment for my choices. I even get the freedom to choose
+      to "kill" myself too, free of consequence.
+  - CharacterTitle: 3
+    Message: Slots are a solo game, but it's uncontrolled by the player due to its
+      little rigged system that it's been programmed with. I lose consistently.
+  - CharacterTitle: 3
+    Message: I also get to choose if I can win or not in this game. I control nearly
+      everything in what I want to become, gain, or lose.
+  - CharacterTitle: 3
+    Message: The abundance of choice brings me solace, even if they're reckless,
+      like shooting some random guy.
+  - CharacterTitle: 3
+    Message: This guaranteed free will makes me believe that maybe I can understand
+      myself a little better because I can make choices not influenced by others.
+  - CharacterTitle: 3
+    Message: Still, how much control are we able to have in this world? Everything
+      becomes a lie eventually, and there are always more control-hungry freaks.
+  - CharacterTitle: 0
+    Message: They grasp their arm. Their arm is horribly torn up. Parts of their
+      flesh are exposed and red from the brute force of wool being ripped off.
+  - CharacterTitle: 0
+    Message: They tear a larger chunk of their wool than they intended higher up
+      their arm and hand the clump over.
+  - CharacterTitle: 0
+    Message: The creature takes it wordlessly.
+  - CharacterTitle: 1
+    Message: ...I'll shuffle a new round now.
+  ButtonTwoDialogue:
+  - CharacterTitle: 3
+    Message: My answer doesn't matter.
+  - CharacterTitle: 1
+    Message: I think it does.
+  - CharacterTitle: 3
+    Message: Answer it yourself. Sounds like you know me better anyway.
+  - CharacterTitle: 1
+    Message: You came here into the desert, downed a couple of glasses, went to a
+      table with other patrons, then came here.
+  - CharacterTitle: 1
+    Message: You chose not to play at that table for a reason.
+  - CharacterTitle: 1
+    Message: Even if losing a game is the same in both situations, knowing that if
+      you lose this game and that it's entirely your fault is your self-deprecating
+      comfort. Not influenced by others.
+  - CharacterTitle: 3
+    Message: I wish I could rip that tongue out of your mouth.
+  - CharacterTitle: 0
+    Message: They grasp their arm. Their arm is horribly torn up. Parts of their
+      flesh are exposed and red from the brute force of wool being ripped off.
+  - CharacterTitle: 0
+    Message: They tear a larger chunk of their wool than they intended higher up
+      their arm and hand the clump over.
+  - CharacterTitle: 0
+    Message: The creature takes it wordlessly.
+  - CharacterTitle: 1
+    Message: ' ...I''ll shuffle a new round now.'

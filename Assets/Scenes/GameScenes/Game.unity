@@ -539,6 +539,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cdbb92842e064948a58c69cad6297d4, type: 3}
+--- !u!1 &304657091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2049538455562750366, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+  m_PrefabInstance: {fileID: 593987921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &315196245
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +716,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 56f10200ec79bdc43aa4a70deede3869, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -1599,6 +1608,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: d90ed4a9d42bc794ebf3c15933eafd26, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: _ignoreCanvasChanging
       value: 1
@@ -2540,6 +2553,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 259ccb1f9ccd09844824c824bce75095, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -4540,7 +4557,7 @@ PrefabInstance:
     - target: {fileID: 5432552038680893258, guid: 2855020c71d6ec849af8558e3929411d, type: 3}
       propertyPath: cardGameDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 6ccaf54f2f170554e9b56d3931b8448c, type: 2}
+      objectReference: {fileID: 11400000, guid: c47b72bbeefe734479e74af4d592bd2b, type: 2}
     - target: {fileID: 5432552038680893258, guid: 2855020c71d6ec849af8558e3929411d, type: 3}
       propertyPath: shootingSheepCanvas
       value: 
@@ -4957,6 +4974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 593987924}
+  button: {fileID: 304657091}
   Messages:
   - You can't do that.
   - You won't do that.
@@ -5518,7 +5536,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: d3ed9f06d47516b43aad519180ccc25e, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 

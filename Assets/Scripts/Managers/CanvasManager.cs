@@ -154,6 +154,7 @@ public class CanvasManager : MonoBehaviour
             {
                 interactableLayout.SetActive(true);
                 EventBus.Instance.Publish(new StartNewRound()); //Reset player's cards' status, shuffle the player's cards and play shuffling animation
+                Debug.Log("A new round has started and the round number is: " + GamblingTable.Instance.RoundNumber);
             }
 
             //yield return null;

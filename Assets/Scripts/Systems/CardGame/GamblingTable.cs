@@ -38,14 +38,19 @@ public class GamblingTable : Singleton<GamblingTable>
     public bool CardHasBeenPlayed = false;
 
     private int _maxAmountOfRounds;
+    private int roundNumberToRemoveDealerAndNormalCards;
     private int _maxNumberOfPlayedCards; //Number representing max number of plays need to be met before moving to next round
 
     private const bool IS_NEXT_CANVAS_A_DIALOGUE_CANVAS = false;
 
     private void Start()
     {
-        _maxAmountOfRounds = Resources.Load<GameConfiguration>("GameConfiguration").MaxAmountOfRounds;
-        _maxNumberOfPlayedCards = Resources.Load<GameConfiguration>("GameConfiguration").MaxNumberOfPlayedCards;
+        var config = Resources.Load<GameConfiguration>("GameConfiguration");
+
+        _maxAmountOfRounds = config.MaxAmountOfRounds;
+        _maxNumberOfPlayedCards = config.MaxNumberOfPlayedCards;
+        roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
+
         RoundNumber = 1;
     }
 
@@ -61,8 +66,10 @@ public class GamblingTable : Singleton<GamblingTable>
             EventBus.Instance.Publish(new FinishedRound()); //Reset the Shuffle Button's status and remove card types that can be given out to the player
             CheckForWhichCanvasToSwitchedTo();
 
-            if(RoundNumber < _maxAmountOfRounds)
+            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
                 RoundNumber++;
+
+            Debug.Log("A round has finished and the round number is: " + RoundNumber);
         }
     }
 
@@ -70,7 +77,9 @@ public class GamblingTable : Singleton<GamblingTable>
     {
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep)
         {
-            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootSheepDialogue; //Setting sheep dialogue for dealer to say
+            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
+                dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootSheepDialogue; //Setting sheep dialogue for dealer to say
+
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingSheepCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             ResetValues();
             return;
@@ -78,7 +87,9 @@ public class GamblingTable : Singleton<GamblingTable>
 
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player)
         {
-            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootPlayerDialogue; //Setting player dialogue for dealer to say
+            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
+                dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootPlayerDialogue; //Setting player dialogue for dealer to say
+
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingPlayerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             ResetValues();
             return;
@@ -86,7 +97,9 @@ public class GamblingTable : Singleton<GamblingTable>
 
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
-            dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootDealerDialogue; //Setting dealer dialogue for dealer to say
+            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
+                dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootDealerDialogue; //Setting dealer dialogue for dealer to say
+
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingDealerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             ResetValues();
         }

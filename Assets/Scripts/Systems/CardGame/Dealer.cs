@@ -22,11 +22,10 @@ public class Dealer : Singleton<Dealer>
     
     private void Start()
     {
-        var config = Resources.Load<GameConfiguration>("GameConfiguration");// store in a local variable to avoid multiple calls
-
+        var config = Resources.Load<GameConfiguration>("GameConfiguration");
         _roundNumberToRemoveSheepCard = config.RoundNumberToRemoveSheepCard;
         _roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
-
+        
         var cardTypes = Resources.LoadAll<CardType>("CardType");
 
         for(int i = 0; i < _availableCardTypes.Length; i++)
