@@ -3740,8 +3740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1557291818}
   currentCanvasGroup: {fileID: 1819384014}
-  animationTriggerName: 
-  delayBetweenBlinkAnimation: 0
+  animationTriggerName: Blink
+  delayBetweenBlinkAnimation: 3
 --- !u!95 &1557291818
 Animator:
   serializedVersion: 7
@@ -3752,7 +3752,7 @@ Animator:
   m_GameObject: {fileID: 1557291815}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4bbbc36cdd8af264c88f67dc7e8244f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
