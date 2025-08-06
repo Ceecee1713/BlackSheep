@@ -9,6 +9,9 @@ public class EyeAnimation : MonoBehaviour
     [SerializeField]
     private CanvasGroup currentCanvasGroup;
 
+    [SerializeField] 
+    private string animationTriggerName;
+
     [SerializeField]
     private float delayBetweenBlinkAnimation;
 
@@ -16,18 +19,27 @@ public class EyeAnimation : MonoBehaviour
 
     void Update()
     {
-        if(currentCanvasGroup.alpha == 1.0f && _playAnimation == true)
+        if (currentCanvasGroup.alpha == 1.0f)
+        {
+            if (_playAnimation == true)
+            {
+                StopAllCoroutines();
+                StartCoroutine(PlayBlinkAnimation());
+                _playAnimation = false;
+            }
+        }
+
+        else
         {
             StopAllCoroutines();
-            StartCoroutine(PlayBlinkAnimation());
-            _playAnimation = false;
+            _playAnimation = true;
         }
     }
 
     private IEnumerator PlayBlinkAnimation()
     {
         yield return new WaitForSeconds(delayBetweenBlinkAnimation);
-        //animator.SetTrigger("PlayFullDealerShuffle");
+        animator.SetTrigger(animationTriggerName);
         yield return new WaitForSeconds(delayBetweenBlinkAnimation);
         _playAnimation = true;
     }
