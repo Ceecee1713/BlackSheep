@@ -1,9 +1,18 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject PauseMenuCanvas;
+
     private CardGameInputs _cardGameInputs;
+
+    private bool _stopInput = false;
+    private bool _stopCoroutineRepeats = false;
+
+    private const float DELAY = 0.5f;
 
     void OnEnable()
     {
@@ -20,9 +29,30 @@ public class InputController : MonoBehaviour
         _cardGameInputs.Disable();
     }
 
-
-    void OnNextMessage(InputAction.CallbackContext val)
+    void Update()
     {
-        EventBus.Instance.Publish(new NextMessage());
+        if(PauseMenuCanvas.activeSelf == true)
+        {
+            _stopCoroutineRepeats = false;
+            _stopInput = true;
+        }
+
+        if(PauseMenuCanvas.activeSelf == false  && _stopCoroutineRepeats == false)
+        {
+            StartCoroutine(AllowInput());
+            _stopCoroutineRepeats = true;
+        }
+    }
+
+    private void OnNextMessage(InputAction.CallbackContext val)
+    {
+        if(_stopInput == false)
+            EventBus.Instance.Publish(new NextMessage());
+    }
+
+    IEnumerator AllowInput()
+    {
+        yield return new WaitForSeconds(DELAY);
+        _stopInput = false;
     }
 }

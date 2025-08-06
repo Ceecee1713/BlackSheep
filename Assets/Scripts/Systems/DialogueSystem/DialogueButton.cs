@@ -17,6 +17,9 @@ public class DialogueButton : MonoBehaviour
     
     public void OnDialogueButtonClick()
     {
+        if(dialogueBox.PauseMenuCanvas.activeSelf == true)
+            return;
+
         AudioManager.Instance.PlayButtonSound();
         dialogueBox.ChangeDialogueFromButtonEvent(buttonType);
     }

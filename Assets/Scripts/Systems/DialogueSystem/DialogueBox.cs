@@ -6,6 +6,8 @@ using TMPro;
 public class DialogueBox : MonoBehaviour
 {
     public DialogueData dialogueData;
+
+    public GameObject PauseMenuCanvas;
     
     [Header ("For Next Canvas To Be Displayed")]
     [SerializeField]
@@ -38,6 +40,7 @@ public class DialogueBox : MonoBehaviour
     
     private bool _allowInput = false;
     private bool _moveToNextMessage = false;
+
     private bool _hasActivatedButtonOptions = false; 
     private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent going through messages entirely

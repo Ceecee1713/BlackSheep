@@ -181,6 +181,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1091580988}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: cardGameplayCanvas
       value: 
       objectReference: {fileID: 1005330227481765333}
@@ -630,9 +634,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: 56f10200ec79bdc43aa4a70deede3869, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -1035,9 +1051,21 @@ PrefabInstance:
       value: Casino Bar Two Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -1196,9 +1224,21 @@ PrefabInstance:
       value: Casino Bar One Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -1493,9 +1533,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d90ed4a9d42bc794ebf3c15933eafd26, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: _ignoreCanvasChanging
       value: 1
@@ -1648,6 +1700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 802338738}
   nextCanvasToSetActive: {fileID: 1121344734}
+  pauseMenu: {fileID: 1091580988}
   isNextCanvasADialogueCanvas: 1
 --- !u!114 &802338731
 MonoBehaviour:
@@ -1663,6 +1716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 802338738}
   nextCanvasToSetActive: {fileID: 1005330227481765333}
+  pauseMenu: {fileID: 1091580988}
   isNextCanvasADialogueCanvas: 0
 --- !u!1 &802338732 stripped
 GameObject:
@@ -1955,9 +2009,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -2326,9 +2392,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: 259ccb1f9ccd09844824c824bce75095, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -2934,9 +3012,21 @@ PrefabInstance:
       value: 'Casino Hall Blackjack Canvas '
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -3770,9 +3860,21 @@ PrefabInstance:
       value: Casino Hall Beginning Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -3993,9 +4095,21 @@ PrefabInstance:
       value: Casino ID Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueButtonOneText
       value: 
@@ -4136,9 +4250,21 @@ PrefabInstance:
       value: 'Casino Hall Meeting Dealer Canvas '
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -4500,9 +4626,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueButtonOneText
       value: 
@@ -4968,9 +5106,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -5334,9 +5484,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: d3ed9f06d47516b43aad519180ccc25e, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -5476,10 +5638,22 @@ PrefabInstance:
       propertyPath: m_Colors.m_PressedColor.r
       value: 0.78431374
       objectReference: {fileID: 0}
+    - target: {fileID: 426050034564082161, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 1023099604202067275, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 1023099604202067275, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
       objectReference: {fileID: 1765068936}
+    - target: {fileID: 3674346895961054388, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 3674346895961054388, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -5500,6 +5674,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5065866372885639450, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 5432037360049490365, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 5432037360049490365, guid: 0f993564520eea343a554484a5d6da5a, type: 3}
       propertyPath: nextCanvasToSetActive
       value: 
@@ -5679,9 +5861,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: 908f3a66a6a96cd4aafaf97ddcc3de0f, type: 2}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueButtonOneText
       value: 
@@ -6149,6 +6343,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 338568227624590061, guid: cf9f9e136be80d04abbdbfd928fe5e00, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1091580988}
+    - target: {fileID: 338568227624590061, guid: cf9f9e136be80d04abbdbfd928fe5e00, type: 3}
+      propertyPath: PauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 996689181206469892, guid: cf9f9e136be80d04abbdbfd928fe5e00, type: 3}
       propertyPath: m_Name
       value: Input Controller

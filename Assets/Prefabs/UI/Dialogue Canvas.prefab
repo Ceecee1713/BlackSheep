@@ -1640,6 +1640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+  PauseMenuCanvas: {fileID: 0}
   nextCanvasToSetActive: {fileID: 0}
   _isNextCanvasADialogueCanvas: 0
   _ignoreCanvasChanging: 0

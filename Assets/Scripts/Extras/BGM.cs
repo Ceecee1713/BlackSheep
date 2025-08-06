@@ -27,6 +27,9 @@ public class BGM : MonoBehaviour
 
     void Update()
     {
+        if(_activatedMusicLoop == true)
+            return;
+            
         if(!startingMusic.isPlaying && _activatedMusicLoop == false)
         {
             musicLoop.Play();
@@ -36,19 +39,28 @@ public class BGM : MonoBehaviour
 
     private void IncreaseMusicVolume(IncreaseMusicVolume increaseMusicVolume)
     {
-        _tween?.Kill();
-        _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION);
+        if(_activatedMusicLoop == true)
+        {
+            _tween?.Kill();
+            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION);
+        }
     }
 
     private void OnNewCardRound(StartNewRound startNewRound)
     {
-        _tween?.Kill();
-        _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION);
+        if(_activatedMusicLoop == true)
+        {
+            _tween?.Kill();
+            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION);
+        }
     }
 
     private void FinishedRoundEvent(FinishedRound finishedRound)
     {
-        _tween?.Kill();
-        _tween = musicLoop.DOFade(0.0f, DURATION);
+        if(_activatedMusicLoop == true)
+        {
+            _tween?.Kill();
+            _tween = musicLoop.DOFade(0.0f, DURATION);
+        } 
     }
 }

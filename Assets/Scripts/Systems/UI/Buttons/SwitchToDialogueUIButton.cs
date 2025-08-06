@@ -16,6 +16,8 @@ public class SwitchToDialogueUIButton : MonoBehaviour
 
     [SerializeField]
     private GameObject nextCanvasToSetActive; 
+    [SerializeField]
+    private GameObject pauseMenu;
     
     [SerializeField]
     private bool isNextCanvasADialogueCanvas = false;
@@ -40,7 +42,7 @@ public class SwitchToDialogueUIButton : MonoBehaviour
 
     public void OnSwitchUIClick()
     {
-        if(_dontRepeat == true)
+        if(_dontRepeat == true || pauseMenu.activeSelf == true)
             return;
 
         if(_allowClicking == true)

@@ -88,8 +88,8 @@ public class ShootPersonCanvass : MonoBehaviour
 
         yield return new WaitForSeconds(DELAY);
 
-        AudioManager.Instance.PlayGunshotSound();
         flashImage.SetActive(true);
+        AudioManager.Instance.PlayGunshotSound();
 
         yield return new WaitForSeconds(delayBeforeFadingFromFlashImage);
 
