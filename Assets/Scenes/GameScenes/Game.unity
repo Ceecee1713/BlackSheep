@@ -932,8 +932,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.779, y: 157}
-  m_SizeDelta: {x: 194.1159, y: 63.6745}
+  m_AnchoredPosition: {x: 4.887, y: 162}
+  m_SizeDelta: {x: 210.171, y: 63.6745}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459973207
 MonoBehaviour:
@@ -949,8 +949,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 459973208}
   currentCanvasGroup: {fileID: 2109594922}
-  animationTriggerName: 
-  delayBetweenBlinkAnimation: 0
+  animationTriggerName: Blink
+  delayBetweenBlinkAnimation: 3.5
 --- !u!95 &459973208
 Animator:
   serializedVersion: 7
@@ -961,7 +961,7 @@ Animator:
   m_GameObject: {fileID: 459973205}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1806bccf8ac23f49be17cce1da8aa32, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1820,8 +1820,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 836645528}
   currentCanvasGroup: {fileID: 7388227439546508609}
-  animationTriggerName: 
-  delayBetweenBlinkAnimation: 0
+  animationTriggerName: Blink
+  delayBetweenBlinkAnimation: 3.5
 --- !u!95 &836645528
 Animator:
   serializedVersion: 7
@@ -1832,7 +1832,7 @@ Animator:
   m_GameObject: {fileID: 836645523}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd29f85872258834bb0feaece8d562dd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1935,8 +1935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 851910785}
   currentCanvasGroup: {fileID: 802338738}
-  animationTriggerName: 
-  delayBetweenBlinkAnimation: 0
+  animationTriggerName: Blink
+  delayBetweenBlinkAnimation: 3.5
 --- !u!95 &851910785
 Animator:
   serializedVersion: 7
@@ -1947,7 +1947,7 @@ Animator:
   m_GameObject: {fileID: 851910780}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e5b1c20eae57d44a891038add2824c6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2302,8 +2302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 161}
-  m_SizeDelta: {x: 200.463, y: 77.7134}
+  m_AnchoredPosition: {x: 5.8049, y: 163.03577}
+  m_SizeDelta: {x: 220.43, y: 61.4275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971241895
 MonoBehaviour:
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   animator: {fileID: 1187692776}
   currentCanvasGroup: {fileID: 887850859}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 5
+  delayBetweenBlinkAnimation: 4
 --- !u!95 &1187692776
 Animator:
   serializedVersion: 7
@@ -4416,8 +4416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 156}
-  m_SizeDelta: {x: 194.04, y: 75.6873}
+  m_AnchoredPosition: {x: 3.9821, y: 161}
+  m_SizeDelta: {x: 212.3617, y: 61.4371}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1793117047
 MonoBehaviour:
@@ -4877,7 +4877,7 @@ MonoBehaviour:
   animator: {fileID: 1909181050}
   currentCanvasGroup: {fileID: 887850859}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 4
+  delayBetweenBlinkAnimation: 3
 --- !u!95 &1909181050
 Animator:
   serializedVersion: 7
