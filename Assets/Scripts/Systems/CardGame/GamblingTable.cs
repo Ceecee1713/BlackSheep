@@ -17,9 +17,9 @@ public class GamblingTable : MonoBehaviour
     [SerializeField]
     private CardGameDialogue cardGameDialogue; 
     [SerializeField]
-    private DialogueBox dealerCanvasDialogueBox; 
+    private DialogueBox dealerCanvasDialogueBox; //Dialogue box script for the dealer canvas used for round 1-4 of the card game
 
-    [Header ("Canvases based on who gets shot")]
+    [Header ("Canvases Based on Who Gets Shot")]
     [SerializeField]
     private GameObject shootingPlayerCanvas;
     [SerializeField]
@@ -34,24 +34,19 @@ public class GamblingTable : MonoBehaviour
     public int NumberOfPlayedCards = 0;
     [HideInInspector]
     public int RoundNumber;
-    //[HideInInspector]
-    //public bool CardHasBeenPlayed = false;
 
     private CardGameRoundNumber _cardGameRoundNumber;
 
     private int _maxAmountOfRounds;
-    private int roundNumberToRemoveDealerAndNormalCards;
     private int _maxNumberOfPlayedCards; //Number representing max number of plays need to be met before moving to next round
 
     private const bool IS_NEXT_CANVAS_A_DIALOGUE_CANVAS = false;
 
-    private void Start()
+    private void Awake()
     {
         var config = Resources.Load<GameConfiguration>("GameConfiguration");
-
         _maxAmountOfRounds = config.MaxAmountOfRounds;
         _maxNumberOfPlayedCards = config.MaxNumberOfPlayedCards;
-        roundNumberToRemoveDealerAndNormalCards = config.RoundNumberToRemoveDealerAndNormalCards;
 
         _cardGameRoundNumber = Resources.Load<CardGameRoundNumber>("RoundNumber");
 
@@ -61,10 +56,7 @@ public class GamblingTable : MonoBehaviour
 
     void Update()
     {
-        RoundNumber = Mathf.Clamp(RoundNumber, 1, _maxAmountOfRounds);
-
         if(NumberOfPlayedCards > 0)
-            //CardHasBeenPlayed = true;
             EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true));
 
         if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
@@ -72,18 +64,19 @@ public class GamblingTable : MonoBehaviour
             EventBus.Instance.Publish(new FinishedRound()); //Reset the Shuffle Button's status and remove card types that can be given out to the player
             CheckForWhichCanvasToSwitchedTo();
 
-            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
-                RoundNumber++;
-
+            RoundNumber++;
             _cardGameRoundNumber.CurrentRoundNumber = RoundNumber;
         }
     }
 
     private void CheckForWhichCanvasToSwitchedTo()
     {
+        //Here, I'm minusing the "RoundNumber" by 1 to access the index of the "cardGameDialogue.RoundDialogue" array 
+        //Because without it, the index that'll be accessed would be out of bounds and/or the wrong index that I want, being one index ahead
+
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Sheep)
         {
-            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
+            if(RoundNumber <= cardGameDialogue.RoundDialogue.Length) 
                 dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootSheepDialogue; //Setting sheep dialogue for dealer to say
 
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingSheepCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
@@ -93,7 +86,7 @@ public class GamblingTable : MonoBehaviour
 
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Player || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Player)
         {
-            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
+            if(RoundNumber <= cardGameDialogue.RoundDialogue.Length) 
                 dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootPlayerDialogue; //Setting player dialogue for dealer to say
 
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingPlayerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
@@ -103,7 +96,7 @@ public class GamblingTable : MonoBehaviour
 
         if(LeftCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer || RightCardSlot.SlotType.typeOfCard == AllCardTypes.Dealer)
         {
-            if(RoundNumber < roundNumberToRemoveDealerAndNormalCards)
+            if(RoundNumber <= cardGameDialogue.RoundDialogue.Length) 
                 dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber-1].ShootDealerDialogue; //Setting dealer dialogue for dealer to say
 
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingDealerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
@@ -114,7 +107,6 @@ public class GamblingTable : MonoBehaviour
     private void ResetValues()
     {
         NumberOfPlayedCards = 0;
-        //CardHasBeenPlayed = false;
         EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false));
         RightCardSlot.IsSlotOccupied = false;
         LeftCardSlot.IsSlotOccupied = false;

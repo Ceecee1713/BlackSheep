@@ -74,10 +74,16 @@ public class Dealer : Singleton<Dealer>
 
     private void RemoveCardTypes() //Limit card types to be given out to the player in later rounds
     {
-        if(_cardGameRoundNumber.CurrentRoundNumber == _roundNumberToRemoveSheepCard)
+        //Here, I'm adding the "cardGameRoundNumber.CurrentRoundNumber" by 1 
+        //Because there's an order of operations difference as this method is called when a round ends 
+        //BEFORE the "cardGameRoundNumber.CurrentRoundNumber" value increases to indicate the card game has advanced by 1 to a new round:
+        //The "_cardGameRoundNumber.CurrentRoundNumber" will be one value lower than what it actually is because of this order of operations
+        //Thus, there needs to be an offset (adding by one)
+
+        if(_cardGameRoundNumber.CurrentRoundNumber+1 >= _roundNumberToRemoveSheepCard)
             _excludeSheepCard = true;
 
-        if(_cardGameRoundNumber.CurrentRoundNumber == _roundNumberToRemoveDealerAndNormalCards)
+        if(_cardGameRoundNumber.CurrentRoundNumber+1 >= _roundNumberToRemoveDealerAndNormalCards)
             _onlyHavePlayerAndGunCards = true;
     }
     
@@ -114,8 +120,7 @@ public class Dealer : Singleton<Dealer>
            }
         }
 
-        if(_onlyHavePlayerAndGunCards == false)
-            ShuffleCards();
+        ShuffleCards();
     }
 
     private void ShuffleCards() //Selecting a random card type from "_availableCardTypes"
@@ -125,9 +130,24 @@ public class Dealer : Singleton<Dealer>
             _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
             _singleCardType = _availableCardTypes[_randomCardTypeNumber];
 
-            if(_excludeSheepCard == true)
+            if(_excludeSheepCard == true) //Keep finding cards if they equal the "Sheep" card type
             {
                 while(_singleCardType.typeOfCard == AllCardTypes.Sheep)
+                {
+                    _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+                    _singleCardType = _availableCardTypes[_randomCardTypeNumber];
+                }  
+            }
+
+            if(_onlyHavePlayerAndGunCards == true) //Keep finding cards if they equal the "Dealer" or "NoValue" card type
+            {
+                while(_singleCardType.typeOfCard == AllCardTypes.Dealer)
+                {
+                    _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+                    _singleCardType = _availableCardTypes[_randomCardTypeNumber];
+                }  
+
+                while(_singleCardType.typeOfCard == AllCardTypes.NoValue)
                 {
                     _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
                     _singleCardType = _availableCardTypes[_randomCardTypeNumber];

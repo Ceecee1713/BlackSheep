@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//This script is to be attached on a separate game object (NOT THE PARENT OF OR THE BUTTON OBJECT)
+//This script controls the shuffle button to shuffle the cards for the card game on the card gameplay canvas
+
 public class ShuffleButton : MonoBehaviour
 {
     [Header ("Scriptable Objects")]
@@ -33,16 +36,15 @@ public class ShuffleButton : MonoBehaviour
         EventBus.Instance.Subscribe<CardHasBeenPlayed>(HasCardBeenPlayed);
     }
 
-    private void HasCardBeenPlayed(CardHasBeenPlayed cardHasBeenPlayed) 
-    {
-        cardHasBeenPlayed.CardPlayed = _hasACardBeenPlayed;
-    }
-
-
     void Update()
     {
         if(_numberOfShufflesPerRound == 0 || _hasACardBeenPlayed == true)
             button.SetActive(false);
+    }
+
+    private void HasCardBeenPlayed(CardHasBeenPlayed cardHasBeenPlayed) 
+    {
+        _hasACardBeenPlayed = cardHasBeenPlayed.CardPlayed;
     }
 
     private void DoNotAllowInput(FinishedRound finishedRound)

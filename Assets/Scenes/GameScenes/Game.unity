@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 4363407874939739241}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: canvases.Array.size
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: 'canvases.Array.data[0]'
@@ -255,23 +255,23 @@ PrefabInstance:
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: 'canvases.Array.data[15]'
       value: 
-      objectReference: {fileID: 802338732}
+      objectReference: {fileID: 2109594919}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: 'canvases.Array.data[16]'
       value: 
-      objectReference: {fileID: 1121344734}
+      objectReference: {fileID: 802338732}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: 'canvases.Array.data[17]'
       value: 
-      objectReference: {fileID: 336430987}
+      objectReference: {fileID: 1121344734}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: 'canvases.Array.data[18]'
       value: 
-      objectReference: {fileID: 228672039}
+      objectReference: {fileID: 336430987}
     - target: {fileID: 7083495366643030716, guid: fa6e1097c899c2d478b9ceed6e71b1b1, type: 3}
       propertyPath: 'canvases.Array.data[19]'
       value: 
-      objectReference: {fileID: 2058089831}
+      objectReference: {fileID: 228672039}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleText: {fileID: 2078768405}
   titleMessage: The House Always Wins...
-  typingSpeed: 0.25
+  typingSpeed: 0.1
   currentCanvasGroup: {fileID: 228672040}
   currentCanvasOptions: {fileID: 1247843153}
 --- !u!224 &260766913 stripped
@@ -878,6 +878,120 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360602535}
+  m_CullTransparentMesh: 1
+--- !u!1 &459973205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 459973206}
+  - component: {fileID: 459973210}
+  - component: {fileID: 459973209}
+  - component: {fileID: 459973208}
+  - component: {fileID: 459973207}
+  m_Layer: 5
+  m_Name: Dealer's Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &459973206
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459973205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1018630682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.779, y: 157}
+  m_SizeDelta: {x: 194.1159, y: 63.6745}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &459973207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459973205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 459973208}
+  currentCanvasGroup: {fileID: 2109594922}
+  delayBetweenBlinkAnimation: 0
+--- !u!95 &459973208
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459973205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &459973209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459973205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 44b4ba9b296fb534198c7ebdf82e022d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &459973210
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459973205}
   m_CullTransparentMesh: 1
 --- !u!1001 &593987921
 PrefabInstance:
@@ -1557,120 +1671,6 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1633375174364812974, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
   m_PrefabInstance: {fileID: 802338727}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &833676856
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 833676857}
-  - component: {fileID: 833676859}
-  - component: {fileID: 833676858}
-  - component: {fileID: 833676861}
-  - component: {fileID: 833676860}
-  m_Layer: 5
-  m_Name: Dealer Eyes - Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &833676857
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833676856}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1018630682}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 113.085815}
-  m_SizeDelta: {x: 212.874, y: 63.7191}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &833676858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833676856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 44b4ba9b296fb534198c7ebdf82e022d, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &833676859
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833676856}
-  m_CullTransparentMesh: 1
---- !u!114 &833676860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833676856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51397caa6d133314684718113bb49651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 833676861}
-  currentCanvasGroup: {fileID: 2109594922}
-  delayBetweenBlinkAnimation: 0
---- !u!95 &833676861
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833676856}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &836645523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4338,7 +4338,7 @@ PrefabInstance:
     - target: {fileID: 5432552038680893258, guid: 2855020c71d6ec849af8558e3929411d, type: 3}
       propertyPath: cardGameDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: c47b72bbeefe734479e74af4d592bd2b, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ccaf54f2f170554e9b56d3931b8448c, type: 2}
     - target: {fileID: 5432552038680893258, guid: 2855020c71d6ec849af8558e3929411d, type: 3}
       propertyPath: PersistAcrossScenes
       value: 0
@@ -5178,7 +5178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The House Always Wins...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ca1d365bad6e7f4b81f019316ec3406, type: 2}
   m_sharedMaterial: {fileID: 4608710898846764066, guid: 4ca1d365bad6e7f4b81f019316ec3406, type: 2}
@@ -5434,7 +5434,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 893764438887309159, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 833676857}
+      addedObject: {fileID: 459973206}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
 --- !u!224 &2109594917 stripped
@@ -6210,12 +6210,20 @@ PrefabInstance:
       propertyPath: GamblingTable
       value: 
       objectReference: {fileID: 1808127672}
+    - target: {fileID: 721513700459587992, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: gamblingTable
+      value: 
+      objectReference: {fileID: 1808127672}
     - target: {fileID: 1381130860454822530, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
       propertyPath: parent
       value: 
       objectReference: {fileID: 1794552244}
     - target: {fileID: 1381130860454822530, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
       propertyPath: GamblingTable
+      value: 
+      objectReference: {fileID: 1808127672}
+    - target: {fileID: 1381130860454822530, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: gamblingTable
       value: 
       objectReference: {fileID: 1808127672}
     - target: {fileID: 1861743187855926174, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
@@ -6228,6 +6236,10 @@ PrefabInstance:
       objectReference: {fileID: 748538640}
     - target: {fileID: 3153352840006883916, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
       propertyPath: GamblingTable
+      value: 
+      objectReference: {fileID: 1808127672}
+    - target: {fileID: 3153352840006883916, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: gamblingTable
       value: 
       objectReference: {fileID: 1808127672}
     - target: {fileID: 5176333354611426038, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
@@ -6244,6 +6256,10 @@ PrefabInstance:
       objectReference: {fileID: 1788423758}
     - target: {fileID: 5266732215322200108, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
       propertyPath: GamblingTable
+      value: 
+      objectReference: {fileID: 1808127672}
+    - target: {fileID: 5266732215322200108, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: gamblingTable
       value: 
       objectReference: {fileID: 1808127672}
     - target: {fileID: 5355177574141274870, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}

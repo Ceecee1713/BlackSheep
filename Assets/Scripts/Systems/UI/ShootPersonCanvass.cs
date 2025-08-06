@@ -15,7 +15,11 @@ public class ShootPersonCanvass : MonoBehaviour
 
     [Header ("Game Objects")]
     [SerializeField]
-    private GameObject dealerDialogueCanvas, dealerDialogueCanvasRoundFive, badEndDialogueCanvas; 
+    private GameObject dealerDialogueCanvas;
+    [SerializeField]
+    private GameObject dealerDialogueCanvasRoundFive;
+    [SerializeField]
+    private GameObject badEndDialogueCanvas; 
     [SerializeField]
     private GameObject gun; 
     [SerializeField]
@@ -92,20 +96,25 @@ public class ShootPersonCanvass : MonoBehaviour
         _thisCanvasGroup.alpha = 0.0f;
         gun.SetActive(false);
 
-        if(cardGameRoundNumber.CurrentRoundNumber == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
+        //Here, I'm minusing the "cardGameRoundNumber.CurrentRoundNumber" by 1 
+        //Because there's an order of operations difference as this coroutine is called when a round ends AFTER the "cardGameRoundNumber.CurrentRoundNumber" value increases
+        //For example, if the round is round number 5, in this coroutine, the value will actually be 6, because of this order of operations difference
+        //Thus, there needs to be an offset (Minusing by 1)
+
+        if(cardGameRoundNumber.CurrentRoundNumber-1 == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
         {
+            Debug.Log("Show Dealer Dialogue Canvas for Round Five");
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             EventBus.Instance.Publish(new IncreaseMusicVolume());
             StopAllCoroutines();
-            yield break;
         }
 
-        if(cardGameRoundNumber.CurrentRoundNumber != gameConfiguration.MaxAmountOfRounds)
+        else if(cardGameRoundNumber.CurrentRoundNumber-1 != gameConfiguration.MaxAmountOfRounds)
         {
+            Debug.Log("Show Normal Dealer Dialogue Canvas");
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
             EventBus.Instance.Publish(new IncreaseMusicVolume());
             StopAllCoroutines();
-            yield break;
         }
             
         else //Reached the last round of the game
