@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced6f912ba5c43046998c7ecaa7b82f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamblingTable: {fileID: 0}
+  gamblingTable: {fileID: 0}
   ease: 13
   cardIcon: {fileID: 7515531191056810404}
 --- !u!1 &243293084948135387
@@ -467,7 +467,7 @@ MonoBehaviour:
   cardGameRoundNumber: {fileID: 11400000, guid: 63a7a1a7e80c387418106bd237619eb1, type: 2}
   gameConfiguration: {fileID: 11400000, guid: 0ea8c2d159fcfe846ac76d7da02c6049, type: 2}
   buttonText: {fileID: 6752375782149702709}
-  button: {fileID: 4415621903684189428}
+  button: {fileID: 2212252645954852079}
 --- !u!1 &1922437685312145091
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,12 +555,12 @@ GameObject:
   - component: {fileID: 2928593800857298076}
   - component: {fileID: 6327605154159243074}
   m_Layer: 5
-  m_Name: Black Image
+  m_Name: Shuffle Button - Black Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &553645377779477054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -568,17 +568,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2212252645954852079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1008686943566800506}
+  m_Children:
+  - {fileID: 1008686943566800506}
+  m_Father: {fileID: 2137291999401748461}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.059799, y: -4.8707}
-  m_SizeDelta: {x: 292.9048, y: 119.4829}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -656.7564, y: -127.20517}
+  m_SizeDelta: {x: -1389.5128, y: -879.479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2928593800857298076
 CanvasRenderer:
@@ -1151,6 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b8d8d48cb533248a7ab288e3feafb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 5355177574141274870}
   uiPopUpToSetActive: {fileID: 0}
 --- !u!1 &3652749229732990890
 GameObject:
@@ -1257,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced6f912ba5c43046998c7ecaa7b82f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamblingTable: {fileID: 0}
+  gamblingTable: {fileID: 0}
   ease: 13
   cardIcon: {fileID: 6309056464747130233}
 --- !u!1 &3888021340918487169
@@ -1429,7 +1431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1008686943566800506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1442,14 +1444,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 553645377779477054}
   - {fileID: 4311119649326524925}
-  m_Father: {fileID: 2137291999401748461}
+  m_Father: {fileID: 553645377779477054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 81, y: 55}
-  m_SizeDelta: {x: 226.3447, y: 89.2868}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.000030517578}
+  m_SizeDelta: {x: 329.42, y: 92.6802}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6204788622067081291
 CanvasRenderer:
@@ -1472,7 +1473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1511,9 +1512,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.63919544, g: 0.7924528, b: 0.7847168, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1790,7 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced6f912ba5c43046998c7ecaa7b82f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamblingTable: {fileID: 0}
+  gamblingTable: {fileID: 0}
   ease: 13
   cardIcon: {fileID: 6717072331180010170}
 --- !u!1 &4919904885825909165
@@ -2274,8 +2275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.0599, y: -4.870701}
-  m_SizeDelta: {x: 66.56, y: 17.3956}
+  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7583083077339452058
 CanvasRenderer:
@@ -2332,14 +2333,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2481,7 +2482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced6f912ba5c43046998c7ecaa7b82f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamblingTable: {fileID: 0}
+  gamblingTable: {fileID: 0}
   ease: 13
   cardIcon: {fileID: 3013161215614734783}
 --- !u!1 &7830974425319252578
@@ -2733,7 +2734,7 @@ RectTransform:
   m_Children:
   - {fileID: 8337206203600761263}
   - {fileID: 3362152000391238025}
-  - {fileID: 1008686943566800506}
+  - {fileID: 553645377779477054}
   m_Father: {fileID: 9220245461795908175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2852,7 +2853,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 23
+  m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -3054,4 +3055,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b8d8d48cb533248a7ab288e3feafb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 5355177574141274870}
   uiPopUpToSetActive: {fileID: 0}

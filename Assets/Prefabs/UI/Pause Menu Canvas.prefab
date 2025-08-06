@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca3d2f90c245634aaaee2dab60134aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 1757899887984253769}
 --- !u!1 &5639188054968704137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7e431010abb1e418290f4fdca21513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 1757899887984253769}
   sceneNameToLoadOnClick: 
 --- !u!1 &7784972418350708510
 GameObject:

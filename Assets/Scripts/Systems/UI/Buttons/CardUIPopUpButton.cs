@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 //This script is to be attached to buttons that will be on the card gameplay UI
@@ -6,10 +7,17 @@ using UnityEngine;
 
 public class CardUIPopUpButton : MonoBehaviour
 {
+    [SerializeField]
+    private CanvasGroup currentCanvasGroup;
+
     [SerializeField] 
     private GameObject uiPopUpToSetActive;
 
     private bool _allowInput = false;
+    private bool _calledCoroutine = false;
+    private bool _allowClicking = false;
+
+    private const float DELAY = 0.5f;
 
     void Awake()
     {
@@ -27,6 +35,18 @@ public class CardUIPopUpButton : MonoBehaviour
     void OnDisable()
     {
         _allowInput = false;
+    }
+
+    void Update()
+    {
+        if(_calledCoroutine == true)
+            return;
+
+        if(currentCanvasGroup.alpha == 1.0f && _calledCoroutine == false)
+        {
+            StartCoroutine(AllowClicking());
+            _calledCoroutine = true;
+        }
     }
 
     private void OnNewCardRound(StartNewRound startNewRound)
@@ -54,7 +74,17 @@ public class CardUIPopUpButton : MonoBehaviour
         if(_allowInput == false)
             return;
 
-        AudioManager.Instance.PlayButtonSound();
-        uiPopUpToSetActive.SetActive(true);
+        if(_allowClicking == true)
+        {
+           AudioManager.Instance.PlayButtonSound();
+            uiPopUpToSetActive.SetActive(true); 
+        }
+    }
+
+    IEnumerator AllowClicking()
+    {
+        yield return new WaitForSeconds(DELAY);
+        _allowClicking = true;
+        yield return null;
     }
 }

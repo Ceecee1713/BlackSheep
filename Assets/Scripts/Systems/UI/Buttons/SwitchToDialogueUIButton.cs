@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 //This script is to be attached to buttons that'll show "nextCanvasToSetActive" after clicking
@@ -11,20 +12,49 @@ using UnityEngine;
 public class SwitchToDialogueUIButton : MonoBehaviour
 {
     [SerializeField]
+    private CanvasGroup currentCanvasGroup;
+
+    [SerializeField]
     private GameObject nextCanvasToSetActive; 
     
     [SerializeField]
     private bool isNextCanvasADialogueCanvas = false;
 
     private bool _dontRepeat = false;
+    private bool _calledCoroutine = false;
+    private bool _allowClicking = false;
+
+    private const float DELAY = 0.5f;
+
+    void Update()
+    {
+        if(_calledCoroutine == true)
+            return;
+
+        if(currentCanvasGroup.alpha == 1.0f && _calledCoroutine == false)
+        {
+            StartCoroutine(AllowClicking());
+            _calledCoroutine = true;
+        }
+    }
 
     public void OnSwitchUIClick()
     {
         if(_dontRepeat == true)
             return;
 
-        _dontRepeat = true;
-        AudioManager.Instance.PlayButtonSound();
-        EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : isNextCanvasADialogueCanvas));
+        if(_allowClicking == true)
+        {
+            _dontRepeat = true;
+            AudioManager.Instance.PlayButtonSound();
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : isNextCanvasADialogueCanvas));
+        }
+    }
+
+    IEnumerator AllowClicking()
+    {
+        yield return new WaitForSeconds(DELAY);
+        _allowClicking = true;
+        yield return null;
     }
 }

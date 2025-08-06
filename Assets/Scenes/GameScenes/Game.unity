@@ -785,6 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca3d2f90c245634aaaee2dab60134aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 0}
 --- !u!114 &360602538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,6 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e131042e21e1a8498085a0e3531b541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 802338738}
   nextCanvasToSetActive: {fileID: 1121344734}
   isNextCanvasADialogueCanvas: 1
 --- !u!114 &802338731
@@ -1659,6 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e131042e21e1a8498085a0e3531b541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 802338738}
   nextCanvasToSetActive: {fileID: 1005330227481765333}
   isNextCanvasADialogueCanvas: 0
 --- !u!1 &802338732 stripped
@@ -3173,6 +3176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7e431010abb1e418290f4fdca21513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 0}
   sceneNameToLoadOnClick: StartScene
 --- !u!114 &1376156669
 MonoBehaviour:

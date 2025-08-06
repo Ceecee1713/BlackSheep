@@ -1794,6 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b8d8d48cb533248a7ab288e3feafb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 1633375174364812974}
   uiPopUpToSetActive: {fileID: 0}
 --- !u!1 &6776597255889154093
 GameObject:
