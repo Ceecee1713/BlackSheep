@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//This script is to be attached to casino area buttons for the casino area button canvas
+
 public class AreaButton : MonoBehaviour
 {
     [SerializeField]

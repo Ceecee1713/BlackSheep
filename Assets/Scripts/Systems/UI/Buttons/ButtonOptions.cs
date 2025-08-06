@@ -1,5 +1,8 @@
 using UnityEngine;
 
+//This script is to be attached to the canvas that shows the casino area options to explore 
+//This script controls when to show "thirdButtonOption"
+
 public class ButtonOptions : MonoBehaviour
 {
     [HideInInspector]
