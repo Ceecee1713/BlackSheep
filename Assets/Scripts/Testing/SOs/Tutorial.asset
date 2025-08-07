@@ -18,8 +18,6 @@ MonoBehaviour:
   ButtonTwoText: 
   NormalDialogue:
   - CharacterTitle: 1
-    Message: Hi there. Not nice to meet you.
-  - CharacterTitle: 1
     Message: This is how you play.
   - CharacterTitle: 1
     Message: Each round, you'll start with four cards.
@@ -31,8 +29,13 @@ MonoBehaviour:
       types now.
   - CharacterTitle: 1
     Message: 'The sheep card, indicated by a full sheep body, represents a random
-      person in the casino, The dealer card, indicated by a ram head, represents
-      me. The player card, indicated with a sheep head. represents you. '
+      person in the casino that you can shoot. '
+  - CharacterTitle: 1
+    Message: The dealer card, indicated by a ram head, represents me as a person
+      you can shoot.
+  - CharacterTitle: 1
+    Message: The player card, indicated with a sheep head. represents you as a person
+      you can shoot.
   - CharacterTitle: 1
     Message: The Spades card type hold no value and can't be played. The gun card
       type is self-explanatory, representing a gun.
@@ -41,7 +44,7 @@ MonoBehaviour:
       into.'
   - CharacterTitle: 1
     Message: One of the slots have to be at least ONE of those cards; Sheep, Dealer,
-      Player. The other card slot has to be a gun card
+      Player. The other card slot has to be a gun card. Order doesn't matter.
   - CharacterTitle: 1
     Message: If you don't like your hand, you can ask for a reshuffle for a maximum
       of three times per round. Although, you cannot ask for a reshuffle once a card
@@ -49,8 +52,6 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: The round is over once two cards have been played down that signifies
       a person can be shot
-  - CharacterTitle: 1
-    Message: 'Are you prepared? '
   - CharacterTitle: 1
     Message: Let's play.
   ButtonOneDialogue: []

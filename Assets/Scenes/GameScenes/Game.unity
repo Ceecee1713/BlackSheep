@@ -4081,7 +4081,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 2973cded18fd6d4428c26c0eee962b83, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
