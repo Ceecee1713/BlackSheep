@@ -99,6 +99,15 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b72bd1f-8d24-46c0-8b45-853499520ca2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -123,6 +132,17 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""NextMessage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b01ee0d-c7e4-4dde-abdd-bdabb778c9d3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -132,6 +152,7 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
         // CardGame
         m_CardGame = asset.FindActionMap("CardGame", throwIfNotFound: true);
         m_CardGame_NextMessage = m_CardGame.FindAction("NextMessage", throwIfNotFound: true);
+        m_CardGame_PauseGame = m_CardGame.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     ~@CardGameInputs()
@@ -213,6 +234,7 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CardGame;
     private List<ICardGameActions> m_CardGameActionsCallbackInterfaces = new List<ICardGameActions>();
     private readonly InputAction m_CardGame_NextMessage;
+    private readonly InputAction m_CardGame_PauseGame;
     /// <summary>
     /// Provides access to input actions defined in input action map "CardGame".
     /// </summary>
@@ -228,6 +250,10 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CardGame/NextMessage".
         /// </summary>
         public InputAction @NextMessage => m_Wrapper.m_CardGame_NextMessage;
+        /// <summary>
+        /// Provides access to the underlying input action "CardGame/PauseGame".
+        /// </summary>
+        public InputAction @PauseGame => m_Wrapper.m_CardGame_PauseGame;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -257,6 +283,9 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
             @NextMessage.started += instance.OnNextMessage;
             @NextMessage.performed += instance.OnNextMessage;
             @NextMessage.canceled += instance.OnNextMessage;
+            @PauseGame.started += instance.OnPauseGame;
+            @PauseGame.performed += instance.OnPauseGame;
+            @PauseGame.canceled += instance.OnPauseGame;
         }
 
         /// <summary>
@@ -271,6 +300,9 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
             @NextMessage.started -= instance.OnNextMessage;
             @NextMessage.performed -= instance.OnNextMessage;
             @NextMessage.canceled -= instance.OnNextMessage;
+            @PauseGame.started -= instance.OnPauseGame;
+            @PauseGame.performed -= instance.OnPauseGame;
+            @PauseGame.canceled -= instance.OnPauseGame;
         }
 
         /// <summary>
@@ -318,5 +350,12 @@ public partial class @CardGameInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnNextMessage(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PauseGame" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }

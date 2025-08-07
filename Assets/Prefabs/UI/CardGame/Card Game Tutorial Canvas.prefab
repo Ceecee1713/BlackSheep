@@ -538,7 +538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -37, y: -63}
+  m_AnchoredPosition: {x: -36, y: -92}
   m_SizeDelta: {x: 1034.7164, y: 610.778}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2408779183236448132
@@ -572,16 +572,16 @@ MonoBehaviour:
   m_text: 'Each round, you''ll start with four cards.
 
 
-    There are five card types
-    you can get: Sheep, Dealer, Player, Gun, Spades.
+    There are four card types
+    you can get: Sheep, Dealer, Player, Gun.
 
 
-    Dealer,Sheep and Player
-    card types are "Person Cards."
+    Dealer, Sheep and Player card
+    types are "Person Cards."
 
 
-    To progress into the next round, you have
-    to place one Person Card, and one gun card down in the card slots on the table.
+    To progress into the next round, you have to
+    place one Person Card, and one gun card down in the card slots on the table.
     You can only shoot ONE person per round.
 
 
@@ -589,13 +589,9 @@ MonoBehaviour:
     displayed on the left can be placed down.
 
 
-    Spades cards hold no value and
-    can''t be placed down.
-
-
-    If you don''t like your hand, you can reshuffle
-    for a max of three times per round. You can''t ask for a reshuffle when a card
-    is placed down.
+    If you don''t like your hand,
+    you can reshuffle for a max of three times per round. You can''t ask for a reshuffle
+    when a card is placed down.
 
 '
   m_isRightToLeft: 0

@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject PauseMenuCanvas;
+    private GameObject pauseMenuCanvas;
 
     private CardGameInputs _cardGameInputs;
     private ShouldGameBeStopped _shouldGameBeStopped;
 
     private bool _stopInput = false;
+    private bool _pauseMenuIsOpen = false;
     private bool _stopCoroutineRepeats = false;
 
     private const float DELAY = 0.5f;
@@ -24,24 +25,26 @@ public class InputController : MonoBehaviour
             _shouldGameBeStopped = Resources.Load<ShouldGameBeStopped>("ShouldGameBeStopped");
 
         _cardGameInputs.CardGame.NextMessage.performed += OnNextMessage;
+        _cardGameInputs.CardGame.PauseGame.performed += OnPauseGame;
         _cardGameInputs.Enable();
     }
 
     void OnDisable()
     {
         _cardGameInputs.CardGame.NextMessage.performed -= OnNextMessage;
+        _cardGameInputs.CardGame.PauseGame.performed += OnPauseGame;
         _cardGameInputs.Disable();
     }
 
     void Update()
     {
-        if(PauseMenuCanvas.activeSelf == true)
+        if(pauseMenuCanvas.activeSelf == true)
         {
             _stopCoroutineRepeats = false;
             _stopInput = true;
         }
 
-        if(PauseMenuCanvas.activeSelf == false  && _stopCoroutineRepeats == false)
+        if(pauseMenuCanvas.activeSelf == false  && _stopCoroutineRepeats == false)
         {
             StartCoroutine(AllowInput());
             _stopCoroutineRepeats = true;
@@ -52,6 +55,20 @@ public class InputController : MonoBehaviour
     {
         if(_stopInput == false && _shouldGameBeStopped.PreventPlaying != true)
             EventBus.Instance.Publish(new NextMessage());
+    }
+
+    private void OnPauseGame(InputAction.CallbackContext val)
+    {
+        if(_pauseMenuIsOpen == false)
+        {
+            pauseMenuCanvas.SetActive(true);
+            _pauseMenuIsOpen = true;
+        }
+            
+        else
+        {   pauseMenuCanvas.SetActive(false);
+           _pauseMenuIsOpen = false; 
+        }
     }
 
     IEnumerator AllowInput()

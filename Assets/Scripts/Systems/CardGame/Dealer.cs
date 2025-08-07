@@ -6,7 +6,7 @@ public class Dealer : Singleton<Dealer>
     private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
     private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again IF number exists in this list
 
-    private CardType [] _availableCardTypes = new CardType[5]; //All POSSIBLE cards to be given out 
+    private CardType [] _availableCardTypes = new CardType[4]; //All POSSIBLE cards to be given out 
     private CardType _singleCardType; //Hold a reference from "_availableCardTypes" array at a specific index
 
     private CardGameRoundNumber _cardGameRoundNumber;

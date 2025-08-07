@@ -5639,6 +5639,10 @@ PrefabInstance:
       propertyPath: PauseMenuCanvas
       value: 
       objectReference: {fileID: 1091580988}
+    - target: {fileID: 338568227624590061, guid: cf9f9e136be80d04abbdbfd928fe5e00, type: 3}
+      propertyPath: pauseMenuCanvas
+      value: 
+      objectReference: {fileID: 1091580988}
     - target: {fileID: 996689181206469892, guid: cf9f9e136be80d04abbdbfd928fe5e00, type: 3}
       propertyPath: m_Name
       value: InputManager
@@ -5741,6 +5745,22 @@ PrefabInstance:
       propertyPath: gamblingTable
       value: 
       objectReference: {fileID: 1808127672}
+    - target: {fileID: 4176665172719651202, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176665172719651202, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176665172719651202, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176665172719651202, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5176333354611426038, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
       propertyPath: uiPopUpToSetActive
       value: 
@@ -5763,6 +5783,22 @@ PrefabInstance:
       objectReference: {fileID: 1808127672}
     - target: {fileID: 5355177574141274870, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
       propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182734282925920197, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182734282925920197, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182734282925920197, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182734282925920197, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8707391085939063861, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
