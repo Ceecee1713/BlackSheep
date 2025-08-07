@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: Test_SheepThree
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Day
+  ButtonTwoText: Night
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: You chose to shoot a random person on the third round? Interesting.
+  - CharacterTitle: 1
+    Message: Pick which time of day is better for you
+  ButtonOneDialogue:
+  - CharacterTitle: 1
+    Message: Day?
+  - CharacterTitle: 1
+    Message: To go outside and feel the fun every so often is actually healing, so
+      I understand.
+  - CharacterTitle: 1
+    Message: Let's keep playing.
+  ButtonTwoDialogue:
+  - CharacterTitle: 1
+    Message: Night?
+  - CharacterTitle: 1
+    Message: Night life is more fun to some, but I guess night time also grants you
+      more alone time. Alone time is healing every so often.
+  - CharacterTitle: 1
+    Message: Let's keep playing

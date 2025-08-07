@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc01baa0be7b54e8ef6801bfc93ce6, type: 3}
+  m_Name: Test_DealerOne
+  m_EditorClassIdentifier: 
+  PromptOneButtonDisplay: 0
+  PromptTwoButtonDisplay: 1
+  ButtonOneText: Sunrise
+  ButtonTwoText: Sunset
+  NormalDialogue:
+  - CharacterTitle: 1
+    Message: You decided to shoot me on the first round
+  - CharacterTitle: 1
+    Message: Pick a response on which time of day is better for you
+  ButtonOneDialogue:
+  - CharacterTitle: 1
+    Message: Sunrise?
+  - CharacterTitle: 1
+    Message: I guess the start of a new day is beautiful...
+  - CharacterTitle: 1
+    Message: Let's keep playing
+  ButtonTwoDialogue:
+  - CharacterTitle: 1
+    Message: Sunset?
+  - CharacterTitle: 1
+    Message: The end of your day and to see it in a beautiful light, reflected by
+      a sunset, can make you appreciate thhe passage of time a little more
+  - CharacterTitle: 1
+    Message: Let's keep playing.

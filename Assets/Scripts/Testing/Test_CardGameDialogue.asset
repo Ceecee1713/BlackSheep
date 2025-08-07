@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Test_CardGameDialogue
   m_EditorClassIdentifier: 
   RoundDialogue:
-  - ShootSheepDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootDealerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootPlayerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-  - ShootSheepDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootDealerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootPlayerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-  - ShootSheepDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootDealerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootPlayerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-  - ShootSheepDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootDealerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
-    ShootPlayerDialogue: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+  - ShootSheepDialogue: {fileID: 11400000, guid: 0b08ec92291f25b4d97a8d6473e4e119, type: 2}
+    ShootDealerDialogue: {fileID: 11400000, guid: f5b383832615c3343ae67177351a0aa1, type: 2}
+    ShootPlayerDialogue: {fileID: 11400000, guid: 8dbf33c91c1574c49b32f85bae1dfc12, type: 2}
+  - ShootSheepDialogue: {fileID: 11400000, guid: e51c253ca5ffec8469facc1c1cd79d10, type: 2}
+    ShootDealerDialogue: {fileID: 11400000, guid: 9d46a289846c2814da6e6aa4514f9266, type: 2}
+    ShootPlayerDialogue: {fileID: 11400000, guid: e751e208826b9e144bab14506324d100, type: 2}
+  - ShootSheepDialogue: {fileID: 11400000, guid: 8b03286749dbe90409ff92358d0657d5, type: 2}
+    ShootDealerDialogue: {fileID: 11400000, guid: cf51d4c9cc24e1f4196261b1a7872e77, type: 2}
+    ShootPlayerDialogue: {fileID: 11400000, guid: c0e695001e68a274faa340eda511339f, type: 2}
+  - ShootSheepDialogue: {fileID: 11400000, guid: 9440ba7a3f55a56469fb0fc9f4ffa096, type: 2}
+    ShootDealerDialogue: {fileID: 11400000, guid: 9440ba7a3f55a56469fb0fc9f4ffa096, type: 2}
+    ShootPlayerDialogue: {fileID: 11400000, guid: 9440ba7a3f55a56469fb0fc9f4ffa096, type: 2}
