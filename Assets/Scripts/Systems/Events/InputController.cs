@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     private GameObject PauseMenuCanvas;
 
     private CardGameInputs _cardGameInputs;
+    private ShouldGameBeStopped _shouldGameBeStopped;
 
     private bool _stopInput = false;
     private bool _stopCoroutineRepeats = false;
@@ -18,6 +19,9 @@ public class InputController : MonoBehaviour
     {
         if (_cardGameInputs == null)
             _cardGameInputs = new CardGameInputs();
+
+        if(_shouldGameBeStopped == null)
+            _shouldGameBeStopped = Resources.Load<ShouldGameBeStopped>("ShouldGameBeStopped");
 
         _cardGameInputs.CardGame.NextMessage.performed += OnNextMessage;
         _cardGameInputs.Enable();
@@ -46,7 +50,7 @@ public class InputController : MonoBehaviour
 
     private void OnNextMessage(InputAction.CallbackContext val)
     {
-        if(_stopInput == false)
+        if(_stopInput == false && _shouldGameBeStopped.PreventPlaying != true)
             EventBus.Instance.Publish(new NextMessage());
     }
 

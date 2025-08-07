@@ -11,12 +11,19 @@ public class SwitchSceneButton : MonoBehaviour
     [SerializeField]
     private string sceneNameToLoadOnClick;
 
+    private ShouldGameBeStopped _shouldGameBeStopped;
+
     private bool _hasBeenClicked = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
 
     private const float DELAY = 0.5f;
-    private const float CHANGE_SCENE_DELAY = 2.0f;
+    private const float CHANGE_SCENE_DELAY = 1.75f;
+
+    void Start()
+    {
+        _shouldGameBeStopped = Resources.Load<ShouldGameBeStopped>("ShouldGameBeStopped");
+    }
 
     void Update()
     {
@@ -29,15 +36,16 @@ public class SwitchSceneButton : MonoBehaviour
             _calledCoroutine = true;
         }
     }
-
+    
     public void OnSwitchSceneClick()
     {
-        if(_hasBeenClicked == true)
+        if(_hasBeenClicked == true || _shouldGameBeStopped.PreventPlaying == true)
             return;
 
         if(_allowClicking == true)
         {
             _hasBeenClicked = true;
+            _shouldGameBeStopped.PreventPlaying = true;
             AudioManager.Instance.PlayButtonSound();
             Invoke("ChangeScene", CHANGE_SCENE_DELAY);
         }

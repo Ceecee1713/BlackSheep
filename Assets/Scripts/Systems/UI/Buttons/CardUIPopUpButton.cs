@@ -19,7 +19,7 @@ public class CardUIPopUpButton : MonoBehaviour
 
     private const float DELAY = 0.5f;
 
-    void Awake()
+    void Start()
     {
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);

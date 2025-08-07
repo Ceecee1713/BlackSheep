@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour    
 {   
+    [SerializeField]
+    protected bool _destroyOnLoad = false;
+
     private static T _instance;
     private static readonly object _lock = new object();
     private static bool _applicationIsQuitting = false;
@@ -42,8 +45,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         if (_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject);
+
+            if(!_destroyOnLoad)
+                DontDestroyOnLoad(gameObject);
         }
+
 
         else if (_instance != this)
         {
@@ -59,10 +65,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        if (_instance == this)
-        {
-            _applicationIsQuitting = true;
-        }
+        //if (_instance == this)
+            //_applicationIsQuitting = true;
     }
 }
 
@@ -104,7 +108,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         else if (_instance != this)
             Destroy(gameObject);
         
-        //DontDestroyOnLoad(this);
+        //Dont_destroyOnLoad(this);
     }
 }
 */

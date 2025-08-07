@@ -21,6 +21,12 @@ public class EventBus : Singleton<EventBus>
 {
     private readonly Dictionary<Type, List<object>> _eventSubscriptions = new Dictionary<Type, List<object>>();
 
+    protected override void Awake()
+    {
+        _destroyOnLoad = true;
+        base.Awake();
+    }
+
     public void Subscribe<T>(Action<T> handler) where T : IEvent
     {
         var eventType = typeof(T);

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class UIPopUp : MonoBehaviour
 {
+    private ShouldGameBeStopped _shouldGameBeStopped;
+
+    void Start()
+    {
+        _shouldGameBeStopped = Resources.Load<ShouldGameBeStopped>("ShouldGameBeStopped");
+    }
+
     void OnEnable() //Fade current canvas slightly and don't allow player input
     {
         EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: true));
@@ -12,10 +19,10 @@ public class UIPopUp : MonoBehaviour
 
     void OnDisable() //Restore current canvas alpha to 100% and allow player input
     {
-        if(EventBus.Instance != null)
-        {
-            EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: false));
-            EventBus.Instance.Publish(new StopPlayerInput(allowPlayerInput: true));
-        }
+        if(_shouldGameBeStopped.PreventPlaying == true)
+            return;
+
+        EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: false));
+        EventBus.Instance.Publish(new StopPlayerInput(allowPlayerInput: true));
     }
 }

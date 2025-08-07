@@ -25,7 +25,7 @@ public class ShuffleButton : MonoBehaviour
     private bool _allowInput = false;
     private bool _hasACardBeenPlayed = false;
 
-    void Awake()
+    void Start()
     {
         _maxNumberOfShufflesPerRound = gameConfiguration.MaxNumberOfShufflesPerRound;
         ResetButton();

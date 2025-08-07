@@ -18,6 +18,11 @@ public class BGM : MonoBehaviour
 
     private const float DURATION = 1.0f;
 
+    void Awake()
+    {
+        musicLoop.Stop();
+    }
+
     void Start()
     {
         EventBus.Instance.Subscribe<FinishedRound>(FinishedRoundEvent);

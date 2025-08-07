@@ -64,6 +64,7 @@ public class CardHasBeenPlayed : IEvent   //Allows or prevents for the shuffle b
     }
 }
 
+
 public class NextMessage : IEvent
 {
 }

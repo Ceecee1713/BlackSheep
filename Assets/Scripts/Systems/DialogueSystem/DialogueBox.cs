@@ -48,7 +48,7 @@ public class DialogueBox : MonoBehaviour
 
     private const float TYPING_SPEED = 0.015f;
         
-    void Awake()
+    void Start()
     {
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<NextMessage>(OnNextMessageEvent);

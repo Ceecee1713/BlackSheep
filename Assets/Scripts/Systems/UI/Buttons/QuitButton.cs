@@ -6,12 +6,19 @@ public class QuitButton : MonoBehaviour
     [SerializeField]
     private CanvasGroup currentCanvasGroup;
 
+    private ShouldGameBeStopped _shouldGameBeStopped;
+
     private bool _dontRepeat = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
 
     private const float QUIT_DELAY = 2.0f;
     private const float DELAY = 0.5f;
+
+    void Start()
+    {
+        _shouldGameBeStopped = Resources.Load<ShouldGameBeStopped>("ShouldGameBeStopped");
+    }
 
     void Update()
     {
@@ -27,12 +34,13 @@ public class QuitButton : MonoBehaviour
 
     public void OnQuitClick()
     {
-        if(_dontRepeat)
+        if(_dontRepeat || _shouldGameBeStopped.PreventPlaying == true)
             return;
 
         if(_allowClicking == true)
         {
             _dontRepeat = true;
+            _shouldGameBeStopped.PreventPlaying = true;
             AudioManager.Instance.PlayButtonSound();
             Invoke("Quit", QUIT_DELAY);
         }

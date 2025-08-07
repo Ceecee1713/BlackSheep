@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9faecf0352f13f740be753db328e1d0f, type: 3}
   m_Name: GameConfiguration
   m_EditorClassIdentifier: 
-  DurationOfScreenFade: 1.5
-  DurationToMoveCardsUpDown: 1
+  DurationOfScreenFade: 1.25
+  DurationToMoveCardsUpDown: 0.8
   RoundNumberToRemoveSheepCard: 4
   RoundNumberToRemoveDealerAndNormalCards: 5
   MaxNumberOfPlayedCards: 2
