@@ -4976,6 +4976,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1277885306}
     m_Modifications:
+    - target: {fileID: 2046812510360133297, guid: e3eef1dddcd3d83429497bc7f6b3b4e4, type: 3}
+      propertyPath: currentCanvasGroup
+      value: 
+      objectReference: {fileID: 16813896373675795}
     - target: {fileID: 2340785097190775950, guid: e3eef1dddcd3d83429497bc7f6b3b4e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5060,11 +5064,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: End Screen Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3715308464947151426, guid: e3eef1dddcd3d83429497bc7f6b3b4e4, type: 3}
+      propertyPath: currentCanvasGroup
+      value: 
+      objectReference: {fileID: 16813896373675795}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3eef1dddcd3d83429497bc7f6b3b4e4, type: 3}
+--- !u!225 &16813896373675795 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 769771956281925642, guid: e3eef1dddcd3d83429497bc7f6b3b4e4, type: 3}
+  m_PrefabInstance: {fileID: 16813896373675794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1005330227481765333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8707391085939063861, guid: f47896f6c2ebbe5428196c4f613d55c2, type: 3}
