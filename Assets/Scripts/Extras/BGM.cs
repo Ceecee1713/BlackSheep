@@ -18,11 +18,6 @@ public class BGM : MonoBehaviour
 
     private const float DURATION = 1.0f;
 
-    void Awake()
-    {
-        musicLoop.Stop();
-    }
-
     void Start()
     {
         EventBus.Instance.Subscribe<FinishedRound>(FinishedRoundEvent);
@@ -34,8 +29,8 @@ public class BGM : MonoBehaviour
     {
         if(_activatedMusicLoop == true)
             return;
-            
-        if(!startingMusic.isPlaying && _activatedMusicLoop == false)
+
+        if(startingMusic.time >= startingMusic.clip.length && !_activatedMusicLoop)
         {
             musicLoop.Play();
             _activatedMusicLoop = true;

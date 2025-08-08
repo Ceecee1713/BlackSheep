@@ -136,8 +136,8 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: The goal of each round is to shoot one person.
   - CharacterTitle: 1
-    Message: 'Within this card deck, there are five card types you could get: Spades,
-      Sheep, Dealer, You, and Revolver.'
+    Message: 'Within this card deck, there are four card types you could get: Sheep,
+      Dealer, You, and Revolver.'
   - CharacterTitle: 1
     Message: The Sheep card is represented by a full sheep body and represents a
       random person at the casino you can shoot.
@@ -152,9 +152,6 @@ MonoBehaviour:
       you can shoot within a round.
   - CharacterTitle: 1
     Message: Based on your hand of four cards, you can choose whom to shoot.
-  - CharacterTitle: 1
-    Message: The Spades card holds no value; thus, it can't be played or advance
-      the game forward.
   - CharacterTitle: 1
     Message: The Revolver card type is self-explanatory, representing the gun you
       shoot with.
