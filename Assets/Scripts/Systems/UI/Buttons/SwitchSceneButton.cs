@@ -18,7 +18,7 @@ public class SwitchSceneButton : MonoBehaviour
     private bool _allowClicking = false;
 
     private const float DELAY = 0.5f;
-    private const float CHANGE_SCENE_DELAY = 1.75f;
+    private const float CHANGE_SCENE_DELAY = 1.5f;
 
     void Start()
     {

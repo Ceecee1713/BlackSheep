@@ -22,8 +22,8 @@ public class ShuffleButton : MonoBehaviour
     private int _numberOfShufflesPerRound = 0;
     private int _maxNumberOfShufflesPerRound;
 
-    private bool _allowInput = false;
-    private bool _hasACardBeenPlayed = false;
+    private bool _allowInput = false; 
+    private bool _hasACardBeenPlayed = false; //Preventing input from the player
 
     void Start()
     {

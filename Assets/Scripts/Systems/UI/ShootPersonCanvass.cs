@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-//This script is to be attached to UI canvases that also have a canvas group component on them
-//These will be the canvases for the "animation" of x person being shot when a card round is finished
+//This script is to be attached to UI canvases that are for the "animation" of x person being shot when a card round is finished
 
 public class ShootPersonCanvass : MonoBehaviour
 {
@@ -51,7 +50,6 @@ public class ShootPersonCanvass : MonoBehaviour
 
     void OnEnable()
     {
-        
     }
 
     void OnDisable()

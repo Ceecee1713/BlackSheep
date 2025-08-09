@@ -92,14 +92,3 @@ public class AnimationManager : MonoBehaviour
         StopAllCoroutines();
     }
 }
-
-    /* //Temporary
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        if(eventName == AllEventNames.ShuffleEvent)
-            StartCoroutine(MoveCardsDown());
-
-        if(eventName == AllEventNames.NewRoundEvent)
-            StartCoroutine(MoveCardsUp(true));
-    }
-    */

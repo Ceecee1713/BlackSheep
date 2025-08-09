@@ -37,9 +37,9 @@ public class CanvasManager : MonoBehaviour
         cardGameplayCanvas.SetActive(true);
         Invoke("TurnOffCardCanvas", DELAY);
 
-        EventBus.Instance.Subscribe<FadeCurrentCanvas>(ChangeCurrentCanvasAlpha);
+        EventBus.Instance.Subscribe<FadeCurrentCanvas>(UIPopUpIsActive);
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
-        EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayout);
+        EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayoutAfterShuffling);
     }
     
     private void TurnOffCardCanvas()
@@ -49,13 +49,13 @@ public class CanvasManager : MonoBehaviour
         cardGameplayCanvas.SetActive(false);
     }
 
-    private void ShowCardLayout(CompletedShufflingCards completedShufflingCards)
+    private void ShowCardLayoutAfterShuffling(CompletedShufflingCards completedShufflingCards) 
     {
         _interactableLayoutCanvasGroup.alpha = 1.0f;
         interactableLayout.SetActive(true);
     }
 
-    private void ChangeCurrentCanvasAlpha(FadeCurrentCanvas fadeCurrentCanvas) //When pause or tutorial menus are up, fade the current canvas' alpha
+    private void UIPopUpIsActive(FadeCurrentCanvas fadeCurrentCanvas) //When pause or tutorial menus are up, fade the current canvas' alpha
     {
         for (int i = 0; i < canvases.Length; i++)
         {
@@ -148,26 +148,3 @@ public class CanvasManager : MonoBehaviour
     }
 }
 
-    /* //Temporary
-    void Update() 
-    {
-        if(StartNewRound == true) 
-        {
-            cardGameplayCanvas.SetActive(true);
-            interactableLayout.SetActive(true);
-            StartNewRound = false;
-            EventManager.Instance.OnNewRoundEvent.Invoke();
-        }
-    }
-    
-    //Temporary
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        /* 
-        if(eventName == AllEventNames.FinishedRoundEvent) 
-            TurnOffCardCanvas();
-
-        if(eventName == AllEventNames.NewRoundEvent) 
-            cardGameplayCanvas.SetActive(true);
-    }
-    */

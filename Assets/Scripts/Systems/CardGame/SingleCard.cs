@@ -19,8 +19,8 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
     private Tween tween;
 
-    private bool _cardHasBeenPlayed = false;
-    private bool _allowInput = false;
+    private bool _cardHasBeenPlayed = false; //Preventing input from the player
+    private bool _allowInput = false; 
 
     private const float TWEEN_DURATION = 0.5f;
 
@@ -42,12 +42,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
-    private void AllowInput(CompletedShufflingCards completedShufflingCards)
+    private void AllowInput(CompletedShufflingCards completedShufflingCards) 
     {
         _allowInput = true;
     }
 
-    private void ShuffleEvent(ShuffleCards shuffleCards)
+    private void ShuffleEvent(ShuffleCards shuffleCards) 
     {
         DoNotAllowInput();
     }
@@ -86,8 +86,6 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         _cardType = assignedCardType;
         cardIcon.sprite = _cardType.CardSprite;
     }
-
-    //OnBeginDrag, OnDrag and OnEndDrag are for interactions with the mouse for dragging the GameObject this script is attached to
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -246,7 +244,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
             CheckRightCardSlot();
 
 
-        //Move card to "_leftCardSlotRect" if there's an overlap and the right slot is empty    
+        //Move card to "_rightCardSlotRect" if there's an overlap and the right slot is empty    
         else if(CardsOverlap(cardTransform,_rightCardSlotRect) && gamblingTable.RightCardSlot.IsSlotOccupied == false)
             CheckLeftCardSlot();
             
@@ -268,18 +266,3 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         return cardRect.Overlaps(cardSlotRect);
     }
 }
-
-    /* //Temporary
-    public void OnEventCalled(AllEventNames eventName)
-    {
-        if(eventName == AllEventNames.NewRoundEvent) 
-        {
-            transform.SetParent(cardLayoutGroup.transform);
-            _allowInput = true;
-            _cardHasBeenPlayed = false;
-        }
-        
-        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.FinishedRoundEvent)
-            _allowInput = false;
-    }
-    */

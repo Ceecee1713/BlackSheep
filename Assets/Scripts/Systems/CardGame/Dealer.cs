@@ -38,7 +38,6 @@ public class Dealer : Singleton<Dealer>
 
     void OnEnable()
     {
-
     }
 
     void OnDisable()
@@ -171,10 +170,3 @@ public class Dealer : Singleton<Dealer>
     }
 }
 
-    /* //Temporary
-    public void OnEventCalled(AllEventNames eventName) 
-    {
-        if(eventName == AllEventNames.ShuffleEvent || eventName == AllEventNames.NewRoundEvent)
-            Invoke("StartShufflingCards", DELAY);
-    }
-    */

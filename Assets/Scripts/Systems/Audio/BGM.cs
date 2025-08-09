@@ -22,7 +22,7 @@ public class BGM : MonoBehaviour
     {
         EventBus.Instance.Subscribe<FinishedRound>(FinishedRoundEvent);
         EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
-        EventBus.Instance.Subscribe<IncreaseMusicVolume>(IncreaseMusicVolume);
+        EventBus.Instance.Subscribe<IncreaseMusicVolume>(IncreaseVolumeAfterShooting);
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class BGM : MonoBehaviour
         }
     }
 
-    private void IncreaseMusicVolume(IncreaseMusicVolume increaseMusicVolume)
+    private void IncreaseVolumeAfterShooting(IncreaseMusicVolume increaseMusicVolume) 
     {
         if(_activatedMusicLoop == true)
         {

@@ -18,7 +18,8 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] 
     private bool _isNextCanvasADialogueCanvas = false;
     [SerializeField] 
-    private bool _ignoreCanvasChanging = false; //For the dialogue box on the UI that'll determine the player's ending (with free button choices)
+    private bool _ignoreCanvasChanging = false; //For the dialogue box on the player determining ending UI
+    //Prevents canvas changing when all the dialogue from "dialogueData" is said
 
     [Header ("Button Displays")]
     [SerializeField]
@@ -162,7 +163,7 @@ public class DialogueBox : MonoBehaviour
             GetDialogueFromButtonTwo();  
     }
 
-    public void SkipDialogue()
+    public void SkipDialogue() //Called by "SkipDialogueButton" script
     {
         if(_ignoreCanvasChanging == true)
             return;
