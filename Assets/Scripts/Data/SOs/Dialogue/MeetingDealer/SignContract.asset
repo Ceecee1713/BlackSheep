@@ -85,7 +85,7 @@ MonoBehaviour:
     Message: However, the people you can shoot fall within the realm of randomness.
       It'll be based on shuffled cards who the player can shoot.
   - CharacterTitle: 3
-    Message: Does that include you in the list of possible people I can shoot?
+    Message: Am I able to shoot you?
   - CharacterTitle: 1
     Message: Yes. That question sounds a little spiteful, though.
   - CharacterTitle: 3
@@ -187,8 +187,15 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: No. This isn't a game about material reward. The contract said so, if
       you paid attention to read it.
+  - CharacterTitle: 3
+    Message: 'What do I get out of this then? '
   - CharacterTitle: 1
-    Message: At the beginning of each round, you also make a payment.
+    Message: You decide what you get out of this. Take out some anger for the world
+      or for yourself. Tell me your problems. Whatever you want this game to be.
+  - CharacterTitle: 3
+    Message: Yeah right. Good luck getting anything out of me.
+  - CharacterTitle: 1
+    Message: ...Anyways, at the beginning of each round, you also make a payment.
   - CharacterTitle: 1
     Message: "So, if you would be so kind\u2026"
   - CharacterTitle: 3

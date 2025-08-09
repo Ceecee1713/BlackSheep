@@ -70,6 +70,8 @@ MonoBehaviour:
     Message: You belong to them, not to yourself.
   - CharacterTitle: 3
     Message: ...
+  - CharacterTitle: 3
+    Message: Ahaha, you're really funny. Really funny...
   - CharacterTitle: 0
     Message: They grasp their arm. The arm is horribly torn up. Parts of their flesh
       are exposed and red from the brute force of wool being ripped off.
