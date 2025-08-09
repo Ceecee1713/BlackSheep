@@ -9,6 +9,9 @@ public class DialogueBox : MonoBehaviour
 
     public GameObject PauseMenuCanvas;
     
+    [SerializeField]
+    private GameObject mouseImage;
+    
     [Header ("For Next Canvas To Be Displayed")]
     [SerializeField]
     private GameObject nextCanvasToSetActive; //UI Canvas to set active when all dialogue is said, unprompted by button clicks 
@@ -22,6 +25,8 @@ public class DialogueBox : MonoBehaviour
     private GameObject oneButtonDisplay;
     [SerializeField]
     private GameObject twoButtonsDisplay;
+    [SerializeField]
+    private GameObject skipButton;
 
     [Header ("Texts To Influence")]
     [SerializeField]
@@ -33,6 +38,8 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] 
     private TextMeshProUGUI dialogueButtonTwoText;
 
+    private CanvasGroup _canvasGroup;
+
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
     private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks in "ChangeDialogueFromButtonEvent()"
@@ -40,7 +47,6 @@ public class DialogueBox : MonoBehaviour
     
     private bool _allowInput = false;
     private bool _moveToNextMessage = false;
-
     private bool _hasActivatedButtonOptions = false; 
     private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent going through messages entirely
@@ -50,13 +56,14 @@ public class DialogueBox : MonoBehaviour
         
     void Start()
     {
+        _canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
+
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<NextMessage>(OnNextMessageEvent);
     }
 
     void OnEnable() 
     {
-        
     }
 
     void OnDisable()
@@ -75,11 +82,19 @@ public class DialogueBox : MonoBehaviour
             CheckToSwitchDialogueCanvases();
             CheckWhichDialogueToBeSaidNext();
         }
+
+        if(_canvasGroup.alpha == 1.0f && FinishGame.Instance.HasPlayerFinishedGameOnce == true)
+            skipButton.SetActive(true);
     }
 
     private void OnNextMessageEvent(NextMessage nextMessage)
     {
         _moveToNextMessage = true;
+    }
+
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    {
+        _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
     private void ResetValues()
@@ -89,13 +104,12 @@ public class DialogueBox : MonoBehaviour
         dialogueButtonOneText.text = "";
         dialogueButtonTwoText.text = "";
 
+        StopAllCoroutines();
+        
+        skipButton.SetActive(false);
+        mouseImage.SetActive(false);
         oneButtonDisplay.SetActive(false);
         twoButtonsDisplay.SetActive(false);
-    }
-
-    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
-    {
-        _allowInput = stopPlayerInput.AllowPlayerInput;
     }
     
     private void CheckToSwitchDialogueCanvases()
@@ -146,6 +160,15 @@ public class DialogueBox : MonoBehaviour
 
         if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true)
             GetDialogueFromButtonTwo();  
+    }
+
+    public void SkipDialogue()
+    {
+        if(_ignoreCanvasChanging == true)
+            return;
+
+        _callDialogueCanvasSwitch = true;
+        EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
     }
     
     public void DisplayDialogueBox() //Called by "CanvasManager"
@@ -249,9 +272,10 @@ public class DialogueBox : MonoBehaviour
 
     IEnumerator TypeMessage(string message)
     {
+        mouseImage.SetActive(false);
         _finishedTypingMessage = false;
 
-        dialogueText.text = ""; //Clearing the "dialogueText".text for the new monster dialouge to be said
+        dialogueText.text = ""; //Clearing the "dialogueText".text for the new dialouge to be said
         
         foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
         {
@@ -290,6 +314,7 @@ public class DialogueBox : MonoBehaviour
         }
 
         _finishedTypingMessage = true;
+        mouseImage.SetActive(true);
         StopAllCoroutines();
     }
 }

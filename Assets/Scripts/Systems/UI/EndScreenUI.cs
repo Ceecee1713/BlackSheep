@@ -19,6 +19,7 @@ public class EndScreenUI : MonoBehaviour
     [SerializeField]
     private CanvasGroup currentCanvasOptions;
 
+
     private bool _typedOutTitleText = false;
 
     private const float DURATION_TO_FADE = 0.7f;
@@ -28,13 +29,14 @@ public class EndScreenUI : MonoBehaviour
         if(currentCanvasGroup.alpha == 1.0f && _typedOutTitleText != true)
         {
             StartCoroutine(ShowEndScreen());
+            FinishGame.Instance.HasPlayerFinishedGameOnce = true;
             _typedOutTitleText = true;
         }
     }
 
     private IEnumerator ShowEndScreen()
     {
-        titleText.text = ""; //Clearing the "dialogueText".text for the new monster dialouge to be said
+        titleText.text = ""; //Clearing the "titleMessage".text for the dialouge to be said
         
         foreach (char letter in titleMessage.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
         {

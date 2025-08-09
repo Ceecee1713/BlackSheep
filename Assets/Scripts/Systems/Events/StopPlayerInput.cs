@@ -64,11 +64,10 @@ public class CardHasBeenPlayed : IEvent   //Allows or prevents for the shuffle b
     }
 }
 
-
-public class NextMessage : IEvent
+public class NextMessage : IEvent //Dialogue box script to go through messages
 {
 }
 
-public class IncreaseMusicVolume : IEvent
+public class IncreaseMusicVolume : IEvent //BGM script to increase music volume after shooting a person (finish a card round)
 {
 }

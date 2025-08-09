@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ShouldGameBeStopped", menuName = "Scriptable Objects/Create bool to Prevent Playing")]
+[CreateAssetMenu(fileName = "ShouldGameBeStopped", menuName = "Scriptable Objects/Create a Bool to Prevent Playing")]
 public class ShouldGameBeStopped : ScriptableObject
 {
     public bool PreventPlaying;

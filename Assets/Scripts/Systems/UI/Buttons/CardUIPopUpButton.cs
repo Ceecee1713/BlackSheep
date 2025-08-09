@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be attached to buttons that will be on the card gameplay UI
-//This script are for buttons that'll show a small pop up on top of the card gameplay UI
+//This script is to be attached to buttons that'll open a UI pop up
 //Such as a small pause menu and a tutorial pop up
 
 public class CardUIPopUpButton : MonoBehaviour
@@ -23,6 +22,7 @@ public class CardUIPopUpButton : MonoBehaviour
     {
         EventBus.Instance.Subscribe<StopPlayerInput>(IsInputAllowed);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(AllowInput);
+        EventBus.Instance.Subscribe<ShuffleCards>(OnShufflingCards);
         EventBus.Instance.Subscribe<FinishedRound>(DoNotAllowInput);
         EventBus.Instance.Subscribe<StartNewRound>(OnNewCardRound);
     }
@@ -49,29 +49,34 @@ public class CardUIPopUpButton : MonoBehaviour
         }
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound)
-    {
-        _allowInput = false;
-    }
-
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
-    private void AllowInput(CompletedShufflingCards completedShufflingCards)
+    private void OnNewCardRound(StartNewRound startNewRound) //When a new card round has started
+    {
+        _allowInput = false;
+    }
+
+    private void OnShufflingCards(ShuffleCards shuffleCards) //When cards are being shuffled in a round
+    {
+        _allowInput = false;
+    }
+
+    private void AllowInput(CompletedShufflingCards completedShufflingCards) //When cards are done being shuffled
     {
         _allowInput = true;
     }
 
-    private void DoNotAllowInput(FinishedRound finishedRound)
+    private void DoNotAllowInput(FinishedRound finishedRound) //When the card round has finished
     {
         _allowInput = false;
     }
 
     public void OnShowUIPopUpClick()
     {
-        if(_allowInput == false)
+        if(_allowInput == false || currentCanvasGroup.alpha != 1.0f)
             return;
 
         if(_allowClicking == true)
