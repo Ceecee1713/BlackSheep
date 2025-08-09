@@ -381,7 +381,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 56f10200ec79bdc43aa4a70deede3869, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: f20547c85f8b2c648a7df63691a337fc, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -825,7 +825,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 51657d23643a7674aa62b2651f100439, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -1545,7 +1545,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 8e2fdbc932bf0924baa7b38c6f1e0dfc, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -1930,7 +1930,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 259ccb1f9ccd09844824c824bce75095, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -2722,7 +2722,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: 2fc11392a816699439218c1fa7dd0d1e, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -3817,7 +3817,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: d41c263034899c34195451f70e45f38f, type: 2}
+      objectReference: {fileID: 11400000, guid: d5cf69bb02f684545b0fefd1e750c21c, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
@@ -4086,7 +4086,7 @@ PrefabInstance:
     - target: {fileID: 5432552038680893258, guid: 2855020c71d6ec849af8558e3929411d, type: 3}
       propertyPath: cardGameDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 6ccaf54f2f170554e9b56d3931b8448c, type: 2}
+      objectReference: {fileID: 11400000, guid: c47b72bbeefe734479e74af4d592bd2b, type: 2}
     - target: {fileID: 5432552038680893258, guid: 2855020c71d6ec849af8558e3929411d, type: 3}
       propertyPath: PersistAcrossScenes
       value: 0
@@ -4250,7 +4250,7 @@ PrefabInstance:
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: 2973cded18fd6d4428c26c0eee962b83, type: 2}
+      objectReference: {fileID: 11400000, guid: 908f3a66a6a96cd4aafaf97ddcc3de0f, type: 2}
     - target: {fileID: 7384142633178450625, guid: aa38148af73cdc4459e4732d4d85d699, type: 3}
       propertyPath: PauseMenuCanvas
       value: 
