@@ -22,8 +22,14 @@ MonoBehaviour:
   - CharacterTitle: 0
     Message: The well-adjusted lady sets the glass down and leaves to attend to another
       patron further down the bar counter.
+  - CharacterTitle: 3
+    Message: Odd that they want wool for currency...
+  - CharacterTitle: 3
+    Message: 'I don''t really get a right to complain how they do stuff here. Random
+      casino in the middle of a desert. '
   - CharacterTitle: 0
-    Message: They're unfazed by the method of payment mentioned just moments ago.
+    Message: Alcohol is just as bad as self-inflicting pain. They're the same thing
+      anyways.
   - CharacterTitle: 0
     Message: They take the diamond-patterned glass with brownish-gold liquid off
       the counter and bring it toward their lips.
@@ -105,7 +111,7 @@ MonoBehaviour:
   - CharacterTitle: 6
     Message: I can get you shears.
   - CharacterTitle: 3
-    Message: Stereotypical.
+    Message: Ha, yeah right. Stereotypical...
   - CharacterTitle: 0
     Message: Without delay, they ruthlessly pull at their wool. The tearing sounds
       match the searing pain that comes right after.

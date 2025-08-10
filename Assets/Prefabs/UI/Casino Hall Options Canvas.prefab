@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 1633375174364812974}
   nextCanvasToSetActive: {fileID: 0}
+  pauseMenu: {fileID: 0}
   isNextCanvasADialogueCanvas: 1
 --- !u!1 &1872247428003127747
 GameObject:
@@ -734,6 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 1633375174364812974}
   nextCanvasToSetActive: {fileID: 0}
+  pauseMenu: {fileID: 0}
   isNextCanvasADialogueCanvas: 1
 --- !u!114 &426050034564082161
 MonoBehaviour:
@@ -749,6 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 1633375174364812974}
   buttonOptions: {fileID: 2380646253117225052}
+  buttonObject: {fileID: 6865536214113419029}
 --- !u!1 &5654223672097650469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 1633375174364812974}
   nextCanvasToSetActive: {fileID: 0}
+  pauseMenu: {fileID: 0}
   isNextCanvasADialogueCanvas: 1
 --- !u!114 &5065866372885639450
 MonoBehaviour:
@@ -1061,6 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 1633375174364812974}
   buttonOptions: {fileID: 2380646253117225052}
+  buttonObject: {fileID: 6327805828535641251}
 --- !u!1 &6271754986718341725
 GameObject:
   m_ObjectHideFlags: 0

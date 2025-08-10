@@ -21,14 +21,19 @@ MonoBehaviour:
     Message: "Bold of you to shoot yourself in the first round.\r"
   - CharacterTitle: 1
     Message: Not many people decide to spend the first bullet on themselves.
+  - CharacterTitle: 3
+    Message: Oh really, why? Tell me allll about it.
   - CharacterTitle: 1
-    Message: I believe most people don't because of fear of death. I never specified
+    Message: ....
+  - CharacterTitle: 1
+    Message: ...I believe most people don't because of fear of death. I never specified
       if you'd come back to life, nor is it written down.
   - CharacterTitle: 1
     Message: Maybe you don't fear death. Do you?
+  - CharacterTitle: 3
+    Message: Not answering that.
   - CharacterTitle: 1
-    Message: It's fine if you don't want to tell. We don't normally want to reveal
-      our fears outright.
+    Message: Well, that's fine. We don't normally want to reveal our fears outright.
   - CharacterTitle: 1
     Message: It's common for others to exploit your fears or mock them.
   - CharacterTitle: 3

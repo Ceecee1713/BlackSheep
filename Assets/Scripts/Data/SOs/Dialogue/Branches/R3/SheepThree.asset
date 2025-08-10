@@ -22,6 +22,8 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: This game being one-player, I'm sure it's more relieving now. You don't
       have to worry about others shooting back at you.
+  - CharacterTitle: 3
+    Message: Yeah I mean, you're right about that.
   - CharacterTitle: 1
     Message: Better yet, someone isn't controlling the game for you, where someone
       is winning and you're losing.
@@ -38,12 +40,10 @@ MonoBehaviour:
       turmoil.'
   - CharacterTitle: 3
     Message: Wow, me caring for myself? Crazy. Maybe next round I should shoot myself.
+      Disgusting to care for myself.
   - CharacterTitle: 3
-    Message: "Anyways, even though we're not allowed to share identities, you never
-      know what someone might do with your personal information\u2026"
-  - CharacterTitle: 3
-    Message: I don't feel completely in control because this is a casino. I'm not
-      hosting this game; it's you.
+    Message: Anyways, I don't feel completely in control because this is a casino.
+      I'm not hosting this game; it's you.
   - CharacterTitle: 3
     Message: The people I get to shoot are under your control with your shuffling.
       That binds me to you, doesn't it?
@@ -66,12 +66,8 @@ MonoBehaviour:
     Message: Even in this game, we're never allowed full control over anything because
       of lies.
   - CharacterTitle: 3
-    Message: People's lies shape you.
-  - CharacterTitle: 3
     Message: In the end, everything is inherently unjust. There will always be someone
-      who lies, someone who controls.
-  - CharacterTitle: 3
-    Message: Then you become disposable.
+      who lies, someone who controls more than you do.
   - CharacterTitle: 3
     Message: I can say I enjoy this game because I have more freedom of choice, but
       it's not a complete choice.
@@ -79,9 +75,15 @@ MonoBehaviour:
     Message: And it can be taken away at any time. Choice ends up being an illusion.
       It always does.
   - CharacterTitle: 3
+    Message: People are cruel and make you feel you have to rely on them to make
+      choices for you for whatever reasons.
+  - CharacterTitle: 3
+    Message: To summarize it for your stupid little brain hearing me say this, if
+      it weren't obvious to you, I hate people. And I hate you too.
+  - CharacterTitle: 3
     Message: Whatever, I don't even know why I'm answering your stupid questions.
   - CharacterTitle: 3
-    Message: I don't matter to you anyway.
+    Message: 'I don''t matter to you anyway. '
   - CharacterTitle: 0
     Message: They grasp their arm. Their arm is horribly torn up. Parts of their
       flesh are exposed and red from the brute force of wool being ripped off.

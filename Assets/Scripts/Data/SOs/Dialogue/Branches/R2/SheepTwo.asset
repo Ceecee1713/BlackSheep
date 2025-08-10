@@ -23,18 +23,18 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: You'd be right. If you decide to shoot another black sheep in the room,
       you won't face any repercussions.
+  - CharacterTitle: 3
+    Message: Well, that's great to hear. Maybe next round you'll be my next victim.
   - CharacterTitle: 1
-    Message: I believe you're not some sick murderer. I know you're not that.
+    Message: ...
   - CharacterTitle: 1
-    Message: I believe you're not some sick murderer . I know you're not that.
-  - CharacterTitle: 1
-    Message: However, there are always motives behind the actions we take. What are
-      yours?
+    Message: ...However, there are always motives behind the actions we take. What
+      are yours for shooting a random person?
   ButtonOneDialogue:
   - CharacterTitle: 3
     Message: I wish you'd stop talking already. Are all dealers secret interrogators?
   - CharacterTitle: 3
-    Message: Whatever. Like I give a damn.
+    Message: Whatever. Like I give a damn. We'll forget each other soon enough.
   - CharacterTitle: 3
     Message: People lie. It's natural to lie when you want to protect yourself or
       others.
@@ -47,10 +47,17 @@ MonoBehaviour:
     Message: When you realize they've lied to you, you become curious about how many
       lies they've told before.
   - CharacterTitle: 3
-    Message: If done consistently, trust breaks. Trust is disposable.
+    Message: Then trust breaks. Trust is disposable.
   - CharacterTitle: 3
     Message: If done by multiple people, then where's the line separating reality
       from falsehood?
+  - CharacterTitle: 3
+    Message: That said, people also talk behind your back all the time. I don't think
+      people realize it, but I'm not dumb. I know people love drama, love to hate,
+      love to lie.
+  - CharacterTitle: 3
+    Message: 'Ha, people will find anything to hate anyone, and anyone will find
+      anything to hate me too. '
   - CharacterTitle: 3
     Message: People inherently want to lie, so if I have the choice not to be lied
       to, I'll take it.

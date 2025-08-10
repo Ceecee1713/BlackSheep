@@ -53,7 +53,7 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: I didn't think you'd be one to value your life or the lives of others.
   - CharacterTitle: 3
-    Message: ...
+    Message: Others, maybe. Myself? Sure...
   - CharacterTitle: 0
     Message: They received bits of intel about a casino stranded in a desert that
       provides a uniquely dangerous game.

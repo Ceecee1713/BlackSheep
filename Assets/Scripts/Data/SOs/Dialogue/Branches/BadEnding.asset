@@ -20,8 +20,8 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: Does your death, caused by your hands, satisfy you?
   - CharacterTitle: 1
-    Message: If you ever shot yourself, you witnessed death before coming back to
-      life.
+    Message: If you ever shot yourself before this moment, you witnessed death before
+      coming back to life.
   - CharacterTitle: 1
     Message: Why, after witnessing it at least once, did you want to fully exit this
       world?
@@ -45,9 +45,6 @@ MonoBehaviour:
       matter if we're going to go through this same torment?
   - CharacterTitle: 1
     Message: Will you make new choices?
-  - CharacterTitle: 1
-    Message: "You paid the price in the form of bodily harm. You\u2019ve always paid
-      a price."
   - CharacterTitle: 1
     Message: "You lost everything, and I won everything. Such is the nature of casinos\u2026"
   ButtonOneDialogue: []

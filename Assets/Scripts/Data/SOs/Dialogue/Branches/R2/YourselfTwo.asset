@@ -33,9 +33,12 @@ MonoBehaviour:
       cure the physical pain, but you still did.
   - CharacterTitle: 1
     Message: And I know you realize that doing so would put you through more pain.
+  - CharacterTitle: 3
+    Message: Yeah, I don't feel physically better shooting myself. Wow, shooting
+      myself while I have a headache will make me feel worse? Wow, thanks for stating
+      the obvious.
   - CharacterTitle: 1
-    Message: The sensation of being shot is still very real before you're brought
-      back to life, erasing all physical pain.
+    Message: 'You''re welcome. '
   - CharacterTitle: 1
     Message: You know, I saw you at the bar earlier, and you reached the threshold
       of six drinks per person.
@@ -66,7 +69,10 @@ MonoBehaviour:
       of a person, the things that person has done, their interactions with others.
   - CharacterTitle: 3
     Message: People always judge. Some keep it to themselves, but it's still the
-      same. People assume too. People are all the same.
+      same. People assume too. People are all the same, and people will gossip to
+      talk trash because of that judgement they have of you.
+  - CharacterTitle: 3
+    Message: To find someone that has the patience to understand you is rare nowadays.
   - CharacterTitle: 1
     Message: You belong to suffering.
   - CharacterTitle: 3

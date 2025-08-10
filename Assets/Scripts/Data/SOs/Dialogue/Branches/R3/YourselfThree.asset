@@ -44,23 +44,30 @@ MonoBehaviour:
       However, the same types of characters only come to play my game.
   - CharacterTitle: 1
     Message: Broken people are my demographic. If everyone is hurting, why does your
-      pain matter compared to theirs?
+      pain matter compared to theirs? It's a question that pops into my head when
+      I hear my clients talking.
   - CharacterTitle: 1
-    Message: You're not unique because you feel pain.
-  - CharacterTitle: 1
-    Message: Everything is dull, mundane, the same. People don't change. People don't
-      need to be explicit to make you question your worth. People are sly, slowly
-      picking away at your character.
-  - CharacterTitle: 1
-    Message: Choices are meaningless because something or someone else will want
-      to make the choices for you or heavily influence them.
-  - CharacterTitle: 1
+    Message: 'You''re not unique because you feel pain. '
+  - CharacterTitle: 3
+    Message: Ha, you're right about that. Everyone suffers in their own way and some
+      hide it better than others.
+  - CharacterTitle: 3
+    Message: 'Ugh, everything is dull, mundane, the same. '
+  - CharacterTitle: 3
+    Message: People don't change. People don't need to be explicit to make you question
+      your worth. People are sly snakes that secretly spew poison, hiding their fangs
+      and pretending to seem gentle.
+  - CharacterTitle: 3
+    Message: 'Choices are meaningless because something or someone else will want
+      to make the choices for you or heavily influence them. Why? They don''t trust.
+      If they don''t trust me, then I''m not going to trust you either. '
+  - CharacterTitle: 3
     Message: Individuality is a myth once you belong to a system of pain.
   - CharacterTitle: 1
     Message: How can you be you if others don't allow you to be? Why try then? You
       keep trying. Things keep crumbling, then you give up because you'll never be
       allowed to be you.
-  - CharacterTitle: 1
+  - CharacterTitle: 3
     Message: Family, friends, work, all have an idea of who you are to them. But
       those ideas are all different. They all shove their expectations under the
       label of 'care', then even caring eventually becomes a lie.
@@ -68,8 +75,6 @@ MonoBehaviour:
     Message: So what does that make you?
   - CharacterTitle: 1
     Message: You belong to them, not to yourself.
-  - CharacterTitle: 3
-    Message: ...
   - CharacterTitle: 3
     Message: Ahaha, you're really funny. Really funny...
   - CharacterTitle: 0

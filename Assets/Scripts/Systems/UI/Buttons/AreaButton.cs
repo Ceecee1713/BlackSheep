@@ -11,11 +11,27 @@ public class AreaButton : MonoBehaviour
     [SerializeField]
     private ButtonOptions buttonOptions; 
 
+    [SerializeField]
+    private GameObject buttonObject;
+
     private bool _dontRepeat = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
 
     private const float DELAY = 0.5f;
+
+    void Enable()
+    {
+
+    }
+
+    void OnDisable()
+    {
+        if(_dontRepeat == true)
+        {
+            buttonObject.SetActive(false);
+        }
+    }
 
     void Update()
     {

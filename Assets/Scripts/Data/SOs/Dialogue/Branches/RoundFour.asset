@@ -26,8 +26,8 @@ MonoBehaviour:
   - CharacterTitle: 3
     Message: You're the one shuffling. How can something like this just slip by?
   - CharacterTitle: 3
-    Message: Last time I checked , cards don't disappear like this unless you're
-      a magician.
+    Message: Last time I checked, cards don't disappear like this unless you're a
+      magician.
   - CharacterTitle: 1
     Message: Regrettably, I am not that.
   - CharacterTitle: 3
@@ -46,7 +46,7 @@ MonoBehaviour:
   - CharacterTitle: 1
     Message: You lie to yourself too.
   - CharacterTitle: 3
-    Message: "Yeah, okay. Say whatever\u2026"
+    Message: 'Yeah, okay. Say whatever. Pretend to know me. '
   - CharacterTitle: 0
     Message: They move their hand up their arm and rip off a rather large chunk of
       wool.

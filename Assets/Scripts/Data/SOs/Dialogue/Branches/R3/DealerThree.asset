@@ -21,10 +21,14 @@ MonoBehaviour:
     Message: Your choices are intriguing me more and more with whom you wish to shoot.
   - CharacterTitle: 3
     Message: "Sure. I'm really interesting\u2026"
+  - CharacterTitle: 3
+    Message: I'm a spectacle on a stage! For the audience...
+  - CharacterTitle: 3
+    Message: Ugh...
   - CharacterTitle: 1
     Message: You're someone fueled by resentment.
   - CharacterTitle: 3
-    Message: Stop your introspection.
+    Message: God, just shut up. I don't want to hear it.
   - CharacterTitle: 1
     Message: We're bound together until the end of this game, so I naturally like
       to discern my players.
@@ -41,8 +45,8 @@ MonoBehaviour:
     Message: Aside from pure curiosity, it brings me comfort to hear I can make extreme,
       selfish choices with no consequence.
   - CharacterTitle: 3
-    Message: I also get no judgment for my choices. I even get the freedom to choose
-      to "kill" myself too, free of consequence.
+    Message: I also get no judgment for my choices, like you promised. I even get
+      the freedom to choose to "kill" myself too, free of consequence.
   - CharacterTitle: 3
     Message: Slots are a solo game, but it's uncontrolled by the player due to its
       little rigged system that it's been programmed with. I lose consistently.
@@ -58,6 +62,8 @@ MonoBehaviour:
   - CharacterTitle: 3
     Message: Still, how much control are we able to have in this world? Everything
       becomes a lie eventually, and there are always more control-hungry freaks.
+  - CharacterTitle: 3
+    Message: Free will? Hopeful delusion.
   - CharacterTitle: 0
     Message: They grasp their arm. Their arm is horribly torn up. Parts of their
       flesh are exposed and red from the brute force of wool being ripped off.
