@@ -544,7 +544,7 @@ MonoBehaviour:
   animator: {fileID: 459973208}
   currentCanvasGroup: {fileID: 2109594922}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 3.5
+  delayBetweenBlinkAnimation: 2
 --- !u!95 &459973208
 Animator:
   serializedVersion: 7
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   animator: {fileID: 836645528}
   currentCanvasGroup: {fileID: 7388227439546508609}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 3.5
+  delayBetweenBlinkAnimation: 2
 --- !u!95 &836645528
 Animator:
   serializedVersion: 7
@@ -1463,7 +1463,7 @@ MonoBehaviour:
   animator: {fileID: 851910785}
   currentCanvasGroup: {fileID: 802338738}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 3.5
+  delayBetweenBlinkAnimation: 2
 --- !u!95 &851910785
 Animator:
   serializedVersion: 7
@@ -2273,7 +2273,7 @@ MonoBehaviour:
   animator: {fileID: 1187692776}
   currentCanvasGroup: {fileID: 887850859}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 4
+  delayBetweenBlinkAnimation: 3
 --- !u!95 &1187692776
 Animator:
   serializedVersion: 7
@@ -3293,7 +3293,7 @@ MonoBehaviour:
   animator: {fileID: 1557291818}
   currentCanvasGroup: {fileID: 1819384014}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 3
+  delayBetweenBlinkAnimation: 2
 --- !u!95 &1557291818
 Animator:
   serializedVersion: 7
@@ -4490,7 +4490,7 @@ MonoBehaviour:
   animator: {fileID: 1909181050}
   currentCanvasGroup: {fileID: 887850859}
   animationTriggerName: Blink
-  delayBetweenBlinkAnimation: 3
+  delayBetweenBlinkAnimation: 2
 --- !u!95 &1909181050
 Animator:
   serializedVersion: 7

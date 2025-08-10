@@ -210,7 +210,7 @@ MonoBehaviour:
       the table.
   - CharacterTitle: 1
     Message: If you've forgotten my explanation, I can re-explain the game via a
-      question mark, and there'll be markings on the table as well to help you out.
+      question mark.
   - CharacterTitle: 1
     Message: Let's play now.
   ButtonTwoDialogue: []
