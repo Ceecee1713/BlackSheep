@@ -12,7 +12,7 @@ public class AnimationManager : MonoBehaviour
     private GameConfiguration gameConfiguration;
     
     [SerializeField]
-    private Animator dealerAnimator;
+    private Animator dealerAnimator; //Animator that'll be on the card gameplay canvas
     
     [Header ("Interactable Player Cards")]
     [SerializeField]

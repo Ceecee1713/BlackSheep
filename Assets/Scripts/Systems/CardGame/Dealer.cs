@@ -4,7 +4,7 @@ using UnityEngine;
 public class Dealer : Singleton<Dealer>
 {
     private List <ShuffleListener> _allCards = new(); //These will be the cards the player will interact with
-    private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again IF number exists in this list
+    private List <int> _unavailableCardNumbers  = new(); //Prevent indexes of "_allCards" from being picked again 
 
     private CardType [] _availableCardTypes = new CardType[4]; //All POSSIBLE cards to be given out 
     private CardType _singleCardType; //Hold a reference from "_availableCardTypes" array at a specific index
@@ -15,7 +15,7 @@ public class Dealer : Singleton<Dealer>
     private int _randomCardTypeNumber; //Representing a random index from "_availableCardTypes"
     private int _roundNumberToRemoveSheepCard, _roundNumberToRemoveDealerAndNormalCards; 
 
-    private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Exclude card bools for later rounds (limit cards to be given out)
+    private bool _excludeSheepCard, _onlyHavePlayerAndGunCards; //Determine if cards should be excluded for later rounds
 
     private const float DELAY = 1.5f; 
     
@@ -71,7 +71,7 @@ public class Dealer : Singleton<Dealer>
         Invoke("StartShufflingCards", DELAY);
     }
 
-    private void RemoveCardTypes() //Limit card types to be given out to the player in later rounds
+    private void RemoveCardTypes() //Limit card types to be given out to the player 
     {
         //Here, I'm adding the "cardGameRoundNumber.CurrentRoundNumber" by 1 
         //Because there's an order of operations difference as this method is called when a round ends 
@@ -101,7 +101,7 @@ public class Dealer : Singleton<Dealer>
     {
         for(int i = 0; i < _availableCardTypes.Length; i++)
         {
-            if(_availableCardTypes[i].typeOfCard == AllCardTypes.Player) //Check for existing "Player" card 
+            if(_availableCardTypes[i].typeOfCard == AllCardTypes.Player) //Check for existing "Player" card in the possible cards list
             {
                 _singleCardType = _availableCardTypes[i];
                 PassRandomCardType(_singleCardType); //Pass "Player" card
@@ -111,7 +111,7 @@ public class Dealer : Singleton<Dealer>
 
         for(int i = 0; i < _availableCardTypes.Length; i++) 
         {
-            if(_availableCardTypes[i].typeOfCard == AllCardTypes.Gun) //Check for existing "Gun" card 
+            if(_availableCardTypes[i].typeOfCard == AllCardTypes.Gun) //Check for existing "Gun" card in the possible cards list
            {
                 _singleCardType = _availableCardTypes[i];
                 PassRandomCardType(_singleCardType); //Pass "Gun" card
@@ -122,7 +122,7 @@ public class Dealer : Singleton<Dealer>
         ShuffleCards();
     }
 
-    private void ShuffleCards() //Selecting a random card type from "_availableCardTypes"
+    private void ShuffleCards() //Selecting a random card type from "_availableCardTypes" (possible cards list)
     {
         for(int amountOfRemainingCards = 0; amountOfRemainingCards < 2; amountOfRemainingCards++)
         {
@@ -157,14 +157,14 @@ public class Dealer : Singleton<Dealer>
         }
     }
 
-    private void PassRandomCardType(CardType cardType) //Selecting a random card to pass the card type from "ShuffleCards"
+    private void PassRandomCardType(CardType cardType) //Selecting a random player card to pass "cardType"
     {
         _randomCardIndex = Random.Range(0, _allCards.Count); //Grab a random index of "_allCards"
 
         while(_unavailableCardNumbers.Contains(_randomCardIndex)) //Prevent already selected "_allCards" indexes from being chosen again
             _randomCardIndex = Random.Range(0, _allCards.Count);
 
-        _unavailableCardNumbers.Add(_randomCardIndex); //Index of "_allCards" cannot be picked again
+        _unavailableCardNumbers.Add(_randomCardIndex); //Index of "_allCards" cannot be picked again. This player card can't be chosen again
         
         _allCards[_randomCardIndex].OnShuffleNotified(cardType);
     }

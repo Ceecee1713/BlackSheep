@@ -3,6 +3,7 @@ using UnityEngine;
 
 //This script is to be attached to buttons that'll open a UI pop up
 //Such as a small pause menu and a tutorial pop up
+//It'll be used for buttons on dialogue canvases and the card gameplay canvas
 
 public class CardUIPopUpButton : MonoBehaviour
 {

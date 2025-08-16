@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
+//This script is to be attached to the game object that moves with the player's mouse cursor
+
 public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] 
@@ -105,7 +107,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         transform.position = Input.mousePosition;
     }
 
-    private void CheckRightCardSlot() //Check the right card slot to change the values of the left card slot
+    private void CheckRightCardSlot() //Check the right card slot to change the values of and move this card into the left card slot
     {
         if(gamblingTable.RightCardSlot.SlotType == null) //If the right card slot is empty, let this card move into the left card slot
         {
@@ -165,7 +167,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         }
     }
 
-    private void CheckLeftCardSlot() //Check left card slot to change the values of the right card slot
+    private void CheckLeftCardSlot() //Check left card slot to change the values of and move this card into the right card slot
     {
         if(gamblingTable.LeftCardSlot.SlotType == null) //If the left card slot is empty, let this card move into the right card slot
         {
@@ -239,12 +241,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
         var cardTransform = transform.GetComponent<RectTransform>();
 
-        //Move card to "_leftCardSlotRect" if there's an overlap and the left slot is empty
+        //Check if this card is overlapping the left card slot (_leftCardSlotRect)
         if (CardsOverlap(cardTransform, _leftCardSlotRect) && gamblingTable.LeftCardSlot.IsSlotOccupied == false) 
             CheckRightCardSlot();
 
 
-        //Move card to "_rightCardSlotRect" if there's an overlap and the right slot is empty    
+        //Check if this card is overlapping the right card slot (_rightCardSlotRect)
         else if(CardsOverlap(cardTransform,_rightCardSlotRect) && gamblingTable.RightCardSlot.IsSlotOccupied == false)
             CheckLeftCardSlot();
             
@@ -257,7 +259,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         }
     }
 
-    private bool CardsOverlap(RectTransform card, RectTransform cardSlot) //Checking if "cardRect" overlaps with "cardSlotRect"
+    private bool CardsOverlap(RectTransform card, RectTransform cardSlot) //Check if this card overlaps with a card slot (cardSlot)
     {
         var cardRect = new Rect(card.localPosition.x, card.localPosition.y, card.rect.width, card.rect.height);
         var cardSlotRect = new Rect(cardSlot.localPosition.x, cardSlot.localPosition.y, cardSlot.rect.width,

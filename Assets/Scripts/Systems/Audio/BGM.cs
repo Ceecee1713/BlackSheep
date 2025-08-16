@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 
 //This script is for the background music that's to be looped after "startingMusic" is done playing
+//This script can be attached to the game object that'll be the "musicLoop" 
 
 public class BGM : MonoBehaviour
 {
@@ -42,16 +43,16 @@ public class BGM : MonoBehaviour
         if(_activatedMusicLoop == true)
         {
             _tween?.Kill();
-            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION);
+            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION); //Restore volume
         }
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound)
+    private void OnNewCardRound(StartNewRound startNewRound) 
     {
         if(_activatedMusicLoop == true)
         {
             _tween?.Kill();
-            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION);
+            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION); //Restore volume
         }
     }
 

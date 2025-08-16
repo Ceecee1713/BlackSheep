@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be attached to casino area buttons for the casino area button canvas
+//This script is to be attached to casino area buttons 
+//These will be the buttons that allow the player to go to different areas in the casino
 
 public class AreaButton : MonoBehaviour
 {
@@ -22,15 +23,12 @@ public class AreaButton : MonoBehaviour
 
     void Enable()
     {
-
     }
 
     void OnDisable()
     {
         if(_dontRepeat == true)
-        {
             buttonObject.SetActive(false);
-        }
     }
 
     void Update()

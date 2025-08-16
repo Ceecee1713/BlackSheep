@@ -3,6 +3,9 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
+//This script is to be attached to the end screen UI 
+//The screen that shows up once the game is complete
+
 public class EndScreenUI : MonoBehaviour
 {
     [Header ("For Title Text")]

@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be attached to buttons that'll show "nextCanvasToSetActive" after clicking
-//This will be controlled by the "isNextCanvasADialogueCanvas" 
+//This script is to be attached to buttons that'll show a new canvas after clicking (nextCanvasToSetActive)
+//This will be controlled by the "isNextCanvasADialogueCanvas" bool
 
 //If "isNextCanvasADialogueCanvas" is true:
 //it'll mean the next canvas to be set active will be a dialogue UI and dialogue will be said once that UI is active

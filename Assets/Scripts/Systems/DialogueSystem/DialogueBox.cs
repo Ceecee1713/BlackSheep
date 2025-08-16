@@ -43,15 +43,15 @@ public class DialogueBox : MonoBehaviour
 
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
-    private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks in "ChangeDialogueFromButtonEvent()"
+    private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks
     //Tell which dialogue from which button has been chosen 
     
     private bool _allowInput = false;
     private bool _moveToNextMessage = false;
     private bool _hasActivatedButtonOptions = false; 
-    private bool _finishedTypingMessage = false; //Prevent going through messages when they're not fully typed out
-    private bool _allowGoingThroughMessages = false; //Prevent going through messages entirely
-    private bool _callDialogueCanvasSwitch = false; //Prevent repetivie calls on Update based on "CheckToSwitchDialogueCanvases()"
+    private bool _finishedTypingMessage = false; //Prevent or allow going through messages when they're not fully typed out
+    private bool _allowGoingThroughMessages = false; //Prevent or allow going through messages entirely
+    private bool _callDialogueCanvasSwitch = false; //Prevent or allow repetivie calls on Update 
 
     private const float TYPING_SPEED = 0.015f;
         
@@ -88,7 +88,7 @@ public class DialogueBox : MonoBehaviour
             skipButton.SetActive(true);
     }
 
-    private void OnNextMessageEvent(NextMessage nextMessage)
+    private void OnNextMessageEvent(NextMessage nextMessage) //Called by "InputController"
     {
         _moveToNextMessage = true;
     }
@@ -118,7 +118,7 @@ public class DialogueBox : MonoBehaviour
         if(_ignoreCanvasChanging == true)
             return;
 
-        //If all normal dialogue messages have been said when there's no button prompting from "ChangeDialogueFromButtonEvent()"
+        //If all normal dialogue messages have been said when there's no button prompting different dialogue branches
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
@@ -147,18 +147,21 @@ public class DialogueBox : MonoBehaviour
         if (_allowGoingThroughMessages != true)
             return;
         
+        //If there's no button prompting different dialogue branches
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) 
         {
             GetNormalDialogue();
             return;
         }
-                        
+
+        //If there's button one prompting dialogue             
         if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
         {
             GetDialogueFromButtonOne();
             return;
         }
 
+        //If there's button two prompting dialogue   
         if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true)
             GetDialogueFromButtonTwo();  
     }

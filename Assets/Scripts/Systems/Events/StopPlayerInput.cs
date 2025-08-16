@@ -2,7 +2,7 @@ using UnityEngine;
 
 //This contains all the events (data types) that the game uses
 
-public class StopPlayerInput : IEvent
+public class StopPlayerInput : IEvent //Prevent player input to scripts that are subscribed to this event
 {
     public bool AllowPlayerInput;
 
@@ -12,7 +12,7 @@ public class StopPlayerInput : IEvent
     }
 }
 
-public class FadeCurrentCanvas : IEvent
+public class FadeCurrentCanvas : IEvent //Fade the current UI canvas when either the pause menu or card gameplay tutorial menu is active
 {
     public bool FadeCanvas;
 
@@ -22,7 +22,7 @@ public class FadeCurrentCanvas : IEvent
     }
 }
 
-public class ChangeToNewCanvas : IEvent
+public class ChangeToNewCanvas : IEvent //Change current UI canvas to a new one (newCanvas) and if it's a dialogue canvas, determined by (isNewCanvasADialogueCanvas)
 {
     public bool IsNewCanvasADialogueCanvas;
     public GameObject NewCanvas;
@@ -32,10 +32,6 @@ public class ChangeToNewCanvas : IEvent
         NewCanvas = newCanvas;
         IsNewCanvasADialogueCanvas = isNewCanvasADialogueCanvas;
     }
-}
-
-public class DisableUIPopUps : IEvent
-{
 }
 
 public class ShuffleCards : IEvent     //Disable input for moving the player's cards, shuffle cards and play shuffling animation
@@ -54,7 +50,7 @@ public class StartNewRound : IEvent    //Reset player's cards' positions and sta
 {
 }
 
-public class CardHasBeenPlayed : IEvent   //Allows or prevents for the shuffle button to be used within a round
+public class CardHasBeenPlayed : IEvent   //Allows or prevents for the shuffle button to be used within a card round
 {
     public bool CardPlayed;
 

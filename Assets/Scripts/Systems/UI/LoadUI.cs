@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 //This script is to be attached to the UI that'll be the first active UI upon startng up the game
+//This UI will be a dialogue UI of some sort
 
 public class LoadUI : MonoBehaviour
 {

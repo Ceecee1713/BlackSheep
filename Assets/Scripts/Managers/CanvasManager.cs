@@ -10,7 +10,7 @@ public class CanvasManager : MonoBehaviour
     
     [Header ("Main Canvases")]
     [SerializeField]
-    private GameObject [] canvases; //Must contain ALL UI canvases (excluding pause menu, tutorial UI, plain black screen)
+    private GameObject [] canvases; //Must contain ALL UI canvases (excluding pause menu, card gameplay tutorial pop up, plain black screen)
 
     [Header ("For Card Gameplay Canvas")]
     [SerializeField]
@@ -31,15 +31,19 @@ public class CanvasManager : MonoBehaviour
         _durationOfFade = gameConfiguration.DurationOfScreenFade;
         _interactableLayoutCanvasGroup = interactableLayout.GetComponent<CanvasGroup>();
         
-        //Turning the card gameplay canvas active to add the player cards as listeners to when it's time to shuffle
-        interactableLayout.SetActive(true);
-        _interactableLayoutCanvasGroup.alpha = 1.0f;
-        cardGameplayCanvas.SetActive(true);
-        Invoke("TurnOffCardCanvas", DELAY);
+        AddCardsToListenToDealer();
 
         EventBus.Instance.Subscribe<FadeCurrentCanvas>(UIPopUpIsActive);
         EventBus.Instance.Subscribe<ChangeToNewCanvas>(SwitchCanvas);
         EventBus.Instance.Subscribe<CompletedShufflingCards>(ShowCardLayoutAfterShuffling);
+    }
+
+    private void AddCardsToListenToDealer() //Add cards to listen to "Dealer" script for when it'll be time to shuffle
+    {
+        interactableLayout.SetActive(true);
+        _interactableLayoutCanvasGroup.alpha = 1.0f;
+        cardGameplayCanvas.SetActive(true);
+        Invoke("TurnOffCardCanvas", DELAY);
     }
     
     private void TurnOffCardCanvas()

@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public struct CardSlot
 {
     public RectTransform SlotRect; //Needs reference from Inspector
-    public CardType SlotType;
-    public bool IsSlotOccupied;
+    public CardType SlotType; //Don't need references from Inspector
+    public bool IsSlotOccupied; //Don't need references from Inspector
 }
 
 public class GamblingTable : MonoBehaviour
@@ -57,11 +57,11 @@ public class GamblingTable : MonoBehaviour
     void Update()
     {
         if(NumberOfPlayedCards > 0)
-            EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true));
+            EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true)); //Alow player input to interact with the shuffle button
 
         if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
         {
-            EventBus.Instance.Publish(new FinishedRound()); //Reset the Shuffle Button's status and remove card types that can be given out to the player
+            EventBus.Instance.Publish(new FinishedRound()); //Reset "ShuffleButton" status and remove card types that can be given out to the player
             CheckForWhichCanvasToSwitchedTo();
 
             RoundNumber++;
@@ -107,7 +107,7 @@ public class GamblingTable : MonoBehaviour
     private void ResetValues()
     {
         NumberOfPlayedCards = 0;
-        EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false));
+        EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false)); //Don't allow player input to interact with the shuffle button
         RightCardSlot.IsSlotOccupied = false;
         LeftCardSlot.IsSlotOccupied = false;
         RightCardSlot.SlotType = null;

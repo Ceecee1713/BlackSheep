@@ -1,12 +1,12 @@
 using UnityEngine;
 
-//This script is to be attached to the canvas that shows the casino area options to explore 
+//This script is to be attached to the canvas that shows the casino area options to explore the casino
 //This script controls when to show "thirdButtonOption"
 
 public class ButtonOptions : MonoBehaviour
 {
     [HideInInspector]
-    public int counter; 
+    public int counter; //Influenced by "AreaButton"
 
     [SerializeField]
     private GameObject thirdButtonOption;

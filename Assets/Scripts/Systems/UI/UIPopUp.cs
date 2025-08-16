@@ -1,6 +1,7 @@
 using UnityEngine;
 
 //This script is for the pause menu and tutorial card game menu
+//This script is to be attached to game objects that are either the pause menu or the tutorial card game menu
 
 public class UIPopUp : MonoBehaviour
 {

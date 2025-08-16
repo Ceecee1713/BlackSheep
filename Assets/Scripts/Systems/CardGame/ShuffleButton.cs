@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 
 //This script is to be attached on a separate game object (NOT THE PARENT OF OR THE BUTTON OBJECT)
-//This script controls the shuffle button to shuffle the cards for the card game on the card gameplay canvas
+//This script controls the shuffle button to shuffle the cards on the card gameplay canvas
 
 public class ShuffleButton : MonoBehaviour
 {
@@ -47,13 +47,6 @@ public class ShuffleButton : MonoBehaviour
         _hasACardBeenPlayed = cardHasBeenPlayed.CardPlayed;
     }
 
-    private void DoNotAllowInput(FinishedRound finishedRound)
-    {
-        ResetButton();
-        _allowInput = false;
-        button.SetActive(false);
-    }
-
     private void SetButtonActive(CompletedShufflingCards completedShufflingCards)
     {
         if(cardGameRoundNumber.CurrentRoundNumber == gameConfiguration.MaxAmountOfRounds)
@@ -66,6 +59,13 @@ public class ShuffleButton : MonoBehaviour
     private void IsInputAllowed(StopPlayerInput stopPlayerInput)
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
+    }
+
+    private void DoNotAllowInput(FinishedRound finishedRound)
+    {
+        ResetButton();
+        _allowInput = false;
+        button.SetActive(false);
     }
 
     private void ResetButton()
@@ -85,7 +85,7 @@ public class ShuffleButton : MonoBehaviour
             {
                 _numberOfShufflesPerRound--;
                 buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
-                EventBus.Instance.Publish(new ShuffleCards()); //Disable input for moving the player's cards, shuffle cards and play shuffling animation
+                EventBus.Instance.Publish(new ShuffleCards()); //Disable player input for moving the player's cards, shuffle the cards and play shuffling animation
                 button.SetActive(false);
             }
         }
