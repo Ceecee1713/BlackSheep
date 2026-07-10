@@ -1,13 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be attached to buttons that'll show a new canvas after clicking (nextCanvasToSetActive)
-//This will be controlled by the "isNextCanvasADialogueCanvas" bool
+/// <summary>
+/// Managing a UI button that, when clicked, will prompt to show a new UI canvas 
+/// </summary>
 
-//If "isNextCanvasADialogueCanvas" is true:
-//it'll mean the next canvas to be set active will be a dialogue UI and dialogue will be said once that UI is active
-
-//If "isNextCanvasADialogueCanvas" is false, it'll mean the next canvas won't be a dialogue canvas
+/// <remarks>
+/// This script is to be attached to buttons that'll prompt a new canvas after clicking (nextCanvasToSetActive)
+/// This will be controlled by the "isNextCanvasADialogueCanvas" bool
+///
+/// If "isNextCanvasADialogueCanvas" is true:
+/// it'll mean the next canvas to be set active will be a dialogue UI and dialogue will be said once that UI is active
+///
+/// If "isNextCanvasADialogueCanvas" is false, it'll mean the next canvas won't be a dialogue canvas
+/// 
+/// </remarks>
 
 public class SwitchToDialogueUIButton : MonoBehaviour
 {
@@ -22,11 +29,11 @@ public class SwitchToDialogueUIButton : MonoBehaviour
     [SerializeField]
     private bool isNextCanvasADialogueCanvas = false;
 
-    private bool _dontRepeat = false;
+    private bool _hasBeenClicked = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
 
-    private const float DELAY = 0.5f;
+    private const float DELAY_BEFORE_ALLOWING_CLICKING = 0.2f;
 
     void Update()
     {
@@ -42,20 +49,20 @@ public class SwitchToDialogueUIButton : MonoBehaviour
 
     public void OnSwitchUIClick()
     {
-        if(_dontRepeat == true || pauseMenu.activeSelf == true)
+        if(_hasBeenClicked == true || pauseMenu.activeSelf == true)
             return;
 
         if(_allowClicking == true)
         {
-            _dontRepeat = true;
+            _hasBeenClicked = true;
             AudioManager.Instance.PlayButtonSound();
             EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : isNextCanvasADialogueCanvas));
         }
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
-        yield return new WaitForSeconds(DELAY);
+        yield return new WaitForSeconds(DELAY_BEFORE_ALLOWING_CLICKING);
         _allowClicking = true;
         yield return null;
     }

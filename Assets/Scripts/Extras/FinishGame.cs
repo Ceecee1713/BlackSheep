@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <remarks>
+/// Singleton — access globally via <see cref="FinishGame.Instance"/>.
+///</remarks>
+
 public class FinishGame : Singleton<FinishGame>
 {
     public bool HasPlayerFinishedGameOnce = false;

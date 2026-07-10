@@ -1,6 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Managing a quit UI button
+/// </summary>
+
+/// <remarks>
+/// This script works together with scripts: "ShouldGameBeStopped"
+/// See <see cref="ShouldGameBeStopped"/> for how this script is structured.
+/// </remarks>
+
 public class QuitButton : MonoBehaviour
 {
     [SerializeField]
@@ -8,12 +17,12 @@ public class QuitButton : MonoBehaviour
 
     private ShouldGameBeStopped _shouldGameBeStopped;
 
-    private bool _dontRepeat = false;
+    private bool _hasQuitButtonBeenClicked = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
 
     private const float QUIT_DELAY = 2.0f;
-    private const float DELAY = 0.5f;
+    private const float DELAY_BEFORE_ALLOWING_CLICKING = 0.2f;
 
     void Start()
     {
@@ -34,12 +43,12 @@ public class QuitButton : MonoBehaviour
 
     public void OnQuitClick()
     {
-        if(_dontRepeat || _shouldGameBeStopped.PreventPlaying == true)
+        if(_hasQuitButtonBeenClicked || _shouldGameBeStopped.PreventPlaying == true)
             return;
 
         if(_allowClicking == true)
         {
-            _dontRepeat = true;
+            _hasQuitButtonBeenClicked = true;
             _shouldGameBeStopped.PreventPlaying = true;
             AudioManager.Instance.PlayButtonSound();
             Invoke("Quit", QUIT_DELAY);
@@ -48,13 +57,12 @@ public class QuitButton : MonoBehaviour
 
     private void Quit()
     {
-        //UnityEditor.EditorApplication.isPlaying = false; 
 	    Application.Quit();
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
-        yield return new WaitForSeconds(DELAY);
+        yield return new WaitForSeconds(DELAY_BEFORE_ALLOWING_CLICKING);
         _allowClicking = true;
         yield return null;
     }

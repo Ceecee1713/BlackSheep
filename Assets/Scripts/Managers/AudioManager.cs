@@ -1,5 +1,14 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages all audio in the game, including sound effects
+/// </summary>
+/// 
+/// <remarks>
+/// Singleton — access globally via <see cref="AudioManager.Instance"/>.
+/// No other script should play audio directly
+///</remarks>
+
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]

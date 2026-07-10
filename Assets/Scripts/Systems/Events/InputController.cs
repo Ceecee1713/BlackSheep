@@ -2,13 +2,22 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handling all the inputs. This is to be placed on an empty game object acting as an 'Input Manager'
+/// </summary>
+/// 
+/// <remarks>
+/// This script works together with scripts: "ShouldGameBeStopped"
+/// See <see cref="ShouldGameBeStopped"/> for how this script is structured.
+/// </remarks>
+
 public class InputController : MonoBehaviour
 {
     [SerializeField]
     private GameObject pauseMenuCanvas;
 
     private CardGameInputs _cardGameInputs;
-    private ShouldGameBeStopped _shouldGameBeStopped;
+    private ShouldGameBeStopped _shouldGameBeStopped; 
 
     private bool _stopInput = false;
     private bool _pauseMenuIsOpen = false;
@@ -51,13 +60,13 @@ public class InputController : MonoBehaviour
         }
     }
 
-    private void OnNextMessage(InputAction.CallbackContext val)
+    private void OnNextMessage(InputAction.CallbackContext val) //Advance through dialogue
     {
         if(_stopInput == false && _shouldGameBeStopped.PreventPlaying != true)
             EventBus.Instance.Publish(new NextMessage());
     }
 
-    private void OnPauseGame(InputAction.CallbackContext val)
+    private void OnPauseGame(InputAction.CallbackContext val) //Open/Close Pause Menu
     {
         if(_pauseMenuIsOpen == false)
         {
@@ -71,7 +80,7 @@ public class InputController : MonoBehaviour
         }
     }
 
-    IEnumerator AllowInput()
+    private IEnumerator AllowInput()
     {
         yield return new WaitForSeconds(DELAY);
         _stopInput = false;

@@ -1,8 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
 
-//This script is for the background music that's to be looped after "startingMusic" is done playing
-//This script can be attached to the game object that'll be the "musicLoop" 
+/// <summary>
+/// Manages the background music that's meant to be looped
+/// </summary>
 
 public class BGM : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class BGM : MonoBehaviour
         if(_activatedMusicLoop == true)
             return;
 
+        //if "startingMusic" has finished playing and if "_activatedMusicLoop" is false
         if(startingMusic.time >= startingMusic.clip.length && !_activatedMusicLoop)
         {
             musicLoop.Play();
@@ -43,7 +45,7 @@ public class BGM : MonoBehaviour
         if(_activatedMusicLoop == true)
         {
             _tween?.Kill();
-            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION); //Restore volume
+            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION); //Restore to starting volume
         }
     }
 
@@ -52,7 +54,7 @@ public class BGM : MonoBehaviour
         if(_activatedMusicLoop == true)
         {
             _tween?.Kill();
-            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION); //Restore volume
+            _tween = musicLoop.DOFade(_musicLoopStartingVolume, DURATION); //Restore to starting volume
         }
     }
 

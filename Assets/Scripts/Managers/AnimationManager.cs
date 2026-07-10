@@ -3,28 +3,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-//This script only plays the animation for the card game 
-//(The dealer shuffling the cards and the player cards sliding up/down)
+/// <summary>
+/// Manages the animations of the dealer shuffling cards and the player's cards sliding up/down
+/// </summary>
+/// 
+/// <remarks>
+/// This script works together with scripts: "GameConfiguration"
+/// See <see cref="GameConfiguration"/> for general game information is structured.
+/// </remarks>
 
 public class AnimationManager : MonoBehaviour
 {
     [SerializeField]
-    private GameConfiguration gameConfiguration;
+    private GameConfiguration gameConfiguration; //General game information: screen fading values, moving cards values, card game values
     
     [SerializeField]
-    private Animator dealerAnimator; //Animator that'll be on the card gameplay canvas
+    private Animator dealerAnimator; //Animator that'll be on the card gameplay canvas attached to the card dealer
     
     [Header ("Interactable Player Cards")]
     [SerializeField]
-    private RectTransform [] playingCardTransforms = new RectTransform [4]; 
+    private RectTransform [] playingCardTransforms = new RectTransform [4]; //RectTransforms of card objects: UI images meant to be interactable (dragged)
     [SerializeField]
     private float moveDistance = 100.0f; //Distance minusing/adding to move "playingCardTransforms" up or down from their current positions
 
-    private float _durationToMoveCards; //For the animation of player's interactable cards to move up or down
+    private float _durationToMoveCards; //Total time duration to move the player's interactable cards up or down
     
-    private const float DELAY = 1.0f;
-    private const float SHORTDELAY = 3.5f;
-    private const float LONGDELAY = 4.0f;
+    private const float DELAY_BEFORE_MOVING_CARDS = 1.0f;
+    private const float SHORT_DELAY_BEFORE_MOVING_CARDS_UP = 3.5f;
+    private const float LONG_DELAY_BEFORE_MOVING_CARDS_UP = 4.0f;
 
     void Start()
     {
@@ -44,10 +50,10 @@ public class AnimationManager : MonoBehaviour
         StartCoroutine(MoveCardsDown(true));
     }
 
-    IEnumerator MoveCardsDown(bool isThisANewRound) 
+    private IEnumerator MoveCardsDown(bool isThisANewRound) //Move all player's cards (playingCardTransforms) down by their rect transforms
     {
         if(isThisANewRound == true)
-            yield return new WaitForSeconds(DELAY);
+            yield return new WaitForSeconds(DELAY_BEFORE_MOVING_CARDS);
 
         Sequence sequence = DOTween.Sequence();
         
@@ -59,27 +65,26 @@ public class AnimationManager : MonoBehaviour
         
         yield return sequence.WaitForCompletion();
 
-        if (isThisANewRound == true)
+        if (isThisANewRound == true) //Trigger an animation from 'dealerAnimator' animator, then prompt "MoveCardsUp" IEnumerator to move player cards up
         {
             dealerAnimator.SetTrigger("PlayFullDealerShuffle");
-            yield return new WaitForSeconds(SHORTDELAY);
+            yield return new WaitForSeconds(SHORT_DELAY_BEFORE_MOVING_CARDS_UP);
             yield return MoveCardsUp();
         }
 
-        else
+        else //Trigger an animation from 'dealerAnimator' animator, then prompt "MoveCardsUp" IEnumerator to move player cards up
         {
             dealerAnimator.SetTrigger("PlayDealerAnim");
-            yield return new WaitForSeconds(LONGDELAY);
+            yield return new WaitForSeconds(LONG_DELAY_BEFORE_MOVING_CARDS_UP);
             yield return MoveCardsUp();
         }
     }
 
 
-    IEnumerator MoveCardsUp()
+    private IEnumerator MoveCardsUp() //Move all player's cards (playingCardTransforms) up by their rect transforms
     {
         EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
             
-        //Move cards up
         Sequence sequence = DOTween.Sequence();
 
         for(int i = 0; i < playingCardTransforms.Length; i++)

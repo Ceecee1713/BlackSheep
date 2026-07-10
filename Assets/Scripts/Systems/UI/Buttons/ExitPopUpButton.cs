@@ -1,9 +1,16 @@
 using UnityEngine;
 
-//This script is only to be used on menus that have the options 
-//Of moving to a different scene or quitting (like the pause menu)
-
-//This script is to be attached to the button that will close this menu
+/// <summary>
+/// Managing an exit UI button
+/// </summary>
+/// 
+/// <remarks>
+/// This script is to be attached any UI button that'll close a UI Pop Up (set inactive) 
+/// 
+/// This script works together with scripts: "ShouldGameBeStopped"
+/// See <see cref="ShouldGameBeStopped"/> for how this script is structured.
+/// 
+///</remarks>
 
 public class ExitPopUpButton : MonoBehaviour
 {

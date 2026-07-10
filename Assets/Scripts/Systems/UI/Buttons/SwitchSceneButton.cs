@@ -3,6 +3,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement; 
 using DG.Tweening;
 
+/// <summary>
+/// Managing a switch scene UI button
+/// </summary>
+
+/// <remarks>
+/// This script works together with scripts: "ShouldGameBeStopped"
+/// See <see cref="ShouldGameBeStopped"/> for how this script is structured.
+/// </remarks>
+
 public class SwitchSceneButton : MonoBehaviour
 {
     [SerializeField]
@@ -17,7 +26,7 @@ public class SwitchSceneButton : MonoBehaviour
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
 
-    private const float DELAY = 0.5f;
+    private const float DELAY_BEFORE_ALLOWING_CLICKING = 0.2f;
     private const float CHANGE_SCENE_DELAY = 1.5f;
 
     void Start()
@@ -56,9 +65,9 @@ public class SwitchSceneButton : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneNameToLoadOnClick);
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
-        yield return new WaitForSeconds(DELAY);
+        yield return new WaitForSeconds(DELAY_BEFORE_ALLOWING_CLICKING);
         _allowClicking = true;
         yield return null;
     }
