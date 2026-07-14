@@ -1,8 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be attached to casino area buttons 
-//These will be the buttons that allow the player to go to different areas in the casino
+/// <summary>
+/// This script is to be attached to casino area buttons 
+/// These will be the buttons that allow the player to go to different areas in the casino
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script works together with scripts: "ButtonOptions"
+/// See <see cref="ButtonOptions"/> for changing variable values.
+/// 
+///</remarks>
 
 public class AreaButton : MonoBehaviour
 {
@@ -10,7 +19,7 @@ public class AreaButton : MonoBehaviour
     private CanvasGroup currentCanvasGroup;
 
     [SerializeField]
-    private ButtonOptions buttonOptions; 
+    private ButtonOptions buttonOptions; //Can directly reference from as these two scripts will be on the same UI canvas game object
 
     [SerializeField]
     private GameObject buttonObject;
@@ -55,7 +64,7 @@ public class AreaButton : MonoBehaviour
         }
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
         yield return new WaitForSeconds(DELAY);
         _allowClicking = true;

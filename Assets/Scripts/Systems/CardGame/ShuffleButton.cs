@@ -2,8 +2,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//This script is to be attached on a separate game object (NOT THE PARENT OF OR THE BUTTON OBJECT)
-//This script controls the shuffle button to shuffle the cards on the card gameplay canvas
+/// <summary>
+/// The card shuffle button script for the shuffle button on the "Card Gameplay Canvas"
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to NOT be attached to the shuffle button on the "Card Gameplay Canvas"
+/// This script is to be attached to a separate game object on the "Card Gameplay Canvas" that'll always remain active when the canvas is active
+/// This is because the shuffle button game object will be change from inactive/active at times
+/// 
+/// This script works together with scripts: "GameConfiguration", "CardGameRoundNumber"
+/// See <see cref="GameConfiguration"/> for general game information is structured.
+/// See <see cref="CardGameRoundNumber"/> for how each card game round number is structured.
+/// 
+///</remarks>
 
 public class ShuffleButton : MonoBehaviour
 {
@@ -15,9 +28,9 @@ public class ShuffleButton : MonoBehaviour
 
     [Header ("For Shuffle Button")]
     [SerializeField]
-    private TextMeshProUGUI buttonText;
+    private TextMeshProUGUI buttonText; //Button text of the shuffle button 
     [SerializeField]
-    private GameObject button;
+    private GameObject button; //Shuffle button game object
 
     private int _numberOfShufflesPerRound = 0;
     private int _maxNumberOfShufflesPerRound;

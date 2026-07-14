@@ -3,7 +3,20 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-//This script is to be attached to the game object that moves with the player's mouse cursor
+/// <summary>
+/// Controls each player card
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to be attached to every player card. More specifically, the MOVABLE player card, not the slot the player card sits in. 
+/// The player cards should be movable with the mouse cursor
+/// 
+/// This script works together with scripts: "GamblingTable", "Dealer"
+/// See <see cref="GamblingTable"/> for how the card gameplay canvas is structured with the card slots and its variables.
+/// See <see cref="Dealer"/> for determining the possible card types is structured.
+/// 
+///</remarks>
 
 public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -11,11 +24,15 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
     private GamblingTable gamblingTable;
 
     [SerializeField] 
-    private Ease ease;
+    private Ease ease; //Movement value of how smoothly the cards move when let go from the mouse cursor
     [SerializeField] 
     private Image cardIcon;
 
-    private Transform _parentTransform, _cardParent;
+    private Transform _parentTransform, _cardParent; 
+    //"_cardParent" is the original position of the card when it's in the player's hands
+    //"_parentTransform" can be the original player card slot (when the card is in the player's hands), 
+    //or a left/right card slot on the table during a card gameplay round
+
     private RectTransform _leftCardSlotRect, _rightCardSlotRect; 
     private CardType _cardType;
 
@@ -25,9 +42,6 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
     private bool _allowInput = false; 
 
     private const float TWEEN_DURATION = 0.5f;
-
-    private Vector2 _originalAnchorPosition;
-    private RectTransform _rectTransform;
 
     void Start()
     {
@@ -80,7 +94,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
-    public void OnShuffleNotified(CardType assignedCardType) //Called by "Dealer" script
+    public void AssignNewCardType(CardType assignedCardType) //Called by "Dealer" script
     {
         if(_cardHasBeenPlayed == true)
             return;
@@ -89,7 +103,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         cardIcon.sprite = _cardType.CardSprite;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData) //When mouse cursor BEGINS dragging on the game object this script is attached to
     {
         if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
@@ -99,7 +113,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         transform.SetParent(transform.root);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData) //When mouse cursor IS dragging on the game object this script is attached to
     {
         if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
@@ -107,10 +121,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         transform.position = Input.mousePosition;
     }
 
-    private void CheckRightCardSlot() //Check the right card slot to change the values of and move this card into the left card slot
+    private void CheckRightCardSlot() //Check the right card slot's values IF this card can move into the left card slot 
     {
         if(gamblingTable.RightCardSlot.SlotType == null) //If the right card slot is empty, let this card move into the left card slot
         {
+            //Let this card move into the left card slot
             transform.SetParent(_leftCardSlotRect);
             _cardHasBeenPlayed = true;
 
@@ -167,10 +182,11 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         }
     }
 
-    private void CheckLeftCardSlot() //Check left card slot to change the values of and move this card into the right card slot
+    private void CheckLeftCardSlot() //Check the left card slot's values IF this card can move into the left card slot 
     {
         if(gamblingTable.LeftCardSlot.SlotType == null) //If the left card slot is empty, let this card move into the right card slot
         {
+            //Let this card move into the right card slot
             transform.SetParent(_rightCardSlotRect);
             _cardHasBeenPlayed = true;
 
@@ -194,6 +210,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
                 return;
             }
 
+            //Let this card move into the right card slot
             transform.SetParent(_rightCardSlotRect);
             _cardHasBeenPlayed = true;
 
@@ -226,7 +243,7 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         }
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData) //When mouse cursor HAS LET GO dragging on the game object this script is attached to
     {
         if(_cardHasBeenPlayed == true || _allowInput == false)
             return;
@@ -241,12 +258,12 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
 
         var cardTransform = transform.GetComponent<RectTransform>();
 
-        //Check if this card is overlapping the left card slot (_leftCardSlotRect)
+        //Check if this card is overlapping the left card slot of the card gameplay canvas (_leftCardSlotRect)
         if (CardsOverlap(cardTransform, _leftCardSlotRect) && gamblingTable.LeftCardSlot.IsSlotOccupied == false) 
             CheckRightCardSlot();
 
 
-        //Check if this card is overlapping the right card slot (_rightCardSlotRect)
+        //Check if this card is overlapping the right card slot of the card gameplay canvas (_rightCardSlotRect)
         else if(CardsOverlap(cardTransform,_rightCardSlotRect) && gamblingTable.RightCardSlot.IsSlotOccupied == false)
             CheckLeftCardSlot();
             
@@ -259,7 +276,8 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         }
     }
 
-    private bool CardsOverlap(RectTransform card, RectTransform cardSlot) //Check if this card overlaps with a card slot (cardSlot)
+    //Checking is the player card transform overlaps with a card slot transform (either left/right card slot of the card gameplay canvas)
+    private bool CardsOverlap(RectTransform card, RectTransform cardSlot) 
     {
         var cardRect = new Rect(card.localPosition.x, card.localPosition.y, card.rect.width, card.rect.height);
         var cardSlotRect = new Rect(cardSlot.localPosition.x, cardSlot.localPosition.y, cardSlot.rect.width,

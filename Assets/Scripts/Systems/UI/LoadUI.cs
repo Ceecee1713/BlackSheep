@@ -3,8 +3,16 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//This script is to be attached to the UI that'll be the first active UI upon startng up the game
-//This UI will be a dialogue UI of some sort
+/// <summary>
+/// The opening UI screen that shows up once the game starts
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to be attached to the UI that'll be the first active UI upon startng up the game on a new scene
+/// This UI will be a dialogue UI of some sort
+/// 
+///</remarks>
 
 public class LoadUI : MonoBehaviour
 {
@@ -21,7 +29,7 @@ public class LoadUI : MonoBehaviour
         StartCoroutine(ShowCanvas());
     }
 
-    IEnumerator ShowCanvas()
+    private IEnumerator ShowCanvas()
     {
         yield return new WaitForSeconds(DELAY);
         Tween firstTween = _canvasGroup.DOFade(1f, _durationOfFade);

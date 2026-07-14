@@ -1,9 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be attached to buttons that'll open a UI pop up
-//Such as a small pause menu and a tutorial pop up
-//It'll be used for buttons on dialogue canvases and the card gameplay canvas
+/// <summary>
+/// This script is to be attached to buttons that'll open a UI pop up, such as a pause menu or a tutorial pop up
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script will be used for buttons on dialogue canvases and the card gameplay canvas
+/// 
+///</remarks>
 
 public class CardUIPopUpButton : MonoBehaviour
 {
@@ -87,7 +93,7 @@ public class CardUIPopUpButton : MonoBehaviour
         }
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
         yield return new WaitForSeconds(DELAY);
         _allowClicking = true;

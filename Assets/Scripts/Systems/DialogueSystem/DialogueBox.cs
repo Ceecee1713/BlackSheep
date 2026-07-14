@@ -3,8 +3,32 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
+/// <summary>
+/// Acts as the dialogue box 
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to be a UI canvas game object, not the text that types out the dialogue
+/// 
+/// This script holds data for the card slots that the player must place their cards down on to continue to the next round
+/// and prompting to change canvases and set up new dialogue to be said
+/// 
+/// This script works together with scripts: "DialogueData", "GamblingTable", "DialogueButton", "CanvasManager", "SkipDialogueButton", "FewMessagesButton"
+/// See <see cref="DialogueData"/> for dialogue data is structured. 
+/// See <see cref="GamblingTable"/> for how this script assigns "dialogueData"
+/// See <see cref="DialogueButton"/> for how this script's public method is accessed
+/// See <see cref="CanvasManager"/> for how this script's public method is accessed. 
+/// See <see cref="SkipDialogueButton"/> for how this script's public method is accessed. 
+/// See <see cref="FewMessagesButton"/> for how this script's public method is accessed. 
+/// 
+///</remarks>
+
 public class DialogueBox : MonoBehaviour
 {
+    /// <summary>
+    /// Public because "GamblingTable" script needs to access values/assign this value for the dealer dialogue on the dealer canvas for card game round 1-4
+    /// </summary>
     public DialogueData dialogueData;
 
     public GameObject PauseMenuCanvas;
@@ -14,18 +38,18 @@ public class DialogueBox : MonoBehaviour
     
     [Header ("For Next Canvas To Be Displayed")]
     [SerializeField]
-    private GameObject nextCanvasToSetActive; //UI Canvas to set active when all dialogue is said, unprompted by button clicks 
+    private GameObject nextCanvasToSetActive; //UI Canvas to set active when all dialogue is said
     [SerializeField] 
     private bool _isNextCanvasADialogueCanvas = false;
     [SerializeField] 
-    private bool _ignoreCanvasChanging = false; //For the dialogue box on the player determining ending UI
-    //Prevents canvas changing when all the dialogue from "dialogueData" is said
+    private bool _ignoreCanvasChanging = false; 
+    //For the dialogue box on the player canvas for card game round 5 determining ending UI to prevent canvas changing when all dialogue is said
 
-    [Header ("Button Displays")]
+    [Header ("Button Displays")] 
     [SerializeField]
-    private GameObject oneButtonDisplay;
+    private GameObject oneButtonDisplay; //Display that has one chocie button
     [SerializeField]
-    private GameObject twoButtonsDisplay;
+    private GameObject twoButtonsDisplay;  //Display that has two choice buttons
     [SerializeField]
     private GameObject skipButton;
 
@@ -35,16 +59,15 @@ public class DialogueBox : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI characterNameText;
     [SerializeField] 
-    private TextMeshProUGUI dialogueButtonOneText; 
+    private TextMeshProUGUI dialogueButtonOneText; //Button text from one button that's a child of "twoButtonsDisplay"
     [SerializeField] 
-    private TextMeshProUGUI dialogueButtonTwoText;
+    private TextMeshProUGUI dialogueButtonTwoText; //Button text from one button that's a child of "twoButtonsDisplay"
 
     private CanvasGroup _canvasGroup;
 
     private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
     
-    private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Based on "DialogueButton" button clicks
-    //Tell which dialogue from which button has been chosen 
+    private bool _writeButtonOneDialogue, _writeButtonTwoDialogue; //Determine which dialogue to write from whichever choice button has been clicked on
     
     private bool _allowInput = false;
     private bool _moveToNextMessage = false;
@@ -147,26 +170,29 @@ public class DialogueBox : MonoBehaviour
         if (_allowGoingThroughMessages != true)
             return;
         
-        //If there's no button prompting different dialogue branches
+        //If there's no button prompting different dialogue branches and dialogue is done typing
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _finishedTypingMessage == true) 
         {
             GetNormalDialogue();
             return;
         }
 
-        //If there's button one prompting dialogue             
+        //If there's button one prompting dialogue and dialogue is done typing      
         if(_writeButtonOneDialogue == true && _writeButtonTwoDialogue == false && _finishedTypingMessage == true)
         {
             GetDialogueFromButtonOne();
             return;
         }
 
-        //If there's button two prompting dialogue   
+        //If there's button two prompting dialogue and dialogue is done typing
         if(_writeButtonTwoDialogue == true && _writeButtonOneDialogue == false && _finishedTypingMessage == true)
             GetDialogueFromButtonTwo();  
     }
 
-    public void SkipDialogue() //Called by "SkipDialogueButton" script
+    /// <summary>
+    /// Public as this method is called from "SkipDialogueButton"
+    /// </summary>
+    public void SkipDialogue() 
     {
         if(_ignoreCanvasChanging == true)
             return;
@@ -175,7 +201,11 @@ public class DialogueBox : MonoBehaviour
         EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
     }
     
-    public void DisplayDialogueBox() //Called by "CanvasManager"
+    /// <summary>
+    /// Public as this method is called from "CanvasManager". 
+    /// "CanvasManager" grabs this script as a component from a game object 
+    /// </summary>
+    public void DisplayDialogueBox() 
     {
         StartCoroutine(PrepareFirstMessage());
     }
@@ -213,7 +243,10 @@ public class DialogueBox : MonoBehaviour
         characterNameText.text = dialogueData.ButtonTwoDialogue[_index].CharacterTitle.ToString();
     }
 
-    public void ChangeDialogueFromButtonEvent(ButtonType buttonType) //Called by "DialogueButton" scripts
+    /// <summary>
+    /// Public as this method is called from "DialogueButton". 
+    /// </summary>
+    public void ChangeDialogueFromButtonEvent(ButtonType buttonType) 
     {
         if(buttonType == ButtonType.OptionOne && oneButtonDisplay.activeSelf == true) //If button one was chosen on a one button display
         {
@@ -232,19 +265,19 @@ public class DialogueBox : MonoBehaviour
             if(dialogueData.PromptTwoButtonDisplay != true && dialogueData.PromptOneButtonDisplay != false)
                 return;
             
-            //Type first message of dialogue prompted by button one
+            //Type first message of dialogue prompted by button one on a two button display
             _writeButtonOneDialogue = true;
             _allowGoingThroughMessages = true;
             twoButtonsDisplay.SetActive(false);
             GetDialogueFromButtonOne();
         }
 
-        if(buttonType == ButtonType.OptionTwo) //If button two was chosen (on a two button display)
+        if(buttonType == ButtonType.OptionTwo) //If button two was chosen on a two button display
         {
             if(dialogueData.PromptTwoButtonDisplay != true && dialogueData.PromptOneButtonDisplay != false)
                 return;
             
-            //Type first message of dialogue prompted by button two
+            //Type first message of dialogue prompted by button two on a two button display
             _writeButtonTwoDialogue = true;
             _allowGoingThroughMessages = true;
             twoButtonsDisplay.SetActive(false);
@@ -252,13 +285,16 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Public as this method is called from "FewMessagesButton". 
+    /// </summary>
     public void ReceiveMessage(string message)
     {
         StopAllCoroutines();
         StartCoroutine(TypeMessage(message));
     }
 
-    IEnumerator PrepareFirstMessage()
+    private IEnumerator PrepareFirstMessage()
     {
         //Resetting values
         _index = -1; 
@@ -274,7 +310,7 @@ public class DialogueBox : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator TypeMessage(string message)
+    private IEnumerator TypeMessage(string message)
     {
         mouseImage.SetActive(false);
         _finishedTypingMessage = false;

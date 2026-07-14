@@ -2,7 +2,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-//This script is to be attached to UI canvases that are for the "animation" of x person being shot when a card round is finished
+/// <summary>
+/// Shooting person canvas (Dealer, you, or sheep shooting canvases) 
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to be attached to UI canvases that are for the "animation" of x person being shot when a card round is finished
+/// 
+/// This script works together with scripts: "GameConfiguration", "CardGameRoundNumber"
+/// See <see cref="GameConfiguration"/> for general game information is structured.
+/// See <see cref="CardGameRoundNumber"/> for how each card game round number is structured.
+/// 
+///</remarks>
 
 public class ShootPersonCanvass : MonoBehaviour
 {
@@ -20,9 +32,9 @@ public class ShootPersonCanvass : MonoBehaviour
     [SerializeField]
     private GameObject badEndDialogueCanvas; 
     [SerializeField]
-    private GameObject gun; 
+    private GameObject gun; //Game object of gun image
     [SerializeField]
-    private GameObject flashImage; 
+    private GameObject flashImage; //Game object of flash image. The flash image is just an opaque image covering the screen completely (in this case, black)
 
     [Header ("Values")]
     [SerializeField]
@@ -68,6 +80,7 @@ public class ShootPersonCanvass : MonoBehaviour
         }
     }
 
+    //IEnumerator controlling the "animation" of shooting the gun image and determining/prompting the new dialogue canvas to show, as well as increase music volume
     private IEnumerator Shoot()
     {
         float elapsedTime = 0f;
@@ -94,10 +107,10 @@ public class ShootPersonCanvass : MonoBehaviour
         _thisCanvasGroup.alpha = 0.0f;
         gun.SetActive(false);
 
-        //Here, I'm minusing the "cardGameRoundNumber.CurrentRoundNumber" by 1 
-        //Because there's an order of operations difference as this coroutine is called when a round ends AFTER the "cardGameRoundNumber.CurrentRoundNumber" value increases
-        //For example, if the round is round number 5, in this coroutine, the value will actually be 6, because of this order of operations difference
-        //Thus, there needs to be an offset (Minusing by 1)
+        //Here, I'm minusing the "cardGameRoundNumber.CurrentRoundNumber" by 1 because there's an order of operations difference 
+        //as this coroutine is called when a round ends AFTER the card round number ("cardGameRoundNumber.CurrentRoundNumber)" value increases.
+        //For example, if the card round number 5, in this coroutine, the value will actually be 6, because of this order of operations difference
+        //Thus, there'll be an offset, so I need to minus by 1 
 
         if(cardGameRoundNumber.CurrentRoundNumber-1 == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
         {

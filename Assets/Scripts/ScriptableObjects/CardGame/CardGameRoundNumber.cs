@@ -5,3 +5,5 @@ public class CardGameRoundNumber : ScriptableObject
 {
     public int CurrentRoundNumber;
 }
+
+//Which scripts use this scriptable object

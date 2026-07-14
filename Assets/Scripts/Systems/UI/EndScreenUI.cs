@@ -3,8 +3,15 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
-//This script is to be attached to the end screen UI 
-//The screen that shows up once the game is complete
+/// <summary>
+/// The UI screen that shows up once the game is complete
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to be attached to the end screen UI 
+/// 
+///</remarks>
 
 public class EndScreenUI : MonoBehaviour
 {
@@ -21,7 +28,6 @@ public class EndScreenUI : MonoBehaviour
     private CanvasGroup currentCanvasGroup;
     [SerializeField]
     private CanvasGroup currentCanvasOptions;
-
 
     private bool _typedOutTitleText = false;
 
@@ -47,7 +53,7 @@ public class EndScreenUI : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed); //Time in between of each character being typed out
         } 
 
-        yield return new WaitForSeconds(typingSpeed); //Time in between of each character being typed out
+        yield return new WaitForSeconds(typingSpeed); 
 
         Tween tween = currentCanvasOptions.DOFade(1.0f, DURATION_TO_FADE);
         yield return tween.WaitForCompletion();

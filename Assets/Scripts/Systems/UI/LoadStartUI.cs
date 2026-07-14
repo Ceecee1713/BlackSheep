@@ -3,7 +3,15 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//This script is to be attached only to the start menu UI screen
+/// <summary>
+/// The opening UI screen 
+/// </summary>
+
+/// <remarks>
+/// 
+/// This script is to be attached only to the start menu UI screen
+/// 
+///</remarks>
 
 public class LoadStartUI : MonoBehaviour
 {
@@ -20,7 +28,7 @@ public class LoadStartUI : MonoBehaviour
         StartCoroutine(ShowCanvas());
     }
 
-    IEnumerator ShowCanvas()
+    private IEnumerator ShowCanvas()
     {
         yield return new WaitForSeconds(DELAY);
         bgm.Play();
