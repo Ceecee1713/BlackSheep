@@ -105,6 +105,10 @@ public class DialogueBox : MonoBehaviour
         {
             _moveToNextMessage = false;
             CheckToSwitchDialogueCanvases();
+
+            if(_callDialogueCanvasSwitch == true) 
+                return;
+
             CheckWhichDialogueToBeSaidNext();
         }
 

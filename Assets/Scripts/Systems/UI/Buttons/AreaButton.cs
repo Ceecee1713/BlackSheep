@@ -32,6 +32,8 @@ public class AreaButton : MonoBehaviour
 
     void OnEnable()
     {
+        _calledCoroutine = false;
+        _allowClicking = false;
     }
 
     void OnDisable()

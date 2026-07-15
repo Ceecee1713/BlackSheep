@@ -150,32 +150,26 @@ public class Dealer : Singleton<Dealer>
             _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
             _cardTypeToBeAssignedTo = _availableCardTypes[_randomCardTypeNumber];
 
-            if(_excludeSheepCard == true) //Keep finding cards if they equal the "Sheep" card type
+            while(IsCardTypeExcluded(_cardTypeToBeAssignedTo)) //Keep choosing cards if an excluded card gets chosen
             {
-                while(_cardTypeToBeAssignedTo.typeOfCard == AllCardTypes.Sheep)
-                {
-                    _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
-                    _cardTypeToBeAssignedTo = _availableCardTypes[_randomCardTypeNumber];
-                }  
-            }
-
-            if(_onlyHavePlayerAndGunCards == true) //Keep finding cards if they equal the "Dealer" or "NoValue" card type
-            {
-                while(_cardTypeToBeAssignedTo.typeOfCard == AllCardTypes.Dealer)
-                {
-                    _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
-                    _cardTypeToBeAssignedTo = _availableCardTypes[_randomCardTypeNumber];
-                }  
-
-                while(_cardTypeToBeAssignedTo.typeOfCard == AllCardTypes.NoValue)
-                {
-                    _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
-                    _cardTypeToBeAssignedTo = _availableCardTypes[_randomCardTypeNumber];
-                }  
+                _randomCardTypeNumber = Random.Range(0, _availableCardTypes.Length);
+                _cardTypeToBeAssignedTo = _availableCardTypes[_randomCardTypeNumber];
             }
 
             PassRandomCardType(_cardTypeToBeAssignedTo);
         }
+    }
+
+    //Checking if a card type should be excluded from being picked
+    private bool IsCardTypeExcluded(CardType cardType)
+    {
+        if(_excludeSheepCard == true && cardType.typeOfCard == AllCardTypes.Sheep) 
+            return true;
+
+        if(_onlyHavePlayerAndGunCards == true && (cardType.typeOfCard == AllCardTypes.Dealer || cardType.typeOfCard == AllCardTypes.NoValue))
+            return true;
+
+        return false;
     }
 
     private void PassRandomCardType(CardType cardType) //Selecting a random player card type to be assigned a new "cardType"
@@ -192,4 +186,3 @@ public class Dealer : Singleton<Dealer>
         _allCards[_randomPlayerCardNumber].AssignNewCardType(cardType); //Assign card type to player card
     }
 }
-

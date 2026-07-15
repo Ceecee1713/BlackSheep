@@ -62,6 +62,8 @@ public class GamblingTable : MonoBehaviour
     private int _maxAmountOfRounds;
     private int _maxNumberOfPlayedCards; //Max number of card plays need to be met before moving to next round 
 
+    private int _previousNumberOfPlayedCards = 0; //Used to detect when a card has actually been played, instead of publishing every frame
+
     private const bool IS_NEXT_CANVAS_A_DIALOGUE_CANVAS = false;
 
     private void Awake() //Assigning Values
@@ -78,8 +80,11 @@ public class GamblingTable : MonoBehaviour
 
     void Update()
     {
-        if(NumberOfPlayedCards > 0) //Alow player to interact with the card shuffle button if the player has played a card
+        if(NumberOfPlayedCards > 0 && NumberOfPlayedCards != _previousNumberOfPlayedCards) //Only publish when a card has actually been played, not every frame
+        {
             EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true)); 
+            _previousNumberOfPlayedCards = NumberOfPlayedCards;
+        }
 
         if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
         {
@@ -132,6 +137,7 @@ public class GamblingTable : MonoBehaviour
     private void ResetValues()
     {
         NumberOfPlayedCards = 0;
+        _previousNumberOfPlayedCards = 0;
 
         EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false)); //Don't allow player input to interact with the card shuffle button
 
@@ -142,4 +148,3 @@ public class GamblingTable : MonoBehaviour
         LeftCardSlot.SlotType = null;
     }
 }
-

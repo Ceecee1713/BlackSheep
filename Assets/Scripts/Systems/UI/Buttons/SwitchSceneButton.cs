@@ -34,6 +34,12 @@ public class SwitchSceneButton : MonoBehaviour
         _shouldGameBeStopped = Resources.Load<ShouldGameBeStopped>("ShouldGameBeStopped");
     }
 
+    void OnDisable()
+    {
+        _calledCoroutine = false;
+        _allowClicking = false;
+    }
+
     void Update()
     {
         if(_calledCoroutine == true)
@@ -56,7 +62,7 @@ public class SwitchSceneButton : MonoBehaviour
             _hasBeenClicked = true;
             _shouldGameBeStopped.PreventPlaying = true;
             AudioManager.Instance.PlayButtonSound();
-            Invoke("ChangeScene", CHANGE_SCENE_DELAY);
+            Invoke(nameof(ChangeScene), CHANGE_SCENE_DELAY);
         }
     }
 

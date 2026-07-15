@@ -35,6 +35,12 @@ public class SwitchToDialogueUIButton : MonoBehaviour
 
     private const float DELAY_BEFORE_ALLOWING_CLICKING = 0.2f;
 
+    void OnDisable()
+    {
+        _calledCoroutine = false;
+        _allowClicking = false;
+    }
+
     void Update()
     {
         if(_calledCoroutine == true)

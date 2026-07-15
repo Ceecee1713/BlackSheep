@@ -42,6 +42,8 @@ public class CardUIPopUpButton : MonoBehaviour
     void OnDisable()
     {
         _allowInput = false;
+        _calledCoroutine = false;
+        _allowClicking = false;
     }
 
     void Update()
