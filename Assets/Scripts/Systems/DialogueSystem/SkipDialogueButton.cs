@@ -18,10 +18,15 @@ public class SkipDialogueButton : MonoBehaviour
     private DialogueBox dialogueBox; //Can directly reference from as these two scripts will be on the same UI canvas game object
 
     private bool _stopRepeat = false;
+
+    void OnEnable()
+    {
+        _stopRepeat = false;
+    }
     
     public void OnSkipDialogueClick()
     {
-        if(_stopRepeat == true)
+        if(_stopRepeat == true || dialogueBox.PauseMenuCanvas.activeSelf == true)
             return;
 
         AudioManager.Instance.PlayButtonSound();

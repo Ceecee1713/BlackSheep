@@ -42,11 +42,13 @@ public class AnimationManager : MonoBehaviour
 
     private void ShuffleEvent(ShuffleCards shuffleCards)
     {
+        StopAllCoroutines();
         StartCoroutine(MoveCardsDown(false));
     }
 
     private void OnNewCardRound(StartNewRound startNewRound)
     {
+        StopAllCoroutines();
         StartCoroutine(MoveCardsDown(true));
     }
 

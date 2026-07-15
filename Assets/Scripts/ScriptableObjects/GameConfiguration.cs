@@ -3,6 +3,18 @@ using UnityEngine;
 /// <summary>
 /// Managing all general game information meant to be sharable across scripts that reference a scriptable object of this script
 /// </summary>
+/// 
+/// <remarks>
+/// 
+/// This script works together with scripts: "AnimationManager", "CanvasManager", "ShuffleButton", "Dealer", "GamblingTable", "ShootPersonCanvass"
+/// See <see cref="AnimationManager"/>
+/// See <see cref="CanvasManager"/> 
+/// See <see cref="ShuffleButton"/> 
+/// See <see cref="Dealer"/> 
+/// See <see cref="GamblingTable"/> 
+/// See <see cref="ShootPersonCanvass"/> 
+/// 
+/// </remarks>
 
 [CreateAssetMenu(fileName = "GameConfiguration", menuName = "Scriptable Objects/Create Game Configuration")]
 public class GameConfiguration : ScriptableObject

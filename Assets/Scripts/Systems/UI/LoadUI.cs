@@ -12,6 +12,9 @@ using DG.Tweening;
 /// This script is to be attached to the UI that'll be the first active UI upon startng up the game on a new scene
 /// This UI will be a dialogue UI of some sort
 /// 
+/// This script works together with scripts: "DialogueBox"
+/// See <see cref="DialogueBox"/> 
+/// 
 ///</remarks>
 
 public class LoadUI : MonoBehaviour

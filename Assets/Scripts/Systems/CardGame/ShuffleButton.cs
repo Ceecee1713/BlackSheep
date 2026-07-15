@@ -10,7 +10,7 @@ using TMPro;
 /// 
 /// This script is to NOT be attached to the shuffle button on the "Card Gameplay Canvas"
 /// This script is to be attached to a separate game object on the "Card Gameplay Canvas" that'll always remain active when the canvas is active
-/// This is because the shuffle button game object will be change from inactive/active at times
+/// This is because the shuffle button game object will change from inactive/active at times
 /// 
 /// This script works together with scripts: "GameConfiguration", "CardGameRoundNumber"
 /// See <see cref="GameConfiguration"/> for general game information is structured.
@@ -52,7 +52,10 @@ public class ShuffleButton : MonoBehaviour
     void Update()
     {
         if(_numberOfShufflesPerRound == 0 || _hasACardBeenPlayed == true)
+        {
+            _allowInput = false;
             button.SetActive(false);
+        }
     }
 
     private void HasCardBeenPlayed(CardHasBeenPlayed cardHasBeenPlayed) 

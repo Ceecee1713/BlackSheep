@@ -30,7 +30,7 @@ public class AreaButton : MonoBehaviour
 
     private const float DELAY = 0.5f;
 
-    void Enable()
+    void OnEnable()
     {
     }
 

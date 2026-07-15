@@ -27,8 +27,16 @@ public class FewMessageButton : MonoBehaviour
 
     private int _counter = -1;
 
+    void OnEnable()
+    {
+        _counter = -1;
+    }
+
     public void OnMessageButtonClick()
     {
+        if(dialogueBox.PauseMenuCanvas.activeSelf == true)
+            return;
+            
         _counter++;
 
         if(_counter >= Messages.Length)
@@ -37,7 +45,7 @@ public class FewMessageButton : MonoBehaviour
             return;
         }
 
-        if(_counter < Messages.Length)
-            dialogueBox.ReceiveMessage(Messages[_counter]);
+        //if(_counter < Messages.Length)
+        dialogueBox.ReceiveMessage(Messages[_counter]);
     }
 }

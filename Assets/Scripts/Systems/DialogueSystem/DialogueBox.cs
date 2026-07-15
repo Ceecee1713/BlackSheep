@@ -14,13 +14,14 @@ using TMPro;
 /// This script holds data for the card slots that the player must place their cards down on to continue to the next round
 /// and prompting to change canvases and set up new dialogue to be said
 /// 
-/// This script works together with scripts: "DialogueData", "GamblingTable", "DialogueButton", "CanvasManager", "SkipDialogueButton", "FewMessagesButton"
+/// This script works together with scripts: "DialogueData", "GamblingTable", "DialogueButton", "CanvasManager", "SkipDialogueButton", "FewMessageButton", "LoadUI"
 /// See <see cref="DialogueData"/> for dialogue data is structured. 
 /// See <see cref="GamblingTable"/> for how this script assigns "dialogueData"
 /// See <see cref="DialogueButton"/> for how this script's public method is accessed
 /// See <see cref="CanvasManager"/> for how this script's public method is accessed. 
 /// See <see cref="SkipDialogueButton"/> for how this script's public method is accessed. 
-/// See <see cref="FewMessagesButton"/> for how this script's public method is accessed. 
+/// See <see cref="FewMessageButton"/> for how this script's public method is accessed. 
+/// See <see cref="LoadUI"/> for how this script's public method is accessed. 
 /// 
 ///</remarks>
 
@@ -202,7 +203,7 @@ public class DialogueBox : MonoBehaviour
     }
     
     /// <summary>
-    /// Public as this method is called from "CanvasManager". 
+    /// Public as this method is called from "CanvasManager" and "LoadUI"
     /// "CanvasManager" grabs this script as a component from a game object 
     /// </summary>
     public void DisplayDialogueBox() 
@@ -212,7 +213,7 @@ public class DialogueBox : MonoBehaviour
 
     private void GetNormalDialogue()
     {
-        if(_index+1 == dialogueData.NormalDialogue.Length || dialogueData.NormalDialogue == null) //If _index is out of bounds or dialogue array is null
+        if(dialogueData.NormalDialogue == null || _index+1 == dialogueData.NormalDialogue.Length) //If _index is out of bounds or dialogue array is null
             return;
 
         _index++;
@@ -223,7 +224,7 @@ public class DialogueBox : MonoBehaviour
 
     private void GetDialogueFromButtonOne()
     {
-        if(_index+1 == dialogueData.ButtonOneDialogue.Length || dialogueData.ButtonOneDialogue == null) //If _index is out of bounds or dialogue array is null
+        if(dialogueData.ButtonOneDialogue == null || _index+1 == dialogueData.ButtonOneDialogue.Length) //If _index is out of bounds or dialogue array is null
             return;
 
         _index++;
@@ -234,7 +235,7 @@ public class DialogueBox : MonoBehaviour
 
     private void GetDialogueFromButtonTwo()
     {
-        if(_index+1 == dialogueData.ButtonTwoDialogue.Length || dialogueData.ButtonTwoDialogue == null) //If _index is out of bounds or dialogue array is null
+        if(dialogueData.ButtonTwoDialogue == null || _index+1 == dialogueData.ButtonTwoDialogue.Length) //If _index is out of bounds or dialogue array is null
             return;
 
         _index++;
@@ -286,7 +287,7 @@ public class DialogueBox : MonoBehaviour
     }
 
     /// <summary>
-    /// Public as this method is called from "FewMessagesButton". 
+    /// Public as this method is called from "FewMessageButton". 
     /// </summary>
     public void ReceiveMessage(string message)
     {

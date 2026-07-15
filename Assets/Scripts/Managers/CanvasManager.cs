@@ -150,17 +150,16 @@ public class CanvasManager : MonoBehaviour
 
         for(int i = 0; i < canvases.Length; i++)
         {
-
-            if (canvases[i].activeSelf == true) //Checking if a canvas is active (only one canvas)
+            if (canvases[i].activeSelf == true)
             {
                 _currentCanvas = canvases[i];
                 _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
                 break;
             }
-
-            _newCanvasGroup = _newCanvas.GetComponent<CanvasGroup>();
-            StartCoroutine(FadeCanvases(_newCanvasGroup, _currentActiveCanvasGroup, _newCanvas, _currentCanvas, _isNewUICanvasADialogueCanvas));
         }
+
+        _newCanvasGroup = _newCanvas.GetComponent<CanvasGroup>();
+        StartCoroutine(FadeCanvases(_newCanvasGroup, _currentActiveCanvasGroup, _newCanvas, _currentCanvas, _isNewUICanvasADialogueCanvas));
     }
 
     private IEnumerator FadeCanvases(CanvasGroup canvasGroupToSwitchTo, CanvasGroup currentCanvasGroup, GameObject canvasToSetActive, GameObject currentCanvas, bool isNextCanvasADialogueCanvas)
