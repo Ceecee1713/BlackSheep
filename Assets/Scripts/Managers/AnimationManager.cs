@@ -3,6 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/*
+
+
+//Receives a "FoundClueFragment" event with parameters:
+    //(string) "ClueDialogue" - dialogue of the newly found clue fragment
+    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment) //Published by "NPC"
+*/
+
+//"CheckForCompleteClues" is the name of an event. Empty event
+
 /// <summary>
 /// Manages the animations of the dealer shuffling cards and the player's cards sliding up/down
 /// </summary>
@@ -40,13 +50,15 @@ public class AnimationManager : MonoBehaviour
         EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
-    private void ShuffleEvent(ShuffleCards shuffleCards)
+    //"ShuffleCards" is the name of an event. Empty event
+    private void ShuffleEvent(ShuffleCards shuffleCards) //Published by "ShuffleButton"
     {
         StopAllCoroutines();
         StartCoroutine(MoveCardsDown(false));
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound)
+    //"StartNewRound" is the name of an event. Empty event
+    private void OnNewCardRound(StartNewRound startNewRound) //Published by "CanvasManager"
     {
         StopAllCoroutines();
         StartCoroutine(MoveCardsDown(true));
@@ -85,7 +97,7 @@ public class AnimationManager : MonoBehaviour
 
     private IEnumerator MoveCardsUp() //Move all player's cards (playingCardTransforms) up by their rect transforms
     {
-        EventBus.Instance.Publish(new CompletedShufflingCards()); //Make the shuffle button visible again and player input for moving their cards
+        EventBus.Instance.Publish(new CompletedShufflingCards()); //Publish to "ShuffleButton", "SingleCard", "CanvasManager", "CardUIPopUpButton"
             
         Sequence sequence = DOTween.Sequence();
 

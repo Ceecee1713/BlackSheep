@@ -40,7 +40,8 @@ public class BGM : MonoBehaviour
         }
     }
 
-    private void IncreaseVolumeAfterShooting(IncreaseMusicVolume increaseMusicVolume) 
+    //"IncreaseMusicVolume" is the name of an event. Empty event
+    private void IncreaseVolumeAfterShooting(IncreaseMusicVolume increaseMusicVolume) //Published by "ShootPersonCanvass"
     {
         if(_activatedMusicLoop == true)
         {
@@ -49,7 +50,8 @@ public class BGM : MonoBehaviour
         }
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound) 
+    //"StartNewRound" is the name of an event. Empty event
+    private void OnNewCardRound(StartNewRound startNewRound) //Published by "CanvasManager"
     {
         if(_activatedMusicLoop == true)
         {
@@ -58,7 +60,8 @@ public class BGM : MonoBehaviour
         }
     }
 
-    private void FinishedRoundEvent(FinishedRound finishedRound)
+    //"FinishedRound" is the name of an event. Empty event
+    private void FinishedRoundEvent(FinishedRound finishedRound) //Published by "GamblingTable"
     {
         if(_activatedMusicLoop == true)
         {

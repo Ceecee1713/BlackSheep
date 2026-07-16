@@ -63,7 +63,7 @@ public class InputController : MonoBehaviour
     private void OnNextMessage(InputAction.CallbackContext val) //Advance through dialogue
     {
         if(_stopInput == false && _shouldGameBeStopped.PreventPlaying != true)
-            EventBus.Instance.Publish(new NextMessage());
+            EventBus.Instance.Publish(new NextMessage()); //Publish to "DialogueBox"
     }
 
     private void OnPauseGame(InputAction.CallbackContext val) //Open/Close Pause Menu

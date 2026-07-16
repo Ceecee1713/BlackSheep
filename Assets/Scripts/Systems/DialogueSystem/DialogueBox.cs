@@ -116,12 +116,15 @@ public class DialogueBox : MonoBehaviour
             skipButton.SetActive(true);
     }
 
-    private void OnNextMessageEvent(NextMessage nextMessage) //Called by "InputController"
+    //"NextMessage" is the name of an event. Empty event
+    private void OnNextMessageEvent(NextMessage nextMessage) //Published by "InputController"
     {
         _moveToNextMessage = true;
     }
 
-    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    //Receives a "StopPlayerInput" event with parameters:
+    //(bool) "AllowPlayerInput" - If TRUE = Allow player input for dialogue iteration. If FALSE = DO NOT allow player input for dialogue iteration
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput) //Published by "UIPopUp"
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }
@@ -150,7 +153,7 @@ public class DialogueBox : MonoBehaviour
         if(_writeButtonOneDialogue == false && _writeButtonTwoDialogue == false && _index == dialogueData.NormalDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas)); //Publish to "CanvasManager"
             return;
         }
 
@@ -158,7 +161,7 @@ public class DialogueBox : MonoBehaviour
         if(_writeButtonOneDialogue == true && _index == dialogueData.ButtonOneDialogue.Length-1 && _finishedTypingMessage == true)
         {
             _callDialogueCanvasSwitch = true;
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas)); //Publish to "CanvasManager"
             return;
         }
 
@@ -166,7 +169,7 @@ public class DialogueBox : MonoBehaviour
         if(_writeButtonTwoDialogue == true && _index == dialogueData.ButtonTwoDialogue.Length-1 && _finishedTypingMessage == true) 
         {
             _callDialogueCanvasSwitch = true;
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas)); //Publish to "CanvasManager"
         }
     }
 
@@ -203,7 +206,7 @@ public class DialogueBox : MonoBehaviour
             return;
 
         _callDialogueCanvasSwitch = true;
-        EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas));
+        EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : nextCanvasToSetActive, isNewCanvasADialogueCanvas : _isNextCanvasADialogueCanvas)); //Publish to "CanvasManager"
     }
     
     /// <summary>

@@ -58,12 +58,15 @@ public class ShuffleButton : MonoBehaviour
         }
     }
 
-    private void HasCardBeenPlayed(CardHasBeenPlayed cardHasBeenPlayed) 
+    //Receives a "CardHasBeenPlayed" event with parameters:
+    //(bool) "CardPlayed" - If TRUE = Don't prompt to shuffle the cards. If FALSE = Prompt to shuffle the cards.
+    private void HasCardBeenPlayed(CardHasBeenPlayed cardHasBeenPlayed) //Published by "GamblingTable"
     {
         _hasACardBeenPlayed = cardHasBeenPlayed.CardPlayed;
     }
 
-    private void SetButtonActive(CompletedShufflingCards completedShufflingCards)
+    //"CompletedShufflingCards" is the name of an event. Empty event
+    private void SetButtonActive(CompletedShufflingCards completedShufflingCards) //Published by "AnimationManager"
     {
         if(cardGameRoundNumber.CurrentRoundNumber == gameConfiguration.MaxAmountOfRounds)
             return;
@@ -72,12 +75,15 @@ public class ShuffleButton : MonoBehaviour
         button.SetActive(true);
     }
 
-    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    //Receives a "StopPlayerInput" event with parameters:
+    //(bool) "AllowPlayerInput" - If TRUE = Allow player input for button interaction. If FALSE = DO NOT allow player input for button interaction
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput) //Published by "UIPopUp"
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
-    private void DoNotAllowInput(FinishedRound finishedRound)
+    //"FinishedRound" is the name of an event. Empty event
+    private void DoNotAllowInput(FinishedRound finishedRound) //Published by "GamblingTable"
     {
         ResetButton();
         _allowInput = false;
@@ -101,7 +107,7 @@ public class ShuffleButton : MonoBehaviour
             {
                 _numberOfShufflesPerRound--;
                 buttonText.text = "Shuffle x " + _numberOfShufflesPerRound;
-                EventBus.Instance.Publish(new ShuffleCards()); //Disable player input for moving the player's cards, shuffle the cards and play shuffling animation
+                EventBus.Instance.Publish(new ShuffleCards()); //Publish to "AnimationManager", "Dealer", "SingleCard", "CardUIPopUpButton"
                 button.SetActive(false);
             }
         }

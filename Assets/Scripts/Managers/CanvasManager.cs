@@ -77,13 +77,16 @@ public class CanvasManager : MonoBehaviour
         cardGameplayCanvas.SetActive(false);
     }
 
-    private void ShowCardLayoutAfterShuffling(CompletedShufflingCards completedShufflingCards) 
+    //"CompletedShufflingCards" is the name of an event. Empty event
+    private void ShowCardLayoutAfterShuffling(CompletedShufflingCards completedShufflingCards) //Published by "AnimationManager"
     {
         _interactableLayoutCanvasGroup.alpha = 1.0f;
         interactableLayout.SetActive(true);
     }
 
-    private void UIPopUpIsActive(FadeCurrentCanvas fadeCurrentCanvas) //When paused or when tutorial menus are up, dim the current canvas' alpha
+    //Receives a "FadeCurrentCanvas" event with parameters:
+    //(bool) "FadeCanvas" - If TRUE = Dim the current canvas group's alpha down. If FALSE, restore current canvas' alpha
+    private void UIPopUpIsActive(FadeCurrentCanvas fadeCurrentCanvas) //Published by UIPopUp
     {
         for (int i = 0; i < canvases.Length; i++)
         {
@@ -106,41 +109,11 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    /*
-    private void SwitchCanvas(ChangeToNewCanvas changeToNewCanvas) //Event method
-    {
-        if (changeToNewCanvas.NewCanvas == null)
-            return;
-
-        for(int i = 0; i < canvases.Length; i++)
-        {
-            //Checking if the canvas to change to (changeToNewCanvas.NewCanvas) exists in the "canvases" list 
-            if(canvases[i] == changeToNewCanvas.NewCanvas) 
-            {
-                SwitchCanvases(changeToNewCanvas.NewCanvas, changeToNewCanvas.IsNewCanvasADialogueCanvas);
-                break;
-            }
-        }
-    }
-    
-    private void SwitchCanvases(GameObject canvasToSetActive, bool isNextCanvasADialogueCanvas)
-    {
-        for (int i = 0; i < canvases.Length; i++)
-        {
-            if (canvases[i].activeSelf == true) //Checking if a canvas is active (only one canvas)
-            {
-                _currentCanvas = canvases[i];
-                _currentActiveCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
-                break;
-            }
-        }
-
-        _newCanvasGroup = canvasToSetActive.GetComponent<CanvasGroup>();
-        StartCoroutine(FadeCanvases(_newCanvasGroup, _currentActiveCanvasGroup, canvasToSetActive, _currentCanvas, isNextCanvasADialogueCanvas));
-    }
-    */
-
-    private void SwitchCanvas(ChangeToNewCanvas changeToNewCanvas) 
+    //Receives a "ChangeToNewCanvas" event with parameters:
+    //(bool) "IsNewCanvasADialogueCanvas" - If TRUE = Prompt to begin the first dialogue. 
+    // If FALSE, check for if the new canvas or current canvas is the card gameplay canvas
+    //(GameObject) "NewCanvas" - Game Object of the new UI to switch to
+    private void SwitchCanvas(ChangeToNewCanvas changeToNewCanvas) //Published by "GamblingTable", "DialogueBox", "ShootPersonCanvass", "SwitchToDialogueUIButton"
     {
         _newCanvas = changeToNewCanvas.NewCanvas;
         _isNewUICanvasADialogueCanvas = changeToNewCanvas.IsNewCanvasADialogueCanvas; 
@@ -193,7 +166,7 @@ public class CanvasManager : MonoBehaviour
             if(canvasToSetActive == cardGameplayCanvas)
             {
                 interactableLayout.SetActive(true);
-                EventBus.Instance.Publish(new StartNewRound()); //Reset player's cards' status, shuffle the player's cards and play shuffling animation
+                EventBus.Instance.Publish(new StartNewRound()); //Publish to "Dealer", "AnimationManager", "BGM", "SingleCard", "CardUIPopUpButton"
             }
 
             StopAllCoroutines();

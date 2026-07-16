@@ -20,7 +20,7 @@ using DG.Tweening;
 public class LoadUI : MonoBehaviour
 {
     [SerializeField]
-    private DialogueBox dialogueBox;
+    private DialogueBox dialogueBox; //Can directly reference from as these two scripts will be on the same UI canvas game object
 
     private CanvasGroup _canvasGroup;
     private float _durationOfFade = 1.5f;

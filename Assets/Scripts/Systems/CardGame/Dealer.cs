@@ -77,17 +77,20 @@ public class Dealer : Singleton<Dealer>
         _allCards.Remove(card);
     }
 
-    private void CheckToRemoveCardTypes(FinishedRound finishedRound)
+    //"FinishedRound" is the name of an event. Empty event
+    private void CheckToRemoveCardTypes(FinishedRound finishedRound) //Published by "GamblingTable"
     {
         RemoveCardTypes();
     }
 
-    private void ShuffleEvent(ShuffleCards shuffleCards)
+    //"ShuffleCards" is the name of an event. Empty event
+    private void ShuffleEvent(ShuffleCards shuffleCards) //Published by "ShuffleButton"
     {
         Invoke("StartShufflingCards", DELAY);
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound)
+    //"StartNewRound" is the name of an event. Empty event
+    private void OnNewCardRound(StartNewRound startNewRound) //Published by "CanvasManager"
     {
         Invoke("StartShufflingCards", DELAY);
     }

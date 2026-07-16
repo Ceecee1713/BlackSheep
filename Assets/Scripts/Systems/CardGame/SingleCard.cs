@@ -58,17 +58,20 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         EventBus.Instance.Subscribe<ShuffleCards>(ShuffleEvent);
     }
 
-    private void AllowInput(CompletedShufflingCards completedShufflingCards) 
+    //"CompletedShufflingCards" is the name of an event. Empty event
+    private void AllowInput(CompletedShufflingCards completedShufflingCards) //Published by "AnimationManager"
     {
         _allowInput = true;
     }
 
-    private void ShuffleEvent(ShuffleCards shuffleCards) 
+    //"ShuffleCards" is the name of an event. Empty event
+    private void ShuffleEvent(ShuffleCards shuffleCards) //Published by ""ShuffleButton"
     {
         DoNotAllowInput();
     }
 
-    private void FinishedRoundEvent(FinishedRound finishedRound)
+    //"FinishedRound" is the name of an event. Empty event
+    private void FinishedRoundEvent(FinishedRound finishedRound) //Published by "GamblingTable"
     {
         DoNotAllowInput();
     }
@@ -78,7 +81,8 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         _allowInput = false;
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound) 
+    //"StartNewRound" is the name of an event. Empty event
+    private void OnNewCardRound(StartNewRound startNewRound) //Published by "CanvasManager"
     {
         _parentTransform = _cardParent;
         transform.SetParent(_parentTransform); 
@@ -89,7 +93,9 @@ public class SingleCard : MonoBehaviour, ShuffleListener, IBeginDragHandler, IDr
         _cardHasBeenPlayed = false;
     }
 
-    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    //Receives a "StopPlayerInput" event with parameters:
+    //(bool) "AllowPlayerInput" - If TRUE = Allow player input for card interaction. If FALSE = DO NOT allow player input for card interaction
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput) //Published by "UIPopUp"
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }

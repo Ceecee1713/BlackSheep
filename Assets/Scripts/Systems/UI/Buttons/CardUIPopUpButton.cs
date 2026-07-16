@@ -58,27 +58,33 @@ public class CardUIPopUpButton : MonoBehaviour
         }
     }
 
-    private void IsInputAllowed(StopPlayerInput stopPlayerInput)
+    //Receives a "StopPlayerInput" event with parameters:
+    //(bool) "AllowPlayerInput" - If TRUE = Allow player input for button interaction. If FALSE = DO NOT allow player input for button interaction
+    private void IsInputAllowed(StopPlayerInput stopPlayerInput) //Published by "UIPopUp"
     {
         _allowInput = stopPlayerInput.AllowPlayerInput;
     }
 
-    private void OnNewCardRound(StartNewRound startNewRound) //When a new card round has started
+    //"StartNewRound" is the name of an event. Empty event
+    private void OnNewCardRound(StartNewRound startNewRound) //Published by "CanvasManager"
     {
         _allowInput = false;
     }
 
-    private void OnShufflingCards(ShuffleCards shuffleCards) //When cards are being shuffled in a round
+    //"ShuffleCards" is the name of an event. Empty event
+    private void OnShufflingCards(ShuffleCards shuffleCards) //Published by ""ShuffleButton"
     {
         _allowInput = false;
     }
 
-    private void AllowInput(CompletedShufflingCards completedShufflingCards) //When cards are done being shuffled
+    //"CompletedShufflingCards" is the name of an event. Empty event
+    private void AllowInput(CompletedShufflingCards completedShufflingCards) //Published by "AnimationManager"
     {
         _allowInput = true;
     }
 
-    private void DoNotAllowInput(FinishedRound finishedRound) //When the card round has finished
+    //"FinishedRound" is the name of an event. Empty event
+    private void DoNotAllowInput(FinishedRound finishedRound) //Published by "GamblingTable"
     {
         _allowInput = false;
     }

@@ -115,21 +115,21 @@ public class ShootPersonCanvass : MonoBehaviour
         if(cardGameRoundNumber.CurrentRoundNumber-1 == gameConfiguration.RoundNumberToRemoveDealerAndNormalCards)
         {
             Debug.Log("Show Dealer Dialogue Canvas for Round Five");
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
-            EventBus.Instance.Publish(new IncreaseMusicVolume());
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvasRoundFive, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS)); //Publish to "CanvasManager"
+            EventBus.Instance.Publish(new IncreaseMusicVolume()); //Publish to "BGM"
             StopAllCoroutines();
         }
 
         else if(cardGameRoundNumber.CurrentRoundNumber-1 != gameConfiguration.MaxAmountOfRounds)
         {
             Debug.Log("Show Normal Dealer Dialogue Canvas");
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
-            EventBus.Instance.Publish(new IncreaseMusicVolume());
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : dealerDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS)); //Publish to "CanvasManager"
+            EventBus.Instance.Publish(new IncreaseMusicVolume()); //Publish to "BGM"
             StopAllCoroutines();
         }
             
         else //Reached the last round of the game
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : badEndDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : badEndDialogueCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS)); //Publish to "CanvasManager"
 
         StopAllCoroutines();
     }

@@ -21,8 +21,8 @@ public class UIPopUp : MonoBehaviour
 
     void OnEnable() //Fade current canvas slightly and don't allow player input
     {
-        EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: true));
-        EventBus.Instance.Publish(new StopPlayerInput(allowPlayerInput: false));
+        EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: true)); //Publish to "CanvasManager"
+        EventBus.Instance.Publish(new StopPlayerInput(allowPlayerInput: false)); //Publish to "DialogueBox", "CardUIPopUpButton", "ShuffleButton", "SingleCard"
     }
 
     void OnDisable() //Restore current canvas alpha to 100% and allow player input
@@ -30,7 +30,7 @@ public class UIPopUp : MonoBehaviour
         if(_shouldGameBeStopped.PreventPlaying == true)
             return;
 
-        EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: false));
-        EventBus.Instance.Publish(new StopPlayerInput(allowPlayerInput: true));
+        EventBus.Instance.Publish(new FadeCurrentCanvas(fadeCanvas: false)); //Publish to "CanvasManager"
+        EventBus.Instance.Publish(new StopPlayerInput(allowPlayerInput: true)); //Publish to "DialogueBox", "CardUIPopUpButton", "ShuffleButton", "SingleCard"
     }
 }

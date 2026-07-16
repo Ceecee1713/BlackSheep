@@ -82,13 +82,13 @@ public class GamblingTable : MonoBehaviour
     {
         if(NumberOfPlayedCards > 0 && NumberOfPlayedCards != _previousNumberOfPlayedCards) //Only publish when a card has actually been played, not every frame
         {
-            EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true)); 
+            EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: true)); //Publish to "ShuffleButton"
             _previousNumberOfPlayedCards = NumberOfPlayedCards;
         }
 
         if(NumberOfPlayedCards >= _maxNumberOfPlayedCards)
         {
-            EventBus.Instance.Publish(new FinishedRound()); //Reset "ShuffleButton" script and remove card types that can be given out to the player
+            EventBus.Instance.Publish(new FinishedRound()); //Publish to "Dealer", "BGM", "SingleCard", "ShuffleButton", "CardUIPopUpButton"
             CheckForWhichCanvasToSwitchedTo();
 
             RoundNumber++;
@@ -107,7 +107,7 @@ public class GamblingTable : MonoBehaviour
             if(RoundNumber <= cardGameDialogue.RoundDialogue.Length) 
                 dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber -1].ShootSheepDialogue; //Setting sheep dialogue for dealer to say
 
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingSheepCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingSheepCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS)); //Publish to "CanvasManager"
             ResetValues();
             return;
         }
@@ -118,7 +118,7 @@ public class GamblingTable : MonoBehaviour
             if(RoundNumber <= cardGameDialogue.RoundDialogue.Length) 
                 dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber -1].ShootPlayerDialogue; //Setting player dialogue for dealer to say
 
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingPlayerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingPlayerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS)); //Publish to "CanvasManager"
             ResetValues();
             return;
         }
@@ -129,7 +129,7 @@ public class GamblingTable : MonoBehaviour
             if(RoundNumber <= cardGameDialogue.RoundDialogue.Length) 
                 dealerCanvasDialogueBox.dialogueData = cardGameDialogue.RoundDialogue[RoundNumber -1].ShootDealerDialogue; //Setting dealer dialogue for dealer to say
 
-            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingDealerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS));
+            EventBus.Instance.Publish(new ChangeToNewCanvas(newCanvas : shootingDealerCanvas, isNewCanvasADialogueCanvas : IS_NEXT_CANVAS_A_DIALOGUE_CANVAS)); //Publish to "CanvasManager"
             ResetValues();
         }
     }
@@ -139,7 +139,7 @@ public class GamblingTable : MonoBehaviour
         NumberOfPlayedCards = 0;
         _previousNumberOfPlayedCards = 0;
 
-        EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false)); //Don't allow player input to interact with the card shuffle button
+        EventBus.Instance.Publish(new CardHasBeenPlayed(cardPlayed: false)); //Publish to "ShuffleButton"
 
         RightCardSlot.IsSlotOccupied = false;
         LeftCardSlot.IsSlotOccupied = false;
